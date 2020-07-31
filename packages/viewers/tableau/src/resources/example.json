@@ -1,0 +1,19 @@
+{
+  "id": "TDV.Tableau.HR_Test_Demo_Oracle",
+  "label": "TDV_table",
+  "type": "vertex",
+  "properties": {
+    "project_name": "Monitor",
+    "workbook_name": "Nav Tableau Viewer POC",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eros risus, pretium id elementum eget, porta nec felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac malesuada felis. Aenean fermentum condimentum diam vitae interdum. Nunc fermentum imperdiet ex sed vehicula. Duis dignissim purus tortor. Aenean sit amet dui tellus. Praesent sit amet quam vel augue sollicitudin accumsan. Maecenas finibus ante in mauris dapibus, at blandit risus hendrerit. Praesent placerat nisi et posuere suscipit. Pellentesque dignissim id justo sed mattis. Duis ultricies nec ligula a hendrerit. Vivamus quam sem, elementum vitae sagittis eget, sollicitudin sit amet lectus.",
+    "issued": "2019-11-21T23",
+    "modified": "2019-11-21T23",
+    "language": "Norsk",
+    "publisher": "https://www.nav.no",
+    "license": "CC BY 4.0",
+    "provenance": "NAV",
+    "type": "TDV_table",
+    "db_name": "TDV",
+    "host": "tdv-s.adeo.no"
+  }
+}

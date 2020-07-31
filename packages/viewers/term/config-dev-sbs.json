@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-term-viewer",
+  "org_name": "navikt",
+  "ingress": "https://dataverk-q.nav.no/begrep",
+  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/begrep"
+}

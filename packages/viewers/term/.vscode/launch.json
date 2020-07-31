@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "Firefox 3001",
+            "url": "http://localhost:3001",
+            "webRoot": "${workspaceRoot}/src"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome 3003",
+            "url": "http://localhost:3003",
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome 3002",
+            "url": "http://localhost:3002",
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome 3001",
+            "url": "http://localhost:3001",
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        },
+        {
+            "name": "Chrome 3000",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        }
+    ]
+}

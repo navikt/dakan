@@ -1,0 +1,9 @@
+{
+  "id": 369884,
+  "label": "kafka_topic",
+  "properties": {
+    "topic_name": "kafka-test-topic",
+    "type": "kafka_topic",
+    "host": "data.test.com"
+  }
+}

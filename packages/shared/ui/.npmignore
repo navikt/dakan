@@ -1,0 +1,6 @@
+
+*.test.js
+*.story.js
+src
+.bashrc
+utils

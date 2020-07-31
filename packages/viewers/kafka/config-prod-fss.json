@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-kafka-topic-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/kafka",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/kafka"
+}

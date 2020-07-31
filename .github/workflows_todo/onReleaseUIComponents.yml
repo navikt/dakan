@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  release:
+    paths:
+      - 'packages/shared/ui/**'
+    types: [published]
+env:
+    CI: true
+
+jobs:
+    Publish_To_NPM_Workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+              with:
+                  ref: refs/heads/master
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+                  registry-url: https://registry.npmjs.org/
+            - name: Install dependencies
+              run: yarn install
+            - name: Build package
+              run: yarn build
+            - name: Publish
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+    # Publish_To_Github_Workflow:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: actions/checkout@v1
+    #           with:
+    #               ref: refs/heads/master
+    #         - uses: actions/setup-node@v1
+    #           with:
+    #               node-version: '12.x'
+    #               registry-url: https://npm.pkg.github.com/
+    #               scope: '@navikt'
+    #         - name: Install dependencies
+    #           run: yarn install
+    #         - name: Publish
+    #           run: yarn publish:public
+    #           env:
+    #               NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

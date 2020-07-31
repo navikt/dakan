@@ -1,0 +1,41 @@
+[
+  {
+    "id": "Tableau.Monitor.TabMon.Whats_Going_On_1",
+    "label": "tableau_view",
+    "properties": {
+      "contentUrl": "https://www.google.com",
+      "project_name": "Monitor",
+      "workbook_name": "TabMon",
+      "view_name": "Test Tableau View 1",
+      "view_id": "1a825c34-622e-459f-9116-57cf38aea7bb",
+      "preview": "https://github.githubassets.com/images/modules/open_graph/github-octocat.png",
+      "type": "tableau_view"
+    }
+  },
+  {
+    "id": "Tableau.Monitor.TabMon.Whats_Going_On_2",
+    "label": "tableau_view",
+    "properties": {
+      "contentUrl": "https://www.google.com",
+      "project_name": "Monitor",
+      "workbook_name": "TabMon",
+      "view_name": "Test Tableau View 2",
+      "view_id": "1a825c34-622e-459f-9116-57cf38aea7bb",
+      "preview": "https://github.githubassets.com/images/modules/open_graph/github-octocat.png",
+      "type": "tableau_view"
+    }
+  },
+  {
+    "id": "Tableau.Monitor.TabMon.Whats_Going_On_3",
+    "label": "tableau_view",
+    "properties": {
+      "contentUrl": "https://www.google.com",
+      "project_name": "Monitor",
+      "workbook_name": "TabMon",
+      "view_name": "Test Tableau View 3",
+      "view_id": "1a825c34-622e-459f-9116-57cf38aea7bb",
+      "preview": "https://github.githubassets.com/images/modules/open_graph/github-octocat.png",
+      "type": "tableau_view"
+    }
+  }
+]

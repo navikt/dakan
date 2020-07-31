@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-tableau-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/tableau",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/tableau"
+}

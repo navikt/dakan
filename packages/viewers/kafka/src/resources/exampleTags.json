@@ -1,0 +1,58 @@
+[
+  {
+    "id": "AliceBlue",
+    "label": "test",
+    "properties": { "name": "#F0F8FF", "type": "test" }
+  },
+  { "id": "AntiqueWhite", "properties": { "name": "#FAEBD7", "type": "test" } },
+  {
+    "id": "Aqua",
+    "label": "test",
+    "properties": { "name": "#00FFFF", "type": "test" }
+  },
+  {
+    "id": "Aquamarine",
+    "label": "test",
+    "properties": { "name": "#7FFFD4", "type": "test" }
+  },
+  {
+    "id": "Azure",
+    "label": "test",
+    "properties": { "name": "#F0FFFF", "type": "test" }
+  },
+  {
+    "id": "Beige",
+    "label": "test",
+    "properties": { "name": "#F5F5DC", "type": "test" }
+  },
+  {
+    "id": "AliceBlue Test",
+    "label": "test",
+    "properties": { "name": "#F0F8FF", "type": "test" }
+  },
+  {
+    "id": "AntiqueWhite Test",
+    "label": "test",
+    "properties": { "name": "#FAEBD7", "type": "test" }
+  },
+  {
+    "id": "Aqua Test",
+    "label": "test",
+    "properties": { "name": "#00FFFF", "type": "test" }
+  },
+  {
+    "id": "Aquamarine Test",
+    "label": "test",
+    "properties": { "name": "#7FFFD4", "type": "test" }
+  },
+  {
+    "id": "Azure Test",
+    "label": "test",
+    "properties": { "name": "#F0FFFF", "type": "test" }
+  },
+  {
+    "id": "Beige Test",
+    "label": "test",
+    "properties": { "name": "#F5F5DC", "type": "test" }
+  }
+]

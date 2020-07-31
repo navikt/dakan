@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-productarea-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.nais.preprod.local/productarea",
+  "ingress_nais_io": "https://data.dev-fss.nais.io/productarea"
+}
