@@ -1,18 +1,18 @@
-<Meta title="Design System/Intro" />
+<Meta title="Theming/Intro" />
 
 ## Install
 
-    npm install @data-catalog/ui
+    npm install @dakan/ui
 
-# Get started
+# Example
 
     import * as React from 'react'
-    import {Input, ThemeProvider, NAV} from '@data-catalog/ui'
+    import {Button, ThemeProvider, navTheme} from '@dakan/ui'
 
     export default function App() {
         return (
-            <ThemeProvider theme={NAV}>
-                <Input />
+            <ThemeProvider theme={navTheme()}>
+                <Button />
             </ThemeProvider>
         );
     }
