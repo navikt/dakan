@@ -22,9 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: |
-        cd packages/viewers/person
-        yarn install
+      run: lerna bootstrap
     - name: Run test
       run: |
         cd packages/viewers/person
