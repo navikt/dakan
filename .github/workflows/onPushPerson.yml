@@ -21,14 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install lerna
-      run: sudo npm install --global lerna
     - name: Install dependencies
-      run: lerna bootstrap
+      run: yarn person:install
     - name: Run test
-      run: |
-        cd packages/viewers/person
-        yarn test
+      run: yarn person:test
       env:
         CI: false
     - name: Generate tag
@@ -48,9 +44,7 @@ jobs:
         path: docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
-      run: |
-        cd packages/viewers/person
-        yarn build
+      run: yarn person:build
       env:
         CI: false
     - name: Build and Publish to Docker Image
