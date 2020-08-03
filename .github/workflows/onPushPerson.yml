@@ -25,6 +25,8 @@ jobs:
       run: sudo npm install --g lerna
     - name: Install dependencies
       run: lerna bootstrap
+    - name: move node_modules
+      run: mv node_modules /packages/viewer/person
     - name: Run test
       run: yarn person:test
       env:
