@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install lerna
-      run: npm install --global lerna
+      run: npm install lerna
     - name: Install dependencies
       run: lerna bootstrap
     - name: Run test
