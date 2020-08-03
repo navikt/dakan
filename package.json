@@ -27,7 +27,7 @@
       "term": "cd packages/viewers/term && yarn run start",
       "table": "cd packages/viewers/table && yarn run start",
       "kafka": "cd packages/viewers/kafka && yarn run start",
-      "setup": "npx lerna bootstrap"
+      "setup": "npx lerna bootstrap --force-local"
   },
   "workspaces": [
     "apps/*",
