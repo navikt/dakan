@@ -10,11 +10,5 @@
   "preprocessorIgnorePatterns": [
     "/node_modules/",
     "**/**/build"
-  ],
-  "packages": [
-    "apps/*",
-    "apps/*/*",
-    "packages/*",
-    "packages/*/*"
   ]
 }
