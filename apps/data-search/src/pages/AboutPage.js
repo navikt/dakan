@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MediumWidth } from '@dakan/ui'
-import { useMarkDown } from '@dakan/hooks'
+import { useMarkdown } from '@dakan/hooks'
 import env from '@beam-australia/react-env'
 import { useStyletron } from 'baseui'
 import { Block } from 'baseui/block'

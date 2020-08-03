@@ -18,6 +18,7 @@
       "hooks": "cd packages/shared/hooks && yarn run start",
       "search": "cd apps/data-search && yarn run start",
       "person": "cd packages/viewers/person && yarn run start",
+      "person:build": "cd packages/viewers/person && yarn run build",
       "team": "cd packages/viewers/team && yarn run start",
       "productarea": "cd packages/viewers/productarea && yarn run start",
       "tableau": "cd packages/viewers/productarea && yarn run start",
