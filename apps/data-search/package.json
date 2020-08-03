@@ -1,12 +1,12 @@
 {
   "name": "data-search",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
-    "@dakan/hooks": "^0.0.2",
-    "@dakan/metrics": "^0.0.2",
-    "@dakan/ui": "^0.0.2",
+    "@dakan/hooks": "^0.0.3",
+    "@dakan/metrics": "^0.0.3",
+    "@dakan/ui": "^0.0.3",
     "@elastic/react-search-ui": "1.4.1",
     "@elastic/react-search-ui-views": "1.4.1",
     "@elastic/search-ui": "1.4.1",
