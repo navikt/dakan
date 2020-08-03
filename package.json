@@ -29,8 +29,11 @@
       "kafka": "cd packages/viewers/kafka && yarn run start",
       "setup": "npx lerna bootstrap --force-local && lerna link"
   },
-  "workspaces": [
+  "workspaces": {
+    "packages": [
     "apps/*",
     "packages/**"
-  ]
+  ],
+  "nohoist": ["**/components"]
+}
 }
