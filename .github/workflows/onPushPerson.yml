@@ -65,7 +65,7 @@ jobs:
 
   deploy_dev-fss:
     name: Build and deploy to dev-fss
-    needs: package
+    needs: test_and_package
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +92,7 @@ jobs:
 
   deploy_dev-sbs:
     name: Build and deploy to dev-sbs
-    needs: package
+    needs: test_and_package
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
