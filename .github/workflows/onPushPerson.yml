@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Change directory
+      run: cd packages/viewers/person
     - name: Install dependencies
       run: yarn install
     - name: Run test
