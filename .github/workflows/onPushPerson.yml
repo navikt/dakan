@@ -21,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: install lerna
+      run: npm install --g lerna
     - name: Install dependencies
-      run: yarn person:install
+      run: lerna bootstrap
     - name: Run test
       run: yarn person:test
       env:
