@@ -1,3 +1,1 @@
 # Datakatalog person viewer (Teamkatalogen)
-
-
