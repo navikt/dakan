@@ -34,6 +34,6 @@
     "apps/*",
     "packages/**"
   ],
-  "nohoist": ["packages/shared/**"]
+  "nohoist": ["**/@dakan/ui", "**/@dakan/hooks", "**/@dakan/metrics" ]
 }
 }
