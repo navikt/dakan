@@ -31,8 +31,6 @@
   },
   "workspaces": [
     "apps/*",
-    "apps/**",
-    "packages/*",
     "packages/**"
   ]
 }
