@@ -34,6 +34,6 @@
     "apps/*",
     "packages/**"
   ],
-  "nohoist": ["**/components"]
+  "nohoist": ["packages/shared/**"]
 }
 }
