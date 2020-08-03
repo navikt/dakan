@@ -1,2 +1,2 @@
-export {ThemeProvider} from './ThemeProvider';
-export {navTheme, lightTheme, darkTheme} from './navTheme';
+export {ThemeProvider} from '@dakan/theme';
+export {navTheme, lightTheme, darkTheme} from '@dakan/theme';

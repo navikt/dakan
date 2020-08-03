@@ -1,11 +1,11 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
-import { useElasticSearch, Metrics } from '@dakan/ui';
+import { Metrics } from '@dakan/metrics';
+import {useElasticSearch} from '@dakan/hooks';
 
 import exampleJson from '../resources/example.json';
 import Content from '../components/Content';
 import ErrorMessage from '../components/ErrorMessage';
-
 
 const server = env('SERVER');
 const viewer_version = env('VIEWER_VERSION') || false;

@@ -1,0 +1,36 @@
+{
+    "name": "@dakan/hooks",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/dakan"
+    },
+    "scripts": {
+        "check-types": "tsc",
+        "build": "yarn rimraf dist && babel src -d dist",
+        "start": "yarn rimraf dist && babel -w src -d dist",
+        "format": "prettier --write \"./src/**/*.{js,json,md,yml,ts,tsx,jsx}\"",
+        "test": "yarn build && yarn lint && yarn coverage",
+        "publish:public": "yarn run build && npm publish --access=public"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.6.4",
+        "@babel/core": "^7.6.4",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "@babel/preset-typescript": "^7.7.7",
+        "prettier": "^1.18.2"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "baseui": "^9.91.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-markdown": "^4.3.1",
+        "styletron-react": "^5.2.7"
+    }
+}

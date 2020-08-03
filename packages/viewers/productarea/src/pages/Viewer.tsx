@@ -1,6 +1,7 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
-import {useElasticSearch, Metrics} from '@dakan/ui';
+import {Metrics} from '@dakan/metrics';
+import {useElasticSearch} from '@dakan/hooks';
 
 import Content from '../components/Content';
 

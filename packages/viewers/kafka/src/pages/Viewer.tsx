@@ -4,7 +4,7 @@ import env from "@beam-australia/react-env";
 import { Block } from "baseui/block";
 import Cookies from "js-cookie";
 import { Spinner } from "baseui/spinner";
-import { Metrics } from "@dakan/ui";
+import { Metrics } from "@dakan/metrics";
 
 import exampleKafkaJson from "../resources/exampleKafka.json";
 import exampleTopicFieldJson from "../resources/exampleTopicField.json";
@@ -123,7 +123,7 @@ const Viewer = (props: any) => {
         .catch((e) => HandleAxiosError(e, setError));
       getAzureAuth();
     }
-  }, [props.match.params.id, handleResponse]);
+  }, [props.match.params.id]);
 
   if (showSpinner) {
     return (

@@ -6,7 +6,7 @@ import env from '@beam-australia/react-env'
 import amplitude from 'amplitude-js'
 import Cookies from 'js-cookie'
 
-import { Metrics } from '@dakan/ui'
+import { Metrics } from '@dakan/metrics'
 import HandleAxiosError from '../utils/HandleAxiosError'
 import exampleJson from '../resources/example.json'
 import exampleTableauViewsJson from '../resources/exampleTableuViews.json'

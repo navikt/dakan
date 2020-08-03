@@ -5,6 +5,7 @@
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
     "@dakan/ui": "0.0.1",
+    "@dakan/hooks": "0.0.1",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
     "@testing-library/user-event": "^12.0.6",

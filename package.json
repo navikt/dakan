@@ -13,6 +13,9 @@
       "storybook:build": "cd packages/shared/ui && yarn run storybook:build",
       "storybook:deploy": "cd packages/shared/ui && yarn run storybook:deploy",
       "ui": "cd packages/shared/ui && yarn run start",
+      "theme": "cd packages/shared/theme && yarn run start",
+      "metrics": "cd packages/shared/ && yarn run start",
+      "hooks": "cd packages/shared/hooks && yarn run start",
       "search": "cd apps/data-search && yarn run start",
       "person": "cd packages/viewers/person && yarn run start",
       "team": "cd packages/viewers/team && yarn run start",
@@ -20,6 +23,7 @@
       "tableau": "cd packages/viewers/productarea && yarn run start",
       "term": "cd packages/viewers/productarea && yarn run start",
       "table": "cd packages/viewers/table && yarn run start",
+      "kafka": "cd packages/viewers/kafka && yarn run start",
       "setup": "lerna bootstrap"
   },
   "workspaces": [
