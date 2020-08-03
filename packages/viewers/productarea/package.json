@@ -1,11 +1,11 @@
 {
   "name": "@dakan/productarea",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
-    "@dakan/ui": "0.0.1", 
-    "@dakan/hooks": "0.0.1",
+    "@dakan/hooks": "^0.0.2",
+    "@dakan/ui": "^0.0.2",
     "axios": "^0.19.1",
     "babel-polyfill": "^6.26.0",
     "baseui": "^9.89.0",

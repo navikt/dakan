@@ -1,0 +1,7 @@
+{
+  "application_name": "data-search",
+  "team": "dataplattform",
+  "ingress": "https://data.nav.no",
+  "ingress_nais_io": "https://data.prod-sbs.nais.io",
+  "app_title": "Åpne data"
+}

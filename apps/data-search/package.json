@@ -1,0 +1,62 @@
+{
+  "name": "data-search",
+  "version": "0.0.2",
+  "private": true,
+  "dependencies": {
+    "@beam-australia/react-env": "^2.1.2",
+    "@dakan/hooks": "^0.0.2",
+    "@dakan/metrics": "^0.0.2",
+    "@dakan/ui": "^0.0.2",
+    "@elastic/react-search-ui": "1.4.1",
+    "@elastic/react-search-ui-views": "1.4.1",
+    "@elastic/search-ui": "1.4.1",
+    "amplitude-js": "^7.1.0",
+    "axios": "^0.19.0",
+    "baseui": "^9.52.1",
+    "date-fns": "^2.8.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.3.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.3.1",
+    "styletron-engine-atomic": "^1.4.4",
+    "styletron-react": "^5.2.6",
+    "typescript": "^3.6.3",
+    "yarn": "^1.17.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "format": "prettier --write 'src/**/*.js'"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.23",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/styletron-engine-atomic": "^1.1.0",
+    "@types/styletron-react": "^5.0.2",
+    "@types/styletron-standard": "^2.0.0",
+    "encoding": "^0.1.12",
+    "netlify-lambda": "^2.0.0",
+    "node-fetch": "^2.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5"
+  }
+}

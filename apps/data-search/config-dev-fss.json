@@ -1,0 +1,7 @@
+{
+  "application_name": "data-search",
+  "team": "dataplattform",
+  "ingress": "https://data.nais.preprod.local",
+  "ingress_nais_io": "https://data.dev-fss.nais.io",
+  "app_title": "Datakatalogen dev"
+}
