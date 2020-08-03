@@ -9,6 +9,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: yarn 
+            - run: ./node_modules/.bin/lerna clean
             - run: ./node_modules/.bin/lerna bootstrap
             - run: ./node_modules/.bin/lerna link
-            - run: ./node_modules/.bin/lerna run build
+            - run: ./node_modules/.bin/lerna run person:build
