@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install lerna
+      run: sudo npm install --global lerna
     - name: Install dependencies
-      run: |
-        sudo npm install --global lerna  
-        lerna bootstrap
+      run: lerna bootstrap
     - name: Run test
       run: |
         cd packages/viewers/person
