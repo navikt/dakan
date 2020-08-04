@@ -12,8 +12,8 @@ export const Tag = (props) => {
 
     const localOverrides = {
         Root: {
-            style: {},
-        },
+            style: {}
+        }
     };
 
     if (props.backgroundColor) {

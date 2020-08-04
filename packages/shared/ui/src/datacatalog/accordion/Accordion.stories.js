@@ -9,8 +9,8 @@ export default {
     title: 'Components/Accordion',
 
     parameters: {
-        component: Accordion,
-    },
+        component: Accordion
+    }
 };
 
 export const default_panel = () => {

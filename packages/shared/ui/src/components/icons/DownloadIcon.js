@@ -27,4 +27,18 @@ export const DownloadHoverIcon = ({size, fill}) => {
     );
 };
 
+export const DownloadActiveIcon = ({size, fill}) => {
+    return (
+        <Icon size={size} fill={fill}>
+            <rect width="24" height="24" fill="white" />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3 20V17H1V20C1 22.2091 2.79086 24 5 24H19C21.2091 24 23 22.2091 23 20V17H21V20H3ZM14 10.3746V0H10V10.3746H6.9375H5L12 17L19 10.3746H17.3125H14Z"
+                fill="#32414F"
+            />
+        </Icon>
+    );
+};
+
 export default DownloadIcon;

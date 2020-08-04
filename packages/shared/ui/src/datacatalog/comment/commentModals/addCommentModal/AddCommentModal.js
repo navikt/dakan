@@ -4,9 +4,9 @@ import {Textarea} from 'baseui/textarea';
 import shortid from 'shortid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import {Spinner} from 'baseui/spinner';
 import {Block} from 'baseui/block';
 import {useStyletron} from 'baseui';
+import {Spinner} from 'baseui/spinner';
 
 import {ModalButton} from '../../../../components/button/Button';
 import GetCurrentDate, {GetCurrentTime} from '../../../../utils/GetCurrentDate/GetCurrentDate';
@@ -16,6 +16,7 @@ export const AddCommentModal = (props) => {
     const {dataId, comments, setComments, isOpen, setIsOpen, clientUser, server} = props;
     const [commentText, setCommentText] = React.useState('');
     const [showSpinner, setShowSpinner] = React.useState(false);
+
     const [, theme] = useStyletron();
 
     const addComment = () => {
@@ -29,14 +30,14 @@ export const AddCommentModal = (props) => {
                 author: clientUser.userId,
                 comment: commentText,
                 date: GetCurrentDate(),
-                time: GetCurrentTime(),
-            },
+                time: GetCurrentTime()
+            }
         };
         newTableComments.unshift(newComment);
         const commentPayload = {
             source_id: dataId,
             edge_label: 'hasComment',
-            node_body: newComment,
+            node_body: newComment
         };
         axios
             .put(`${server}/node/edge/upsert`, commentPayload, {headers: {'JWT-Token': tokenId}})
@@ -51,6 +52,14 @@ export const AddCommentModal = (props) => {
 
     return (
         <Modal
+            overrides={{
+                Dialog: {
+                    style: {
+                        maxWidth: '1200px',
+                        width: '100%'
+                    }
+                }
+            }}
             isOpen={isOpen}
             onClose={() => {
                 setIsOpen(false);
@@ -60,17 +69,30 @@ export const AddCommentModal = (props) => {
             <ModalHeader />
             {showSpinner ? (
                 <Block alignContent="center" justifyContent="center" marginBottom="scale1000">
-                    <Block display="flex" justifyContent="center" marginBottom="scale300">
+                    <Block
+                        display="flex"
+                        justifyContent="center"
+                        marginBottom="scale300"
+                        $style={{...theme.typography.font300}}
+                    >
                         Kommentaren lagres...
                     </Block>
-                    <Block display="flex" justifyContent="center">
-                        <Spinner size={56} />
+                    <Block flex="1" display="flex" justifyContent="center" alignItems="center">
+                        <Spinner size={98} />
                     </Block>
                 </Block>
             ) : (
                 <Block>
                     <ModalBody>
                         <Textarea
+                            rows={10}
+                            overrides={{
+                                InputContainer: {
+                                    style: {
+                                        height: '250px'
+                                    }
+                                }
+                            }}
                             onChange={(e) => setCommentText(e.target.value)}
                             placeholder="Skriv en kommentar..."
                             value={commentText}

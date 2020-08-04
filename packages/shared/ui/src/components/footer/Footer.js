@@ -18,7 +18,7 @@ const Link = (props) => {
             {...props}
             style={{
                 textDecoration: 'none',
-                color: theme.colors && theme.colors.white,
+                color: '#3E3832'
             }}
         />
     );
@@ -37,8 +37,14 @@ export const Footer = ({isInternal}) => {
             width="100%"
             display="flex"
             alignItems="center"
-            backgroundColor={theme.colors && theme.colors.primary}
+            backgroundColor="#DEF3FF"
             marginTop="auto"
+            $style={{
+                backgroundImage:
+                    'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEWc3P+95//e8//////jLWPQAAAAAWJLR0QDEQxM8gAAAFlJREFUWMPt18ENACAIA0CWdEmnFA0kFZnAth9B70mi2vSMyIxgbQJ0AGMeRAKcYB9cgxK9ABfAzTo0pxagAt0lkr2hFKACWT+rACWoQ9O+QARoQfsBEfgdLMMmTXmJ7JyLAAAAAElFTkSuQmCC)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right top'
+            }}
         >
             <Block display="flex" height="100%" width="100%" justifyContent="start" alignItems="center">
                 <Block marginLeft="scale800">

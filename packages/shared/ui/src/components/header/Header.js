@@ -39,7 +39,7 @@ const brandName = (props) => {
     if (props.config && props.config.brand) {
         return props.config.brand;
     }
-    return 'Datakatalogen';
+    return 'Åpne data';
 };
 
 const NoStyleLink = (props) => (
@@ -60,30 +60,30 @@ const Brand = (props) => {
 };
 
 const UserLogin = (props) => {
-    if (props.clientUser && props.clientUser.initial) {
+    if (props.config.clientUser && props.config.clientUser.initial) {
         return (
             <StatefulPopover
                 placement="bottom"
                 content={
                     <Block padding="scale400">
                         <Label2 display="flex" width="100%">
-                            {props.clientUser.userId}
+                            {props.config.clientUser.userId}
                         </Label2>
                         <Block display="flex" width="100%">
-                            <StyledLink href={`${props.server}/logout?redirect_url=${window.location.href}`}>
+                            <StyledLink href={`${props.config.server}/logout?redirect_url=${window.location.href}`}>
                                 Logg ut
                             </StyledLink>
                         </Block>
                     </Block>
                 }
             >
-                <BaseuiButton shape={SHAPE.round}>{props.clientUser.initial}</BaseuiButton>
+                <BaseuiButton shape={SHAPE.round}>{props.config.clientUser.initial}</BaseuiButton>
             </StatefulPopover>
         );
     } else {
         return (
             <StyledLink
-                href={`${props.server}/login?redirect_url=${window.location.href}`}
+                href={`${props.config.server}/login?redirect_url=${window.location.href}`}
                 style={{textDecoration: 'none'}}
             >
                 <Button>Logg inn</Button>
@@ -100,26 +100,29 @@ const SideBar = (props) => {
     const getItems = () => {
         let items = [];
         if (props && props.config && props.config.showLoginButton) {
-            if (props.clientUser && props.clientUser.initial) {
+            if (props.config.clientUser && props.config.clientUser.initial) {
                 items.push({
                     label: (
                         <Block>
                             <Block>
                                 <Label2 display="flex" width="100%">
-                                    {props.clientUser.userId}
+                                    {props.config.clientUser.userId}
                                 </Label2>
                             </Block>
                             <Block>
-                                <StyledLink href={`${props.server}/logout?redirect_url=${window.location.href}`}>
+                                <StyledLink href={`${props.config.server}/logout?redirect_url=${window.location.href}`}>
                                     Logg ut
                                 </StyledLink>
                             </Block>
                         </Block>
                     ),
-                    href: `${props.server}/logout?redirect_url=${window.location.href}`,
+                    href: `${props.config.server}/logout?redirect_url=${window.location.href}`
                 });
             } else {
-                items.push({label: 'Logg inn', href: `${props.server}/login?redirect_url=${window.location.href}`});
+                items.push({
+                    label: 'Logg inn',
+                    href: `${props.config.server}/login?redirect_url=${window.location.href}`
+                });
             }
         }
         if (props && props.config && props.config.about)
@@ -141,11 +144,11 @@ const SideBar = (props) => {
                         marginTop: '0px',
                         marginBottom: '0px',
                         marginLeft: '0px',
-                        marginRight: '0px',
-                    },
+                        marginRight: '0px'
+                    }
                 },
                 // Removes the close icon from the drawer
-                Close: () => null,
+                Close: () => null
             }}
         >
             <StatefulMenu
@@ -157,12 +160,12 @@ const SideBar = (props) => {
                             overrides: {
                                 ListItemAnchor: {
                                     style: {
-                                        textDecoration: 'none',
-                                    },
-                                },
-                            },
-                        },
-                    },
+                                        textDecoration: 'none'
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }}
             />
         </Drawer>
@@ -252,9 +255,9 @@ export const Header = (props) => {
                     height="80px"
                     $style={{
                         backgroundImage:
-                            'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeBAMAAACs80HuAAAAD1BMVEUAAAA6tPl7zfu95v3///8yRSjLAAAAAXRSTlMAQObYZgAAAAFiS0dEBI9o2VEAAAAgSURBVCjPY1ACAQY0MKQFjUEAXXpICwqCAEIGwhrKggDsPS591cEhYwAAAABJRU5ErkJggg==)',
+                            'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYBAMAAABpfeIHAAAAD1BMVEUAAACc3P+95//e8/////+ZyrPLAAAAAXRSTlMAQObYZgAAAAFiS0dEBI9o2VEAAAAgSURBVBjTY1ACAgZkMEACxkCAIjFAAoJAABME0wMjAAA9Jh3BO9k/cgAAAABJRU5ErkJggg==)',
                         backgroundRepeat: 'no-repeat',
-                        backgroundPositionY: '50px',
+                        backgroundPosition: 'left bottom'
                     }}
                 >
                     <Block

@@ -9,6 +9,20 @@ const PADDING_LEFT = '16px';
 const MARGIN_RIGHT = '20px';
 const LEFT_MENU_WIDTH = '320px';
 
+export const Heading = (props) => {
+    if (props && props.headingLabel && props.headingText) {
+        return (
+            <Block marginBottom="scale1200">
+                <HeadingMedium>
+                    <LabelMedium>{props.headingLabel}</LabelMedium>
+                    {props.headingText}
+                </HeadingMedium>
+            </Block>
+        );
+    }
+    return null;
+};
+
 export const FullWidth = (props) => {
     const [, theme] = useStyletron();
     return (
@@ -31,21 +45,22 @@ export const LargeWidth = (props) => {
     const [, theme] = useStyletron();
     return (
         <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
-            <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
+            <Block width="100%">
                 <Block display="flex" justifyContent="center" width="100%">
                     <Block
                         display="flex"
                         justifyContent="center"
                         width="100%"
                         maxWidth={theme.breakpoints.large + 'px'}
+                        paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}
                     >
-                        <Block flex="1">
+                        <Block flex="1" >
                             <Heading {...props} />
                         </Block>
                     </Block>
                 </Block>
                 <Block display="flex" justifyContent="center" width="100%">
-                    <Block flex="1" width="100%" maxWidth={theme.breakpoints.large + 'px'}>
+                    <Block flex="1" width="100%" maxWidth={theme.breakpoints.large + 'px'} paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
                         {props.children}
                     </Block>
                 </Block>
@@ -81,20 +96,6 @@ export const MediumWidth = (props) => {
             <Footer />
         </Block>
     );
-};
-
-export const Heading = (props) => {
-    if (props && props.headingLabel && props.headingText) {
-        return (
-            <Block marginBottom="scale600">
-                <HeadingMedium>
-                    <LabelMedium>{props.headingLabel}</LabelMedium>
-                    {props.headingText}
-                </HeadingMedium>
-            </Block>
-        );
-    }
-    return null;
 };
 
 export const SingleColumn = (props) => {
