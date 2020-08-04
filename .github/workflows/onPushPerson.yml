@@ -10,19 +10,18 @@ on:
       - '*.*.*'
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/data-catalog-person-viewer
-  PACKAGE_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-person-viewer
   PUBLIC_URL: /person
+  PACKAGE_PATH: packages/viewers/person
 
 jobs:
-  
   test_and_package:
-    name: Build ,test and package
+    name: Build, test and package
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: ./node_modules/.bin/lerna bootstrap
+      run: yarn run setup
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
@@ -37,13 +36,13 @@ jobs:
         GIT_HASH=$(git rev-parse --short HEAD)
         IMAGE_TAG=${DATE}--${GIT_HASH}
         # write current tag to file
-        echo $IMAGE_TAG > docker_img_tag.txt
+        echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
     - name: Upload img_tag
       if: github.ref == 'refs/heads/master'
       uses: actions/upload-artifact@v1
       with:
         name: img_tag
-        path: docker_img_tag.txt
+        path: packages/viewers/person/docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
       run: yarn person:build
@@ -54,7 +53,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        cd packages/viewers/person
+        cd ${PACKAGE_PATH}
         docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
         docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
         docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
@@ -83,8 +82,8 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
-        RESOURCE: ./packages/viewer/person/naisarator-fss.yml
-        VARS: ./packages/viewer/person/config-dev-fss.json
+        RESOURCE: packages/viewers/person/naisarator-fss.yml
+        VARS: packages/viewers/person/config-dev-fss.json
 
   deploy_dev-sbs:
     name: Build and deploy to dev-sbs
@@ -110,5 +109,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-sbs
-        RESOURCE: ./packages/viewer/person/naisarator-sbs.yml
-        VARS: ./packages/viewer/person/config-dev-sbs.json
+        RESOURCE: packages/viewers/person/naisarator-sbs.yml
+        VARS: packages/viewers/person/config-dev-sbs.json
