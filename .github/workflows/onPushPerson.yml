@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: ./node_modules/.bin/lerna bootstrap
+      run: yarn run setup
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
