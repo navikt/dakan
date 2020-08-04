@@ -15,4 +15,7 @@ jobs:
             - run: ./node_modules/.bin/lerna bootstrap
             - run: ./node_modules/.bin/lerna link
             - run: yarn run shared:build
-            - run: yarn run person:build
+            - name: build person viewer
+              run: yarn run person:build
+              env:
+                CI: false
