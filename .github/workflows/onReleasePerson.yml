@@ -2,10 +2,9 @@ name: Deploy to prod on release
 
 on:
   release:
+    tags: 'person.*.*.*'
     types: [published]
-    tags:
-      - 'person.*.*.*'
-      
+
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-person-viewer
   PUBLIC_URL: /person
