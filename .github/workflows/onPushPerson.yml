@@ -15,9 +15,8 @@ env:
   PACKAGE_PATH: packages/viewers/person
 
 jobs:
-  
   test_and_package:
-    name: Build ,test and package
+    name: Build, test and package
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
