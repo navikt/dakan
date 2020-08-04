@@ -10,7 +10,7 @@ on:
       - '*.*.*'
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/data-catalog-person-viewer
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-person-viewer
   PACKAGE_TOKEN: ${{secrets.GITHUB_TOKEN}}
   PUBLIC_URL: /person
   PACKAGE_PATH: packages/viewers/person
