@@ -2,16 +2,16 @@ name: Deploy to prod on release
 
 on:
   release:
-    paths:
-      - 'packages/viewers/kafka/**'
     types: [published]
+    tags:
+      - 'kafka.*.*.*'
+
 env: 
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/data-catalog-kafkaprofile-viewer
-  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
   PUBLIC_URL: /kafka
+  PACKAGE_PATH: packages/viewers/kafka
 
 jobs:
- 
   package:      
     name: Build and package
     runs-on: ubuntu-latest
@@ -20,11 +20,13 @@ jobs:
         with:
           ref: refs/heads/master
       - name: Install dependencies
-        run: yarn install
+        run: yarn run setup
+      - name: Build shared packages
+        run: yarn run shared:build
       - name: Build
+        run: yarn kafka:build
         env:
           CI: false
-        run: yarn build
       - name: Generate docker tag
         run: |
           # Generate docker image tag
@@ -32,17 +34,18 @@ jobs:
           GIT_HASH=$(git rev-parse --short HEAD)
           IMAGE_TAG=${DATE}----${GIT_HASH}
           # write current tag to file
-          echo $IMAGE_TAG > docker_img_tag.txt
+          echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
       - name: Upload img_tag
         uses: actions/upload-artifact@v1
         with: 
           name: img_tag
-          path: docker_img_tag.txt
+          path: packages/viewers/kafka/docker_img_tag.txt
       - name: Build and Publish to Docker Image
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cd ${PACKAGE_PATH}
           docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
@@ -70,5 +73,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: naiserator.yml
-        VARS: config-prod-fss.json
+        RESOURCE: packages/viewers/kafka/naiserator.yml
+        VARS: packages/viewers/kafka/config-prod-fss.json
