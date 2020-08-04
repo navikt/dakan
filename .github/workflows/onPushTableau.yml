@@ -12,6 +12,7 @@ on:
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-tableau-viewer
   PUBLIC_URL: /tableau
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PACKAGE_PATH: packages/viewers/tableau
 
 jobs:
