@@ -10,7 +10,7 @@ on:
       - "*.*.*"
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/-productarea-viewer
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-productarea-viewer
   PUBLIC_URL: /productarea
   PACKAGE_PATH: packages/viewers/productarea
 
