@@ -10,11 +10,13 @@ jobs:
             - uses: actions/checkout@v2
               with: 
                 fetch-depth: "0"
-            - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
             - run: yarn 
             - run: ./node_modules/.bin/lerna bootstrap
-            - run: ./node_modules/.bin/lerna link
             - run: yarn run shared:build
+            - name: test person viewer
+              run: yarn run person:build
+              env:
+                CI: false
             - name: build person viewer
               run: yarn run person:build
               env:
