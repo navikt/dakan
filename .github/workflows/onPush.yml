@@ -14,4 +14,5 @@ jobs:
             - run: yarn 
             - run: ./node_modules/.bin/lerna bootstrap
             - run: ./node_modules/.bin/lerna link
-            - run: yarn run person:test
+            - run: yarn run shared:build
+            - run: yarn run person:build
