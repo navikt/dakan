@@ -11,8 +11,7 @@ jobs:
               with: 
                 fetch-depth: "0"
             - name: setup
-              run: yarn 
-              run: ./node_modules/.bin/lerna bootstrap
+              run: yarn run setup 
             - name: build shared components
               run: yarn run shared:build
             - name: test person viewer
