@@ -26,7 +26,7 @@ jobs:
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
-      run: yarn yarn tableau:test
+      run: yarn tableau:test
       env:
         CI: true
     - name: Generate tag
