@@ -33,13 +33,12 @@
       "term": "cd packages/viewers/term && yarn run start",
       "table": "cd packages/viewers/table && yarn run start",
       "kafka": "cd packages/viewers/kafka && yarn run start",
-      "setup": "npx lerna bootstrap --force-local && lerna link"
+      "setup": "npx lerna bootstrap"
   },
   "workspaces": {
     "packages": [
     "apps/*",
     "packages/**"
-  ],
-  "nohoist": ["**/@dakan/ui", "**/@dakan/hooks", "**/@dakan/metrics" ]
+  ]
 }
 }
