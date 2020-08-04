@@ -35,6 +35,8 @@
       "tableau:build": "cd packages/viewers/tableau && yarn run build",
       "tableau:test": "cd packages/viewers/tableau && yarn test",
       "term": "cd packages/viewers/term && yarn run start",
+      "term:build": "cd packages/viewers/term && yarn run build",
+      "term:test": "cd packages/viewers/term && yarn run test",
       "table": "cd packages/viewers/table && yarn run start",
       "kafka": "cd packages/viewers/kafka && yarn run start",
       "kafka:test": "cd packages/viewers/kafka && yarn test",
