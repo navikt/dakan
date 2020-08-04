@@ -28,6 +28,8 @@
       "person:test": "cd packages/viewers/person && yarn test",
       "person:build": "cd packages/viewers/person && yarn run build",
       "team": "cd packages/viewers/team && yarn run start",
+      "team:test": "cd packages/viewers/team && yarn test",
+      "team:build": "cd packages/viewers/team && yarn run build",
       "productarea": "cd packages/viewers/productarea && yarn run start",
       "productarea:build": "cd packages/viewers/productarea && yarn run build",
       "productarea:test": "cd packages/viewers/productarea && yarn test",
