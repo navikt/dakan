@@ -29,6 +29,8 @@
       "person:build": "cd packages/viewers/person && yarn run build",
       "team": "cd packages/viewers/team && yarn run start",
       "productarea": "cd packages/viewers/productarea && yarn run start",
+      "productarea:build": "cd packages/viewers/productarea && yarn run build",
+      "productarea:test": "cd packages/viewers/productarea && yarn test",
       "tableau": "cd packages/viewers/tableau && yarn run start",
       "tableau:build": "cd packages/viewers/tableau && yarn run build",
       "tableau:test": "cd packages/viewers/tableau && yarn test",
