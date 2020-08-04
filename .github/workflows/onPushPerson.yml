@@ -44,7 +44,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: img_tag
-        path: ${PACKAGE_PATH}/docker_img_tag.txt
+        path: packages/viewers/person/docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
       run: yarn person:build
