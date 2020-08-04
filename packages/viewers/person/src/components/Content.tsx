@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
-import {LabelLarge, HeadingSmall} from 'baseui/typography';
 import {FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { format } from "date-fns";
 import GetValue from "../utils/GetValue";
