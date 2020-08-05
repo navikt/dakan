@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'kafka.*.*.*'
-    branches:
-      - 'master'
 
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
@@ -16,6 +14,7 @@ jobs:
   package:      
     name: Build and package
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v1
         with:
