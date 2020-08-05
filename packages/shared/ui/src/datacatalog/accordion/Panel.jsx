@@ -6,8 +6,15 @@ import {useStyletron} from 'baseui';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
+import {merge} from '../../utils/merge';
+
 export const Panel = (props) => {
-    const [css, theme] = useStyletron();
+    const [, theme] = useStyletron();
+
+    let themeOverrides = theme && theme.panelOverrides;
+
+    const mergedOverrides = merge(themeOverrides || {}, props.overrides || {});
+
 
     return (
         <BaseuiPanel
@@ -25,26 +32,7 @@ export const Panel = (props) => {
                     </LabelLarge>
                 </Block>
             }
-            overrides={{
-                ToggleIcon: {
-                    component: () => null,
-                },
-                Header: {
-                    style: {
-                        border: 'none',
-                        borderBottom: 'none',
-                    },
-                },
-                Content: {
-                    style: {
-                        paddingLeft: 'none',
-                        paddingRight: 'none',
-                        paddingBottom: 'none',
-                        backgroundColor: 'none',
-                        borderBottom: 'none',
-                    },
-                },
-            }}
+            overrides={mergedOverrides}
         >
             {props.children}
         </BaseuiPanel>

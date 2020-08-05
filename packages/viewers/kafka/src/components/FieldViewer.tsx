@@ -1,9 +1,8 @@
 import * as React from "react";
 import { Block } from "baseui/block";
-import { LabelMedium } from "baseui/typography";
-import { SelectOpplysningstype } from "@dakan/ui";
+import { SelectOpplysningstype, Label } from "@dakan/ui";
 import env from "@beam-australia/react-env";
-import axios from "axios";
+import {useTags} from "@dakan/hooks";
 
 import GetValue from "../utils/GetValue";
 
@@ -11,23 +10,11 @@ const server = env("SERVER");
 
 const FieldViewer = (props: any): JSX.Element => {
   const { field, tagOptions, clientUser } = props;
+  const [tags, loading, error, setTags] = useTags(server, field.id);
 
-  const [fieldTags, setFieldTags] = React.useState([]);
-
-  const handleGetTagResponse = (response: any) => {
-    if (typeof response.data === "object" && response.data !== null) {
-      setFieldTags(response.data);
-    } else {
-      console.log(response);
-    }
-  };
-
-  React.useEffect(() => {
-    axios
-      .get(`${server}/node/out/${field.id}/hasTag`)
-      .then(handleGetTagResponse)
-      .catch((e) => console.log(e));
-  }, [field.id]);
+  if (error) {
+    console.log(error)
+  }
 
   return (
     <React.Fragment>
@@ -35,19 +22,20 @@ const FieldViewer = (props: any): JSX.Element => {
         {field.properties && (
           <Block>
             <Block>
-              <LabelMedium>
+              <Label>
                 {GetValue(() => field.properties.field_name)}
-              </LabelMedium>
+              </Label>
             </Block>
             <Block display={["block", "flex"]} marginBottom="scale300">
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
                   <SelectOpplysningstype
+                    isLoading={loading}
                     dataId={field.id}
                     tagOptions={tagOptions}
                     serverUrl={server}
-                    columnTags={fieldTags}
-                    setColumnTags={setFieldTags}
+                    columnTags={tags}
+                    setColumnTags={setTags}
                     clientUser={clientUser}
                   />
                 </Block>

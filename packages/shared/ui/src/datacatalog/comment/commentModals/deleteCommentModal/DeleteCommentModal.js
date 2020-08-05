@@ -7,9 +7,10 @@ import {KIND} from 'baseui/button';
 import {useStyletron} from 'baseui';
 
 import {ModalButton} from '../../../../components/button/Button';
+import {GetValue} from '../../../../utils/GetValue/GetValue';
 
 export const DeleteCommentModal = (props) => {
-    const {isOpen, setIsOpen, index, commentContent, comments, setComments, server} = props;
+    const {isOpen, setIsOpen, index, commentContent, comments, setComments, clientUser, server} = props;
     const [, theme] = useStyletron();
 
     const deleteComment = () => {
@@ -25,25 +26,46 @@ export const DeleteCommentModal = (props) => {
             .catch((error) => console.log(error));
     };
 
-    return (
-        <Modal onClose={() => setIsOpen(false)} isOpen={isOpen}>
-            <ModalHeader />
+    let content = (
+        <React.Fragment>
             <ModalBody>
-                <Block>Bekreft at du vil slette kommentaren.</Block>
+                <Block $style={{...theme.typography.font300}}>Du er ikke autorisert til å slette kommentaren.</Block>
             </ModalBody>
             <ModalFooter>
                 <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
                     Avbryt
                 </ModalButton>
-                <ModalButton
-                    onClick={() => {
-                        deleteComment();
-                        setIsOpen(false);
-                    }}
-                >
-                    Slett
-                </ModalButton>
             </ModalFooter>
+        </React.Fragment>
+    );
+
+    if (GetValue(() => clientUser.userId, '') === GetValue(() => commentContent.properties.author, '')) {
+        content = (
+            <React.Fragment>
+                <ModalBody>
+                    <Block $style={{...theme.typography.font300}}>Bekreft at du vil slette kommentaren.</Block>
+                </ModalBody>
+                <ModalFooter>
+                    <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
+                        Avbryt
+                    </ModalButton>
+                    <ModalButton
+                        onClick={() => {
+                            deleteComment();
+                            setIsOpen(false);
+                        }}
+                    >
+                        Slett
+                    </ModalButton>
+                </ModalFooter>
+            </React.Fragment>
+        );
+    }
+
+    return (
+        <Modal onClose={() => setIsOpen(false)} isOpen={isOpen}>
+            <ModalHeader />
+            {content}
         </Modal>
     );
 };

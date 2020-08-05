@@ -17,12 +17,36 @@ export const ContactIcon = ({size, fill}) => {
 export const ContactHoverIcon = ({size, fill}) => {
     return (
         <Icon size={size} fill={fill}>
-            <rect width="24" height="24" fill="white" />
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M4 0C1.79086 0 0 1.79086 0 4V24L7 19H20C22.2091 19 24 17.2091 24 15V4C24 1.79086 22.2091 0 20 0H4Z"
-                fill="#19548A"
+                fill="#0067C5"
+            />
+            <path
+                d="M6 10C6 9.44772 6.44772 9 7 9C7.55228 9 8 9.44772 8 10C8 10.5523 7.55228 11 7 11C6.44772 11 6 10.5523 6 10Z"
+                fill="white"
+            />
+            <path
+                d="M11 10C11 9.44772 11.4477 9 12 9C12.5523 9 13 9.44772 13 10C13 10.5523 12.5523 11 12 11C11.4477 11 11 10.5523 11 10Z"
+                fill="white"
+            />
+            <path
+                d="M16 10C16 9.44772 16.4477 9 17 9C17.5523 9 18 9.44772 18 10C18 10.5523 17.5523 11 17 11C16.4477 11 16 10.5523 16 10Z"
+                fill="white"
+            />
+        </Icon>
+    );
+};
+
+export const ContactActiveIcon = ({size, fill}) => {
+    return (
+        <Icon size={size} fill={fill}>
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4 0C1.79086 0 0 1.79086 0 4V24L7 19H20C22.2091 19 24 17.2091 24 15V4C24 1.79086 22.2091 0 20 0H4Z"
+                fill="#32414F"
             />
             <path
                 d="M6 10C6 9.44772 6.44772 9 7 9C7.55228 9 8 9.44772 8 10C8 10.5523 7.55228 11 7 11C6.44772 11 6 10.5523 6 10Z"

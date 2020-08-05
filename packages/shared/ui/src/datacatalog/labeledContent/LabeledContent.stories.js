@@ -11,14 +11,14 @@ export default {
     title: 'Components/LabeledContent',
 
     parameters: {
-        component: LabeledContent,
-    },
+        component: LabeledContent
+    }
 };
 
 const ITEMS = [...new Array(3)].map(() => ({
     title: 'Overskrift overskrift overskrift',
     content:
-        'Skatteetaten har ansvaret for skatt og skattekort. I artikkelen nedenfor får du svar på noen av de mest vanligste spørsmålene om skatt på ytelser fra NAV',
+        'Skatteetaten har ansvaret for skatt og skattekort. I artikkelen nedenfor får du svar på noen av de mest vanligste spørsmålene om skatt på ytelser fra NAV'
 }));
 
 export const default_theme = () => {

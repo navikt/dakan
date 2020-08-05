@@ -54,8 +54,8 @@ const Content = ({item}) => {
     const Teams = () => {
         if (item && item['teams']) {
             const teams = item['teams'];
-            return teams.map((team) => (
-                <FlexGrid flexGridColumnCount={[1, 2, 2, 3]}>{getItems(TEAMITEMS, team)}</FlexGrid>
+            return teams.map((team, index) => (
+                <FlexGrid key={`${team}_${index}`} flexGridColumnCount={[1, 2, 2, 3]}>{getItems(TEAMITEMS, team)}</FlexGrid>
             ));
         }
         return null;

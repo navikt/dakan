@@ -43,14 +43,14 @@ const MAIN_NAV = [
         icon: null,
         item: {label: 'Om ', icon: 'InfoIcon', link: 'https://data.nav.no/about'},
         mapItemToNode: renderItem,
-        mapItemToString: renderItem,
+        mapItemToString: renderItem
     },
     {
         icon: null,
         item: {label: 'Kontakt oss', icon: 'ContactIcon', link: ''},
         mapItemToNode: renderItem,
-        mapItemToString: renderItem,
-    },
+        mapItemToString: renderItem
+    }
 ];
 
 const isActive = (arr, item, activeItem) => {
@@ -79,7 +79,7 @@ export const Navbar = (props) => {
         width: '100vw',
         position: 'fixed',
         top: '0',
-        left: '0',
+        left: '0'
     });
 
     React.useEffect(() => {
@@ -93,9 +93,9 @@ export const Navbar = (props) => {
                         icon: UserIcon,
                         item: {user},
                         mapItemToNode: renderLogout,
-                        mapItemToString: renderLabel,
-                    },
-                ],
+                        mapItemToString: renderLabel
+                    }
+                ]
             });
         }
     }, [props.tokenId, props.clientUser]);
@@ -107,7 +107,7 @@ export const Navbar = (props) => {
                 textDecoration: 'none',
                 color: 'inherit',
                 ':hover': {color: 'inherit'},
-                ':visited': {color: 'inherit'},
+                ':visited': {color: 'inherit'}
             }}
             href={url || '#'}
         >

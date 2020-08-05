@@ -5,8 +5,8 @@ import {ThemeProvider, navTheme} from '../../theme';
 export default {
     title: 'Components/Badge',
     parameters: {
-        component: Badge,
-    },
+        component: Badge
+    }
 };
 
 export const default_badge = () => {

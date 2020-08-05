@@ -2,38 +2,70 @@ import {navTheme, lightTheme, darkTheme, ThemeProvider} from '../theme';
 import * as React from 'react';
 import {Button, Checkbox, Input, Searchbox, Footer, Header, Navbar, Tab, Tabs, Tag} from '../components';
 import {
+    AddIcon,
+    AddHoverIcon,
+    AddActiveIcon,
     InfoIcon,
     InfoHoverIcon,
+    InfoActiveIcon,
     ContactIcon,
     ContactHoverIcon,
+    ContactActiveIcon,
     CloseIcon,
+    CloseHoverIcon,
+    CloseActiveIcon,
     DownloadIcon,
     DownloadHoverIcon,
+    DownloadActiveIcon,
     FilterIcon,
+    FilterHoverIcon,
+    FilterActiveIcon,
     RightChevronIcon,
     RightChevronHoverIcon,
+    RightChevronActiveIcon,
     MenuIcon,
+    MenuHoverIcon,
+    MenuActiveIcon,
     LeftChevronIcon,
     LeftChevronHoverIcon,
+    LeftChevronActiveIcon,
+    CameraIcon,
+    CameraHoverIcon,
+    CameraActiveIcon,
+    DeleteIcon,
+    DeleteHoverIcon,
+    DeleteActiveIcon,
+    UpChevronIcon,
+    UpChevronHoverIcon,
+    UpChevronActiveIcon,
+    DownChevronIcon,
+    DownChevronHoverIcon,
+    DownChevronActiveIcon,
+    EditIcon,
+    EditHoverIcon,
+    EditActiveIcon,
+    SearchIcon,
+    SearchHoverIcon,
+    SearchActiveIcon
 } from '../components/icons';
 import {Alert, ArrowLeft, ArrowRight} from 'baseui/icon';
 import {SIZE, SHAPE, KIND, Button as BaseButton} from 'baseui/button';
-import {SelectOpplysningstype} from '../datacatalog';
+import {SelectOpplysningstype, LoadingSpinner} from '../datacatalog';
 import {RadioGroup, Radio, ALIGN} from 'baseui/radio';
 import {StyledLink} from 'baseui/link';
 import {HeadingSmall, LabelLarge} from 'baseui/typography';
 import {Block} from 'baseui/block';
 import {Slider} from 'baseui/slider';
 import {Select} from 'baseui/select';
-import {Accordion} from 'baseui/accordion';
 import {ButtonGroup, StatefulButtonGroup, MODE} from 'baseui/button-group';
 import {LABEL_PLACEMENT, STYLE_TYPE} from 'baseui/checkbox';
 import {VARIANT, KIND as TAGKIND} from 'baseui/tag';
 import {withKnobs, text} from '@storybook/addon-knobs';
+import {Table} from 'baseui/table-semantic';
 
 export default {
     title: 'Themes/NAV',
-    decorators: [withKnobs],
+    decorators: [withKnobs]
 };
 
 const getTheme = () => {
@@ -59,21 +91,35 @@ const Spacer = (props) => (
 
 export const Icons = () => {
     const theme = getTheme();
+    const data = [
+        [<AddIcon />, <AddHoverIcon />, <AddActiveIcon />],
+        [<CameraIcon />, <CameraHoverIcon />, <CameraActiveIcon />],
+        [<CloseIcon />, <CloseHoverIcon />, <CloseActiveIcon />],
+        [<ContactIcon />, <ContactHoverIcon />, <ContactActiveIcon />],
+        [<DeleteIcon />, <DeleteHoverIcon />, <DeleteActiveIcon />],
+        [<DownloadIcon />, <DownloadHoverIcon />, <DownloadActiveIcon />],
+        [<FilterIcon />, <FilterHoverIcon />, <FilterActiveIcon />],
+        [<InfoIcon />, <InfoHoverIcon />, <InfoActiveIcon />],
+        [<MenuIcon />, <MenuHoverIcon />, <MenuActiveIcon />],
+        [<LeftChevronIcon />, <LeftChevronHoverIcon />, <LeftChevronActiveIcon />],
+        [<RightChevronIcon />, <RightChevronHoverIcon />, <RightChevronActiveIcon />],
+        [<UpChevronIcon />, <UpChevronHoverIcon />, <UpChevronActiveIcon />],
+        [<DownChevronIcon />, <DownChevronHoverIcon />, <DownChevronActiveIcon />],
+        [<EditIcon />, <EditHoverIcon />, <EditActiveIcon />],
+        [<SearchIcon />, <SearchHoverIcon />, <SearchActiveIcon />]
+    ];
     return (
         <ThemeProvider theme={theme}>
-            <InfoIcon fill="#19548A" />
-            <InfoHoverIcon />
-            <ContactIcon fill="#19548A" />
-            <ContactHoverIcon />
-            <CloseIcon fill="#19548A" />
-            <DownloadIcon fill="#19548A" />
-            <DownloadHoverIcon />
-            <FilterIcon fill="#3E3832" />
-            <RightChevronIcon fill="#19548A" />
-            <RightChevronHoverIcon />
-            <MenuIcon />
-            <LeftChevronIcon />
-            <LeftChevronHoverIcon />
+            <Table columns={['', 'Hover', 'Active']} data={data} />
+        </ThemeProvider>
+    );
+};
+
+export const Spinners = () => {
+    const theme = getTheme();
+    return (
+        <ThemeProvider theme={theme}>
+            <LoadingSpinner size={98} />
         </ThemeProvider>
     );
 };
@@ -88,7 +134,7 @@ export const Selects = () => {
                 {label: 'Aqua', id: '#00FFFF'},
                 {label: 'Aquamarine', id: '#7FFFD4'},
                 {label: 'Azure', id: '#F0FFFF'},
-                {label: 'Beige', id: '#F5F5DC'},
+                {label: 'Beige', id: '#F5F5DC'}
             ]}
             value={value}
             placeholder="Select color"
@@ -200,14 +246,14 @@ export const Navbars = () => {
 export const SelectOpplysningstyper = () => {
     const tagOptions = [
         {id: 'tag1', label: 'tag1', properties: {name: 'tag1', type: 'tag1'}},
-        {id: 'tag2', label: 'tag2', properties: {name: 'tag2', type: 'tag2'}},
+        {id: 'tag2', label: 'tag2', properties: {name: 'tag2', type: 'tag2'}}
     ];
     const dataId = 123;
     const [columnTags, setColumnTags] = React.useState([
         {id: 'tag3', label: 'tag3', properties: {name: 'tag3', type: 'tag3'}},
         {id: 'tag4', label: 'tag4', properties: {name: 'tag4', type: 'tag4'}},
         {id: 'tag5', label: 'tag5', properties: {name: 'test@test.test', type: 'tag5'}},
-        {id: 'tag6', label: 'tag6', properties: {name: 'tag test', type: 'tag6'}},
+        {id: 'tag6', label: 'tag6', properties: {name: 'tag test', type: 'tag6'}}
     ]);
     const theme = getTheme();
     return (
@@ -226,6 +272,14 @@ export const SelectOpplysningstyper = () => {
 export const Tabbar = () => {
     const [activeKey, setActiveKey] = React.useState('0');
     const theme = getTheme();
+
+    const getTitle = (title, key, activeKey) => {
+        return (
+            <LabelLarge color={key === activeKey ? 'black' : theme.colors.primary}>
+                {key === activeKey ? <b>{title}</b> : <u>{title}</u>}
+            </LabelLarge>
+        );
+    };
     return (
         <div>
             <ThemeProvider theme={theme}>
@@ -235,8 +289,8 @@ export const Tabbar = () => {
                     }}
                     activeKey={activeKey}
                 >
-                    <Tab title="First tab">First tab content</Tab>
-                    <Tab title="Second tab">Second tab content</Tab>
+                    <Tab title={getTitle('First tab', '0', activeKey)}>First tab content</Tab>
+                    <Tab title={getTitle('Second tab', '1', activeKey)}>Second tab content</Tab>
                 </Tabs>
             </ThemeProvider>
         </div>
@@ -259,7 +313,7 @@ export const Headers = () => {
                         contact: true,
                         showLoginButton: true,
                         link: 'https://data.nav.no/',
-                        aboutLink: 'https://data.nav.no/',
+                        aboutLink: 'https://data.nav.no/'
                     }}
                 />
             </Block>
@@ -268,14 +322,19 @@ export const Headers = () => {
                     <Spacer>Header with user logged in:</Spacer>
                 </Block>
                 <Header
-                    tokenId="Test"
-                    clientUser={{
-                        userId: 'TEST1245',
-                        initial: 'TS',
-                    }}
                     //showBackButton
                     showLoginButton
-                    config={{brand: 'Datakatalogen', about: true, contact: true, showLoginButton: true}}
+                    config={{
+                        brand: 'Datakatalogen',
+                        about: true,
+                        contact: true,
+                        showLoginButton: true,
+                        tokenId: 'Test',
+                        clientUser: {
+                            userId: 'TEST1245',
+                            initial: 'TS'
+                        }
+                    }}
                 />
             </Block>
         </ThemeProvider>

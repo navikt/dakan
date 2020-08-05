@@ -35,19 +35,19 @@ const menu = () => {
                         if (!$active)
                             return {
                                 ':hover': {
-                                    color: $theme.colors.positive400,
-                                },
+                                    color: $theme.colors.positive400
+                                }
                             };
                         return {
                             backgroundColor: $theme.colors.positive400,
                             borderLeftColor: $theme.colors.mono900,
                             color: $theme.colors.mono900,
                             ':hover': {
-                                color: $theme.colors.positive400,
-                            },
+                                color: $theme.colors.positive400
+                            }
                         };
-                    },
-                },
+                    }
+                }
             }}
         />
     );
@@ -71,10 +71,10 @@ const item = () => {
                 Block: {
                     style: ({$theme}) => {
                         return {
-                            borderBottom: '1px black solid',
+                            borderBottom: '1px black solid'
                         };
-                    },
-                },
+                    }
+                }
             }}
         >
             <Display4 marginBottom="scale800">
@@ -110,10 +110,10 @@ const card = () => {
                         return {
                             width: '100%',
                             outline: 'none',
-                            backgroundColor: $theme.colors.white,
+                            backgroundColor: $theme.colors.white
                         };
-                    },
-                },
+                    }
+                }
             }}
         >
             <StyledBody>
@@ -160,8 +160,8 @@ const itemcontent = () => {
 export default {
     title: 'Components/Layout',
     parameters: {
-        component: Layout,
-    },
+        component: Layout
+    }
 };
 
 export const Dynamic = () => {

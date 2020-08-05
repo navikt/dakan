@@ -2,6 +2,7 @@ import React from 'react';
 import env from '@beam-australia/react-env';
 import {Metrics} from '@dakan/metrics';
 import {useElasticSearch} from '@dakan/hooks';
+import {LoadingSpinner} from '@dakan/ui';
 
 import Content from '../components/Content';
 
@@ -29,6 +30,7 @@ const Viewer = (props: any) => {
     return (
         <React.Fragment>
             {error}
+            {loading && <LoadingSpinner/>}
             {data && data.content && (
                 <React.Fragment>
                     <Metrics
