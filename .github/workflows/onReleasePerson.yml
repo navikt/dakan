@@ -13,7 +13,7 @@ jobs:
   package:      
     name: Build and package
     runs-on: ubuntu-latest
-    if: github.tag == 'person.*.*.*'
+    if: github.ref == 'refs/tags/person.*.*.*'
     steps:
       - uses: actions/checkout@v2
         with:
