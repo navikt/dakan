@@ -1,11 +1,8 @@
 name: Deploy to prod on release
 
 on:
-  push:
-    branches:
-      - 'master'
-    tags: 
-      - 'person.*.*.*'
+  release:
+    types: [published]
 
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-person-viewer
@@ -16,6 +13,7 @@ jobs:
   package:      
     name: Build and package
     runs-on: ubuntu-latest
+    if: github.tag == 'person.*.*.*'
     steps:
       - uses: actions/checkout@v2
         with:
