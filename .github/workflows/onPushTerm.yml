@@ -12,6 +12,7 @@ on:
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-term-viewer
   PUBLIC_URL: /begrep
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PACKAGE_PATH: packages/viewers/term
 
 jobs:

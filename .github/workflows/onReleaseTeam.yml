@@ -8,6 +8,7 @@ on:
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-team-viewer
   PUBLIC_URL: /team
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PACKAGE_PATH: packages/viewers/team
 
 jobs:

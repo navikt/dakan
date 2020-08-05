@@ -12,6 +12,7 @@ on:
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-productarea-viewer
   PUBLIC_URL: /productarea
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PACKAGE_PATH: packages/viewers/productarea
 
 jobs:
