@@ -2,7 +2,7 @@ import React from 'react';
 import {Button as BaseButton, KIND} from 'baseui/button';
 import {useStyletron} from 'baseui';
 import {ModalButton as BaseModalButton} from 'baseui/modal';
-import {ArrowRight, ArrowLeft} from 'baseui/icon';
+
 import {merge} from '../../utils/merge';
 
 export const Button = (props) => {
@@ -52,8 +52,27 @@ export const Button = (props) => {
 
 export const ModalButton = (props) => {
     const [, theme] = useStyletron();
+    const [hover, setHover] = React.useState(false);
 
-    const {overrides, children, ...rest} = props;
+    const {overrides, children, startEnhancer, startEnhancerHover, endEnhancer, endEnhancerHover, ...rest} = props;
+
+    const mouseEnter = () => {
+        setHover(true);
+    };
+
+    const mouseLeave = () => {
+        setHover(false);
+    };
+
+    const StartEnhancer = () => {
+        if (hover && startEnhancerHover) return startEnhancerHover;
+        return startEnhancer || null;
+    };
+
+    const EndEnhancer = () => {
+        if (hover && endEnhancerHover) return endEnhancerHover;
+        return endEnhancer || null;
+    };
 
     let themeOverrides = (theme && theme.buttonOverrides) || {};
 
@@ -63,7 +82,14 @@ export const ModalButton = (props) => {
     const mergedOverrides = merge(themeOverrides || {}, overrides || {});
 
     return (
-        <BaseModalButton {...rest} overrides={mergedOverrides}>
+        <BaseModalButton
+            {...rest}
+            overrides={mergedOverrides}
+            startEnhancer={StartEnhancer()}
+            endEnhancer={EndEnhancer()}
+            onMouseEnter={mouseEnter}
+            onMouseLeave={mouseLeave}
+        >
             {children}
         </BaseModalButton>
     );

@@ -35,8 +35,8 @@ export const SelectOpplysningstype = (props) => {
             {
                 outV: dataId,
                 inV: newTag.id,
-                label: 'hasTag',
-            },
+                label: 'hasTag'
+            }
         ];
 
         axios
@@ -67,7 +67,7 @@ export const SelectOpplysningstype = (props) => {
         const options = tagOptions.map((tag) => ({
             name: GetValue(() => tag.properties.name),
             id: tag.id,
-            properties: tag.properties,
+            properties: tag.properties
         }));
         return (
             <Select

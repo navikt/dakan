@@ -3,8 +3,8 @@ import { Block } from 'baseui/block'
 import { StyledLink } from 'baseui/link'
 import { LabelMedium } from 'baseui/typography'
 import env from '@beam-australia/react-env'
-import axios from 'axios'
 import { SelectOpplysningstype } from '@dakan/ui'
+import { useTags } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
 
@@ -12,23 +12,11 @@ const server = env('SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
+  const [tags, loading, error, setTags] = useTags(server, view.id);
 
-  const [viewTags, setViewTags] = React.useState([])
-
-  const handleGetTagResponse = (response: any) => {
-    if (typeof response.data === 'object' && response.data !== null) {
-      setViewTags(response.data)
-    } else {
-      console.log(response)
-    }
+  if (error) {
+    console.log(error)
   }
-
-  React.useEffect(() => {
-    axios
-      .get(`${server}/node/out/${view.id}/hasTag`)
-      .then(handleGetTagResponse)
-      .catch((e) => console.log(e))
-  }, [view.id])
 
   return (
     <React.Fragment>
@@ -53,11 +41,12 @@ const TableauView = (props: any) => {
           </Block>
           <Block marginTop="scale600" marginBottom="scale600">
             <SelectOpplysningstype
+              isLoading={loading}
               dataId={view.id}
               tagOptions={tagOptions}
               serverUrl={server}
-              columnTags={viewTags}
-              setColumnTags={setViewTags}
+              columnTags={tags}
+              setColumnTags={setTags}
               clientUser={clientUser}
             />
           </Block>

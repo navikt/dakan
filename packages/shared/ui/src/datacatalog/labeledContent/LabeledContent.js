@@ -1,23 +1,18 @@
 import React from 'react';
 import {Block} from 'baseui/block';
+import {Label} from '../../components/label';
 import {LabelMedium} from 'baseui/typography';
 import {useStyletron} from 'baseui';
 
 const FlexFormatVersion = (props) => {
-    const [useCss, theme] = useStyletron();
+    const [, theme] = useStyletron();
     return (
         <Block marginBottom="scale800" display={['block', 'flex']} flexDirection="row" justifyContent="center">
             <Block flex="1" marginRight="scale800" marginBottom={['scale200', 'none']}>
                 {props.description && (
-                    <LabelMedium
-                        $style={{
-                            marginTop: 0,
-                            marginBottom: 0,
-                            color: 'black',
-                        }}
-                    >
-                        <b>{props.description}</b>
-                    </LabelMedium>
+                    <Label>
+                        {props.description}
+                    </Label>
                 )}
             </Block>
             <Block marginLeft={['none', 'scale800']}></Block>
@@ -32,9 +27,9 @@ const FlexFormatVersion = (props) => {
                                 overflowWrap: 'break-word',
                                 wordWrap: 'break-word',
                                 wordBreak: 'break-word',
-                                ...theme.typography.font300,
-                            },
-                        },
+                                ...theme.typography.font300
+                            }
+                        }
                     }}
                 >
                     {props.children}
@@ -50,9 +45,9 @@ const ListItemVersion = (props) => {
         <React.Fragment>
             <Block marginBottom="scale800">
                 <Block marginBottom="scale200">
-                    <LabelMedium $style={{color: 'black'}}>
-                        <b>{props.description}</b>
-                    </LabelMedium>
+                    <Label>
+                        {props.description}
+                    </Label>
                 </Block>
                 {props.description && (
                     <Block
@@ -64,9 +59,9 @@ const ListItemVersion = (props) => {
                                     overflowWrap: 'break-word',
                                     wordWrap: 'break-word',
                                     wordBreak: 'break-word',
-                                    ...theme.typography.font300,
-                                },
-                            },
+                                    ...theme.typography.font300
+                                }
+                            }
                         }}
                     >
                         {props.children}

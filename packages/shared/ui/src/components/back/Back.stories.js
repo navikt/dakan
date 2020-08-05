@@ -6,7 +6,7 @@ import {BackButton, BackLink} from './';
 import {ThemeProvider, navTheme} from '../../theme';
 
 export default {
-    title: 'Components/Back',
+    title: 'Components/Back'
 };
 
 export const default_theme = () => {
