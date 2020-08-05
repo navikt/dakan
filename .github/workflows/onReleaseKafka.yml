@@ -8,6 +8,7 @@ on:
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
   PUBLIC_URL: /kafka
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PACKAGE_PATH: packages/viewers/kafka
 
 jobs:

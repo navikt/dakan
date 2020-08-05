@@ -1,35 +1,32 @@
 name: Build, test, package and deploy
 
-on: 
+on:
   push:
     paths:
-      - 'packages/viewers/kafka/**'
+      - 'packages/viewers/table/**'
     branches:
       - '**'
     tags-ignore:
       - '*.*.*'
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
-  PUBLIC_URL: /kafka
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-table-viewer
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/kafka
+  PUBLIC_URL: /tabell
+  PACKAGE_PATH: packages/viewers/table
 
 jobs:
-  
   test_and_package:
-    name: Build, test, and package
+    name: Build, test and package
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      with: 
-        ref: refs/heads/master
+    - uses: actions/checkout@v2
     - name: Install dependencies
       run: yarn run setup
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
-      run: yarn kafka:test
+      run: yarn table:test
       env:
         CI: true
     - name: Generate tag
@@ -46,16 +43,15 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: img_tag
-        path: packages/viewers/kafka/docker_img_tag.txt
+        path: packages/viewers/table/docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
-      run: yarn kafka:build
+      run: yarn table:build
       env:
         CI: false
     - name: Build and Publish to Docker Image
       if: github.ref == 'refs/heads/master'
       env:
-        CI: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd ${PACKAGE_PATH}
@@ -69,7 +65,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         ref: refs/heads/master
     - name: Download artifact
@@ -87,5 +83,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
-        RESOURCE: packages/viewers/kafka/naiserator.yml
-        VARS: packages/viewers/kafka/config-dev-fss.json
+        RESOURCE: packages/viewers/table/naisarator.yml
+        VARS: packages/viewers/table/config-dev-fss.json

@@ -3,16 +3,15 @@ name: Deploy to prod on release
 on:
   push:
     tags:
-      - 'term.*.*.*'
+      - 'table.*.*.*'
 
 env: 
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-term-viewer
-  PUBLIC_URL: /begrep
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-table-viewer
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/term
+  PUBLIC_URL: /tabell
+  PACKAGE_PATH: packages/viewers/table
 
 jobs:
- 
   package:      
     name: Build and package
     runs-on: ubuntu-latest
@@ -25,7 +24,7 @@ jobs:
       - name: Build shared packages
         run: yarn run shared:build
       - name: Build
-        run: yarn term:build
+        run: yarn table:build
         env:
           CI: false
       - name: Generate docker tag
@@ -40,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with: 
           name: img_tag
-          path: packages/viewers/term/docker_img_tag.txt
+          path: packages/viewers/table/docker_img_tag.txt
       - name: Build and Publish to Docker Image
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +50,7 @@ jobs:
           docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
 
   deploy_prod-fss: 
-    name: Build and deploy to prod-fss
+    name: Build and deploy to prod
     needs: package
     runs-on: ubuntu-latest
     steps:
@@ -73,31 +72,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: packages/viewers/term/naisarator-fss.yml
-        VARS: packages/viewers/term/config-prod-fss.json
-
-  deploy_prod-sbs: 
-    name: Build and deploy to prod-sbs
-    needs: package
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with: 
-        ref: refs/heads/master
-    - name: Download artifact 
-      uses: actions/download-artifact@v1
-      with: 
-        name: img_tag
-    - name: Setup image environment variable
-      run: |
-        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-        echo ${VALUE}
-        echo ::set-env name=IMAGE::${VALUE}
-        echo ${IMAGE}
-    - name: Deploy to nais prod-fss
-      uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: prod-sbs
-        RESOURCE: packages/viewers/term/naisarator-sbs.yml
-        VARS: packages/viewers/term/config-prod-sbs.json
+        RESOURCE: packages/viewers/table/naisarator.yml
+        VARS: packages/viewers/table/config-prod-fss.json
