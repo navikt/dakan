@@ -33,6 +33,8 @@
     "storybook:build": "cd packages/shared/ui && yarn run storybook:build",
     "storybook:deploy": "cd packages/shared/ui && yarn run storybook:deploy",
     "table": "cd packages/viewers/table && yarn run start",
+    "table:build": "cd packages/viewers/table && yarn run build",
+    "table:test": "cd packages/viewers/table && yarn test",
     "tableau": "cd packages/viewers/tableau && yarn run start",
     "tableau:build": "cd packages/viewers/tableau && yarn run build",
     "tableau:test": "cd packages/viewers/tableau && yarn test",
