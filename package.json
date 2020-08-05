@@ -43,6 +43,8 @@
       "kafka": "cd packages/viewers/kafka && yarn run start",
       "kafka:test": "cd packages/viewers/kafka && yarn test",
       "kafka:build": "cd packages/viewers/kafka && yarn run build",
+      "datasearch": "cd apps/data-search && yarn run start",
+      "datasearch:build": "cd apps/data-search && yarn run build",
       "setup": "npx lerna bootstrap"
   },
   "workspaces": {
