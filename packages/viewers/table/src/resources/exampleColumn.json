@@ -1,0 +1,206 @@
+[
+    {
+        "id": 102433,
+        "properties": {
+            "column_description": "Description5 Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test) Description Of Column (Test)  ",
+            "column_name": "Column1 Name (Test)",
+            "column_tags": [
+                {
+                    "name": "tag1"
+                },
+                {
+                    "name": "tag2"
+                }
+            ],
+            "count_table": [
+                ["1", "7736"],
+                ["3", "796"],
+                ["2", "87"],
+                ["4", "30"]
+            ],
+            "standard_metrics": {
+                "standard_nulls": 0,
+                "standard_nulls_pct": 0,
+                "standard_rows": 8650,
+                "standard_unique": 5,
+                "standard_unique_pct": 0.0578034682
+            },
+            "varchar2_metrics": {
+                "var2_max": null,
+                "var2_mean": null,
+                "var2_median": null,
+                "var2_min": null,
+                "var2_var": null
+            },
+            "number_metrics": {
+                "num_cov": null,
+                "num_iqr": 0,
+                "num_kurtosis": 5.6852904369,
+                "num_mad": 0.2043930636,
+                "num_max": 4,
+                "num_mean": 1.2043930636,
+                "num_median": 1,
+                "num_min": 0,
+                "num_nulls": 0,
+                "num_p25": 1,
+                "num_p5": 1,
+                "num_p75": 1,
+                "num_p95": 3,
+                "num_range": 4,
+                "num_rows": 8650,
+                "num_skewness": 2.7163173093,
+                "num_std": 0.6064204468,
+                "num_sum": 10418,
+                "num_unique": 5,
+                "num_var": 0.3677457583,
+                "num_zero": 1
+            },
+            "date_metrics": {
+                "date_max": "12-DEC-19",
+                "date_median": "15-JUN-07",
+                "date_min": "31-DEC-99"
+            },
+            "data_type": "date",
+            "hist": "{\"data\":[{\"type\":\"bar\",\"width\":[1.005,1.0,1.0,1.0],\"x\":[0.4975,1.5,2.5,3.5],\"y\":[7737,87,796,30]}],\"layout\":{\"separators\":\", \",\"template\":{\"data\":{\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5}},\"type\":\"bar\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5}},\"type\":\"barpolar\"}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"choropleth\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"type\":\"choropleth\"}],\"contour\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"contour\"}],\"contourcarpet\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"type\":\"contourcarpet\"}],\"heatmap\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"heatmap\"}],\"heatmapgl\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"heatmapgl\"}],\"histogram\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"histogram\"}],\"histogram2d\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"histogram2d\"}],\"histogram2dcontour\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"histogram2dcontour\"}],\"mesh3d\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"type\":\"mesh3d\"}],\"parcoords\":[{\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"parcoords\"}],\"scatter\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scatter\"}],\"scatter3d\":[{\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scatter3d\"}],\"scattercarpet\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scattercarpet\"}],\"scattergeo\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scattergeo\"}],\"scattergl\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scattergl\"}],\"scattermapbox\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scattermapbox\"}],\"scatterpolar\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scatterpolar\"}],\"scatterpolargl\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scatterpolargl\"}],\"scatterternary\":[{\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"type\":\"scatterternary\"}],\"surface\":[{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"type\":\"surface\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}]},\"layout\":{\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"colorscale\":{\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]],\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]},\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"geo\":{\"bgcolor\":\"white\",\"lakecolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"showlakes\":true,\"showland\":true,\"subunitcolor\":\"white\"},\"hoverlabel\":{\"align\":\"left\"},\"hovermode\":\"closest\",\"mapbox\":{\"style\":\"light\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"bgcolor\":\"#E5ECF6\",\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"gridwidth\":2,\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\"},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"gridwidth\":2,\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\"},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"gridwidth\":2,\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\"}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"ternary\":{\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"bgcolor\":\"#E5ECF6\",\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"title\":{\"x\":0.05},\"xaxis\":{\"automargin\":true,\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"zerolinecolor\":\"white\",\"zerolinewidth\":2},\"yaxis\":{\"automargin\":true,\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"zerolinecolor\":\"white\",\"zerolinewidth\":2}}},\"xaxis\":{\"tickformat\":\",g\"},\"yaxis\":{\"tickformat\":\",g\"}}}",
+            "id": "test.test.test",
+            "schema_name": "Schema Name (Test)",
+            "sens": null,
+            "table_description": "This is a Table name description (test) This is a Table name description (test) This is a Table name description (test) This is a Table name description (test) This is a Table name description (test)",
+            "table_name": "Table Name (Test)",
+            "team_name": "Team Name (Test)",
+            "type": "db_table_column",
+            "sampling": false,
+            "run_date": "27-02-2020"
+        },
+        "valid": true,
+        "valid_from": "2020-01-14T14:06:07.300533Z",
+        "valid_to": null
+    },
+    {
+        "create": "2019-11-27T11:41:25.35445",
+        "id": 1234,
+        "properties": {
+            "column_description": "Description Of Column (Test)",
+            "column_name": "Column2 Name (Test)",
+            "data_type": "DATE",
+            "id": "test",
+            "schema_name": "DT_P",
+            "sens": 0,
+            "stan_rows": 1234,
+            "stan_nulls": 2345,
+            "stan_null_pct": 0.3123141,
+            "stan_unique": 2312323,
+            "stan_unique_pct": 0.2312314,
+            "table_description": "Description1 Of Table (Test)",
+            "table_name": "Table Name (Test)",
+            "team_name": "Dataplattform (Test)",
+            "date_min": "-2208988800000",
+            "date_max": "1577836800000",
+            "date_median": 1009843200000,
+            "min_value": 3,
+            "max_value": 9,
+            "median_value": 6,
+            "mean_value": 6,
+            "std_value": 3,
+            "number_zero": 78,
+            "min_len": 3,
+            "max_len": 9,
+            "mean_len": 6,
+            "median_len": 6,
+            "std_len": 3,
+            "hist": {
+                "data": [
+                    {
+                        "type": "bar",
+                        "x": [1, 2, 3],
+                        "y": [1, 3, 2]
+                    }
+                ],
+                "layout": {
+                    "title": {
+                        "text": "A Bar Chart"
+                    },
+                    "xaxis": {
+                        "type": "linear",
+                        "range": [0.5, 3.5],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "type": "linear",
+                        "range": [0, 3.1578947368421053],
+                        "autorange": true
+                    },
+                    "autosize": true
+                }
+            }
+        }
+    },
+    {
+        "create": "2019-11-27T11:41:25.35445",
+        "guid": "hash:sdsadad-ghf-sdfsdf-34rtybuvt-c34c34",
+        "id": 12344,
+        "properties": {
+            "column_description": "Description3 Of Column (Test)",
+            "column_name": "Column1 Name (Test)",
+            "data_type": "STRING (Test)",
+            "id": "test",
+            "num_nulls": 0,
+            "schema_name": "DT_P",
+            "table_description": "Description Of Table (Test)",
+            "table_name": "Table Name (Test)",
+            "team_name": "Dataplattform (Test)",
+            "sens": 1,
+            "num_rows": 999,
+            "pct_nulls": 78.9999,
+            "num_unique": 909,
+            "pct_unique": 56.7899
+        }
+    },
+    {
+        "create": "2019-11-27T11:41:25.35445",
+        "guid": "hash:sdsadad-ghf-sdfsdf-34rtybuvt-c34c34",
+        "id": 12345,
+        "properties": {
+            "column_description": "Description2 Of Column (Test)",
+            "column_name": "Column Name (Test)",
+            "data_type": "LONG",
+            "id": "test",
+            "num_nulls": 0,
+            "schema_name": "DT_P",
+            "table_description": "Description Of Table (Test)",
+            "table_name": "Table Name (Test)",
+            "team_name": "Dataplattform (Test)",
+            "sens": 0,
+            "num_rows": 678,
+            "pct_nulls": 70.9999,
+            "num_unique": 9,
+            "pct_unique": 16.7899
+        }
+    },
+    {
+        "create": "2019-11-27T11:41:25.35445",
+        "guid": "hash:sdsadad-ghf-sdfsdf-34rtybuvt-c34c34",
+        "id": 12346,
+        "prop_id": "prop ID from original source of data (Test)",
+        "properties": {
+            "column_description": "Description1 Of Column (Test)",
+            "column_name": "Column3 Name (Test)",
+            "data_type": "VARCHAR2",
+            "id": "prop ID from original source of data (Test)",
+            "num_nulls": 0,
+            "schema_name": "DT_P",
+            "table_description": "Description Of Table (Test)",
+            "table_name": "Table Name (Test)",
+            "team_name": "Dataplattform (Test)",
+            "sens": null,
+            "num_rows": 99,
+            "pct_nulls": 58.9999,
+            "num_unique": 409,
+            "pct_unique": 86.7899,
+            "sampling": true,
+            "run_date": "27-02-2020",
+            "stan_sample_size": 2,
+            "stan_sample_pct": 6
+        }
+    }
+]
