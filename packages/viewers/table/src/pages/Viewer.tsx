@@ -5,7 +5,8 @@ import axios from 'axios';
 import {Spinner} from 'baseui/spinner';
 import {Block} from 'baseui/block';
 import Cookies from 'js-cookie';
-import {Header, Metrics} from '@datacatalog/components';
+import {Header} from '@dakan/ui';
+import { Metrics } from '@dakan/metrics';
 
 import Content from '../component/Content';
 import exampleJson from '../resources/example.json';

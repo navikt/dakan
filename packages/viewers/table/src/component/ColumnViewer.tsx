@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {Table} from 'baseui/table-semantic';
-import {LabeledContent, SelectOpplysningstype} from '@datacatalog/components';
+import {LabeledContent, SelectOpplysningstype} from '@dakan/ui';
 import {LabelLarge, LabelMedium} from 'baseui/typography';
 import { useStyletron } from 'baseui';
 import env from '@beam-australia/react-env';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PlotlyChartViewer from '../component/PlotlyChartViewer';
-import {Tabs, Tab} from '@datacatalog/components';
+import {Tabs, Tab} from '@dakan/ui';
 import { LabelLarge } from 'baseui/typography';
 import { useStyletron } from 'baseui';
 

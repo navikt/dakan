@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {format} from 'date-fns';
-import {LargeWidth, LabeledContent, ToggleComments, Searchbox} from '@datacatalog/components';
+import {LargeWidth, LabeledContent, ToggleComments, Searchbox} from '@dakan/ui';
 import env from '@beam-australia/react-env';
 import {H5, LabelLarge} from 'baseui/typography';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';

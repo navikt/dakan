@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Accordion} from 'baseui/accordion';
-import {Panel} from '@datacatalog/components';
+import {Panel} from '@dakan/ui';
 import TabViewer from './TabViewer';
 import {Block} from 'baseui/block';
 
