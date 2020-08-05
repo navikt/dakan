@@ -1,6 +1,6 @@
 {
   "application_name": "data-catalog-productarea-viewer",
   "org_name": "navikt",
-  "ingress": "https://data.nav.no/productarea",
+  "ingress": "https://data.adeo.no/productarea",
   "ingress_nais_io": "https://data.prod-fss.nais.io/productarea"
 }

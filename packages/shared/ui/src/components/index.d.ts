@@ -12,3 +12,4 @@ export * from './searchbox';
 export * from './navbar';
 export * from './tag';
 export * from './icons';
+export * from './label';

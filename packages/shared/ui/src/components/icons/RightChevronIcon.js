@@ -4,7 +4,12 @@ import Icon from './Icon';
 export const RightChevronIcon = ({size, fill}) => {
     return (
         <Icon size={size} fill={fill}>
-            <path d="M4.29898 2.74775C3.90034 2.34793 3.90034 1.69969 4.29898 1.29987C4.69761 0.900044 5.34393 0.900044 5.74257 1.29987L11.701 7.27606C12.0997 7.67588 12.0997 8.32412 11.701 8.72394L5.74257 14.7001C5.34393 15.1 4.69761 15.1 4.29898 14.7001C3.90034 14.3003 3.90034 13.6521 4.29898 13.2522L9.53564 8L4.29898 2.74775Z" />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M17 12L8.42857 3L7 4.5L14.1429 12L7 19.5L8.42857 21L17 12Z"
+                fill="#19548A"
+            />
         </Icon>
     );
 };
@@ -12,9 +17,26 @@ export const RightChevronIcon = ({size, fill}) => {
 export const RightChevronHoverIcon = ({size, fill}) => {
     return (
         <Icon size={size} fill={fill}>
-            <path d="M4.29898 2.74775C3.90034 2.34793 3.90034 1.69969 4.29898 1.29987C4.69761 0.900044 5.34393 0.900044 5.74257 1.29987L11.701 7.27606C12.0997 7.67588 12.0997 8.32412 11.701 8.72394L5.74257 14.7001C5.34393 15.1 4.69761 15.1 4.29898 14.7001C3.90034 14.3003 3.90034 13.6521 4.29898 13.2522L9.53564 8L4.29898 2.74775Z" />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M17.5 11.5L8.92857 20.5L6.5 18L13 11.5L6.5 5L8.92857 2.5L17.5 11.5Z"
+                fill="#0067C5"
+            />
         </Icon>
     );
 };
 
+export const RightChevronActiveIcon = ({size, fill}) => {
+    return (
+        <Icon size={size} fill={fill}>
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M17.5 11.5L8.92857 20.5L6.5 18L13 11.5L6.5 5L8.92857 2.5L17.5 11.5Z"
+                fill="#32414F"
+            />
+        </Icon>
+    );
+};
 export default RightChevronIcon;

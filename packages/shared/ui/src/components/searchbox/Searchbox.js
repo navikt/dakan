@@ -2,7 +2,7 @@ import React from 'react';
 import {Input} from '../input';
 import {Search} from 'baseui/icon';
 import {Block} from 'baseui/block';
-import {useStyletron} from 'baseui';
+import {SearchIcon, SearchHoverIcon, SearchActiveIcon} from '../icons/SearchIcon';
 
 import {Button} from '../button/Button';
 
@@ -15,7 +15,7 @@ export const Searchbox = (props) => {
     return (
         <Block display="flex">
             <Input {...props} />
-            <Button type="submit" startEnhancer={<Search size={size} />}>
+            <Button type="submit" startEnhancer={<SearchIcon fill="white" />}>
                 Søk
             </Button>
         </Block>

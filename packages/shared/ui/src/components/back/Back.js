@@ -28,7 +28,7 @@ export const BackLink = () => {
                     fontSize: 'inherit',
                     lineHeight: 'inherit',
                     textDecoration: 'none',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                 }}
             >
                 <Block display="flex" alignItems="center">

@@ -3,3 +3,4 @@ export * from './catalogheader';
 export * from './comment';
 export * from './labeledContent';
 export * from './selectOpplysningstype';
+export * from './loadingSpinner';
