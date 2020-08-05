@@ -1,0 +1,62 @@
+name: Build and deploy
+
+on:
+  push:
+    tags:
+      - 'datasearch.*.*.*'
+
+env:
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-data-search:${{ github.sha }}
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+  PACKAGE_PATH: apps/data-search
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Install dependencies
+        run: yarn run setup
+      - name: Build shared packages
+        run: yarn run shared:build
+      - name: Create app build
+        run: yarn datasearch:build
+        env:
+          CI: false
+      - name: Login to Github package registry
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+      - name: Build docker image
+        run: |
+          cd ${PACKAGE_PATH}
+          docker build -t ${IMAGE} .
+      - name: Push docker image
+        run: docker push ${IMAGE}
+
+  deploy-prod-fss:
+    name: Deploy to prod-fss
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-fss
+        RESOURCE: apps/data-search/naiserator_fss.yaml
+        VARS: apps/data-search/config-prod-fss.json
+
+  deploy-prod-sbs:
+    name: Deploy to prod-sbs
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: apps/data-search/actions/checkout@v1
+    - uses: apps/data-search/nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-sbs
+        RESOURCE: apps/data-search/naiserator_sbs.yaml
+        VARS: apps/data-search/config-prod-sbs.json
