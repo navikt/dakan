@@ -48,7 +48,7 @@
       "datasearch:build": "cd apps/data-search && yarn run build",
       "person:install": "cd packages/viewers/person && yarn install",
       "setup": "npx lerna bootstrap",
-      "shared": "yarn run theme && yarn run ui && yarn run hooks && yarn run metrics",
+      "shared": "yarn run theme && yarn run ui && yarn run hooks && yarn run metrics"
   },
   "workspaces": {
     "packages": [
