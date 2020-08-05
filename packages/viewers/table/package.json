@@ -1,6 +1,6 @@
 {
-  "name": "data-catalog-table-viewer",
-  "version": "0.0.1",
+  "name": "@dakan/table",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
