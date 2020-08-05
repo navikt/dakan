@@ -6,7 +6,7 @@ on:
       - 'tableau.*.*.*'
 
 env: 
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/data-catalog-tableau-viewer
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-tableau-viewer
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
   PUBLIC_URL: /tableau
   PACKAGE_PATH: packages/viewers/tableau
