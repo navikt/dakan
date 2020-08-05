@@ -1,9 +1,11 @@
 name: Deploy to prod on release
 
 on:
-  release:
-    tags: 'person/*.*.*'
-    types: [published]
+  push:
+    tags: 
+      - 'person.*.*.*'
+    branches:
+      - 'master'
 
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-person-viewer

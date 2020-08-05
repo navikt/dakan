@@ -1,9 +1,11 @@
 name: Deploy to prod on release
 
 on:
-  release:
-    tags: 'kafka/*.*.*'
-    types: [published]
+  push:
+    tags:
+      - 'kafka.*.*.*'
+    branches:
+      - 'master'
 
 env: 
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
