@@ -18,8 +18,8 @@ export const ContactHoverIcon = ({size, fill}) => {
     return (
         <Icon size={size} fill={fill}>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M4 0C1.79086 0 0 1.79086 0 4V24L7 19H20C22.2091 19 24 17.2091 24 15V4C24 1.79086 22.2091 0 20 0H4Z"
                 fill="#0067C5"
             />
