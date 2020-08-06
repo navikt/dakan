@@ -23,11 +23,13 @@ jobs:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
+        run: yarn run setup
+      - name: Build shared packages
+        run: yarn run shared:build
+      - name: Publish to npm
         run: |
           cd ${PACKAGE_PATH}
-          yarn install
-      - name: Build and publish
-        run: yarn publish:public
+          npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
     # Publish_To_Github_Workflow:
