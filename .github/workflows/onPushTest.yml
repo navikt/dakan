@@ -1,0 +1,32 @@
+name: Push test
+
+on:
+  push:
+    paths:
+      - 'packages/shared/ui/**'
+      - 'packages/shared/metrics/**'
+      - 'packages/shared/hooks/**'
+      - 'packages/shared/theme/**'
+
+jobs:
+  check_if_which_path:
+    name: test for checking paths
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v1
+          with:
+              ref: refs/heads/master
+        - name: print path
+          run: echo ${github.event_path}
+        - name: is in ui
+          if: github.event_path == packages/shared/ui
+          run: echo "in ui"
+        - name: is in metrics
+          if: github.event_path == packages/shared/metrics
+          run: echo ${github.event_path}          
+        - name: is in hooks
+          if: github.event_path == packages/shared/hooks
+          run: echo "in hooks"
+        - name: is in ui
+          if: github.event_path == packages/shared/theme
+          run: echo "in theme"          
