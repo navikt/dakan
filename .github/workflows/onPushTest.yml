@@ -18,15 +18,15 @@ jobs:
               ref: refs/heads/master
         - name: print path
           run: echo ${github.event_path}
-        - name: is in ui
-          if: github.event_path == packages/shared/ui
-          run: echo "in ui"
-        - name: is in metrics
-          if: github.event_path == packages/shared/metrics
-          run: echo ${github.event_path}          
-        - name: is in hooks
-          if: github.event_path == packages/shared/hooks
-          run: echo "in hooks"
-        - name: is in ui
-          if: github.event_path == packages/shared/theme
-          run: echo "in theme"          
+        # - name: is in ui
+        #   if: github.event_path == packages/shared/ui
+        #   run: echo "in ui"
+        # - name: is in metrics
+        #   if: github.event_path == packages/shared/metrics
+        #   run: echo ${github.event_path}          
+        # - name: is in hooks
+        #   if: github.event_path == packages/shared/hooks
+        #   run: echo "in hooks"
+        # - name: is in ui
+        #   if: github.event_path == packages/shared/theme
+        #   run: echo "in theme"          
