@@ -6,30 +6,30 @@ on:
       - 'ui.*.*.*'
 
 env:
-    CI: true
-    PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-    PACKAGE_PATH: packages/shared/ui
+  CI: true
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+  PACKAGE_PATH: packages/shared/ui
     
 
 jobs:
-    Publish_To_NPM_Workflow:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-              with:
-                  ref: refs/heads/master
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-                  registry-url: https://registry.npmjs.org/
-            - name: Install dependencies
-              run: yarn run setup
-            - name: Build and publish
-              run: |
-                cd ${PACKAGE_PATH}
-                yarn publish:public
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+  Publish_To_NPM_Workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: refs/heads/master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: yarn run setup
+      - name: Build and publish
+        run: |
+          cd ${PACKAGE_PATH}
+          yarn publish:public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
     # Publish_To_Github_Workflow:
     #     runs-on: ubuntu-latest
     #     steps:
