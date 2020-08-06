@@ -7,7 +7,9 @@ on:
 
 env:
     CI: true
+    PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
     PACKAGE_PATH: packages/shared/ui
+    
 
 jobs:
     Publish_To_NPM_Workflow:
