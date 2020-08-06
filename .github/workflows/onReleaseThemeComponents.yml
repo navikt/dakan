@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'theme.*.*.*'
+
+env:
+  CI: true
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+  PACKAGE_PATH: packages/shared/theme
+    
+
+jobs:
+  Publish_To_NPM_Workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: refs/heads/master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: yarn run setup
+      - name: Build shared packages
+        run: yarn run shared:build
+      - name: Publish to npm
+        run: |
+          cd ${PACKAGE_PATH}
+          npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+    # Publish_To_Github_Workflow:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: actions/checkout@v1
+    #           with:
+    #               ref: refs/heads/master
+    #         - uses: actions/setup-node@v1
+    #           with:
+    #               node-version: '12.x'
+    #               registry-url: https://npm.pkg.github.com/
+    #               scope: '@navikt'
+    #         - name: Install dependencies
+    #           run: yarn install
+    #         - name: Publish
+    #           run: yarn publish:public
+    #           env:
+    #               NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
