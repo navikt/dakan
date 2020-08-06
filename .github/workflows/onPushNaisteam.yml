@@ -3,17 +3,17 @@ name: Build, test, package and deploy
 on:
   push:
     paths:
-      - 'packages/viewers/system/**'
+      - 'packages/viewers/naisteam/**'
     branches:
       - '**'
     tags-ignore:
       - '*.*.*'
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-system-viewer
-  PUBLIC_URL: /system
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-naisteam-viewer
+  PUBLIC_URL: /naisteam
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/system
+  PACKAGE_PATH: packages/viewers/naisteam
 
 jobs:
   test_and_package:
@@ -26,7 +26,7 @@ jobs:
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
-      run: yarn system:test
+      run: yarn naisteam:test
       env:
         CI: false
     - name: Generate tag
@@ -43,10 +43,10 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: img_tag
-        path: packages/viewers/system/docker_img_tag.txt
+        path: packages/viewers/naisteam/docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
-      run: yarn system:build
+      run: yarn naisteam:build
       env:
         CI: false
     - name: Build and Publish to Docker Image
@@ -83,8 +83,8 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
-        RESOURCE: packages/viewers/system/naisarator-fss.yml
-        VARS: packages/viewers/system/config-dev-fss.json
+        RESOURCE: packages/viewers/naisteam/naisarator-fss.yml
+        VARS: packages/viewers/naisteam/config-dev-fss.json
 
   deploy_dev-sbs:
     name: Build and deploy to dev-sbs
@@ -110,5 +110,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-sbs
-        RESOURCE: packages/viewers/system/naisarator-sbs.yml
-        VARS: packages/viewers/system/config-dev-sbs.json
+        RESOURCE: packages/viewers/naisteam/naisarator-sbs.yml
+        VARS: packages/viewers/naisteam/config-dev-sbs.json
