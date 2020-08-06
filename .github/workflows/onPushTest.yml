@@ -17,7 +17,7 @@ jobs:
           with:
               ref: refs/heads/master
         - name: print path
-          run: echo ${github.event_path}
+          run: echo ${{github.event_path}}
         # - name: is in ui
         #   if: github.event_path == packages/shared/ui
         #   run: echo "in ui"
