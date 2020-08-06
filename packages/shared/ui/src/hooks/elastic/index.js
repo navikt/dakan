@@ -1,1 +1,1 @@
-export * from './useElasticSearch';
+export * from './useElasticSearch'

@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Block } from "baseui/block";
-import { Heading, HeadingLevel } from "baseui/heading";
-import { ParagraphLarge } from "baseui/typography";
+import * as React from 'react'
+import { Block } from 'baseui/block'
+import { Heading, HeadingLevel } from 'baseui/heading'
+import { ParagraphLarge } from 'baseui/typography'
 
 const TopicNotfound = (props: any) => {
-  console.log(props.error);
+  console.log(props.error)
   return (
     <Block>
       <Block display="flex" justifyContent="center">
@@ -16,6 +16,6 @@ const TopicNotfound = (props: any) => {
         <ParagraphLarge>Feilmelding: {props.error}</ParagraphLarge>
       </Block>
     </Block>
-  );
-};
-export default TopicNotfound;
+  )
+}
+export default TopicNotfound

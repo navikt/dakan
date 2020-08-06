@@ -1,13 +1,13 @@
 import * as React from 'react';
 import PlotlyChartViewer from '../component/PlotlyChartViewer';
 import {Tabs, Tab} from '@dakan/ui';
-import { LabelLarge } from 'baseui/typography';
-import { useStyletron } from 'baseui';
+import {LabelLarge} from 'baseui/typography';
+import {useStyletron} from 'baseui';
 
 const TabViewer = (props: any) => {
     const {dataTypeMetrics, plotlyChart, metaData, countTable} = props;
     const [activeKey, setActiveKey] = React.useState('statestikk');
-    const [,theme] = useStyletron();
+    const [, theme] = useStyletron();
 
     const getTitle = (title: string, key: string) => {
         return (
@@ -16,7 +16,7 @@ const TabViewer = (props: any) => {
             </LabelLarge>
         );
     };
-    
+
     return (
         <Tabs
             onChange={({activeKey}: any) => {
@@ -24,14 +24,26 @@ const TabViewer = (props: any) => {
             }}
             activeKey={activeKey}
         >
-            {dataTypeMetrics && dataTypeMetrics.props.children && <Tab key="statestikk" title={getTitle('Statistikk', 'statestikk')}>{dataTypeMetrics}</Tab>}
+            {dataTypeMetrics && dataTypeMetrics.props.children && (
+                <Tab key="statestikk" title={getTitle('Statistikk', 'statestikk')}>
+                    {dataTypeMetrics}
+                </Tab>
+            )}
             {plotlyChart && (
                 <Tab key="histogram" title={getTitle('Histogram', 'histogram')}>
                     <PlotlyChartViewer plotlyChart={plotlyChart} />
                 </Tab>
             )}
-            {countTable && countTable.props.children && <Tab key="mest" title={getTitle("Mest brukte verdier", "mest")}>{countTable}</Tab>}
-            {metaData && metaData.props.children && <Tab key="metaData" title={getTitle("Metadata", "metaData")}>{metaData}</Tab>}
+            {countTable && countTable.props.children && (
+                <Tab key="mest" title={getTitle('Mest brukte verdier', 'mest')}>
+                    {countTable}
+                </Tab>
+            )}
+            {metaData && metaData.props.children && (
+                <Tab key="metaData" title={getTitle('Metadata', 'metaData')}>
+                    {metaData}
+                </Tab>
+            )}
         </Tabs>
     );
 };

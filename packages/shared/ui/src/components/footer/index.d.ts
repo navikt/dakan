@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from 'react'
 
 export interface FooterProps {
-    theme?: any;
-    spec?: any;
-    type?: any;
-    key?: any;
-    config?: any;
+  theme?: any
+  spec?: any
+  type?: any
+  key?: any
+  config?: any
 }
 
-export declare const Footer: React.FC<FooterProps>;
-export default Footer;
+export declare const Footer: React.FC<FooterProps>
+export default Footer

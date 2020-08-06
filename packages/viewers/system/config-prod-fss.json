@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-system-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.adeo.no/system",
-  "ingress_nais_io": "https://data.prod-fss.nais.io/system"
-}

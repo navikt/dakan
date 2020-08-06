@@ -1,2 +1,0 @@
-# Datakatalog system viewer (Teamkatalogen)
-

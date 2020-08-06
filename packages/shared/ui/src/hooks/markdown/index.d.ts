@@ -1,2 +1,2 @@
-export declare const useMarkdown;
-export default useMarkdown;
+export declare const useMarkdown
+export default useMarkdown

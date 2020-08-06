@@ -1,1 +1,1 @@
-export * from './Back';
+export * from './Back'

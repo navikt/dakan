@@ -1,1 +1,1 @@
-export declare const GetValue;
+export declare const GetValue

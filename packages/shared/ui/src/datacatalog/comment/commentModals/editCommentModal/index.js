@@ -1,1 +1,1 @@
-export * from './EditCommentModal';
+export * from './EditCommentModal'
