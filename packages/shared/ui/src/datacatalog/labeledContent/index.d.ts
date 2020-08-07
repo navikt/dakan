@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from 'react'
 
 export interface LabeledProps {
-    description?: string;
+  description?: string
 }
 
-export declare const LabeledContent: React.FC<LabeledProps>;
-export default LabeledContent;
+export declare const LabeledContent: React.FC<LabeledProps>
+export default LabeledContent

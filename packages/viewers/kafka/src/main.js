@@ -1,11 +1,11 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { ThemeProvider, Header, navTheme } from "@dakan/ui";
-import env from "@beam-australia/react-env";
-import { Block } from "baseui/block";
-import Viewer from "./pages/Viewer";
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { ThemeProvider, Header, navTheme } from '@dakan/ui'
+import env from '@beam-australia/react-env'
+import { Block } from 'baseui/block'
+import Viewer from './pages/Viewer'
 
-const link = env("HOME_URL") || "../";
+const link = env('HOME_URL') || '../'
 
 export default function App() {
   return (
@@ -14,7 +14,7 @@ export default function App() {
         config={{
           nav: true,
           about: true,
-          aboutLink: "https://data.nav.no/about",
+          aboutLink: 'https://data.nav.no/about',
           link: link,
         }}
       />
@@ -29,5 +29,5 @@ export default function App() {
         />
       </Switch>
     </ThemeProvider>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export * from './LabeledContent';
+export * from './LabeledContent'

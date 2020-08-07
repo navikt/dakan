@@ -1,0 +1,60 @@
+{
+    "_index": "dcat_v3",
+    "_type": "_doc",
+    "_id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
+    "_version": 5,
+    "found": true,
+    "_source": {
+      "id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
+      "type": "nais_app",
+      "suggest": "altinn-rettigheter-proxy altinn-rettigheter-proxy prod-fss fss",
+      "description": "altinn-rettigheter-proxy prod-fss fss",
+      "title": "altinn-rettigheter-proxy",
+      "format": "Nais applikasjon",
+      "category": "Nais",
+      "provenance": "Nais",
+      "master": "NAV",
+      "purpose": [
+        "Nais"
+      ],
+      "legalbasis": [],
+      "pii": [
+        "Ingen"
+      ],
+      "issued": "2020-06-08T20:17:14.504Z",
+      "modified": "2020-08-06T07:45:05.678Z",
+      "created": "2020-06-08T20:17:14.504Z",
+      "policy": [],
+      "distribution": null,
+      "keywords": [
+        "nais",
+        "app"
+      ],
+      "theme": [
+        "Nais app"
+      ],
+      "accessRights": "public",
+      "publisher": {
+        "name": "NAV"
+      },
+      "spatial": "Norge",
+      "url": [
+        "url"
+      ],
+      "haspart": [],
+      "content": {
+        "id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
+        "label": "nais_app",
+        "properties": {
+          "type": "nais_app",
+          "name": "altinn-rettigheter-proxy",
+          "team": "arbeidsgiver",
+          "cluster": "prod-fss",
+          "zone": "fss",
+          "created": "2020-06-08T20:17:14.504Z",
+          "modified": "2020-08-06T07:45:05.678Z",
+          "kilde": ""
+        }
+      }
+    }
+  }

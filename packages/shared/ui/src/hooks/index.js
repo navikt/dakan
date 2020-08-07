@@ -1,2 +1,2 @@
-export * from './markdown';
-export * from './elastic';
+export * from './markdown'
+export * from './elastic'

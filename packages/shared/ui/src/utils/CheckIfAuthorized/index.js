@@ -1,1 +1,1 @@
-export * from './CheckIfAuthorized';
+export * from './CheckIfAuthorized'

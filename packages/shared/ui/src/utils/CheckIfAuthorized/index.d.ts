@@ -1,1 +1,1 @@
-export declare const CheckIfAuthorized;
+export declare const CheckIfAuthorized

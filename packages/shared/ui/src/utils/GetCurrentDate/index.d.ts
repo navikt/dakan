@@ -1,1 +1,1 @@
-export declare const GetCurrentDate;
+export declare const GetCurrentDate

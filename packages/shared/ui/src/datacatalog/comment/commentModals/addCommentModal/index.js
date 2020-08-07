@@ -1,1 +1,1 @@
-export * from './AddCommentModal';
+export * from './AddCommentModal'

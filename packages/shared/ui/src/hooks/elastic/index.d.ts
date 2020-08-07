@@ -1,1 +1,1 @@
-export declare const useElasticSearch;
+export declare const useElasticSearch

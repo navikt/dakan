@@ -1,1 +1,1 @@
-export * from './CatalogHeader';
+export * from './CatalogHeader'

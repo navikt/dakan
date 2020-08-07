@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-naisteam-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.nais.preprod.local/naisteam",
+  "ingress_nais_io": "https://data.dev-fss.nais.io/naisteam"
+}

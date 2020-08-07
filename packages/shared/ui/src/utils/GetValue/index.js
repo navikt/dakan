@@ -1,1 +1,1 @@
-export * from './GetValue';
+export * from './GetValue'

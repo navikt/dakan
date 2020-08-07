@@ -1,2 +1,2 @@
-export * from './ToggleComments';
-export * from './commentModals';
+export * from './ToggleComments'
+export * from './commentModals'

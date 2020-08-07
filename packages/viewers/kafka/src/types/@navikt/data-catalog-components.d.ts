@@ -1,1 +1,1 @@
-declare module "@navikt/data-catalog-components";
+declare module '@navikt/data-catalog-components'

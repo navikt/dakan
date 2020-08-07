@@ -1,1 +1,1 @@
-export {localeOverrideNo} from './localeOverrideNo';
+export { localeOverrideNo } from './localeOverrideNo'

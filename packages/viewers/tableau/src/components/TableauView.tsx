@@ -12,7 +12,7 @@ const server = env('SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useTags(server, view.id);
+  const [tags, loading, error, setTags] = useTags(server, view.id)
 
   if (error) {
     console.log(error)

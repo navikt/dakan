@@ -1,1 +1,1 @@
-window._env = {"NODE_ENV":"development","REACT_APP_PORT":"3002"};
+window._env = { NODE_ENV: 'development' }
