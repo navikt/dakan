@@ -9,21 +9,15 @@ import exampleJson from '../resources/example.json'
 import exampleMembers from '../resources/members.json'
 import exampleMemberOf from '../resources/memberOf.json'
 
-const server = env('SERVER')
+const es_server = env('ES_SERVER')
+const graph_server = env('GRAPH_SERVER')
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
-  const [data, loading, error] = useElasticSearch(server, props.match.params.id)
-  const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(server, props.match.params.id, 'memberOf')
-  const [page, setPage] = React.useState('')
-
-  React.useEffect(() => {
-    if (data && data.content && data.content.id) {
-      setPage(data.content.id)
-    }
-  }, [data])
+  const [data, loading, error] = useElasticSearch(es_server, props.match.params.id)
+  const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(graph_server, props.match.params.id, 'memberOf')
 
   if (props.match.params.id === 'test') {
     return (
@@ -46,7 +40,7 @@ const Viewer = (props: any) => {
             amplitude_project_id={amplitude_project_id}
             amplitude_endpoint={amplitude_endpoint}
             viewer={'naisapp'}
-            page={page}
+            page={data.content.id}
             section={''}
           />
           <Content {...props} item={data.content} memberOf={memberOf} />

@@ -8,16 +8,14 @@ import { StyledLink as Link } from 'baseui/link'
 import env from '@beam-australia/react-env'
 
 const teamViewerUrl = env('TEAM_VIEWER_URL') || '../team'
+const personViewerUrl = env('TEAM_VIEWER_URL') || '../person'
 
-const teamViewerLink = (row) => {
-  return `${teamViewerUrl}/${row.id}`
-}
+const getPeople = (item) => {
 
-const Content = ({ item }) => {
   const columnsPerson: any[] = [
     <TableBuilderColumn key="col_person_name" id="name" header="Navn">
       {(row) => (
-        <Link key={`link_${row.data.id}`} href={teamViewerLink(row)}>
+        <Link key={`link_${row.data.id}`} href={`${personViewerUrl}/${row.id}`}>
           {row.data.name}
         </Link>
       )}
@@ -33,9 +31,29 @@ const Content = ({ item }) => {
     </TableBuilderColumn>,
   ]
 
+
+  let rows: any = []
+  item['members_area'].map((member) => {
+    const row: any = {}
+    row['id'] = member['navIdent']
+    const data: any = {
+      id: member['navIdent'],
+      name: member['resource']['fullName'],
+      roles: member['roles'],
+      type: member['resource']['resourceType'],
+    }
+    row['data'] = data
+    rows.push(row)
+  })
+
+  return <TableBuilder data={rows}>{columnsPerson}</TableBuilder>
+}
+
+const getTeams = (item) => {
+
   const columnsTeam: any[] = [
     <TableBuilderColumn key="col_team_name" id="name" header="Navn">
-      {(row) => <Link href={teamViewerLink(row)}>{row.data.name}</Link>}
+      {(row) => <Link href={`${teamViewerUrl}/${row.id}`}>{row.data.name}</Link>}
     </TableBuilderColumn>,
     <TableBuilderColumn
       key="col_team_description"
@@ -46,54 +64,37 @@ const Content = ({ item }) => {
     </TableBuilderColumn>,
   ]
 
-  const getPeople = () => {
-    let rows: any = []
-    item['members_productarea'].map((member) => {
-      const row: any = {}
-      row['id'] = member['navIdent']
-      const data: any = {
-        id: member['navIdent'],
-        name: member['resource']['fullName'],
-        roles: member['roles'],
-        type: member['resource']['resourceType'],
-      }
-      row['data'] = data
-      rows.push(row)
-    })
+  let rows: any = []
+  item['teams'].map((team) => {
+    const row: any = {}
+    row['id'] = team['id_team']
+    const data: any = {
+      id: team['id_team'],
+      name: team['name_team'],
+      description: team['description_team'],
+    }
+    row['data'] = data
+    rows.push(row)
+  })
 
-    return <TableBuilder data={rows}>{columnsPerson}</TableBuilder>
-  }
+  return <TableBuilder data={rows}>{columnsTeam}</TableBuilder>
+}
 
-  const getTeams = () => {
-    let rows: any = []
-    item['teams'].map((team) => {
-      const row: any = {}
-      row['id'] = team['id_team']
-      const data: any = {
-        id: team['id_team'],
-        name: team['name_team'],
-        description: team['description_team'],
-      }
-      row['data'] = data
-      rows.push(row)
-    })
+const Content = ({ item }) => {
 
-    return <TableBuilder data={rows}>{columnsTeam}</TableBuilder>
-  }
-
-  const Head = () => <Block>{item['description_productarea']}</Block>
+  const Head = () => <Block>{item['description_area']}</Block>
 
   const Tables = () => {
     if (item) {
       return (
-        <Block width="100%">
+        <Block width="100%" marginBottom='scale1200'>
           <Block>
             <LabelMedium>Ansatte</LabelMedium>
-            {getPeople()}
+            {getPeople(item)}
           </Block>
           <Block marginTop="scale1200">
             <LabelMedium>Team</LabelMedium>
-            {getTeams()}
+            {getTeams(item)}
           </Block>
         </Block>
       )
@@ -106,7 +107,7 @@ const Content = ({ item }) => {
       <Block>
         <Layout
           headingLabel="Produktområde"
-          headingText={item['name_productarea']}
+          headingText={item && item['name_area']}
           left={<Head />}
           right={<Tables />}
         ></Layout>
