@@ -1,1 +1,1 @@
-declare module '@dakan/ui';
+declare module '@dakan/ui'

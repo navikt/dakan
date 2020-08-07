@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 export interface CustomBadgeProps {
-    color?: string;
+  color?: string
 }
 
-export declare const Badge: React.FC<CustomBadgeProps>;
-export default Badge;
+export declare const Badge: React.FC<CustomBadgeProps>
+export default Badge

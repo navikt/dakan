@@ -1,10 +1,10 @@
-const GetValue = (func: Function, fallbackValue = "Ingen data") => {
+const GetValue = (func: Function, fallbackValue = 'Ingen data') => {
   try {
-    const value = func();
-    return value === null || value === undefined ? fallbackValue : value;
+    const value = func()
+    return value === null || value === undefined ? fallbackValue : value
   } catch (e) {
-    return fallbackValue;
+    return fallbackValue
   }
-};
+}
 
-export default GetValue;
+export default GetValue

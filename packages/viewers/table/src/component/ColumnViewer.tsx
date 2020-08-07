@@ -3,7 +3,7 @@ import {Block} from 'baseui/block';
 import {Table} from 'baseui/table-semantic';
 import {LabeledContent, SelectOpplysningstype} from '@dakan/ui';
 import {LabelLarge, LabelMedium} from 'baseui/typography';
-import { useStyletron } from 'baseui';
+import {useStyletron} from 'baseui';
 import env from '@beam-australia/react-env';
 
 import GetValue from '../utils/GetValue';
@@ -42,7 +42,7 @@ const ColumnViewer = (prop: any) => {
 
         return items.map((entry: any, index: number) => {
             return (
-                <Block key={`item_${index}`} top="relative" >
+                <Block key={`item_${index}`} top="relative">
                     <LabeledContent description={entry.label} list>
                         {entry.label === 'Personopplysninger'
                             ? GetValue(() =>
@@ -190,16 +190,19 @@ const ColumnViewer = (prop: any) => {
                 {columnData.properties && (
                     <Block $style={{overflowWrap: 'break-word'}} marginTop="scale800">
                         <Block marginBottom="scale800">
-                            <LabelLarge $style={{marginTop: '0px'}}><b>{columnData.properties.column_name}</b></LabelLarge>
+                            <LabelLarge $style={{marginTop: '0px'}}>
+                                <b>{columnData.properties.column_name}</b>
+                            </LabelLarge>
                         </Block>
                         <Block marginBottom="scale600" $style={{...theme.typography.font300}}>
-                            <LabelMedium><b>Beskrivelse</b></LabelMedium>
+                            <LabelMedium>
+                                <b>Beskrivelse</b>
+                            </LabelMedium>
                             {GetValue(() => columnData.properties.column_description, '')}
                         </Block>
                         <Block display={['block', 'block', 'flex']}>
                             <Block marginTop="scale800" marginBottom="scale600" flex="1">
                                 <Block>{getData()}</Block>
-
                             </Block>
                             <Block
                                 marginLeft={['none', 'none', 'scale1000']}
@@ -210,19 +213,23 @@ const ColumnViewer = (prop: any) => {
                             >
                                 {getDataQuality()}
                             </Block>
-                            <Block marginLeft={['none', 'none', 'scale1000']}
-                                flex="1" marginTop="scale600" marginBottom="scale600" >
-                                    <SelectOpplysningstype
-                                        dataId={columnData.id}
-                                        tagOptions={tagOptions}
-                                        serverUrl={server}
-                                        columnTags={columnTags}
-                                        setColumnTags={setColumnTags}
-                                        clientUser={clientUser}
-                                    />
-                                </Block>
+                            <Block
+                                marginLeft={['none', 'none', 'scale1000']}
+                                flex="1"
+                                marginTop="scale600"
+                                marginBottom="scale600"
+                            >
+                                <SelectOpplysningstype
+                                    dataId={columnData.id}
+                                    tagOptions={tagOptions}
+                                    serverUrl={server}
+                                    columnTags={columnTags}
+                                    setColumnTags={setColumnTags}
+                                    clientUser={clientUser}
+                                />
+                            </Block>
                         </Block>
-                        
+
                         <Block marginTop={'12px'} marginBottom={'12px'}>
                             <ToggleDetails
                                 dataTypeMetrics={getDataTypeMetrics()}

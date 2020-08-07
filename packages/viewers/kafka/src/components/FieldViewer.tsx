@@ -1,16 +1,16 @@
-import * as React from "react";
-import { Block } from "baseui/block";
-import { SelectOpplysningstype, Label } from "@dakan/ui";
-import env from "@beam-australia/react-env";
-import {useTags} from "@dakan/hooks";
+import * as React from 'react'
+import { Block } from 'baseui/block'
+import { SelectOpplysningstype, Label } from '@dakan/ui'
+import env from '@beam-australia/react-env'
+import { useTags } from '@dakan/hooks'
 
-import GetValue from "../utils/GetValue";
+import GetValue from '../utils/GetValue'
 
-const server = env("SERVER");
+const server = env('SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
-  const { field, tagOptions, clientUser } = props;
-  const [tags, loading, error, setTags] = useTags(server, field.id);
+  const { field, tagOptions, clientUser } = props
+  const [tags, loading, error, setTags] = useTags(server, field.id)
 
   if (error) {
     console.log(error)
@@ -22,11 +22,9 @@ const FieldViewer = (props: any): JSX.Element => {
         {field.properties && (
           <Block>
             <Block>
-              <Label>
-                {GetValue(() => field.properties.field_name)}
-              </Label>
+              <Label>{GetValue(() => field.properties.field_name)}</Label>
             </Block>
-            <Block display={["block", "flex"]} marginBottom="scale300">
+            <Block display={['block', 'flex']} marginBottom="scale300">
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
                   <SelectOpplysningstype
@@ -45,7 +43,7 @@ const FieldViewer = (props: any): JSX.Element => {
         )}
       </Block>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default FieldViewer;
+export default FieldViewer

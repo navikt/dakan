@@ -1,18 +1,18 @@
-import * as React from "react";
-import { Block } from "baseui/block";
+import * as React from 'react'
+import { Block } from 'baseui/block'
 import {
   LayoutSplit as Layout,
   LabeledContent,
   Searchbox,
   ToggleComments,
-} from "@dakan/ui";
-import env from "@beam-australia/react-env";
+} from '@dakan/ui'
+import env from '@beam-australia/react-env'
 
-import GetValue from "../utils/GetValue";
-import FilterFieldList from "../utils/FilterFieldList";
-import TopicFields from "./TopicFields";
+import GetValue from '../utils/GetValue'
+import FilterFieldList from '../utils/FilterFieldList'
+import TopicFields from './TopicFields'
 
-const server = env("SERVER");
+const server = env('SERVER')
 
 const Content = (props: any): JSX.Element => {
   const {
@@ -23,9 +23,9 @@ const Content = (props: any): JSX.Element => {
     comments,
     setComments,
     clientUser,
-  } = props;
-  const [filterFields, setFilterFields] = React.useState();
-  const [filterText, setFilterText] = React.useState();
+  } = props
+  const [filterFields, setFilterFields] = React.useState()
+  const [filterText, setFilterText] = React.useState()
 
   const getTopicContent = () => {
     return (
@@ -43,8 +43,8 @@ const Content = (props: any): JSX.Element => {
           </Block>
         )}
       </React.Fragment>
-    );
-  };
+    )
+  }
 
   return (
     <Block>
@@ -72,10 +72,10 @@ const Content = (props: any): JSX.Element => {
                     <Searchbox
                       placeholder="Søk i topic liste..."
                       onChange={(event: any) => {
-                        setFilterText(event.target.value);
+                        setFilterText(event.target.value)
                         setFilterFields(
-                          FilterFieldList(fields, event.target.value)
-                        );
+                          FilterFieldList(fields, event.target.value),
+                        )
                       }}
                     />
                   </Block>
@@ -91,7 +91,7 @@ const Content = (props: any): JSX.Element => {
         />
       )}
     </Block>
-  );
-};
+  )
+}
 
-export default Content;
+export default Content

@@ -1,6 +1,6 @@
-import env from "@beam-australia/react-env";
+import env from '@beam-australia/react-env'
 
-const amplitude_endpoint = env("AMPLITUDE_ENDPOINT");
+const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 
 const AmplitudeConfig = {
   apiEndpoint: amplitude_endpoint,
@@ -11,6 +11,6 @@ const AmplitudeConfig = {
     city: false,
     ip_address: false,
   },
-};
+}
 
-export default AmplitudeConfig;
+export default AmplitudeConfig

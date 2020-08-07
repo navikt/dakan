@@ -10,10 +10,7 @@ const ToggleDetails = (prop: any) => {
     const {dataTypeMetrics, plotlyChart, metaData, countTable} = prop;
     const [isExpanded, setIsExpanded] = React.useState('');
     const dataContent =
-        dataTypeMetrics.props.children ||
-        plotlyChart ||
-        metaData.props.children ||
-        countTable.props.children;
+        dataTypeMetrics.props.children || plotlyChart || metaData.props.children || countTable.props.children;
     return (
         <Block>
             {dataContent && (

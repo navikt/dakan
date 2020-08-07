@@ -1,1 +1,1 @@
-export * from './SelectOpplysningstype';
+export * from './SelectOpplysningstype'
