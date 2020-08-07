@@ -7,7 +7,8 @@ import exampleJson from '../resources/example.json'
 import Content from '../components/Content'
 import ErrorMessage from '../components/ErrorMessage'
 
-const server = env('SERVER')
+
+const server = env('ES_SERVER')
 const viewer_version = env('VIEWER_VERSION') || false
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
