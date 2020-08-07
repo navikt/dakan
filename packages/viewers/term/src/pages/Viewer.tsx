@@ -18,6 +18,12 @@ const Viewer = (props: any) => {
   const [data, loading, error] = useElasticSearch(server, props.match.params.id)
   const [page, setPage] = React.useState('')
 
+  console.log(server)
+  console.log(viewer_version)
+  console.log(amplitude_project_id)
+  console.log(amplitude_endpoint)
+  console.log(gt)
+
   React.useEffect(() => {
     if (data !== undefined) {
       setPage(data.content.term)
