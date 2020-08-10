@@ -30,6 +30,9 @@ spec:
   leaderElection: false
   vault:
     enabled: true
+    paths:
+      - kvPath: {{kv_path}}
+        mountPath: /var/run/secrets/nais.io/common
   prometheus:
     enabled: true
     path: /kafka
