@@ -32,7 +32,7 @@ spec:
     enabled: true
     paths:
       - kvPath: {{kv_path}}
-        mountPath: var/run/secrets/nais.io/vault
+        mountPath: var/run/secrets/nais.io/common
   prometheus:
     enabled: true
     path: /begrep
