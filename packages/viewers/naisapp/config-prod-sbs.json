@@ -2,5 +2,6 @@
   "application_name": "data-catalog-naisapp-viewer",
   "org_name": "navikt",
   "ingress": "https://data.nav.no/naisapp",
-  "ingress_nais_io": "https://data.prod-sbs.nais.io/naisapp"
+  "ingress_nais_io": "https://data.prod-sbs.nais.io/naisapp",
+  "kv_path": "secret/dataplattform/datakatalog/prod_sbs"
 }

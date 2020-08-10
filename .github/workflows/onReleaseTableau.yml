@@ -74,4 +74,4 @@ jobs:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
         RESOURCE: packages/viewers/tableau/naiserator.yml
-        VARS: packages/viewers/tableau/prod-config.json
+        VARS: packages/viewers/tableau/config-prod-fss.json
