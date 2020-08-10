@@ -2,5 +2,6 @@
   "application_name": "data-catalog-productarea-viewer",
   "org_name": "navikt",
   "ingress": "https://dataverk-q.nav.no/productarea",
-  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/productarea"
+  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/productarea",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
 }

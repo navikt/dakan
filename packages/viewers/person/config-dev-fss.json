@@ -2,5 +2,6 @@
   "application_name": "data-catalog-person-viewer",
   "org_name": "navikt",
   "ingress": "https://data.nais.preprod.local/person",
-  "ingress_nais_io": "https://data.dev-fss.nais.io/person"
+  "ingress_nais_io": "https://data.dev-fss.nais.io/person",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
 }
