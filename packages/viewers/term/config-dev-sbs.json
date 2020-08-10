@@ -3,6 +3,5 @@
   "org_name": "navikt",
   "ingress": "https://dataverk-q.nav.no/begrep",
   "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/begrep",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs",
-  "mount_path": "kv/preprod/sbs/data-catalog-term-viewer/default"
+  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
 }

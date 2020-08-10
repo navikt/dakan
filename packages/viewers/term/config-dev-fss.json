@@ -3,6 +3,5 @@
   "org_name": "navikt",
   "ingress": "https://data.nais.preprod.local/begrep",
   "ingress_nais_io": "https://data.dev-fss.nais.io/begrep",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_fss",
-  "mount_path": "kv/preprod/fss/data-catalog-term-viewer/default"
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
 }
