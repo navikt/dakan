@@ -30,6 +30,9 @@ spec:
   leaderElection: false
   vault:
     enabled: true
+    paths:
+      - kvPath: {{kvPath}}
+        mountPath: {{mountPath}}
   prometheus:
     enabled: true
     path: /begrep

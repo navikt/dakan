@@ -15,7 +15,21 @@ const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
+
   const [data, loading, error] = useElasticSearch(es_server, props.match.params.id)
+  const [page, setPage] = React.useState('')
+
+  console.log(server)
+  console.log(viewer_version)
+  console.log(amplitude_project_id)
+  console.log(amplitude_endpoint)
+  console.log(gt)
+
+  React.useEffect(() => {
+    if (data !== undefined) {
+      setPage(data.content.term)
+    }
+  }, [data])
 
   if (props.match.params.id === 'test') {
     return (

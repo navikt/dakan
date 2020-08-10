@@ -2,5 +2,7 @@
   "application_name": "data-catalog-term-viewer",
   "org_name": "navikt",
   "ingress": "https://data.nais.preprod.local/begrep",
-  "ingress_nais_io": "https://data.dev-fss.nais.io/begrep"
+  "ingress_nais_io": "https://data.dev-fss.nais.io/begrep",
+  "kvPath": "secret/dataplattform/datakatalog/preprod_fss",
+  "mountPath": "kv/preprod/fss/data-catalog-term-viewer/default"
 }
