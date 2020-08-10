@@ -26,6 +26,7 @@
         "prettier": "^1.18.2"
     },
     "dependencies": {
+        "@beam-australia/react-env": "^2.1.2",
         "amplitude-js": "^7.1.0",
         "react": "^16.8.6"
     }

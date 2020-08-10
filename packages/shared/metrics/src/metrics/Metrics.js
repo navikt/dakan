@@ -1,5 +1,6 @@
 import * as React from 'react'
 import amplitude from 'amplitude-js'
+import env from '@beam-australia/react-env'
 import { GoogleTagManager } from './GoogleTagManager'
 
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
