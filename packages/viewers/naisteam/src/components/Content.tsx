@@ -94,8 +94,7 @@ const Content = ({ item, members }) => {
       return (
         <Block width="100%" marginBottom="scale1200">
           <LabelMedium>Applikasjoner</LabelMedium>
-          {members && typeof members == 'object'}
-          {getTable()}
+          {members && typeof members == 'object' && getTable()}
         </Block>
       )
     }

@@ -14,7 +14,7 @@ import HandleAxiosError from '../utils/HandleAxiosError'
 import exampleComments from '../resources/exampleComments.json'
 import TopicNotFound from '../components/TopicNotFound'
 
-const server = env('SERVER')
+const graph_server = env('GRAPH_SERVER')
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
@@ -68,12 +68,12 @@ const Viewer = (props: any) => {
       setData(response.data)
       if (response.data.id) {
         axios
-          .get(`${server}/node/out/${response.data.id}/hasMember`)
+          .get(`${graph_server}/node/out/${response.data.id}/hasMember`)
           .then(handleGetTopicFields)
           .catch((e) => HandleAxiosError(e, setError))
 
         axios
-          .get(`${server}/node/out/${response.data.id}/hasComment`)
+          .get(`${graph_server}/node/out/${response.data.id}/hasComment`)
           .then(handleGetCommentsResponse)
           .catch((e) => HandleAxiosError(e, setError))
       }
@@ -111,14 +111,14 @@ const Viewer = (props: any) => {
       getAzureAuth()
     } else {
       axios
-        .get(`${server}/node/${props.match.params.id}`)
+        .get(`${graph_server}/node/${props.match.params.id}`)
         .then(handleResponse)
         .catch((e) => {
           HandleAxiosError(e, setError)
           setShowSpinner(false)
         })
       axios
-        .get(`${server}/nodes/opplysningstype`)
+        .get(`${graph_server}/nodes/opplysningstype`)
         .then(handleGetInformationTypeResponse)
         .catch((e) => HandleAxiosError(e, setError))
       getAzureAuth()

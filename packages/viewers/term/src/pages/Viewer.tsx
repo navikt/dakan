@@ -1,4 +1,5 @@
 import React from 'react'
+import {Block} from 'baseui/block'
 import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
 import { useElasticSearch } from '@dakan/hooks'
@@ -7,15 +8,15 @@ import exampleJson from '../resources/example.json'
 import Content from '../components/Content'
 import ErrorMessage from '../components/ErrorMessage'
 
-
-const server = env('ES_SERVER')
+const es_server = env('ES_SERVER')
 const viewer_version = env('VIEWER_VERSION') || false
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
-  const [data, loading, error] = useElasticSearch(server, props.match.params.id)
+
+  const [data, loading, error] = useElasticSearch(es_server, props.match.params.id)
   const [page, setPage] = React.useState('')
 
   console.log(server)
@@ -48,21 +49,21 @@ const Viewer = (props: any) => {
   return (
     <React.Fragment>
       {data && data.content && (
+        <Block>
         <Metrics
           gt={gt}
           amplitude_project_id={amplitude_project_id}
           amplitude_endpoint={amplitude_endpoint}
           viewer={'begrep'}
-          page={page}
+          page={data.content.term}
           section={''}
         />
-      )}
-      {data && data.content && (
         <Content
           {...props}
           indexEntry={data.content}
           viewerVersion={viewer_version}
         />
+        </Block>
       )}
     </React.Fragment>
   )

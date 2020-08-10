@@ -15,7 +15,7 @@ import exampleTags from '../resources/exampleTags.json';
 import exampleComments from '../resources/exampleComments.json';
 import TableNotFound from '../component/TableNotFound';
 
-const server = env('SERVER');
+const graph_server = env('GRAPH_SERVER');
 const title = env('TITLE') || 'Data';
 const link = env('HOME_URL') || '../';
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID');
@@ -69,11 +69,11 @@ const Viewer = (props: any) => {
             setData(response);
             if (response.id) {
                 axios
-                    .get(`${server}/node/out/${id}/hasMember`)
+                    .get(`${graph_server}/node/out/${id}/hasMember`)
                     .then(handleGetEdgesResponse)
                     .catch((e) => HandleAxiosError(e, setError));
                 axios
-                    .get(`${server}/node/out/${id}/hasComment`)
+                    .get(`${graph_server}/node/out/${id}/hasComment`)
                     .then(handleGetCommentsResponse)
                     .catch((e) => HandleAxiosError(e, setError));
             }
@@ -110,14 +110,14 @@ const Viewer = (props: any) => {
             getAzureAuth();
         } else {
             axios
-                .get(`${server}/node/${id}`)
+                .get(`${graph_server}/node/${id}`)
                 .then((response: any) => handleGetIndexResponse(response.data))
                 .catch((e) => {
                     HandleAxiosError(e, setError);
                     setShowSpinner(false);
                 });
             axios
-                .get(`${server}/nodes/opplysningstype`)
+                .get(`${graph_server}/nodes/opplysningstype`)
                 .then((response: any) => handleGetInformationTypeResponse(response.data))
                 .catch((e) => HandleAxiosError(e, setError));
             getAzureAuth();
@@ -147,7 +147,7 @@ const Viewer = (props: any) => {
                     link: link,
                     showLoginButton: true,
                     clientUser: clientUser,
-                    server: server,
+                    server: graph_server,
                 }}
             />
             {data && Object.keys(data).length && (

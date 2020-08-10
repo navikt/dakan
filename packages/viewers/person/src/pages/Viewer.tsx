@@ -8,13 +8,13 @@ import Content from '../components/Content'
 
 import exampleJson from '../resources/example.json'
 
-const server = env('SERVER')
+const es_server = env('ES_SERVER')
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
-  const [data, loading, error] = useElasticSearch(server, props.match.params.id)
+  const [data, loading, error] = useElasticSearch(es_server, props.match.params.id)
   const [page, setPage] = React.useState('')
 
   React.useEffect(() => {
