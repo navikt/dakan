@@ -1,1 +1,1 @@
-window._env = {NODE_ENV: 'development'};
+window._env = {"NODE_ENV":"development"};

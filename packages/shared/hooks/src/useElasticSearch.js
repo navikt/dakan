@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
+import env from '@beam-australia/react-env'
 import axios from 'axios'
 
-export function useElasticSearch(server, id) {
+const server = env('ES_SERVER')
+
+export function useElasticSearch(id) {
+  console.log('env: ', env())
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)

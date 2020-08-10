@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "private": true,
   "dependencies": {
-    "@beam-australia/react-env": "^2.1.2",
     "@dakan/hooks": "0.0.3",
     "@dakan/ui": "0.0.3",
     "axios": "^0.19.1",

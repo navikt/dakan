@@ -332,7 +332,7 @@ export const navTheme = (borderRadius = '0px') => {
     ...getResponsiveTheme(breakpoints),
   }
   const theme = createTheme(themePrimitives, themeOverrides)
-  console.log('navtheme', theme)
+  //console.log('navtheme', theme)
   return theme
 }
 

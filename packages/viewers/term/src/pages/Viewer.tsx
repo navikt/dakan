@@ -8,21 +8,10 @@ import exampleJson from '../resources/example.json'
 import Content from '../components/Content'
 import ErrorMessage from '../components/ErrorMessage'
 
-const es_server = env('ES_SERVER')
 const viewer_version = env('VIEWER_VERSION') || false
-const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
-const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
-const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
-
-  const [data, loading, error] = useElasticSearch(es_server, props.match.params.id)
-
-  console.log(es_server)
-  console.log(viewer_version)
-  console.log(amplitude_project_id)
-  console.log(amplitude_endpoint)
-  console.log(gt)
+  const [data, loading, error] = useElasticSearch(props.match.params.id)
 
   if (props.match.params.id === 'test') {
     return (
@@ -44,9 +33,6 @@ const Viewer = (props: any) => {
       {data && data.content && (
         <Block>
         <Metrics
-          gt={gt}
-          amplitude_project_id={amplitude_project_id}
-          amplitude_endpoint={amplitude_endpoint}
           viewer={'begrep'}
           page={data.content.term}
           section={''}

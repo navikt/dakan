@@ -15,9 +15,6 @@ import exampleComments from '../resources/exampleComments.json'
 import TopicNotFound from '../components/TopicNotFound'
 
 const graph_server = env('GRAPH_SERVER')
-const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
-const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
-const gt = env('GTM_ID')
 
 const Viewer = (props: any) => {
   const [data, setData] = React.useState<any>()
@@ -142,9 +139,6 @@ const Viewer = (props: any) => {
       {data && data.properties && (
         <Block>
           <Metrics
-            gt={gt}
-            amplitude_project_id={amplitude_project_id}
-            amplitude_endpoint={amplitude_endpoint}
             viewer={'kafka'}
             page={data.properties.topic_name}
             section={''}
