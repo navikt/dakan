@@ -31,8 +31,8 @@ spec:
   vault:
     enabled: true
     paths:
-      - kvPath: {{kvPath}}
-        mountPath: {{mountPath}}
+      - kvPath: {{kv_path}}
+        mountPath: {{mount_path}}
   prometheus:
     enabled: true
     path: /begrep
