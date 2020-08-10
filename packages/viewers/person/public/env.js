@@ -1,1 +1,1 @@
-window._env = {"NODE_ENV":"development","REACT_APP_ES_SERVER":"https://data.nais.preprod.local/api/dcat","REACT_APP_GRAPH_SERVER":"https://data.nais.preprod.local/cosmosdb"};
+window._env = {"NODE_ENV":"development"};
