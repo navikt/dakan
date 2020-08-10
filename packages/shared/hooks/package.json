@@ -26,6 +26,7 @@
         "prettier": "^1.18.2"
     },
     "dependencies": {
+        "@beam-australia/react-env": "^2.1.2",
         "axios": "^0.19.2",
         "baseui": "^9.91.0",
         "react": "^16.8.6",

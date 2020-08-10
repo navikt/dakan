@@ -18,9 +18,6 @@ import TableNotFound from '../component/TableNotFound';
 const graph_server = env('GRAPH_SERVER');
 const title = env('TITLE') || 'Data';
 const link = env('HOME_URL') || '../';
-const amplitude_project_id = env('AMPLITUDE_PROJECT_ID');
-const amplitude_endpoint = env('AMPLITUDE_ENDPOINT');
-const gt = env('GTM_ID');
 
 const Viewer = (props: any) => {
     const [data, setData] = React.useState({});
@@ -152,9 +149,6 @@ const Viewer = (props: any) => {
             />
             {data && Object.keys(data).length && (
                 <Metrics
-                    gt={gt}
-                    amplitude_project_id={amplitude_project_id}
-                    amplitude_endpoint={amplitude_endpoint}
                     viewer={'tabell'}
                     page={page}
                     section={''}
