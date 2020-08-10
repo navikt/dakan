@@ -32,7 +32,7 @@ spec:
     enabled: true
     paths:
       - kvPath: {{kvPath}}
-      - mountPath: {{mountPath}}
+        mountPath: {{mountPath}}
   prometheus:
     enabled: true
     path: /begrep
