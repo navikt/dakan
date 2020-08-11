@@ -86,7 +86,7 @@ const Viewer = (props: any) => {
                         tagOptions={tagOptions}
                         comments={comments}
                         setComments={setComments}
-                        numberOfColumns={columns.length}
+                        numberOfColumns={columns && columns.length}
                     />
                 </Block>
             )}
