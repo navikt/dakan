@@ -10,16 +10,14 @@ const link = env('HOME_URL') || '../'
 export default function App() {
   return (
     <ThemeProvider theme={navTheme()}>
-      <Header
-        config={{
-          nav: true,
-          about: true,
-          aboutLink: 'https://data.nav.no/about',
-          link: link,
-        }}
-      />
       <Switch>
         <Route exact path="/kafka/:id" component={Viewer} />
+        <Header
+          config={{
+            nav: true,
+            about: true,
+          }}
+        />
         <Route
           component={() => (
             <Block display="flex" justifyContent="center">
