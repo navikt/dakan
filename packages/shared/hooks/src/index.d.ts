@@ -4,3 +4,4 @@ export declare const useTags
 export declare const useNode
 export declare const useNodeEdges
 export declare const useContent
+export declare const useClientUser
