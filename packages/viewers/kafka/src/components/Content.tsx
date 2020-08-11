@@ -22,7 +22,6 @@ const Content = (props: any): JSX.Element => {
     numberOfFields,
     comments,
     setComments,
-    clientUser,
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
@@ -59,7 +58,6 @@ const Content = (props: any): JSX.Element => {
                 dataId={data.id}
                 comments={comments}
                 setComments={setComments}
-                clientUser={clientUser}
                 server={graph_server}
               />
             </Block>
@@ -82,7 +80,6 @@ const Content = (props: any): JSX.Element => {
                   <TopicFields
                     fieldsToView={filterText ? filterFields : fields}
                     tagOptions={tagOptions}
-                    clientUser={clientUser}
                   />
                 </React.Fragment>
               )}

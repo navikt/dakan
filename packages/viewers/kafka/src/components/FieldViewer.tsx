@@ -9,7 +9,6 @@ import GetValue from '../utils/GetValue'
 const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
-  console.log(props)
   const { field, tagOptions, clientUser } = props
   const [tags, loading, error, setTags] = useTags(field.id)
 
