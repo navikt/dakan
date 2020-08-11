@@ -1,8 +1,8 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
-import {Block} from 'baseui/block';
-import {Header, LoadingSpinner} from '@dakan/ui';
-import {Metrics} from '@dakan/metrics';
+import { Block } from 'baseui/block';
+import { Header, LoadingSpinner } from '@dakan/ui';
+import { Metrics } from '@dakan/metrics';
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import Content from '../component/Content';
@@ -23,30 +23,48 @@ const Viewer = (props: any) => {
 
     const getHeader = () => (
         <Header
-          config={{
-            nav: true,
-            about: true,
-            showLoginButton: true
-          }}
+            config={{
+                nav: true,
+                about: true,
+                showLoginButton: true
+            }}
         />
-      )
-    
-      if (props.match.params.id === 'test') {
+    )
+
+    const sortNodesByPropertyTime = (data: any) => {
+        return data.sort((a: any, b: any) => {
+            if (
+                a.properties.date + 't' + a.properties.time <
+                b.properties.date + 't' + b.properties.time
+            ) {
+                return 1
+            }
+            if (
+                a.properties.date + 't' + a.properties.time >
+                b.properties.date + 't' + b.properties.time
+            ) {
+                return -1
+            }
+            return 0
+        })
+    }
+
+    if (props.match.params.id === 'test') {
         return (
-          <Block>
-            {getHeader()}
-            <Content
-              {...props}
-              data={exampleJson}
-              columns={exampleColumnJson}
-              tagOptions={exampleTags}
-              numberOfColumns={exampleColumnJson.length}
-              comments={exampleComments}
-              setComments={setComments}
-            />
-          </Block>
+            <Block>
+                {getHeader()}
+                <Content
+                    {...props}
+                    data={exampleJson}
+                    columns={exampleColumnJson}
+                    tagOptions={exampleTags}
+                    numberOfColumns={exampleColumnJson.length}
+                    comments={exampleComments}
+                    setComments={setComments}
+                />
+            </Block>
         )
-      }
+    }
 
     if (loadingNode) {
         return (
@@ -62,33 +80,26 @@ const Viewer = (props: any) => {
 
     return (
         <React.Fragment>
-            <Header
-                config={{
-                    brand: title,
-                    nav: true,
-                    about: true,
-                    showLoginButton: true
-                }}
-            />
-            {node && Object.keys(node).length && (
-                <Metrics
-                    viewer={'tabell'}
-                    page={node.id}
-                    section={''}
-                />
-            )}
-            {node && (
-                <Block>
-                    <Block display="flex" justifyContent="flex-end"></Block>
-                    <Content
-                        data={node}
-                        columns={columns}
-                        tagOptions={tagOptions}
-                        comments={comments}
-                        setComments={setComments}
-                        numberOfColumns={columns && columns.length}
+            {getHeader()}
+            {node && node.preoperties && (
+                <React.Fragment>
+                    <Metrics
+                        viewer={'tabell'}
+                        page={node.id}
+                        section={''}
                     />
-                </Block>
+                    <Block>
+                        <Block display="flex" justifyContent="flex-end"></Block>
+                        <Content
+                            data={node}
+                            columns={columns}
+                            tagOptions={tagOptions}
+                            comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
+                            setComments={setComments}
+                            numberOfColumns={columns && columns.length}
+                        />
+                    </Block>
+                </React.Fragment>
             )}
         </React.Fragment>
     );

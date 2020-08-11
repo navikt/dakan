@@ -7,23 +7,19 @@ import env from '@beam-australia/react-env'
 import Viewer from './pages/Viewer'
 
 const title = env('TITLE') || 'Tableau'
-const link = env('HOME_URL') || 'https://data.nav.no/about'
-const about = env('ABOUT_URL') || 'https://data.nav.no/about'
 
 export default function App() {
   return (
     <ThemeProvider theme={navTheme()}>
-      <Header
-        config={{
-          brand: title,
-          nav: true,
-          about: true,
-          aboutLink: about,
-          link: link,
-        }}
-      />
       <Switch>
         <Route exact path="/tableau/:id" component={Viewer} />
+        <Header
+          config={{
+            brand: title,
+            nav: true,
+            about: true
+          }}
+        />
         <Route
           component={() => (
             <Block>
