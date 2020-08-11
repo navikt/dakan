@@ -88,7 +88,6 @@ const Content = (props: any): JSX.Element => {
                             dataId={props.data.id}
                             comments={props.comments}
                             setComments={props.setComments}
-                            clientUser={props.clientUser}
                             server={server}
                         />
                         {props.columns && (
@@ -107,7 +106,6 @@ const Content = (props: any): JSX.Element => {
                                 <TableColumns
                                     columnsToView={filterText ? filteredColumns : props.columns}
                                     tagOptions={props.tagOptions}
-                                    clientUser={props.clientUser}
                                 />
                             </React.Fragment>
                         )}
