@@ -23,7 +23,6 @@ import {
 
 export const ToggleComments = (prop) => {
   const { dataId, comments, setComments, server } = prop
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [commentIndex, setCommentIndex] = React.useState(0)
   const [commentContent, setCommentContent] = React.useState({})
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
