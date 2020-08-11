@@ -8,31 +8,20 @@ import env from '@beam-australia/react-env';
 
 import GetValue from '../utils/GetValue';
 import ToggleDetails from './ToggleDetails';
-import axios from 'axios';
+import { useTags } from '@dakan/hooks'
 
 const server = env('SERVER');
 
 const ColumnViewer = (prop: any) => {
     const {columnData, tagOptions} = prop;
 
-    const [columnTags, setColumnTags] = React.useState([]);
+    const [tags, loading, error, setTags] = useTags(columnData.id)
 
     const [, theme] = useStyletron();
 
-    const handleGetTagResponse = (response: any) => {
-        if (typeof response.data === 'object' && response.data !== null) {
-            setColumnTags(response.data);
-        } else {
-            console.log(response);
-        }
-    };
-
-    React.useEffect(() => {
-        axios
-            .get(`${server}/node/out/${columnData.id}/hasTag`)
-            .then(handleGetTagResponse)
-            .catch((e) => console.log(e));
-    }, [columnData.id]);
+    if (error) {
+        console.log(error)
+      }
 
     const getData = () => {
         const items = [
@@ -220,11 +209,12 @@ const ColumnViewer = (prop: any) => {
                                 marginBottom="scale600"
                             >
                                 <SelectOpplysningstype
+                                    isLoading={loading}
                                     dataId={columnData.id}
                                     tagOptions={tagOptions}
                                     serverUrl={server}
-                                    columnTags={columnTags}
-                                    setColumnTags={setColumnTags}
+                                    columnTags={tags}
+                                    setColumnTags={setTags}
                                 />
                             </Block>
                         </Block>
