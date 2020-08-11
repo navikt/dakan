@@ -4,7 +4,7 @@ import { StyledLink } from 'baseui/link'
 import { LabelMedium } from 'baseui/typography'
 import env from '@beam-australia/react-env'
 import { SelectOpplysningstype } from '@dakan/ui'
-import { useTags } from '@dakan/hooks'
+import { useNodeEdges } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
 
@@ -12,7 +12,7 @@ const server = env('GRAPH_SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useTags(view.id)
+  const [tags, loading, error, setTags] = useNodeEdges(view.id, 'hasTag')
 
   if (error) {
     console.log(error)
