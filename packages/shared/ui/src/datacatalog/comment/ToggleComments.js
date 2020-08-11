@@ -3,7 +3,8 @@ import { Accordion } from 'baseui/accordion'
 import { Panel } from '../accordion/Panel'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
-import { LabelLarge, H5, LabelMedium } from 'baseui/typography'
+import { LabelLarge, LabelMedium } from 'baseui/typography'
+import {useClientUser} from '@dakan/hooks'
 import { useStyletron } from 'baseui'
 
 import { Button } from '../../components/button/Button'
@@ -21,7 +22,7 @@ import {
 } from '../../components/icons'
 
 export const ToggleComments = (prop) => {
-  const { dataId, comments, setComments, clientUser, server } = prop
+  const { dataId, comments, setComments, server } = prop
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [commentIndex, setCommentIndex] = React.useState(0)
   const [commentContent, setCommentContent] = React.useState({})
@@ -31,6 +32,8 @@ export const ToggleComments = (prop) => {
   const [isExpanded, setIsExpanded] = React.useState('')
   const [panelTitle, setPanelTitle] = React.useState('Vis mer')
   const [commentSize, setCommentSize] = React.useState('250px')
+
+  const clientUser = useClientUser()
 
   const [, theme] = useStyletron()
 

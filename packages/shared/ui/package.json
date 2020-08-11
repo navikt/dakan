@@ -46,6 +46,7 @@
         "typescript": "^3.6.3"
     },
     "dependencies": {
+        "@beam-australia/react-env": "^2.1.2",
         "@fortawesome/fontawesome-svg-core": "^1.2.27",
         "@fortawesome/free-solid-svg-icons": "^5.12.1",
         "@fortawesome/react-fontawesome": "^0.1.8",

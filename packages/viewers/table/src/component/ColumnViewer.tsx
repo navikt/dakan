@@ -13,7 +13,7 @@ import axios from 'axios';
 const server = env('SERVER');
 
 const ColumnViewer = (prop: any) => {
-    const {columnData, tagOptions, clientUser} = prop;
+    const {columnData, tagOptions} = prop;
 
     const [columnTags, setColumnTags] = React.useState([]);
 
@@ -225,7 +225,6 @@ const ColumnViewer = (prop: any) => {
                                     serverUrl={server}
                                     columnTags={columnTags}
                                     setColumnTags={setColumnTags}
-                                    clientUser={clientUser}
                                 />
                             </Block>
                         </Block>

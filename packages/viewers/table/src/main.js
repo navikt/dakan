@@ -22,8 +22,6 @@ export default function App() {
                                     brand: title,
                                     nav: true,
                                     about: true,
-                                    aboutLink: 'https://data.nav.no/about',
-                                    link: link,
                                 }}
                             />
                             <Block display="flex" justifyContent="center">

@@ -6,11 +6,11 @@ import { useTags } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
 
-const server = env('SERVER')
+const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
   const { field, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useTags(server, field.id)
+  const [tags, loading, error, setTags] = useTags(field.id)
 
   if (error) {
     console.log(error)
