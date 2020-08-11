@@ -8,6 +8,8 @@ import { StatefulPopover } from 'baseui/popover'
 import { Button as BaseuiButton, KIND, SHAPE } from 'baseui/button'
 import { Drawer, ANCHOR } from 'baseui/drawer'
 import { StatefulMenu, OptionList } from 'baseui/menu'
+import env from '@beam-australia/react-env'
+import {useClientUser} from '@dakan/hooks'
 
 import {
   InfoIcon,
@@ -21,12 +23,16 @@ import { MenuIcon } from '../icons/MenuIcon'
 
 const iconSize = 20
 
+const graph_server = env('GRAPH_SERVER')
+const home_link = env('HOME_URL')
+const about_link = env('ABOUT_URL') || '../about'
+
 const CustomLink = (props) => {
-  const [useCss, theme] = useStyletron()
+  const [useCss, ] = useStyletron()
   const link = useCss({ textDecoration: 'none' })
-  if (props.config && props.config.link) {
+  if (home_link) {
     return (
-      <Link href={props.config.link} className={link} aria-label="link">
+      <Link href={home_link} className={link} aria-label="link">
         <Block
           font={props.font || 'font650'}
           color={props.color || 'colorPrimary'}
@@ -57,12 +63,6 @@ const NoStyleLink = (props) => (
 )
 
 const Brand = (props) => {
-  const [useCss, theme] = useStyletron()
-  const link = useCss({ textDecoration: 'none' })
-  const to =
-    props && props.config && props.config.link
-      ? props.config.link
-      : process.env.HOME_URL
   return (
     <Block display="flex" alignItems="center">
       <CustomLink {...props}>{DataKatalogLogo}</CustomLink>
@@ -71,18 +71,18 @@ const Brand = (props) => {
 }
 
 const UserLogin = (props) => {
-  if (props.config.clientUser && props.config.clientUser.initial) {
+  if (props.clientUser && props.clientUser.initial) {
     return (
       <StatefulPopover
         placement="bottom"
         content={
           <Block padding="scale400">
             <Label2 display="flex" width="100%">
-              {props.config.clientUser.userId}
+              {props.clientUser.userId}
             </Label2>
             <Block display="flex" width="100%">
               <StyledLink
-                href={`${props.config.server}/logout?redirect_url=${window.location.href}`}
+                href={`${graph_server}/logout?redirect_url=${window.location.href}`}
               >
                 Logg ut
               </StyledLink>
@@ -91,14 +91,14 @@ const UserLogin = (props) => {
         }
       >
         <BaseuiButton shape={SHAPE.round}>
-          {props.config.clientUser.initial}
+          {props.clientUser.initial}
         </BaseuiButton>
       </StatefulPopover>
     )
   } else {
     return (
       <StyledLink
-        href={`${props.config.server}/login?redirect_url=${window.location.href}`}
+        href={`${graph_server}/login?redirect_url=${window.location.href}`}
         style={{ textDecoration: 'none' }}
       >
         <Button>Logg inn</Button>
@@ -115,37 +115,37 @@ const SideBar = (props) => {
   const getItems = () => {
     let items = []
     if (props && props.config && props.config.showLoginButton) {
-      if (props.config.clientUser && props.config.clientUser.initial) {
+      if (props.clientUser && props.clientUser.initial) {
         items.push({
           label: (
             <Block>
               <Block>
                 <Label2 display="flex" width="100%">
-                  {props.config.clientUser.userId}
+                  {props.clientUser.userId}
                 </Label2>
               </Block>
               <Block>
                 <StyledLink
-                  href={`${props.config.server}/logout?redirect_url=${window.location.href}`}
+                  href={`${graph_server}/logout?redirect_url=${window.location.href}`}
                 >
                   Logg ut
                 </StyledLink>
               </Block>
             </Block>
           ),
-          href: `${props.config.server}/logout?redirect_url=${window.location.href}`,
+          href: `${graph_server}/logout?redirect_url=${window.location.href}`,
         })
       } else {
         items.push({
           label: 'Logg inn',
-          href: `${props.config.server}/login?redirect_url=${window.location.href}`,
+          href: `${graph_server}/login?redirect_url=${window.location.href}`,
         })
       }
     }
     if (props && props.config && props.config.about)
       items.push({
         label: props.config.about_label || 'om',
-        href: props.config.aboutLink,
+        href: about_link,
       })
     if (props && props.config && props.config.contact)
       items.push({ label: props.config.contact_label || 'kontakt', href: '' })
@@ -195,6 +195,7 @@ const SideBar = (props) => {
 export const Header = (props) => {
   const [css, theme] = useStyletron()
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false)
+  const clientUser = useClientUser()
   const link = css({ textDecoration: 'none' })
   let showHeaderLineImage = true
   if (props && props.config && props.config.showHeaderLineImage === false) {
@@ -207,6 +208,7 @@ export const Header = (props) => {
         <SideBar
           isOpen={isSideBarOpen}
           setIsOpen={setIsSideBarOpen}
+          clientUser={clientUser}
           {...props}
         />
         <Block
@@ -241,7 +243,7 @@ export const Header = (props) => {
     return (
       <Block>
         {props && props.config && props.config.about && (
-          <NoStyleLink href={props.config.aboutLink}>
+          <NoStyleLink href={about_link}>
             <Button
               kind={KIND.minimal}
               startEnhancer={
@@ -307,7 +309,7 @@ export const Header = (props) => {
               {getContactButton()}
               <Block>
                 {props && props.config && props.config.showLoginButton && (
-                  <UserLogin {...props} />
+                  <UserLogin clientUser={clientUser} {...props} />
                 )}
               </Block>
             </Block>
