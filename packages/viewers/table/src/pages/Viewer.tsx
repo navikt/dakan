@@ -16,7 +16,7 @@ const title = env('TITLE') || 'Data';
 
 const Viewer = (props: any) => {
 
-    const [node, loadingNode, errorLoadingNode] = useNode(props.match.params.id)
+    const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
     const [columns, loadingColumns, errorLoadingColumns] = useNodeEdges(props.match.params.id, 'hasMember')
     const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype')
     const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(props.match.params.id, 'hasComment')
@@ -57,7 +57,7 @@ const Viewer = (props: any) => {
     }
 
     if (errorLoadingNode && !Object.keys(node).length) {
-        return <TableNotFound error={errorLoadingNode} />;
+        return <TableNotFound error={errorMessage} />;
     }
 
     return (

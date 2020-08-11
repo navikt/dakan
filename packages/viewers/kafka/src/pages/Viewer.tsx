@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Spinner } from 'baseui/spinner'
 import { Metrics } from '@dakan/metrics'
-import { Header } from '@dakan/ui'
+import { Header, LoadingSpinner } from '@dakan/ui'
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import Content from '../components/Content'
@@ -14,7 +13,7 @@ import exampleTags from '../resources/exampleTags.json'
 import exampleComments from '../resources/exampleComments.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode] = useNode(props.match.params.id)
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
   const [fields, loadingFields, errorLoadingFields] = useNodeEdges(props.match.params.id, 'hasMember')
   const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype')
   const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(props.match.params.id, 'hasComment')
@@ -67,13 +66,13 @@ const Viewer = (props: any) => {
   if (loadingNode) {
     return (
       <Block display="flex" justifyContent="center">
-        <Spinner size={96} />
+        <LoadingSpinner size={96} />
       </Block>
     )
   }
 
   if (errorLoadingNode && !Object.keys(node).length) {
-    return <TopicNotFound error={errorLoadingNode} />
+    return <TopicNotFound error={errorMessage} />
   }
 
   console.log("test")
