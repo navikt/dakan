@@ -253,60 +253,60 @@ export const LayoutSplit = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <Block
-        display="flex"
-        width="100%"
-        minHeight="100vh"
-        alignItems="flex-start"
-        flexDirection="column"
-      >
+      <Block paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
         <Block
           display="flex"
-          justifyContent="center"
           width="100%"
-          paddingLeft={MARGIN_LEFT}
-        >
-          <Block
-            display="flex"
-            justifyContent="flex-start"
-            width="100%"
-            maxWidth={theme.breakpoints.large + 'px'}
-          >
-            <Block flex="1" width="100%">
-              <Heading {...props} />
-            </Block>
-          </Block>
-        </Block>
-
-        <Block
-          display="flex"
-          justifyContent="center"
-          width="100%"
-          paddingLeft={MARGIN_LEFT}
+          minHeight="100vh"
+          alignItems="flex-start"
+          flexDirection="column"
         >
           <Block
             display="flex"
             justifyContent="center"
             width="100%"
-            alignItems="flex-start"
-            maxWidth={theme.breakpoints.large + 'px'}
           >
             <Block
-              display={['none', 'none', 'block']}
-              flex="1"
-              paddingRight="scale800"
+              display="flex"
+              justifyContent="flex-start"
+              width="100%"
+              maxWidth={theme.breakpoints.large + 'px'}
             >
-              {props.left}
+              <Block flex="1" width="100%">
+                <Heading {...props} />
+              </Block>
             </Block>
-            <Block flex="1" width="100%" paddingRight="scale800">
+          </Block>
+
+          <Block
+            display="flex"
+            justifyContent="center"
+            width="100%"
+          >
+            <Block
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              alignItems="flex-start"
+              maxWidth={theme.breakpoints.large + 'px'}
+            >
               <Block
-                display={['block', 'block', 'none']}
+                display={['none', 'none', 'block']}
                 flex="1"
-                marginBottom="scale1200"
+                paddingRight="scale800"
               >
                 {props.left}
               </Block>
-              {props.right}
+              <Block flex="1" width="100%">
+                <Block
+                  display={['block', 'block', 'none']}
+                  flex="1"
+                  marginBottom="scale1200"
+                >
+                  {props.left}
+                </Block>
+                {props.right}
+              </Block>
             </Block>
           </Block>
         </Block>
