@@ -11,7 +11,7 @@ import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
 
-const server = env('SERVER');
+const server = env('GRAPH_SERVER');
 
 const items = (props: any): JSX.Element[] => {
     const content = props.properties;

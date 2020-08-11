@@ -12,7 +12,7 @@ import GetValue from '../utils/GetValue'
 import FilterFieldList from '../utils/FilterFieldList'
 import TopicFields from './TopicFields'
 
-const server = env('SERVER')
+const graph_server = env('GRAPH_SERVER')
 
 const Content = (props: any): JSX.Element => {
   const {
@@ -60,7 +60,7 @@ const Content = (props: any): JSX.Element => {
                 comments={comments}
                 setComments={setComments}
                 clientUser={clientUser}
-                server={server}
+                server={graph_server}
               />
             </Block>
           }

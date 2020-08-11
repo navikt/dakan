@@ -4,13 +4,13 @@ import axios from 'axios'
 
 const server = env('GRAPH_SERVER')
 
-export function useNode(id) {
-  const [node, setNode] = React.useState([])
+export function useContent(id) {
+  const [data, setData] = React.useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
   const getData = (response) => {
-    if (typeof response.data !== 'object') throw Error('Error fetching node')
+    if (typeof response.data !== 'object') throw Error(`Error fetching content: ${id}`)
     return response.data
   }
 
@@ -18,9 +18,9 @@ export function useNode(id) {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`${server}/node/${id}`)
+        const response = await axios.get(`${server}/nodes/${id}`)
         const data = await getData(response)
-        setNode(data)
+        setData(data)
       } catch (e) {
         setError(true)
       }
@@ -31,10 +31,11 @@ export function useNode(id) {
 
 
   return [
-    node,
+    data,
     loading,
     error,
+    setData
   ]
 }
 
-export default useNode
+export default useContent

@@ -37,7 +37,7 @@ export const DataKatalogLogo = (
     <rect x="150" width="8" height="8" fill="#5AC4FF" />
     <path
       fill-rule="evenodd"
-      clip-rule="evenodd"
+      clipRule="evenodd"
       d="M134 8H0V40H142V16H134V8Z"
       fill="#5AC4FF"
     />

@@ -8,11 +8,11 @@ import { useTags } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
 
-const server = env('SERVER')
+const server = env('GRAPH_SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useTags(server, view.id)
+  const [tags, loading, error, setTags] = useTags(view.id)
 
   if (error) {
     console.log(error)

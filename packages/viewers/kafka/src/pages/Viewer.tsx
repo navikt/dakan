@@ -14,21 +14,35 @@ import HandleAxiosError from '../utils/HandleAxiosError'
 import exampleComments from '../resources/exampleComments.json'
 import TopicNotFound from '../components/TopicNotFound'
 
-const graph_server = env('GRAPH_SERVER')
+import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 const Viewer = (props: any) => {
-  const [data, setData] = React.useState<any>()
-  const [fields, setFields] = React.useState({})
-  const [error, setError] = React.useState()
-  const [tagOptions, setTagOptions] = React.useState([{}])
-  const [numberOfFields, setNumberOfFields] = React.useState(0)
-  const [showSpinner, setShowSpinner] = React.useState(true)
-  const [clientUser, setClientUser] = React.useState({})
-  const [comments, setComments] = React.useState([{}])
+  const [node, loadingNode, errorLoadingNode] = useNode(props.match.params.id)
+  const [fields, loadingFields, errorLoadingFields] = useNodeEdges(props.match.params.id, 'hasMember')
+  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype')
+  const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(props.match.params.id, 'hasComment')
 
-  const handleGetCommentsResponse = (response: any) => {
-    if (typeof response.data === 'object' && response.data !== null) {
-      const commentList = [...response.data].sort((a, b) => {
+  const [showSpinner, setShowSpinner] = React.useState(false)
+  const [clientUser, setClientUser] = React.useState({})
+
+
+  if (props.match.params.id === 'test') {
+    return (
+      <Content
+        {...props}
+        data={exampleKafkaJson}
+        fields={exampleTopicFieldJson}
+        tagOptions={exampleTags }
+        numberOfFields={exampleTopicFieldJson.length}
+        comments={exampleComments}
+        setComments={setComments}
+        clientUser={clientUser}
+      />
+    )
+  }
+
+  const sortNodesByPropertyTime = (data) => {
+      return data.sort((a, b) => {
         if (
           a.properties.date + 't' + a.properties.time <
           b.properties.date + 't' + b.properties.time
@@ -43,13 +57,9 @@ const Viewer = (props: any) => {
         }
         return 0
       })
-      setComments(commentList)
-    } else {
-      setError(response)
-    }
   }
 
-  const handleGetTopicFields = (response: any) => {
+/*   const handleGetTopicFields = (response: any) => {
     if (typeof response.data === 'object' && response.data !== null) {
       setFields(response.data)
       setNumberOfFields(response.data.length)
@@ -58,15 +68,15 @@ const Viewer = (props: any) => {
       setError(response)
       setShowSpinner(false)
     }
-  }
+  } */
 
-  const handleResponse = (response: any) => {
+  /* const handleResponse = (response: any) => {
     if (typeof response.data === 'object' && response.data !== null) {
       setData(response.data)
       if (response.data.id) {
         axios
           .get(`${graph_server}/node/out/${response.data.id}/hasMember`)
-          .then(handleGetTopicFields)
+          //.then(handleGetTopicFields)
           .catch((e) => HandleAxiosError(e, setError))
 
         axios
@@ -87,6 +97,21 @@ const Viewer = (props: any) => {
     }
   }
 
+
+
+
+  if (showSpinner) {
+    return (
+      <Block display="flex" justifyContent="center">
+        <Spinner size={96} />
+      </Block>
+    )
+  }
+/* 
+  if (error && !Object.keys(fields).length) {
+    return <TopicNotFound error={error} />
+  } */
+
   const getAzureAuth = () => {
     const tokenId = Cookies.get('ClientToken')
     const clientUser = Cookies.get('ClientUser')
@@ -97,58 +122,23 @@ const Viewer = (props: any) => {
     }
   }
 
-  React.useEffect(() => {
-    if (props.match.params.id === 'test') {
-      setData(exampleKafkaJson)
-      setComments(exampleComments)
-      setFields(exampleTopicFieldJson)
-      setTagOptions(exampleTags)
-      setNumberOfFields(exampleTopicFieldJson.length)
-      setShowSpinner(false)
-      getAzureAuth()
-    } else {
-      axios
-        .get(`${graph_server}/node/${props.match.params.id}`)
-        .then(handleResponse)
-        .catch((e) => {
-          HandleAxiosError(e, setError)
-          setShowSpinner(false)
-        })
-      axios
-        .get(`${graph_server}/nodes/opplysningstype`)
-        .then(handleGetInformationTypeResponse)
-        .catch((e) => HandleAxiosError(e, setError))
-      getAzureAuth()
-    }
-  }, [props.match.params.id])
-
-  if (showSpinner) {
-    return (
-      <Block display="flex" justifyContent="center">
-        <Spinner size={96} />
-      </Block>
-    )
-  }
-
-  if (error && !Object.keys(data).length) {
-    return <TopicNotFound error={error} />
-  }
-
   return (
     <React.Fragment>
-      {data && data.properties && (
+     {loadingNode}
+     {errorLoadingNode}
+     {node && node.properties && (
         <Block>
           <Metrics
             viewer={'kafka'}
-            page={data.properties.topic_name}
+            page={node.id}
             section={''}
           />
           <Content
-            data={data}
+            data={node}
             fields={fields}
             tagOptions={tagOptions}
-            numberOfFields={numberOfFields}
-            comments={comments}
+            numberOfFields={fields && fields.length}
+            comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
             setComments={setComments}
             clientUser={clientUser}
           />
