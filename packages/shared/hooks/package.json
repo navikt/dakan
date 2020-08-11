@@ -29,6 +29,7 @@
         "@beam-australia/react-env": "^2.1.2",
         "axios": "^0.19.2",
         "baseui": "^9.91.0",
+        "js-cookie": "^2.2.1",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-markdown": "^4.3.1",
