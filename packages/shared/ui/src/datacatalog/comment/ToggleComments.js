@@ -4,7 +4,7 @@ import { Panel } from '../accordion/Panel'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
 import { LabelLarge, LabelMedium } from 'baseui/typography'
-import {useClientUser} from '@dakan/hooks'
+import { useClientUser } from '@dakan/hooks'
 import { useStyletron } from 'baseui'
 
 import { Button } from '../../components/button/Button'
@@ -36,6 +36,23 @@ export const ToggleComments = (prop) => {
   const clientUser = useClientUser()
 
   const [, theme] = useStyletron()
+
+  const getAddCommentButton = () => (
+    <Block display="flex" paddingTop="scale400">
+      <Button
+        kind={KIND.secondary}
+        startEnhancer={<AddIcon />}
+        startEnhancerHover={<AddIcon fill="white" />}
+        onClick={() => {
+          CheckIfAuthorized(server, () => {
+            setIsAddCommentOpen(true)
+          })
+        }}
+      >
+        Legg til
+              </Button>
+    </Block>
+  )
 
   const getComments = () => {
     return comments.map((comment, index) => {
@@ -150,13 +167,11 @@ export const ToggleComments = (prop) => {
           <LabelMedium>
             <b>Kommentarer</b>
           </LabelMedium>
-          <Block padding="1em" backgroundColor="#F4F4F4">
-            {comments && comments.length > 0 && (
+          {comments && comments.length > 0 && comments[0].properties ? (
+            <Block padding="1em" backgroundColor={"#F4F4F4"}>
               <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>
                 {getComments()}
               </Block>
-            )}
-            {comments && comments.length > 0 && comments[0].properties && (
               <Block paddingTop="scale400">
                 <Accordion
                   onChange={(e) => {
@@ -179,22 +194,9 @@ export const ToggleComments = (prop) => {
                   />
                 </Accordion>
               </Block>
-            )}
-            <Block display="flex" paddingTop="scale400">
-              <Button
-                kind={KIND.secondary}
-                startEnhancer={<AddIcon />}
-                startEnhancerHover={<AddIcon fill="white" />}
-                onClick={() => {
-                  CheckIfAuthorized(server, () => {
-                    setIsAddCommentOpen(true)
-                  })
-                }}
-              >
-                Legg til
-              </Button>
+              {getAddCommentButton()}
             </Block>
-          </Block>
+          ): getAddCommentButton()}
         </Block>
       }
     </Block>
