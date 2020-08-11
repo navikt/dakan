@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { SelectOpplysningstype, Label } from '@dakan/ui'
 import env from '@beam-australia/react-env'
-import { useTags } from '@dakan/hooks'
+import { useNodeEdges } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
 
@@ -10,7 +10,7 @@ const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
   const { field, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useTags(field.id)
+  const [tags, loading, error, setTags] = useNodeEdges(field.id, 'hasTag')
 
   if (error) {
     console.log(error)

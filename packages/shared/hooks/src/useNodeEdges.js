@@ -29,7 +29,7 @@ export function useNodeEdges(id, type) {
     fetchData()
   }, [id])
 
-  return [data, loading, error]
+  return [data, loading, error, setData]
 }
 
 export default useNodeEdges

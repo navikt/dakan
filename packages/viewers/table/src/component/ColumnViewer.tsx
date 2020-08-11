@@ -8,14 +8,14 @@ import env from '@beam-australia/react-env';
 
 import GetValue from '../utils/GetValue';
 import ToggleDetails from './ToggleDetails';
-import { useTags } from '@dakan/hooks'
+import { useNodeEdges } from '@dakan/hooks'
 
 const server = env('SERVER');
 
 const ColumnViewer = (prop: any) => {
     const {columnData, tagOptions} = prop;
 
-    const [tags, loading, error, setTags] = useTags(columnData.id)
+    const [tags, loading, error, setTags] = useNodeEdges(columnData.id, 'hasTag')
 
     const [, theme] = useStyletron();
 
