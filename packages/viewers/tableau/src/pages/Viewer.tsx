@@ -58,9 +58,8 @@ const Viewer = (props: any) => {
         <Content
           {...props}
           data={exampleJson}
-          columns={exampleTableauViewsJson}
+          viewList={exampleTableauViewsJson}
           tagOptions={exampleTags}
-          numberOfColumns={exampleTableauViewsJson.length}
           comments={exampleComments}
           setComments={setComments}
         />
