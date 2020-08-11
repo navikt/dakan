@@ -6,7 +6,6 @@ import env from '@beam-australia/react-env'
 import { Block } from 'baseui/block'
 
 const title = env('TITLE') || 'Data'
-const link = env('HOME_URL') || '../'
 
 export default function App() {
   return (
@@ -15,9 +14,7 @@ export default function App() {
         config={{
           brand: title,
           nav: true,
-          about: true,
-          aboutLink: 'https://data.nav.no/about',
-          link: link,
+          about: true
         }}
       />
       <Switch>
