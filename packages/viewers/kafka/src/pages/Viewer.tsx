@@ -3,7 +3,7 @@ import { Block } from 'baseui/block'
 import { Spinner } from 'baseui/spinner'
 import { Metrics } from '@dakan/metrics'
 import { Header } from '@dakan/ui'
-import { useNode, useNodeEdges, useContent, useClientUser } from '@dakan/hooks'
+import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import Content from '../components/Content'
 import TopicNotFound from '../components/TopicNotFound'
@@ -19,14 +19,11 @@ const Viewer = (props: any) => {
   const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype')
   const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(props.match.params.id, 'hasComment')
 
-  const clientUser = useClientUser()
-
   const getHeader = () => (
     <Header
       config={{
         nav: true,
         about: true,
-        clientUser: clientUser,
         showLoginButton: true
       }}
     />
