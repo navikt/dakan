@@ -8,6 +8,7 @@ export function useNode(id) {
   const [node, setNode] = React.useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const getData = (response) => {
     if (typeof response.data !== 'object') throw Error('Error fetching node')
@@ -23,6 +24,7 @@ export function useNode(id) {
         setNode(data)
       } catch (e) {
         setError(true)
+        setErrorMessage(JSON.stringify(e))
       }
       setLoading(false)
     }
@@ -34,6 +36,7 @@ export function useNode(id) {
     node,
     loading,
     error,
+    errorMessage
   ]
 }
 
