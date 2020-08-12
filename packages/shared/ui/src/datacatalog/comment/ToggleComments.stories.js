@@ -1,4 +1,6 @@
 import * as React from 'react'
+import {Block} from 'baseui/block'
+
 import { ThemeProvider, navTheme } from '../../theme'
 import ToggleComments from './ToggleComments'
 
@@ -78,16 +80,30 @@ export const NAV_theme = () => {
 
   return (
     <ThemeProvider theme={navTheme()}>
-      <ToggleComments
-        dataId={dataId}
-        comments={comments}
-        setComments={setComments}
-        clientUser={clientUser}
-        server={server}
-        title={title}
-        edgeLabel={edgeLabel}
-        nodeLabel={nodeLabel}
-      />
+      <Block marginBottom='scale1200'>
+        <ToggleComments
+          dataId={dataId}
+          comments={comments}
+          setComments={setComments}
+          clientUser={clientUser}
+          server={server}
+          title={title}
+          edgeLabel={edgeLabel}
+          nodeLabel={nodeLabel}
+        />
+      </Block>
+      <Block>
+        <ToggleComments
+          dataId={dataId}
+          comments={comments}
+          setComments={setComments}
+          clientUser={clientUser}
+          server={server}
+          title='Beskrivelse'
+          edgeLabel='hasDescription'
+          nodeLabel='table_description'
+        />
+      </Block>
     </ThemeProvider>
   )
 }
