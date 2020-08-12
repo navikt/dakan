@@ -78,7 +78,9 @@ const Content = (props: any): JSX.Element => {
                 dataId={data.id}
                 comments={comments}
                 setComments={setComments}
-                clientUser={clientUser}
+                title='Kommentar'
+                edgeLabel='hasComment'
+                nodeLabel='tableau_comment'
               />
             </Block>
           }

@@ -6,13 +6,10 @@ import {
   Searchbox,
   ToggleComments,
 } from '@dakan/ui'
-import env from '@beam-australia/react-env'
 
 import GetValue from '../utils/GetValue'
 import FilterFieldList from '../utils/FilterFieldList'
 import TopicFields from './TopicFields'
-
-const graph_server = env('GRAPH_SERVER')
 
 const Content = (props: any): JSX.Element => {
   const {
@@ -58,7 +55,9 @@ const Content = (props: any): JSX.Element => {
                 dataId={data.id}
                 comments={comments}
                 setComments={setComments}
-                server={graph_server}
+                title='Kommentar'
+                edgeLabel='hasComment'
+                nodeLabel='kafka_comment'
               />
             </Block>
           }

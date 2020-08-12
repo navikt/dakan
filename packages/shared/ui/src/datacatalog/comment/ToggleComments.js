@@ -3,7 +3,7 @@ import { Accordion } from 'baseui/accordion'
 import { Panel } from '../accordion/Panel'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
-import { LabelLarge, LabelMedium } from 'baseui/typography'
+import { H5, LabelLarge } from 'baseui/typography'
 import { useClientUser } from '@dakan/hooks'
 import { useStyletron } from 'baseui'
 import env from '@beam-australia/react-env'
@@ -171,9 +171,9 @@ export const ToggleComments = (prop) => {
             clientUser={clientUser}
             server={graph_server}
           />
-          <LabelLarge>
+          <H5>
             <b>{CapitalizeString(title)}</b>
-          </LabelLarge>
+          </H5>
           {comments && comments.length > 0 && comments[0].properties ? (
             <Block padding="1em" backgroundColor={"#F4F4F4"}>
               <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>

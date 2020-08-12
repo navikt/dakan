@@ -2,16 +2,13 @@ import * as React from 'react';
 import {Block} from 'baseui/block';
 import {format} from 'date-fns';
 import {LargeWidth, LabeledContent, ToggleComments, Searchbox} from '@dakan/ui';
-import env from '@beam-australia/react-env';
-import {H5, LabelLarge} from 'baseui/typography';
+import {LabelLarge} from 'baseui/typography';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {useStyletron} from 'baseui';
 
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
-
-const server = env('GRAPH_SERVER');
 
 const items = (props: any): JSX.Element[] => {
     const content = props.properties;
@@ -81,14 +78,13 @@ const Content = (props: any): JSX.Element => {
                 <LargeWidth headingLabel={<b>Databasetabell</b>} headingText={props.data.properties.table_name}>
                     <Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} />
-                        <H5>
-                            <b>Kommentar</b>
-                        </H5>
                         <ToggleComments
                             dataId={props.data.id}
                             comments={props.comments}
                             setComments={props.setComments}
-                            server={server}
+                            title='Kommentar'
+                            edgeLabel='hasComment'
+                            nodeLabel='table_comment'
                         />
                         {props.columns && (
                             <React.Fragment>
