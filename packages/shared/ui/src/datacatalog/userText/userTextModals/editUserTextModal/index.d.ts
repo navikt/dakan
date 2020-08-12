@@ -1,15 +1,16 @@
 import * as React from 'react'
 
-export interface EditCommentModalProps {
+export interface EditUserTextModalProps {
   isOpen?: any
   setIsOpen?: any
-  commentContent?: any
-  commentIndex?: any
-  comments?: any
-  setComments?: any
+  userTextContent?: any
+  userTextIndex?: any
+  userTexts?: any
+  setUserTexts?: any
   tokenId?: any
   server?: any
   title?: string
 }
 
-export declare const EditCommentModal: React.FC<EditCommentModalProps>
+export declare const EditUserTextModal: React.FC<EditUserTextModalProps>
+export default EditUserTextModal

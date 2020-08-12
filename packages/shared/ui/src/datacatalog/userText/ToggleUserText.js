@@ -10,7 +10,7 @@ import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
-import EditCommentModal from './userTextModals/editUserTextModal/EditCommentModal'
+import EditUserTextModal from './userTextModals/editUserTextModal/EditUserTextModal'
 import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
@@ -150,7 +150,7 @@ export const ToggleUserText = (prop) => {
             edgeLabel={edgeLabel}
             nodeLabel={nodeLabel}
           />
-          <EditCommentModal
+          <EditUserTextModal
             title={title}
             isOpen={isEditTextModalOpen}
             setIsOpen={setIsEditTextModalOpen}

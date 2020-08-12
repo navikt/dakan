@@ -37,7 +37,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 1',
-      comment:
+      text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus molestie lorem, quis ultrices libero commodo vel. Cras vitae mauris porta erat congue rutrum. Integer nec facilisis mi, elementum fringilla tellus. Duis pretium lacinia rutrum. Phasellus porta eget nisi ut sagittis. Cras sollicitudin cursus urna, quis eleifend magna scelerisque sit amet. Integer mi neque, tristique euismod mi a, egestas posuere purus. Aenean interdum odio efficitur, vehicula nisl quis, pellentesque lectus. Donec lobortis accumsan sollicitudin.',
       date: '27.des.2014',
       time: '10:12',
@@ -48,7 +48,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 2',
-      comment:
+      text:
         'Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.',
       date: '17.sep.2013',
       time: '17:42',
@@ -67,8 +67,8 @@ export const add_comment_modal = () => {
       <AddCommentModal
         title={title}
         dataId={dataId}
-        comments={comments}
-        setComments={setComments}
+        userText={comments}
+        setUserText={setComments}
         isOpen={isAddCommentOpen}
         setIsOpen={setIsAddCommentOpen}
         clientUser={clientUser}
@@ -93,10 +93,10 @@ export const edit_comment_modal = () => {
       <EditCommentModal
         isOpen={isEditCommentOpen}
         setIsOpen={setIsEditCommentOpen}
-        commentContent={commentContent}
-        commentIndex={0}
-        comments={comments}
-        setComments={setComments}
+        userTextContent={commentContent}
+        userTextIndex={0}
+        userText={comments}
+        setUserText={setComments}
         clientUser={user}
         server={server}
         title={title}
@@ -138,9 +138,9 @@ export const delete_comment_modal = () => {
         isOpen={isDeleteModalOpen}
         setIsOpen={setIsDeleteModalOpen}
         index={0}
-        commentContent={commentContent}
-        comments={comments}
-        setComments={setComments}
+        userTextContent={commentContent}
+        userText={comments}
+        setUserText={setComments}
         clientUser={user}
         server={server}
       />

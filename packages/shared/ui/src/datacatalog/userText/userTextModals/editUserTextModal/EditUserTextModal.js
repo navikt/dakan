@@ -13,50 +13,50 @@ import GetCurrentDate, {
 } from '../../../../utils/GetCurrentDate/GetCurrentDate'
 import { KIND } from 'baseui/button'
 
-export const EditCommentModal = (props) => {
+export const EditUserTextModal = (props) => {
   const {
     title,
     isOpen,
     setIsOpen,
-    commentContent,
-    commentIndex,
-    comments,
-    setComments,
+    userTextContent,
+    userTextIndex,
+    userTexts,
+    setUserTexts,
     clientUser,
     server,
   } = props
-  const [commentText, setCommentText] = React.useState('')
+  const [text, setText] = React.useState('')
   const [, theme] = useStyletron()
 
   React.useEffect(() => {
-    setCommentText(GetValue(() => commentContent.properties.comment))
-  }, [commentContent])
+    setText(GetValue(() => userTextContent.properties.text))
+  }, [userTextContent])
 
-  const addComment = () => {
+  const addUserText = () => {
     const tokenId = Cookies.get('ClientToken')
-    const newTableComments = comments ? [...comments] : []
-    const newComment = {
-      id: commentContent.id,
-      label: commentContent.label,
+    const newUserTexts = userTexts ? [...userTexts] : []
+    const newUserText = {
+      id: userTextContent.id,
+      label: userTextContent.label,
       properties: {
-        type: commentContent.properties.type,
-        author: commentContent.properties.author,
-        text: commentText,
+        type: userTextContent.properties.type,
+        author: userTextContent.properties.author,
+        text: text,
         date: GetCurrentDate(),
         time: GetCurrentTime(),
       },
     }
 
-    newTableComments.splice(commentIndex, 1)
-    newTableComments.unshift(newComment)
+    newUserTexts.splice(userTextIndex, 1)
+    newUserTexts.unshift(newUserText)
 
     axios
-      .put(`${server}/node`, [newComment], {
+      .put(`${server}/node`, [newUserText], {
         headers: { 'JWT-Token': tokenId },
       })
-      .then(() => setComments(newTableComments))
+      .then(() => setUserTexts(newUserTexts))
       .catch((error) => console.log(error))
-    setCommentText('')
+    setText('')
   }
 
   let content = (
@@ -77,7 +77,7 @@ export const EditCommentModal = (props) => {
 
   if (
     GetValue(() => clientUser.userId, '') ===
-    GetValue(() => commentContent.properties.author, '')
+    GetValue(() => userTextContent.properties.author, '')
   ) {
     content = (
       <React.Fragment>
@@ -93,9 +93,9 @@ export const EditCommentModal = (props) => {
                   },
                 },
               }}
-              onChange={(e) => setCommentText(e.target.value)}
+              onChange={(e) => setText(e.target.value)}
               placeholder={`Skriv en ${title.toLowerCase()}...`}
-              value={commentText}
+              value={text}
             />
           </Block>
         </ModalBody>
@@ -105,7 +105,7 @@ export const EditCommentModal = (props) => {
           </ModalButton>
           <ModalButton
             onClick={() => {
-              addComment()
+              addUserText()
               setIsOpen(false)
             }}
           >
@@ -133,4 +133,4 @@ export const EditCommentModal = (props) => {
     </Modal>
   )
 }
-export default EditCommentModal
+export default EditUserTextModal
