@@ -11,6 +11,9 @@ export default {
   title: 'Components/Comment modals',
 }
 
+const title = 'Kommentar'
+const edgeLabel = 'hasComment'
+const nodeLabel = 'table_comment'
 const dataId = 123
 const invalidUser = {
   userId: 'test id',
@@ -62,6 +65,7 @@ export const add_comment_modal = () => {
   return (
     <ThemeProvider theme={navTheme()}>
       <AddCommentModal
+        title={title}
         dataId={dataId}
         comments={comments}
         setComments={setComments}
@@ -69,6 +73,8 @@ export const add_comment_modal = () => {
         setIsOpen={setIsAddCommentOpen}
         clientUser={clientUser}
         server={server}
+        edgeLabel={edgeLabel}
+        nodeLabel={nodeLabel}
       />
       <Button onClick={() => setIsAddCommentOpen(true)}>
         Add comment modal
@@ -93,6 +99,7 @@ export const edit_comment_modal = () => {
         setComments={setComments}
         clientUser={user}
         server={server}
+        title={title}
       />
       <Block>
         <Block marginBottom="scale800">

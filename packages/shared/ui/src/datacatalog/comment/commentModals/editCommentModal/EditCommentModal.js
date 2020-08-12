@@ -15,6 +15,7 @@ import { KIND } from 'baseui/button'
 
 export const EditCommentModal = (props) => {
   const {
+    title,
     isOpen,
     setIsOpen,
     commentContent,
@@ -36,9 +37,9 @@ export const EditCommentModal = (props) => {
     const newTableComments = comments ? [...comments] : []
     const newComment = {
       id: commentContent.id,
-      label: 'table_comment',
+      label: commentContent.label,
       properties: {
-        type: 'table_comment',
+        type: commentContent.properties.type,
         author: commentContent.properties.author,
         comment: commentText,
         date: GetCurrentDate(),
@@ -63,7 +64,7 @@ export const EditCommentModal = (props) => {
       <ModalHeader />
       <ModalBody>
         <Block $style={{ ...theme.typography.font300 }}>
-          Du er ikke autorisert til å endre kommentaren.
+          Du er ikke autorisert til å redigere.
         </Block>
       </ModalBody>
       <ModalFooter>
@@ -80,7 +81,7 @@ export const EditCommentModal = (props) => {
   ) {
     content = (
       <React.Fragment>
-        <ModalHeader>Rediger kommentaren</ModalHeader>
+        <ModalHeader>Rediger</ModalHeader>
         <ModalBody>
           <Block>
             <Textarea
@@ -93,7 +94,7 @@ export const EditCommentModal = (props) => {
                 },
               }}
               onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Skriv en kommentar..."
+              placeholder={`Skriv en ${title.toLowerCase()}...`}
               value={commentText}
             />
           </Block>

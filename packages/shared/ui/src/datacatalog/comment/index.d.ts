@@ -3,11 +3,10 @@ import * as React from 'react'
 export interface ToggleCommentsProps {
   comments?: any
   setComments?: any
-  tagOptions?: any
   dataId?: any
-  server?: any
-  tokenId?: any
-  clientUser?: any
+  edgeLabel: string
+  nodeLabel: string
+  title?: string
 }
 
 export declare const ToggleComments: React.FC<ToggleCommentsProps>

@@ -10,6 +10,9 @@ export interface AddCommentModalProps {
   server?: any
   tokenId?: any
   clientUser?: any
+  title?: string
+  edgeLabel: string
+  nodeLabel: string
 }
 
 export declare const AddCommentModal: React.FC<AddCommentModalProps>

@@ -41,7 +41,7 @@ export const DeleteCommentModal = (props) => {
     <React.Fragment>
       <ModalBody>
         <Block $style={{ ...theme.typography.font300 }}>
-          Du er ikke autorisert til å slette kommentaren.
+          Du er ikke autorisert til å slette.
         </Block>
       </ModalBody>
       <ModalFooter>
@@ -60,7 +60,7 @@ export const DeleteCommentModal = (props) => {
       <React.Fragment>
         <ModalBody>
           <Block $style={{ ...theme.typography.font300 }}>
-            Bekreft at du vil slette kommentaren.
+            Bekreft at du vil slette.
           </Block>
         </ModalBody>
         <ModalFooter>

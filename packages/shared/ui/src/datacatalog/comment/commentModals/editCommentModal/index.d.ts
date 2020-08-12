@@ -9,6 +9,7 @@ export interface EditCommentModalProps {
   setComments?: any
   tokenId?: any
   server?: any
+  title?: string
 }
 
 export declare const EditCommentModal: React.FC<EditCommentModalProps>

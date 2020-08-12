@@ -7,6 +7,7 @@ import Cookies from 'js-cookie'
 import { Block } from 'baseui/block'
 import { useStyletron } from 'baseui'
 import { Spinner } from 'baseui/spinner'
+import CapitalizeString from '../../utils/CapitalizeString'
 
 import { ModalButton } from '../../../../components/button/Button'
 import GetCurrentDate, {
@@ -16,6 +17,7 @@ import { KIND } from 'baseui/button'
 
 export const AddCommentModal = (props) => {
   const {
+    title,
     dataId,
     comments,
     setComments,
@@ -23,6 +25,8 @@ export const AddCommentModal = (props) => {
     setIsOpen,
     clientUser,
     server,
+    edgeLabel,
+    nodeLabel,
   } = props
   const [commentText, setCommentText] = React.useState('')
   const [showSpinner, setShowSpinner] = React.useState(false)
@@ -33,10 +37,10 @@ export const AddCommentModal = (props) => {
     const tokenId = Cookies.get('ClientToken')
     const newTableComments = comments ? [...comments] : []
     const newComment = {
-      id: `${dataId}.comment_${shortid.generate()}`,
-      label: 'table_comment',
+      id: `${dataId}.${nodeLabel}_${shortid.generate()}`,
+      label: nodeLabel,
       properties: {
-        type: 'table_comment',
+        type: nodeLabel,
         author: clientUser.userId,
         comment: commentText,
         date: GetCurrentDate(),
@@ -46,7 +50,7 @@ export const AddCommentModal = (props) => {
     newTableComments.unshift(newComment)
     const commentPayload = {
       source_id: dataId,
-      edge_label: 'hasComment',
+      edge_label: edgeLabel,
       node_body: newComment,
     }
     axios
@@ -91,7 +95,7 @@ export const AddCommentModal = (props) => {
             marginBottom="scale300"
             $style={{ ...theme.typography.font300 }}
           >
-            Kommentaren lagres...
+            {`${CapitalizeString(title)} lagres...`}
           </Block>
           <Block
             flex="1"
@@ -115,7 +119,7 @@ export const AddCommentModal = (props) => {
                 },
               }}
               onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Skriv en kommentar..."
+              placeholder={`Skriv en ${title.toLowerCase()}...`}
               value={commentText}
             />
           </ModalBody>

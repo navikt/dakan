@@ -6,6 +6,7 @@ import { KIND } from 'baseui/button'
 import { LabelLarge, LabelMedium } from 'baseui/typography'
 import { useClientUser } from '@dakan/hooks'
 import { useStyletron } from 'baseui'
+import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddCommentModal from './commentModals/addCommentModal/AddCommentModal'
@@ -13,6 +14,7 @@ import EditCommentModal from './commentModals/editCommentModal/EditCommentModal'
 import DeleteCommentModal from './commentModals/deleteCommentModal/DeleteCommentModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
+import CapitalizeString from '../../utils/CapitalizeString'
 import {
   AddIcon,
   DeleteIcon,
@@ -21,8 +23,10 @@ import {
   EditHoverIcon,
 } from '../../components/icons'
 
+const graph_server = env('GRAPH_SERVER')
+
 export const ToggleComments = (prop) => {
-  const { dataId, comments, setComments, server } = prop
+  const { dataId, comments, setComments, title, edgeLabel, nodeLabel } = prop
   const [commentIndex, setCommentIndex] = React.useState(0)
   const [commentContent, setCommentContent] = React.useState({})
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
@@ -43,13 +47,13 @@ export const ToggleComments = (prop) => {
         startEnhancer={<AddIcon />}
         startEnhancerHover={<AddIcon fill="white" />}
         onClick={() => {
-          CheckIfAuthorized(server, () => {
+          CheckIfAuthorized(() => {
             setIsAddCommentOpen(true)
           })
         }}
       >
         Legg til
-              </Button>
+      </Button>
     </Block>
   )
 
@@ -61,7 +65,7 @@ export const ToggleComments = (prop) => {
           <Block
             marginBottom="scale800"
             padding="scale100"
-            key={'comment_' + index}
+            key={nodeLabel + '_' + index}
           >
             <Block display="flex">
               <Block flex="1">
@@ -93,7 +97,7 @@ export const ToggleComments = (prop) => {
                   startEnhancerHover={<EditHoverIcon />}
                   kind={KIND.minimal}
                   onClick={() => {
-                    CheckIfAuthorized(server, () => {
+                    CheckIfAuthorized(() => {
                       setCommentIndex(index)
                       setCommentContent(comment)
                       setIsEditCommentOpen(true)
@@ -109,7 +113,7 @@ export const ToggleComments = (prop) => {
                   startEnhancerHover={<DeleteHoverIcon />}
                   kind={KIND.minimal}
                   onClick={() => {
-                    CheckIfAuthorized(server, () => {
+                    CheckIfAuthorized(() => {
                       setCommentIndex(index)
                       setCommentContent(comment)
                       setIsDeleteModalOpen(true)
@@ -135,15 +139,19 @@ export const ToggleComments = (prop) => {
       {
         <Block>
           <AddCommentModal
+            title={title}
             dataId={dataId}
             comments={comments}
             setComments={setComments}
             isOpen={isAddCommentOpen}
             setIsOpen={setIsAddCommentOpen}
             clientUser={clientUser}
-            server={server}
+            server={graph_server}
+            edgeLabel={edgeLabel}
+            nodeLabel={nodeLabel}
           />
           <EditCommentModal
+            title={title}
             isOpen={isEditCommentOpen}
             setIsOpen={setIsEditCommentOpen}
             commentContent={commentContent}
@@ -151,7 +159,7 @@ export const ToggleComments = (prop) => {
             comments={comments}
             setComments={setComments}
             clientUser={clientUser}
-            server={server}
+            server={graph_server}
           />
           <DeleteCommentModal
             isOpen={isDeleteModalOpen}
@@ -161,10 +169,10 @@ export const ToggleComments = (prop) => {
             comments={comments}
             setComments={setComments}
             clientUser={clientUser}
-            server={server}
+            server={graph_server}
           />
           <LabelMedium>
-            <b>Kommentarer</b>
+            <b>{CapitalizeString(title)}</b>
           </LabelMedium>
           {comments && comments.length > 0 && comments[0].properties ? (
             <Block padding="1em" backgroundColor={"#F4F4F4"}>
@@ -195,7 +203,7 @@ export const ToggleComments = (prop) => {
               </Block>
               {getAddCommentButton()}
             </Block>
-          ): getAddCommentButton()}
+          ) : getAddCommentButton()}
         </Block>
       }
     </Block>

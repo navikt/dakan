@@ -6,6 +6,9 @@ export default {
   title: 'Components/ToggleComments',
 }
 
+const title = 'Kommentar'
+const edgeLabel = 'hasComment'
+const nodeLabel = 'table_comment'
 const dataId = 123
 const clientUser = {
   dataId: 'test id',
@@ -62,6 +65,9 @@ export const default_theme = () => {
         setComments={setComments}
         clientUser={clientUser}
         server={server}
+        title={title}
+        edgeLabel={edgeLabel}
+        nodeLabel={nodeLabel}
       />
     </ThemeProvider>
   )
@@ -78,6 +84,9 @@ export const NAV_theme = () => {
         setComments={setComments}
         clientUser={clientUser}
         server={server}
+        title={title}
+        edgeLabel={edgeLabel}
+        nodeLabel={nodeLabel}
       />
     </ThemeProvider>
   )
