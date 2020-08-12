@@ -4,13 +4,16 @@ import { VARIANT } from 'baseui/tag'
 import { Block } from 'baseui/block'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import env from '@beam-australia/react-env'
 
 import { Tag } from '../../components/tag/Tag'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 
+const graph_server = env('GRAPH_SERVER')
+
 export const SelectOpplysningstype = (props) => {
-  const { tagOptions, dataId, serverUrl, columnTags, setColumnTags } = props
+  const { tagOptions, dataId, columnTags, setColumnTags } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
@@ -19,7 +22,7 @@ export const SelectOpplysningstype = (props) => {
     newTags.splice(index, 1)
 
     axios
-      .delete(`${serverUrl}/edge`, {
+      .delete(`${graph_server}/edge`, {
         params: { n1: dataId, n2: tagId },
         headers: { 'JWT-Token': tokenId },
       })
@@ -43,7 +46,7 @@ export const SelectOpplysningstype = (props) => {
     ]
 
     axios
-      .put(`${serverUrl}/edge`, tagPayload, {
+      .put(`${graph_server}/edge`, tagPayload, {
         headers: { 'JWT-Token': tokenId },
       })
       .then(() => setColumnTags(newTags))
@@ -59,7 +62,7 @@ export const SelectOpplysningstype = (props) => {
               key={'tag_' + index}
               variant={VARIANT.outlined}
               onActionClick={() =>
-                CheckIfAuthorized(serverUrl, () => deleteTag(index, tag.id))
+                CheckIfAuthorized(() => deleteTag(index, tag.id))
               }
             >
               {GetValue(() => tag.properties.name)}
@@ -82,7 +85,7 @@ export const SelectOpplysningstype = (props) => {
         labelKey="name"
         valueKey="name"
         onChange={(tag) =>
-          CheckIfAuthorized(serverUrl, () => addTag(tag.value))
+          CheckIfAuthorized(() => addTag(tag.value))
         }
         placeholder="Velg opplysningtype"
         maxDropdownHeight="300px"
