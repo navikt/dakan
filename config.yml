@@ -1,9 +1,10 @@
 version: 1
 update_configs:
+# data-search
   - package_manager: "javascript"
     directory: "/apps/data-search"
     update_schedule: "live"
-
+# shared components
   - package_manager: "javascript"
     directory: "/packages/shared/hooks"
     update_schedule: "live"
@@ -16,7 +17,7 @@ update_configs:
   - package_manager: "javascript"
     directory: "/packages/shared/ui"
     update_schedule: "live"
-
+# viewer
   - package_manager: "javascript"
     directory: "/packages/viewer/kafka"
     update_schedule: "live"
