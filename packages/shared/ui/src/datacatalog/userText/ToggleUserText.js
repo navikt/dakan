@@ -9,9 +9,9 @@ import { useStyletron } from 'baseui'
 import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
-import AddCommentModal from './userTextModals/addCommentModal/AddCommentModal'
-import EditCommentModal from './userTextModals/editCommentModal/EditCommentModal'
-import DeleteCommentModal from './userTextModals/deleteCommentModal/DeleteCommentModal'
+import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
+import EditCommentModal from './userTextModals/editUserTextModal/EditCommentModal'
+import DeleteCommentModal from './userTextModals/deleteUserTextModal/DeleteCommentModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 import CapitalizeString from '../../utils/CapitalizeString/CapitalizeString'
@@ -138,7 +138,7 @@ export const ToggleUserText = (prop) => {
     <Block>
       {
         <Block>
-          <AddCommentModal
+          <AddUserTextModal
             title={title}
             dataId={dataId}
             userTexts={userTexts}

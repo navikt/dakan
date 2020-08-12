@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 export interface ToggleUserTextProps {
-  comments?: any
-  setComments?: any
+  userTexts?: any
+  setUserTexts?: any
   dataId?: any
   edgeLabel: string
   nodeLabel: string

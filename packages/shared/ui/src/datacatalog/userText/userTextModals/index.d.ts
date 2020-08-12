@@ -1,3 +1,3 @@
-export * from './addCommentModal'
-export * from './deleteCommentModal'
-export * from './editCommentModal'
+export * from './addUserTextModal'
+export * from './deleteUserTextModal'
+export * from './editUserTextModal'

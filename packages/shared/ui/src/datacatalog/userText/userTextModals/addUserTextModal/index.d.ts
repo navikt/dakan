@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-export interface AddCommentModalProps {
+export interface AddUserTextModalProps {
   isOpen?: any
   setIsOpen?: any
-  comments?: any
-  setComments?: any
+  userTexts?: any
+  setUserTexts?: any
   tagOptions?: any
   dataId?: any
   server?: any
@@ -15,5 +15,5 @@ export interface AddCommentModalProps {
   nodeLabel: string
 }
 
-export declare const AddCommentModal: React.FC<AddCommentModalProps>
-export default AddCommentModal
+export declare const AddUserTextModal: React.FC<AddUserTextModalProps>
+export default AddUserTextModal
