@@ -1,5 +1,9 @@
 version: 1
 update_configs:
+# root
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "live"
 # data-search
   - package_manager: "javascript"
     directory: "/apps/data-search"
