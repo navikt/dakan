@@ -4,7 +4,7 @@ import {
   LayoutSplit as Layout,
   LabeledContent,
   Searchbox,
-  ToggleComments,
+  ToggleUserTexts,
 } from '@dakan/ui'
 
 import GetValue from '../utils/GetValue'
@@ -51,10 +51,10 @@ const Content = (props: any): JSX.Element => {
           left={
             <Block>
               {getTopicContent()}
-              <ToggleComments
+              <ToggleUserTexts
                 dataId={data.id}
-                comments={comments}
-                setComments={setComments}
+                userTexts={comments}
+                setUserTexts={setComments}
                 title='Kommentar'
                 edgeLabel='hasComment'
                 nodeLabel='kafka_comment'

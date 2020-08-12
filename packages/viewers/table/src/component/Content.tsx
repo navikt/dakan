@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {format} from 'date-fns';
-import {LargeWidth, LabeledContent, ToggleComments, Searchbox} from '@dakan/ui';
+import {LargeWidth, LabeledContent, ToggleUserTexts, Searchbox} from '@dakan/ui';
 import {LabelLarge} from 'baseui/typography';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {useStyletron} from 'baseui';
@@ -78,10 +78,10 @@ const Content = (props: any): JSX.Element => {
                 <LargeWidth headingLabel={<b>Databasetabell</b>} headingText={props.data.properties.table_name}>
                     <Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} />
-                        <ToggleComments
+                        <ToggleUserTexts
                             dataId={props.data.id}
-                            comments={props.comments}
-                            setComments={props.setComments}
+                            userTexts={props.comments}
+                            setUserTexts={props.setComments}
                             title='Kommentar'
                             edgeLabel='hasComment'
                             nodeLabel='table_comment'
