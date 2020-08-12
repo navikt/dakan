@@ -1,17 +1,17 @@
 import * as React from 'react'
 
-export interface DeleteCommentModalProps {
+export interface DeleteUserTextModalProps {
   isOpen?: any
   setIsOpen?: any
   index?: any
-  commentContent?: any
-  comments?: any
-  setComments?: any
+  userTextContent?: any
+  userTexts?: any
+  setUserTexts?: any
   tagOptions?: any
   dataId?: any
   server?: any
   tokenId?: any
 }
 
-export declare const DeleteCommentModal: React.FC<DeleteCommentModalProps>
-export default DeleteCommentModal
+export declare const DeleteUserTextModal: React.FC<DeleteUserTextModalProps>
+export default DeleteUserTextModal

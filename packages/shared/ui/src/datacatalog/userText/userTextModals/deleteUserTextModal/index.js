@@ -1,1 +1,1 @@
-export * from './DeleteCommentModal'
+export * from './DeleteUserTextModal'

@@ -9,30 +9,30 @@ import { useStyletron } from 'baseui'
 import { ModalButton } from '../../../../components/button/Button'
 import { GetValue } from '../../../../utils/GetValue/GetValue'
 
-export const DeleteCommentModal = (props) => {
+export const DeleteUserTextModal = (props) => {
   const {
     isOpen,
     setIsOpen,
     index,
-    commentContent,
-    comments,
-    setComments,
+    userTextContent,
+    userTexts,
+    setUserTexts,
     clientUser,
     server,
   } = props
   const [, theme] = useStyletron()
 
-  const deleteComment = () => {
+  const deleteUserText = () => {
     const tokenId = Cookies.get('ClientToken')
-    const newTableComments = [...comments]
-    newTableComments.splice(index, 1)
+    const newUserTexts = [...userTexts]
+    newUserTexts.splice(index, 1)
     axios
-      .delete(`${server}/node/delete/id/${commentContent.id}`, {
+      .delete(`${server}/node/delete/id/${userTextContent.id}`, {
         headers: { 'JWT-Token': tokenId },
       })
       .then((response) => {
         console.log(response)
-        setComments(newTableComments)
+        setUserTexts(newUserTexts)
       })
       .catch((error) => console.log(error))
   }
@@ -54,7 +54,7 @@ export const DeleteCommentModal = (props) => {
 
   if (
     GetValue(() => clientUser.userId, '') ===
-    GetValue(() => commentContent.properties.author, '')
+    GetValue(() => userTextContent.properties.author, '')
   ) {
     content = (
       <React.Fragment>
@@ -69,7 +69,7 @@ export const DeleteCommentModal = (props) => {
           </ModalButton>
           <ModalButton
             onClick={() => {
-              deleteComment()
+              deleteUserText()
               setIsOpen(false)
             }}
           >
@@ -87,4 +87,4 @@ export const DeleteCommentModal = (props) => {
     </Modal>
   )
 }
-export default DeleteCommentModal
+export default DeleteUserTextModal

@@ -11,7 +11,7 @@ import env from '@beam-australia/react-env'
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
 import EditCommentModal from './userTextModals/editUserTextModal/EditCommentModal'
-import DeleteCommentModal from './userTextModals/deleteUserTextModal/DeleteCommentModal'
+import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 import CapitalizeString from '../../utils/CapitalizeString/CapitalizeString'
@@ -161,7 +161,7 @@ export const ToggleUserText = (prop) => {
             clientUser={clientUser}
             server={graph_server}
           />
-          <DeleteCommentModal
+          <DeleteUserTextModal
             isOpen={isDeleteTextModalOpen}
             setIsOpen={setIsDeleteTextModalOpen}
             index={userTextIndex}
