@@ -14,7 +14,7 @@ import EditCommentModal from './commentModals/editCommentModal/EditCommentModal'
 import DeleteCommentModal from './commentModals/deleteCommentModal/DeleteCommentModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
-import CapitalizeString from '../../utils/CapitalizeString'
+import CapitalizeString from '../../utils/CapitalizeString/CapitalizeString'
 import {
   AddIcon,
   DeleteIcon,
@@ -23,7 +23,7 @@ import {
   EditHoverIcon,
 } from '../../components/icons'
 
-const graph_server = env('GRAPH_SERVER')
+const graph_server = env('GRAPH_SERVER') || '../'
 
 export const ToggleComments = (prop) => {
   const { dataId, comments, setComments, title, edgeLabel, nodeLabel } = prop
@@ -171,9 +171,9 @@ export const ToggleComments = (prop) => {
             clientUser={clientUser}
             server={graph_server}
           />
-          <LabelMedium>
+          <LabelLarge>
             <b>{CapitalizeString(title)}</b>
-          </LabelMedium>
+          </LabelLarge>
           {comments && comments.length > 0 && comments[0].properties ? (
             <Block padding="1em" backgroundColor={"#F4F4F4"}>
               <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>

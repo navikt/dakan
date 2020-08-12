@@ -7,8 +7,8 @@ import Cookies from 'js-cookie'
 import { Block } from 'baseui/block'
 import { useStyletron } from 'baseui'
 import { Spinner } from 'baseui/spinner'
-import CapitalizeString from '../../utils/CapitalizeString'
 
+import CapitalizeString from '../../../../utils/CapitalizeString/CapitalizeString'
 import { ModalButton } from '../../../../components/button/Button'
 import GetCurrentDate, {
   GetCurrentTime,
@@ -26,7 +26,7 @@ export const AddCommentModal = (props) => {
     clientUser,
     server,
     edgeLabel,
-    nodeLabel,
+    nodeLabel
   } = props
   const [commentText, setCommentText] = React.useState('')
   const [showSpinner, setShowSpinner] = React.useState(false)
