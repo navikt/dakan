@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Block} from 'baseui/block'
 
 import { ThemeProvider, navTheme } from '../../theme'
-import ToggleComments from './ToggleComments'
+import ToggleComments from './ToggleUserText'
 
 export default {
   title: 'Components/ToggleComments',
@@ -26,7 +26,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 1',
-      comment:
+      text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus molestie lorem, quis ultrices libero commodo vel. Cras vitae mauris porta erat congue rutrum. Integer nec facilisis mi, elementum fringilla tellus. Duis pretium lacinia rutrum. Phasellus porta eget nisi ut sagittis. Cras sollicitudin cursus urna, quis eleifend magna scelerisque sit amet. Integer mi neque, tristique euismod mi a, egestas posuere purus. Aenean interdum odio efficitur, vehicula nisl quis, pellentesque lectus. Donec lobortis accumsan sollicitudin.',
       date: '27.des.2014',
       time: '10:12',
@@ -37,7 +37,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 2',
-      comment:
+      text:
         'Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.',
       date: '17.sep.2013',
       time: '17:42',
@@ -48,7 +48,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 3',
-      comment:
+      text:
         'Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac. Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac. Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac. Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.',
       date: '17.sep.2012',
       time: '17:42',
@@ -63,10 +63,8 @@ export const default_theme = () => {
     <ThemeProvider>
       <ToggleComments
         dataId={dataId}
-        comments={comments}
-        setComments={setComments}
-        clientUser={clientUser}
-        server={server}
+        userTexts={comments}
+        setUserTexts={setComments}
         title={title}
         edgeLabel={edgeLabel}
         nodeLabel={nodeLabel}
@@ -83,10 +81,8 @@ export const NAV_theme = () => {
       <Block marginBottom='scale1200'>
         <ToggleComments
           dataId={dataId}
-          comments={comments}
-          setComments={setComments}
-          clientUser={clientUser}
-          server={server}
+          userTexts={comments}
+          setUserTexts={setComments}
           title={title}
           edgeLabel={edgeLabel}
           nodeLabel={nodeLabel}
@@ -95,10 +91,8 @@ export const NAV_theme = () => {
       <Block>
         <ToggleComments
           dataId={dataId}
-          comments={comments}
-          setComments={setComments}
-          clientUser={clientUser}
-          server={server}
+          userTexts={comments}
+          setUserTexts={setComments}
           title='Beskrivelse'
           edgeLabel='hasDescription'
           nodeLabel='table_description'

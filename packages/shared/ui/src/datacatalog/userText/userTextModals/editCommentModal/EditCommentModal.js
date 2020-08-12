@@ -41,7 +41,7 @@ export const EditCommentModal = (props) => {
       properties: {
         type: commentContent.properties.type,
         author: commentContent.properties.author,
-        comment: commentText,
+        text: commentText,
         date: GetCurrentDate(),
         time: GetCurrentTime(),
       },

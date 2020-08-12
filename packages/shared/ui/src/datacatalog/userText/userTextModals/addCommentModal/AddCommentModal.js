@@ -42,7 +42,7 @@ export const AddCommentModal = (props) => {
       properties: {
         type: nodeLabel,
         author: clientUser.userId,
-        comment: commentText,
+        text: commentText,
         date: GetCurrentDate(),
         time: GetCurrentTime(),
       },

@@ -9,9 +9,9 @@ import { useStyletron } from 'baseui'
 import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
-import AddCommentModal from './commentModals/addCommentModal/AddCommentModal'
-import EditCommentModal from './commentModals/editCommentModal/EditCommentModal'
-import DeleteCommentModal from './commentModals/deleteCommentModal/DeleteCommentModal'
+import AddCommentModal from './userTextModals/addCommentModal/AddCommentModal'
+import EditCommentModal from './userTextModals/editCommentModal/EditCommentModal'
+import DeleteCommentModal from './userTextModals/deleteCommentModal/DeleteCommentModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 import CapitalizeString from '../../utils/CapitalizeString/CapitalizeString'
@@ -25,13 +25,13 @@ import {
 
 const graph_server = env('GRAPH_SERVER') || '../'
 
-export const ToggleComments = (prop) => {
-  const { dataId, comments, setComments, title, edgeLabel, nodeLabel } = prop
-  const [commentIndex, setCommentIndex] = React.useState(0)
-  const [commentContent, setCommentContent] = React.useState({})
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false)
-  const [isAddCommentOpen, setIsAddCommentOpen] = React.useState(false)
-  const [isEditCommentOpen, setIsEditCommentOpen] = React.useState(false)
+export const ToggleUserText = (prop) => {
+  const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel } = prop
+  const [userTextIndex, setUserTextIndex] = React.useState(0)
+  const [userTextContent, setUserTextContent] = React.useState({})
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(false)
+  const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
+  const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState('')
   const [panelTitle, setPanelTitle] = React.useState('Vis mer')
   const [commentSize, setCommentSize] = React.useState('250px')
@@ -48,7 +48,7 @@ export const ToggleComments = (prop) => {
         startEnhancerHover={<AddIcon fill="white" />}
         onClick={() => {
           CheckIfAuthorized(() => {
-            setIsAddCommentOpen(true)
+            setIsAddTextModalOpen(true)
           })
         }}
       >
@@ -58,10 +58,10 @@ export const ToggleComments = (prop) => {
   )
 
   const getComments = () => {
-    return comments.map((comment, index) => {
+    return userTexts.map((userText, index) => {
       return (
-        comment &&
-        comment.properties && (
+        userText &&
+        userText.properties && (
           <Block
             marginBottom="scale800"
             padding="scale100"
@@ -71,14 +71,14 @@ export const ToggleComments = (prop) => {
               <Block flex="1">
                 <Block display={['block', 'block', 'flex']}>
                   <Block flex="1">
-                    <LabelLarge>{comment.properties.author}</LabelLarge>
+                    <LabelLarge>{userText.properties.author}</LabelLarge>
                   </Block>
                   <Block marginRight="scale400">
                     <Block $style={{ ...theme.typography.font300 }}>
                       {'Publisert ' +
-                        comment.properties.date +
+                        userText.properties.date +
                         ', kl. ' +
-                        comment.properties.time}
+                        userText.properties.time}
                     </Block>
                   </Block>
                 </Block>
@@ -86,7 +86,7 @@ export const ToggleComments = (prop) => {
                   $style={{ ...theme.typography.font300 }}
                   marginTop="scale800"
                 >
-                  {comment.properties.comment}
+                  {userText.properties.text}
                 </Block>
               </Block>
             </Block>
@@ -98,9 +98,9 @@ export const ToggleComments = (prop) => {
                   kind={KIND.minimal}
                   onClick={() => {
                     CheckIfAuthorized(() => {
-                      setCommentIndex(index)
-                      setCommentContent(comment)
-                      setIsEditCommentOpen(true)
+                      setUserTextIndex(index)
+                      setUserTextContent(userText)
+                      setIsEditTextModalOpen(true)
                     })
                   }}
                 >
@@ -114,9 +114,9 @@ export const ToggleComments = (prop) => {
                   kind={KIND.minimal}
                   onClick={() => {
                     CheckIfAuthorized(() => {
-                      setCommentIndex(index)
-                      setCommentContent(comment)
-                      setIsDeleteModalOpen(true)
+                      setUserTextIndex(index)
+                      setUserTextContent(userText)
+                      setIsDeleteTextModalOpen(true)
                     })
                   }}
                 >
@@ -141,10 +141,10 @@ export const ToggleComments = (prop) => {
           <AddCommentModal
             title={title}
             dataId={dataId}
-            comments={comments}
-            setComments={setComments}
-            isOpen={isAddCommentOpen}
-            setIsOpen={setIsAddCommentOpen}
+            userTexts={userTexts}
+            setUserTexts={setUserTexts}
+            isOpen={isAddTextModalOpen}
+            setIsOpen={setIsAddTextModalOpen}
             clientUser={clientUser}
             server={graph_server}
             edgeLabel={edgeLabel}
@@ -152,29 +152,29 @@ export const ToggleComments = (prop) => {
           />
           <EditCommentModal
             title={title}
-            isOpen={isEditCommentOpen}
-            setIsOpen={setIsEditCommentOpen}
-            commentContent={commentContent}
-            commentIndex={commentIndex}
-            comments={comments}
-            setComments={setComments}
+            isOpen={isEditTextModalOpen}
+            setIsOpen={setIsEditTextModalOpen}
+            userTextContent={userTextContent}
+            userTextIndex={userTextIndex}
+            userTexts={userTexts}
+            setUserTexts={setUserTexts}
             clientUser={clientUser}
             server={graph_server}
           />
           <DeleteCommentModal
-            isOpen={isDeleteModalOpen}
-            setIsOpen={setIsDeleteModalOpen}
-            index={commentIndex}
-            commentContent={commentContent}
-            comments={comments}
-            setComments={setComments}
+            isOpen={isDeleteTextModalOpen}
+            setIsOpen={setIsDeleteTextModalOpen}
+            index={userTextIndex}
+            userTextContent={userTextContent}
+            userTexts={userTexts}
+            setUserTexts={setUserTexts}
             clientUser={clientUser}
             server={graph_server}
           />
           <H5>
             <b>{CapitalizeString(title)}</b>
           </H5>
-          {comments && comments.length > 0 && comments[0].properties ? (
+          {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={"#F4F4F4"}>
               <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>
                 {getComments()}
@@ -209,4 +209,4 @@ export const ToggleComments = (prop) => {
     </Block>
   )
 }
-export default ToggleComments
+export default ToggleUserText
