@@ -7,11 +7,7 @@ const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
-export const Metrics = ({
-  viewer,
-  page,
-  section,
-}) => {
+export const Metrics = ({ viewer, page, section }) => {
   const AmplitudeConfig = {
     apiEndpoint: amplitude_endpoint,
     saveEvents: true,

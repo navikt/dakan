@@ -27,11 +27,7 @@ const Viewer = (props: any) => {
       {loading && <LoadingSpinner />}
       {data && data.content && (
         <React.Fragment>
-          <Metrics
-            viewer={'person'}
-            page={page}
-            section={''}
-          />
+          <Metrics viewer={'person'} page={page} section={''} />
           <Content {...props} item={data.content} />
         </React.Fragment>
       )}

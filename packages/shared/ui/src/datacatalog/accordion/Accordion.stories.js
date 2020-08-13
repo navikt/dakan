@@ -16,11 +16,16 @@ export default {
 
 export const default_panel = () => {
   const [activeKey, setActiveKey] = React.useState('0')
-  const [panelExpanded, setPanelExpanded] = React.useState(["0"])
+  const [panelExpanded, setPanelExpanded] = React.useState(['0'])
 
   return (
     <ThemeProvider>
-      <StatelessAccordion expanded={panelExpanded} onChange={(e) =>{ setPanelExpanded(e.expanded)}}>
+      <StatelessAccordion
+        expanded={panelExpanded}
+        onChange={(e) => {
+          setPanelExpanded(e.expanded)
+        }}
+      >
         <Panel title="panel 1" isExpanded={panelExpanded[0] === '0'}>
           this is the description in panel 1
         </Panel>
@@ -48,7 +53,10 @@ export const NAV_theme_panel = () => {
   const [panelExpanded, setPanelExpanded] = React.useState(['0'])
   return (
     <ThemeProvider theme={navTheme()}>
-      <StatelessAccordion expanded={panelExpanded} onChange={(e) => setPanelExpanded(e.expanded)}>
+      <StatelessAccordion
+        expanded={panelExpanded}
+        onChange={(e) => setPanelExpanded(e.expanded)}
+      >
         <Panel title="panel 1" isExpanded={panelExpanded[0] === '0'}>
           this is the description in panel 1
         </Panel>

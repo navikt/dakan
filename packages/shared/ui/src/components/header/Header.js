@@ -9,7 +9,7 @@ import { Button as BaseuiButton, KIND, SHAPE } from 'baseui/button'
 import { Drawer, ANCHOR } from 'baseui/drawer'
 import { StatefulMenu, OptionList } from 'baseui/menu'
 import env from '@beam-australia/react-env'
-import {useClientUser} from '@dakan/hooks'
+import { useClientUser } from '@dakan/hooks'
 
 import {
   InfoIcon,
@@ -28,7 +28,7 @@ const home_link = env('HOME_URL')
 const about_link = env('ABOUT_URL') || '../about'
 
 const CustomLink = (props) => {
-  const [useCss, ] = useStyletron()
+  const [useCss] = useStyletron()
   const link = useCss({ textDecoration: 'none' })
   if (home_link) {
     return (

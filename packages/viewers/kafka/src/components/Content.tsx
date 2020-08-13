@@ -55,9 +55,9 @@ const Content = (props: any): JSX.Element => {
                 dataId={data.id}
                 userTexts={comments}
                 setUserTexts={setComments}
-                title='Kommentar'
-                edgeLabel='hasComment'
-                nodeLabel='kafka_comment'
+                title="Kommentar"
+                edgeLabel="hasComment"
+                nodeLabel="kafka_comment"
               />
             </Block>
           }

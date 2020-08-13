@@ -84,9 +84,7 @@ export const SelectOpplysningstype = (props) => {
         options={options}
         labelKey="name"
         valueKey="name"
-        onChange={(tag) =>
-          CheckIfAuthorized(() => addTag(tag.value))
-        }
+        onChange={(tag) => CheckIfAuthorized(() => addTag(tag.value))}
         placeholder="Velg opplysningtype"
         maxDropdownHeight="300px"
       />

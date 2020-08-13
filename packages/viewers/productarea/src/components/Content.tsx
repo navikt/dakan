@@ -11,7 +11,6 @@ const teamViewerUrl = env('TEAM_VIEWER_URL') || '../team'
 const personViewerUrl = env('TEAM_VIEWER_URL') || '../person'
 
 const getPeople = (item) => {
-
   const columnsPerson: any[] = [
     <TableBuilderColumn key="col_person_name" id="name" header="Navn">
       {(row) => (
@@ -31,7 +30,6 @@ const getPeople = (item) => {
     </TableBuilderColumn>,
   ]
 
-
   let rows: any = []
   item['members_area'].map((member) => {
     const row: any = {}
@@ -50,10 +48,11 @@ const getPeople = (item) => {
 }
 
 const getTeams = (item) => {
-
   const columnsTeam: any[] = [
     <TableBuilderColumn key="col_team_name" id="name" header="Navn">
-      {(row) => <Link href={`${teamViewerUrl}/${row.id}`}>{row.data.name}</Link>}
+      {(row) => (
+        <Link href={`${teamViewerUrl}/${row.id}`}>{row.data.name}</Link>
+      )}
     </TableBuilderColumn>,
     <TableBuilderColumn
       key="col_team_description"
@@ -81,13 +80,12 @@ const getTeams = (item) => {
 }
 
 const Content = ({ item }) => {
-
   const Head = () => <Block>{item['description_area']}</Block>
 
   const Tables = () => {
     if (item) {
       return (
-        <Block width="100%" marginBottom='scale1200'>
+        <Block width="100%" marginBottom="scale1200">
           <Block>
             <LabelMedium>Ansatte</LabelMedium>
             {getPeople(item)}

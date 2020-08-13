@@ -10,7 +10,10 @@ import exampleMembers from '../resources/members.json'
 
 const Viewer = (props: any) => {
   const [data, loading, error] = useElasticSearch(props.match.params.id)
-  const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(props.match.params.id, 'hasMember')
+  const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(
+    props.match.params.id,
+    'hasMember',
+  )
 
   if (props.match.params.id === 'test') {
     return (
@@ -27,11 +30,7 @@ const Viewer = (props: any) => {
       {error}
       {data && data.content && (
         <React.Fragment>
-          <Metrics
-            viewer={'naisteam'}
-            page={data.content.id}
-            section={''}
-          />
+          <Metrics viewer={'naisteam'} page={data.content.id} section={''} />
           <Content {...props} item={data.content} members={members} />
         </React.Fragment>
       )}
