@@ -8,58 +8,62 @@ import { Block } from 'baseui/block'
 import { useStyletron } from 'baseui'
 import { Spinner } from 'baseui/spinner'
 
+import CapitalizeString from '../../../../utils/CapitalizeString/CapitalizeString'
 import { ModalButton } from '../../../../components/button/Button'
 import GetCurrentDate, {
   GetCurrentTime,
 } from '../../../../utils/GetCurrentDate/GetCurrentDate'
 import { KIND } from 'baseui/button'
 
-export const AddCommentModal = (props) => {
+export const AddUserTextModal = (props) => {
   const {
+    title,
     dataId,
-    comments,
-    setComments,
+    userTexts,
+    setUserTexts,
     isOpen,
     setIsOpen,
     clientUser,
     server,
+    edgeLabel,
+    nodeLabel
   } = props
-  const [commentText, setCommentText] = React.useState('')
+  const [text, setText] = React.useState('')
   const [showSpinner, setShowSpinner] = React.useState(false)
 
   const [, theme] = useStyletron()
 
-  const addComment = () => {
+  const addText = () => {
     const tokenId = Cookies.get('ClientToken')
-    const newTableComments = comments ? [...comments] : []
-    const newComment = {
-      id: `${dataId}.comment_${shortid.generate()}`,
-      label: 'table_comment',
+    const newUserTexts = userTexts ? [...userTexts] : []
+    const newUserText = {
+      id: `${dataId}.${nodeLabel}_${shortid.generate()}`,
+      label: nodeLabel,
       properties: {
-        type: 'table_comment',
+        type: nodeLabel,
         author: clientUser.userId,
-        comment: commentText,
+        text: text,
         date: GetCurrentDate(),
         time: GetCurrentTime(),
       },
     }
-    newTableComments.unshift(newComment)
-    const commentPayload = {
+    newUserTexts.unshift(newUserText)
+    const userTextPayload = {
       source_id: dataId,
-      edge_label: 'hasComment',
-      node_body: newComment,
+      edge_label: edgeLabel,
+      node_body: newUserText,
     }
     axios
-      .put(`${server}/node/edge/upsert`, commentPayload, {
+      .put(`${server}/node/edge/upsert`, userTextPayload, {
         headers: { 'JWT-Token': tokenId },
       })
       .then(() => {
-        setComments(newTableComments)
+        setUserTexts(newUserTexts)
         setShowSpinner(false)
         setIsOpen(false)
       })
       .catch((error) => console.log(error))
-    setCommentText('')
+    setText('')
   }
 
   return (
@@ -91,7 +95,7 @@ export const AddCommentModal = (props) => {
             marginBottom="scale300"
             $style={{ ...theme.typography.font300 }}
           >
-            Kommentaren lagres...
+            {`${CapitalizeString(title)} lagres...`}
           </Block>
           <Block
             flex="1"
@@ -114,9 +118,9 @@ export const AddCommentModal = (props) => {
                   },
                 },
               }}
-              onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Skriv en kommentar..."
-              value={commentText}
+              onChange={(e) => setText(e.target.value)}
+              placeholder={`Skriv en ${title.toLowerCase()}...`}
+              value={text}
             />
           </ModalBody>
           <ModalFooter>
@@ -125,7 +129,7 @@ export const AddCommentModal = (props) => {
             </ModalButton>
             <ModalButton
               onClick={() => {
-                addComment()
+                addText()
                 setShowSpinner(true)
               }}
             >
@@ -137,4 +141,4 @@ export const AddCommentModal = (props) => {
     </Modal>
   )
 }
-export default AddCommentModal
+export default AddUserTextModal

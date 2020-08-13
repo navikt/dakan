@@ -1,6 +1,9 @@
 import Cookies from 'js-cookie'
+import env from '@beam-australia/react-env'
 
-export const CheckIfAuthorized = (serverUrl, func) => {
+const graph_server = env('GRAPH_SERVER')
+
+export const CheckIfAuthorized = (func) => {
   const clientUser = Cookies.get('ClientUser')
   const tokenId = Cookies.get('ClientToken')
 
@@ -8,7 +11,7 @@ export const CheckIfAuthorized = (serverUrl, func) => {
     return func()
   } else {
     return window.location.replace(
-      `${serverUrl}/login?redirect_url=${window.location.href}`,
+      `${graph_server}/login?redirect_url=${window.location.href}`,
     )
   }
 }

@@ -4,15 +4,12 @@ import {
   LayoutSplit as Layout,
   LabeledContent,
   Searchbox,
-  ToggleComments,
+  ToggleUserTexts,
 } from '@dakan/ui'
-import env from '@beam-australia/react-env'
 
 import GetValue from '../utils/GetValue'
 import FilterFieldList from '../utils/FilterFieldList'
 import TopicFields from './TopicFields'
-
-const graph_server = env('GRAPH_SERVER')
 
 const Content = (props: any): JSX.Element => {
   const {
@@ -54,11 +51,13 @@ const Content = (props: any): JSX.Element => {
           left={
             <Block>
               {getTopicContent()}
-              <ToggleComments
+              <ToggleUserTexts
                 dataId={data.id}
-                comments={comments}
-                setComments={setComments}
-                server={graph_server}
+                userTexts={comments}
+                setUserTexts={setComments}
+                title='Kommentar'
+                edgeLabel='hasComment'
+                nodeLabel='kafka_comment'
               />
             </Block>
           }

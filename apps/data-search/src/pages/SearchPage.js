@@ -17,7 +17,7 @@ import {
   FilterIcon,
 } from '@dakan/ui'
 import { Block } from 'baseui/block'
-import { Accordion } from 'baseui/accordion'
+import { StatelessAccordion } from 'baseui/accordion'
 
 import ResultView from '../components/views/ResultView'
 import ResultsView from '../components/views/ResultsView'
@@ -135,7 +135,7 @@ const Sidebar = (props) => {
   if (props.match.params.mode !== 'tab') {
     return (
       <Block>
-        <Block display={['none', 'flex']} marginBottom="scale750">
+        <Block display={['none','none','flex', 'flex']} marginBottom="scale750">
           <Block marginRight="scale200">
             <FilterIcon size="24" fill="#3E3832" />
           </Block> 
@@ -163,7 +163,7 @@ const Tabbar = (props) => {
 }
 
 const Content = (props) => {
-  const [panelExpanded, setPanelExpanded] = React.useState('')
+  const [panelExpanded, setPanelExpanded] = React.useState(['0'])
 
   return (
     <Block flex="1">
@@ -174,11 +174,11 @@ const Content = (props) => {
         </Block>
       </Block>
       <Block display={['block','block', 'none', ]}>
-          <Accordion onChange={(e) => setPanelExpanded(e.expanded[0])}>
-            <Panel title="Filter" isExpanded={panelExpanded === '0'}>
+          <StatelessAccordion expanded={panelExpanded} onChange={(e) => setPanelExpanded(e.expanded)}>
+            <Panel title="Filter" isExpanded={panelExpanded[0] === '0'}>
               <Block marginBottom="scale800">{Sidebar(props)}</Block>
             </Panel>
-          </Accordion>
+          </StatelessAccordion>
       </Block>
       {(props.match.params.mode === 'tab') && <Tabbar {...props} />}
       <Results titleField="title" view={ResultsView} resultView={ResultView} />

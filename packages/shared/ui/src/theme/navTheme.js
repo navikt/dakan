@@ -150,8 +150,9 @@ export const panelOverrides = {
   },
   Header: {
     style: {
-      border: 'none',
-      borderBottom: 'none',
+      borderBottomStyle: 'none',
+      borderBottomWidth: 'none',
+      borderBottomColor: 'none',
       paddingLeft: 'none',
       paddingRight: 'none',
     },
@@ -163,7 +164,9 @@ export const panelOverrides = {
       paddingBottom: 'none',
       paddingTop: 'none',
       backgroundColor: 'none',
-      borderBottom: 'none',
+      borderBottomStyle: 'none',
+      borderBottomWidth: 'none',
+      borderBottomColor: 'none',
     },
   },
 }

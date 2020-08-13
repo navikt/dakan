@@ -1,3 +1,4 @@
+export * from './CapitalizeString'
 export * from './CheckIfAuthorized'
 export * from './GetValue'
 export * from './GetCurrentDate'
