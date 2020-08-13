@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Spinner } from 'baseui/spinner'
 import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
-import { Header } from '@dakan/ui'
+import { Header, LoadingSpinner } from '@dakan/ui'
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import exampleJson from '../resources/example.json'
@@ -70,7 +69,7 @@ const Viewer = (props: any) => {
   if (loadingNode) {
     return (
       <Block display="flex" justifyContent="center">
-        <Spinner size={96} />
+        <LoadingSpinner size={96} />
       </Block>
     )
   }
