@@ -15,7 +15,14 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 const graph_server = env('GRAPH_SERVER')
 
 export const Rating = (props) => {
-  const { ratings, setRatings, dataId, edgeLabel, nodeLabel, clientUser } = props
+  const {
+    ratings,
+    setRatings,
+    dataId,
+    edgeLabel,
+    nodeLabel,
+    clientUser,
+  } = props
 
   const [value, setValue] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
@@ -23,9 +30,9 @@ export const Rating = (props) => {
   const calculateRatings = () => {
     if (ratings.length > 0) {
       let ratingValue = 0
-      ratings.forEach(rating => {
+      ratings.forEach((rating) => {
         ratingValue += rating.properties.rate
-      });
+      })
       return ratingValue / ratings.length
     } else {
       return 0
@@ -56,8 +63,9 @@ export const Rating = (props) => {
     axios
       .put(`${graph_server}/node/edge/upsert`, RatingPayload, {
         headers: { 'JWT-Token': tokenId },
-      }).then(() => {
-        newRatings.forEach(rating => {
+      })
+      .then(() => {
+        newRatings.forEach((rating) => {
           if (rating.properties.author === newRating.properties.author) {
             rating.properties.rate = rateValue
             rating.properties.date = newRating.properties.date
@@ -71,8 +79,9 @@ export const Rating = (props) => {
           newRatings.push(newRating)
           setRatings(newRatings)
         }
-      }).catch((error) => console.log(error))
-      setIsLoading(false)
+      })
+      .catch((error) => console.log(error))
+    setIsLoading(false)
   }
 
   React.useEffect(() => {
@@ -83,7 +92,12 @@ export const Rating = (props) => {
     <Block display="flex" justifyContent="center">
       {!isLoading ? (
         <React.Fragment>
-          <Block display="flex" flexDirection="column" justifyContent="center" marginTop="4px">
+          <Block
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            marginTop="4px"
+          >
             <BaseStarRating
               numItems={5}
               size={22}
@@ -92,12 +106,12 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>
-              {value.toFixed(2)}
-            </LabelMedium>
+            <LabelMedium>{value.toFixed(2)}</LabelMedium>
           </Block>
         </React.Fragment>
-      ) : (<Spinner size={22} />)}
+      ) : (
+        <Spinner size={22} />
+      )}
     </Block>
   )
 }

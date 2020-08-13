@@ -76,7 +76,6 @@ import { VARIANT, KIND as TAGKIND } from 'baseui/tag'
 import { withKnobs, text } from '@storybook/addon-knobs'
 import { Table } from 'baseui/table-semantic'
 
-
 export default {
   title: 'Themes/NAV',
   decorators: [withKnobs],
@@ -145,8 +144,7 @@ export const Star_Ratings = () => {
         time: '17:42',
       },
     },
-  ]
-  )
+  ])
 
   const clientUser = {
     userId: 'Lorem ipsum 1',
@@ -157,8 +155,14 @@ export const Star_Ratings = () => {
   }
 
   return (
-    <ThemeProvider theme={theme} >
-      <Rating ratings={data} setRatings={setData} clientUser={clientUser} dataId="test" nodeLabel="testRating" />
+    <ThemeProvider theme={theme}>
+      <Rating
+        ratings={data}
+        setRatings={setData}
+        clientUser={clientUser}
+        dataId="test"
+        nodeLabel="testRating"
+      />
     </ThemeProvider>
   )
 }
@@ -620,12 +624,12 @@ const Tags = () => {
           color="#4327F1"
           variant={VARIANT.solid}
           kind={TAGKIND.custom}
-          onClick={() => { }}
+          onClick={() => {}}
         >
           custom
         </Tag>
         <br />
-        <Tag color="#4327F1" kind={TAGKIND.custom} onClick={() => { }}>
+        <Tag color="#4327F1" kind={TAGKIND.custom} onClick={() => {}}>
           custom
         </Tag>
         <br />
@@ -633,7 +637,7 @@ const Tags = () => {
           color="#4327F1"
           variant={VARIANT.outlined}
           kind={TAGKIND.custom}
-          onClick={() => { }}
+          onClick={() => {}}
         >
           custom
         </Tag>
