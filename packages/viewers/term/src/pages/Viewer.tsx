@@ -1,5 +1,5 @@
 import React from 'react'
-import {Block} from 'baseui/block'
+import { Block } from 'baseui/block'
 import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
 import { useElasticSearch } from '@dakan/hooks'
@@ -32,16 +32,12 @@ const Viewer = (props: any) => {
     <React.Fragment>
       {data && data.content && (
         <Block>
-        <Metrics
-          viewer={'begrep'}
-          page={data.content.term}
-          section={''}
-        />
-        <Content
-          {...props}
-          indexEntry={data.content}
-          viewerVersion={viewer_version}
-        />
+          <Metrics viewer={'begrep'} page={data.content.term} section={''} />
+          <Content
+            {...props}
+            indexEntry={data.content}
+            viewerVersion={viewer_version}
+          />
         </Block>
       )}
     </React.Fragment>

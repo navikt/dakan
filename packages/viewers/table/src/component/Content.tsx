@@ -82,9 +82,9 @@ const Content = (props: any): JSX.Element => {
                             dataId={props.data.id}
                             userTexts={props.comments}
                             setUserTexts={props.setComments}
-                            title='Kommentar'
-                            edgeLabel='hasComment'
-                            nodeLabel='table_comment'
+                            title="Kommentar"
+                            edgeLabel="hasComment"
+                            nodeLabel="table_comment"
                         />
                         {props.columns && (
                             <React.Fragment>

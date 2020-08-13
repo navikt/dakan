@@ -261,11 +261,7 @@ export const LayoutSplit = (props) => {
           alignItems="flex-start"
           flexDirection="column"
         >
-          <Block
-            display="flex"
-            justifyContent="center"
-            width="100%"
-          >
+          <Block display="flex" justifyContent="center" width="100%">
             <Block
               display="flex"
               justifyContent="flex-start"
@@ -278,11 +274,7 @@ export const LayoutSplit = (props) => {
             </Block>
           </Block>
 
-          <Block
-            display="flex"
-            justifyContent="center"
-            width="100%"
-          >
+          <Block display="flex" justifyContent="center" width="100%">
             <Block
               display="flex"
               justifyContent="center"

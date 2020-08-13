@@ -5,5 +5,5 @@ export interface CustomLike_DislikeRatingProps {
   spec?: any
 }
 
-export declare const Rating: React.FC<CustomLike_DislikeRatingProps>
-export default Rating
+export declare const Like_DislikeRating: React.FC<CustomLike_DislikeRatingProps>
+export default Like_DislikeRating

@@ -29,7 +29,9 @@ export const ToggleUserText = (prop) => {
   const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
   const [userTextContent, setUserTextContent] = React.useState({})
-  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(false)
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
+    false,
+  )
   const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
   const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState('')
@@ -175,7 +177,7 @@ export const ToggleUserText = (prop) => {
             <b>{CapitalizeString(title)}</b>
           </H5>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
-            <Block padding="1em" backgroundColor={"#F4F4F4"}>
+            <Block padding="1em" backgroundColor={'#F4F4F4'}>
               <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>
                 {getComments()}
               </Block>
@@ -203,7 +205,9 @@ export const ToggleUserText = (prop) => {
               </Block>
               {getAddCommentButton()}
             </Block>
-          ) : getAddCommentButton()}
+          ) : (
+            getAddCommentButton()
+          )}
         </Block>
       }
     </Block>

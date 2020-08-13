@@ -31,13 +31,7 @@ export function useNode(id) {
     fetchData()
   }, [id])
 
-
-  return [
-    node,
-    loading,
-    error,
-    errorMessage
-  ]
+  return [node, loading, error, errorMessage]
 }
 
 export default useNode

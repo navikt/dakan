@@ -11,7 +11,10 @@ import exampleMemberOf from '../resources/memberOf.json'
 
 const Viewer = (props: any) => {
   const [data, loading, error] = useElasticSearch(props.match.params.id)
-  const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(props.match.params.id, 'memberOf')
+  const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(
+    props.match.params.id,
+    'memberOf',
+  )
 
   if (props.match.params.id === 'test') {
     return (
@@ -29,11 +32,7 @@ const Viewer = (props: any) => {
       {error}
       {data && data.content && (
         <React.Fragment>
-          <Metrics
-            viewer={'naisapp'}
-            page={data.content.id}
-            section={''}
-          />
+          <Metrics viewer={'naisapp'} page={data.content.id} section={''} />
           <Content {...props} item={data.content} memberOf={memberOf} />
         </React.Fragment>
       )}

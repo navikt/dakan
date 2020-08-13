@@ -15,11 +15,22 @@ import exampleTags from '../resources/exampleTags.json'
 const title = env('TITLE') || 'Tableau'
 
 const Viewer = (props: any) => {
-
-  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
-  const [viewList, loadingViewList, errorLoadingViewList] = useNodeEdges(props.match.params.id, 'hasMember')
-  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype')
-  const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(props.match.params.id, 'hasComment')
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
+    props.match.params.id,
+  )
+  const [viewList, loadingViewList, errorLoadingViewList] = useNodeEdges(
+    props.match.params.id,
+    'hasMember',
+  )
+  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent(
+    'opplysningstype',
+  )
+  const [
+    comments,
+    loadingCommnets,
+    errorLoadingComments,
+    setComments,
+  ] = useNodeEdges(props.match.params.id, 'hasComment')
 
   const getHeader = () => (
     <Header
@@ -27,7 +38,7 @@ const Viewer = (props: any) => {
         brand: title,
         nav: true,
         about: true,
-        showLoginButton: true
+        showLoginButton: true,
       }}
     />
   )
@@ -84,16 +95,16 @@ const Viewer = (props: any) => {
         {getHeader()}
         {node && node.properties && (
           <React.Fragment>
-            <Metrics
-              viewer={'tableau'}
-              page={node.id}
-              section={''}
-            />
+            <Metrics viewer={'tableau'} page={node.id} section={''} />
             <Content
               data={node}
               viewList={viewList}
               tagOptions={tagOptions}
-              comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
+              comments={
+                comments &&
+                comments.length > 0 &&
+                sortNodesByPropertyTime(comments)
+              }
               setComments={setComments}
             />
           </React.Fragment>

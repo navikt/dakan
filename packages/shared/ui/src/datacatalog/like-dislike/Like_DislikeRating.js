@@ -4,13 +4,11 @@ import { StatefulButtonGroup, MODE } from 'baseui/button-group'
 import { Button } from '../../components/button/Button'
 
 export const Like_DislikeRating = (props) => {
-
   const [likeActive, setLikeActive] = React.useState(false)
   const [dislikeActive, setDislikeActive] = React.useState(false)
 
   const [dislike, setDislike] = React.useState(0)
   const [like, setLike] = React.useState(0)
-
 
   const updateLike = () => {
     setLikeActive(!likeActive)
@@ -42,14 +40,21 @@ export const Like_DislikeRating = (props) => {
 
   return (
     <StatefulButtonGroup mode={MODE.radio}>
-      <Button onClick={() => {
-        handleLike()
-      }}>Like {like}</Button>
+      <Button
+        onClick={() => {
+          handleLike()
+        }}
+      >
+        Like {like}
+      </Button>
 
-      <Button onClick={() => {
-        handleDislike()
-      }}>Dislike {dislike}</Button>
-
+      <Button
+        onClick={() => {
+          handleDislike()
+        }}
+      >
+        Dislike {dislike}
+      </Button>
     </StatefulButtonGroup>
   )
 }

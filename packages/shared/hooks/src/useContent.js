@@ -10,7 +10,8 @@ export function useContent(id) {
   const [error, setError] = useState(false)
 
   const getData = (response) => {
-    if (typeof response.data !== 'object') throw Error(`Error fetching content: ${id}`)
+    if (typeof response.data !== 'object')
+      throw Error(`Error fetching content: ${id}`)
     return response.data
   }
 
@@ -29,13 +30,7 @@ export function useContent(id) {
     fetchData()
   }, [id])
 
-
-  return [
-    data,
-    loading,
-    error,
-    setData
-  ]
+  return [data, loading, error, setData]
 }
 
 export default useContent

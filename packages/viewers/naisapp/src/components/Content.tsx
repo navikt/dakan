@@ -20,11 +20,7 @@ const getLink = (row) => {
 }
 
 const getTable = (list) => {
-  if (
-    typeof list == 'undefined' ||
-    list == null ||
-    list.length == null
-  ) {
+  if (typeof list == 'undefined' || list == null || list.length == null) {
     return null
   }
 
@@ -57,7 +53,6 @@ const getTable = (list) => {
 }
 
 const Content = ({ item, memberOf }) => {
-
   const getItems = (items: Array<{}>, content) => {
     return items.map((entry: any, i: number) => {
       let value = GetValue(() => content.properties[entry.item])

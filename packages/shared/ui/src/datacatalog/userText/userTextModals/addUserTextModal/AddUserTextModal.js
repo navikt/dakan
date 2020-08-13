@@ -26,7 +26,7 @@ export const AddUserTextModal = (props) => {
     clientUser,
     server,
     edgeLabel,
-    nodeLabel
+    nodeLabel,
   } = props
   const [text, setText] = React.useState('')
   const [showSpinner, setShowSpinner] = React.useState(false)

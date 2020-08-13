@@ -17,7 +17,7 @@ export default function App() {
           config={{
             brand: title,
             nav: true,
-            about: true
+            about: true,
           }}
         />
         <Route

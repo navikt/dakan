@@ -59,7 +59,7 @@ import {
   SearchHoverIcon,
   SearchActiveIcon,
 } from '../components/icons'
-import {Like_DislikeRating} from '../datacatalog/like-dislike/Like_DislikeRating'
+import { Like_DislikeRating } from '../datacatalog/like-dislike/Like_DislikeRating'
 import { Alert, ArrowLeft, ArrowRight } from 'baseui/icon'
 import { SIZE, SHAPE, KIND, Button as BaseButton } from 'baseui/button'
 import { SelectOpplysningstype, LoadingSpinner } from '../datacatalog'

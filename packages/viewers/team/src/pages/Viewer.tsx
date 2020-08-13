@@ -26,11 +26,7 @@ const Viewer = (props: any) => {
       {error}
       {data && data.content && (
         <React.Fragment>
-          <Metrics
-            viewer={'team'}
-            page={page}
-            section={''}
-          />
+          <Metrics viewer={'team'} page={page} section={''} />
           <Content {...props} item={data.content} />
         </React.Fragment>
       )}
