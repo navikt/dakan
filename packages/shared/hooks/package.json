@@ -23,7 +23,7 @@
         "@babel/preset-env": "^7.6.3",
         "@babel/preset-react": "^7.6.3",
         "@babel/preset-typescript": "^7.7.7",
-        "prettier": "^1.18.2"
+        "prettier": "^2.0.5"
     },
     "dependencies": {
         "@beam-australia/react-env": "^2.1.2",
