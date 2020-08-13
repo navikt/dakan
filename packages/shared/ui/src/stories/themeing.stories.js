@@ -63,6 +63,7 @@ import { Like_DislikeRating } from '../datacatalog/like-dislike/Like_DislikeRati
 import { Alert, ArrowLeft, ArrowRight } from 'baseui/icon'
 import { SIZE, SHAPE, KIND, Button as BaseButton } from 'baseui/button'
 import { SelectOpplysningstype, LoadingSpinner } from '../datacatalog'
+import { Rating } from '../datacatalog/rating'
 import { RadioGroup, Radio, ALIGN } from 'baseui/radio'
 import { StyledLink } from 'baseui/link'
 import { HeadingSmall, LabelLarge } from 'baseui/typography'
@@ -74,6 +75,7 @@ import { LABEL_PLACEMENT, STYLE_TYPE } from 'baseui/checkbox'
 import { VARIANT, KIND as TAGKIND } from 'baseui/tag'
 import { withKnobs, text } from '@storybook/addon-knobs'
 import { Table } from 'baseui/table-semantic'
+
 
 export default {
   title: 'Themes/NAV',
@@ -106,6 +108,57 @@ export const Like_Dislike_rating = () => {
   return (
     <ThemeProvider theme={theme}>
       <Like_DislikeRating />
+    </ThemeProvider>
+  )
+}
+
+export const Star_Ratings = () => {
+  const theme = getTheme()
+  const [data, setData] = React.useState([
+    {
+      id: 1,
+      label: 'table_rating',
+      properties: {
+        author: 'Lorem ipsum 1',
+        rate: 1,
+        date: '27.des.2014',
+        time: '10:12',
+      },
+    },
+    {
+      id: 2,
+      label: 'table_rating',
+      properties: {
+        author: 'Lorem ipsum 2',
+        rate: 3,
+        date: '17.sep.2013',
+        time: '17:42',
+      },
+    },
+    {
+      id: 3,
+      label: 'table_rating',
+      properties: {
+        author: 'Lorem ipsum 3',
+        rate: 4,
+        date: '17.sep.2012',
+        time: '17:42',
+      },
+    },
+  ]
+  )
+
+  const clientUser = {
+    userId: 'Lorem ipsum 1',
+    givenName: 'Name',
+    surname: 'Surname',
+    initial: 'NS',
+    email: 'test.test@test.test',
+  }
+
+  return (
+    <ThemeProvider theme={theme} >
+      <Rating ratings={data} setRatings={setData} clientUser={clientUser} dataId="test" nodeLabel="testRating" />
     </ThemeProvider>
   )
 }
@@ -567,12 +620,12 @@ const Tags = () => {
           color="#4327F1"
           variant={VARIANT.solid}
           kind={TAGKIND.custom}
-          onClick={() => {}}
+          onClick={() => { }}
         >
           custom
         </Tag>
         <br />
-        <Tag color="#4327F1" kind={TAGKIND.custom} onClick={() => {}}>
+        <Tag color="#4327F1" kind={TAGKIND.custom} onClick={() => { }}>
           custom
         </Tag>
         <br />
@@ -580,7 +633,7 @@ const Tags = () => {
           color="#4327F1"
           variant={VARIANT.outlined}
           kind={TAGKIND.custom}
-          onClick={() => {}}
+          onClick={() => { }}
         >
           custom
         </Tag>
