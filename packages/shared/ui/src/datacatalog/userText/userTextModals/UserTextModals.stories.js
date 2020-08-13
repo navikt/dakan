@@ -2,9 +2,9 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 
 import { ThemeProvider, navTheme } from '../../../theme'
-import AddCommentModal from './addCommentModal/AddCommentModal'
-import DeleteCommentModal from './deleteCommentModal/DeleteCommentModal'
-import EditCommentModal from './editCommentModal/EditCommentModal'
+import AddUserTextModal from './addUserTextModal/AddUserTextModal'
+import DeleteUserTextModal from './deleteUserTextModal/DeleteUserTextModal'
+import EditUserTextModal from './editUserTextModal/EditUserTextModal'
 import { Button } from '../../../components/button/Button'
 
 export default {
@@ -64,7 +64,7 @@ export const add_comment_modal = () => {
 
   return (
     <ThemeProvider theme={navTheme()}>
-      <AddCommentModal
+      <AddUserTextModal
         title={title}
         dataId={dataId}
         userText={comments}
@@ -90,7 +90,7 @@ export const edit_comment_modal = () => {
 
   return (
     <ThemeProvider theme={navTheme()}>
-      <EditCommentModal
+      <EditUserTextModal
         isOpen={isEditCommentOpen}
         setIsOpen={setIsEditCommentOpen}
         userTextContent={commentContent}
@@ -134,7 +134,7 @@ export const delete_comment_modal = () => {
 
   return (
     <ThemeProvider theme={navTheme()}>
-      <DeleteCommentModal
+      <DeleteUserTextModal
         isOpen={isDeleteModalOpen}
         setIsOpen={setIsDeleteModalOpen}
         index={0}
