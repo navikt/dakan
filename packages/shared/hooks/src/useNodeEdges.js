@@ -15,10 +15,12 @@ export function useNodeEdges(id, type) {
   }
 
   useEffect(() => {
+    const url = `${server}/node/out/${id}/${type}`
+    console.log('get node edges: ', url)
     const fetchData = async () => {
       setLoading(true)
       try {
-        const result = await axios.get(`${server}/node/out/${id}/${type}`)
+        const result = await axios.get(url)
         const data = await getData(result)
         setData(data)
       } catch (e) {
