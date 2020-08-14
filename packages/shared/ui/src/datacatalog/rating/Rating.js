@@ -16,9 +16,9 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 const graph_server = env('GRAPH_SERVER')
 
 export const Rating = (props) => {
-  const { ratings, setRatings, dataId, edgeLabel, nodeLabel, clientUser } = props
+  const { ratings, setRatings, dataId, edgeLabel, nodeLabel } = props
 
-  //const clientUser = useClientUser()
+  const clientUser = useClientUser()
 
   const [value, setValue] = React.useState(0)
   const [userRate, setUserRate] = React.useState(0)
