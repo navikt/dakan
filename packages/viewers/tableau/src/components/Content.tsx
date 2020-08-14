@@ -77,12 +77,12 @@ const Content = (props: any): JSX.Element => {
                   nodeLabel="tableau_rating"
                 />
               </Block>
-              <Block marginBottom="scale1000">{items(data)}</Block>
               <Block>
-                <LabeledContent description="Beskrivelse" list>
-                  {data.properties.description}
-                </LabeledContent>
-              </Block>
+                  <LabeledContent description="Beskrivelse" list>
+                    {data.properties.description}
+                  </LabeledContent>
+                </Block>
+              <Block marginBottom="scale1000">{items(data)}</Block>
               <ToggleUserText
                 dataId={data.id}
                 userTexts={comments}
