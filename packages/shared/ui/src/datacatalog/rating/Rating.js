@@ -39,7 +39,7 @@ export const Rating = (props) => {
   const getUserRate = () => {
     if (ratings && ratings.length > 0) {
       ratings.forEach((rating) => {
-        if (rating.properties.author === clientUser.userId) {
+        if (clientUser && rating.properties.author === clientUser.userId) {
           setUserRate(rating.properties.rate)
         }
       })
