@@ -78,7 +78,7 @@ const Viewer = (props: any) => {
     return (
         <React.Fragment>
             {getHeader()}
-            {node && node.preoperties && (
+            {node && node.properties && (
                 <React.Fragment>
                     <Metrics viewer={'tabell'} page={node.id} section={''} />
                     <Block>
