@@ -90,9 +90,12 @@ export const Rating = (props) => {
           setRatings(newRatings)
         }
         setUserRate(rateValue)
+        setIsLoading(false)
       })
-      .catch((error) => console.log(error))
-    setIsLoading(false)
+      .catch((error) => {
+        console.log(error)
+        setIsLoading(false)
+      })
   }
 
   React.useEffect(() => {
@@ -122,8 +125,8 @@ export const Rating = (props) => {
           </Block>
         </React.Fragment>
       ) : (
-        <Spinner size={22} />
-      )}
+          <Spinner size={22} />
+        )}
     </Block>
   )
 }
