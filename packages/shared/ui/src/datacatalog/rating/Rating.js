@@ -25,6 +25,7 @@ export const Rating = (props) => {
   } = props
 
   const [value, setValue] = React.useState(0)
+  const [userRate, setUserRate] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
 
   const calculateRatings = () => {
@@ -36,6 +37,18 @@ export const Rating = (props) => {
       return ratingValue / ratings.length
     } else {
       return 0
+    }
+  }
+
+  const getUserRate = () => {
+    if (ratings.length > 0) {
+      ratings.forEach((rating) => {
+        if (rating.properties.author === clientUser.userId) {
+          setUserRate(rating.properties.rate)
+        }
+      })
+    } else {
+       setUserRate(0)
     }
   }
 
@@ -79,6 +92,7 @@ export const Rating = (props) => {
           newRatings.push(newRating)
           setRatings(newRatings)
         }
+        setUserRate(rateValue)
       })
       .catch((error) => console.log(error))
     setIsLoading(false)
@@ -86,10 +100,11 @@ export const Rating = (props) => {
 
   React.useEffect(() => {
     setValue(calculateRatings())
+    getUserRate()
   }, [ratings])
 
   return (
-    <Block display="flex" justifyContent="center">
+    <Block display="block" justifyContent="center">
       {!isLoading ? (
         <React.Fragment>
           <Block
@@ -101,17 +116,17 @@ export const Rating = (props) => {
             <BaseStarRating
               numItems={5}
               size={22}
-              value={value}
+              value={userRate}
               onChange={(e) => CheckIfAuthorized(() => upsertRate(e.value))}
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>{value.toFixed(2)}</LabelMedium>
+            <LabelMedium>Average rating: {value.toFixed(2)}</LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
-        <Spinner size={22} />
-      )}
+          <Spinner size={22} />
+        )}
     </Block>
   )
 }
