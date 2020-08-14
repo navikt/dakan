@@ -16,9 +16,9 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 const graph_server = env('GRAPH_SERVER')
 
 export const Rating = (props) => {
-  const { ratings, setRatings, dataId, edgeLabel, nodeLabel } = props
+  const { ratings, setRatings, dataId, edgeLabel, nodeLabel, clientUser } = props
 
-  const clientUser = useClientUser()
+  //const clientUser = useClientUser()
 
   const [value, setValue] = React.useState(0)
   const [userRate, setUserRate] = React.useState(0)
@@ -37,11 +37,9 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (ratings && ratings.length > 0) {
-      ratings.forEach((rating) => {
-        if (clientUser && rating.properties.author === clientUser.userId) {
-          setUserRate(rating.properties.rate)
-        }
+    if (clientUser && ratings && ratings.length > 0) {
+      ratings.filter((rating) => rating.properties.author === clientUser.userId).map((rate) => {
+        setUserRate(rate.properties.rate)
       })
     } else {
       setUserRate(0)
@@ -75,14 +73,13 @@ export const Rating = (props) => {
         headers: { 'JWT-Token': tokenId },
       })
       .then(() => {
-        newRatings.forEach((rating) => {
-          if (rating.properties.author === newRating.properties.author) {
-            rating.properties.rate = rateValue
-            rating.properties.date = newRating.properties.date
-            rating.properties.time = newRating.properties.time
+        newRatings.filter((rating) => rating.properties.author === newRating.properties.author).map(
+          (rate) => {
+            rate.properties.rate = rateValue
+            rate.properties.date = newRating.properties.date
+            rate.properties.time = newRating.properties.time
             userFound = true
-          }
-        })
+          })
         if (userFound) {
           setRatings(newRatings)
         } else {
@@ -121,7 +118,10 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Gjennomsnittlig vurdering {value.toFixed(2)}</LabelMedium>
+            <LabelMedium>Gjennomsnittlig vurdering: {value.toFixed(2)}</LabelMedium>
+          </Block>
+          <Block display="flex" flexDirection="column" justifyContent="center">
+            <LabelMedium>Antall vurderinger: {ratings ? ratings.length : 0}</LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
