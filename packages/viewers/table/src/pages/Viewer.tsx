@@ -18,6 +18,7 @@ const Viewer = (props: any) => {
     const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id);
     const [columns, loadingColumns, errorLoadingColumns] = useNodeEdges(props.match.params.id, 'hasMember');
     const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype');
+    const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasRating');
     const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(
         props.match.params.id,
         'hasComment'
@@ -89,6 +90,8 @@ const Viewer = (props: any) => {
                             comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
                             setComments={setComments}
                             numberOfColumns={columns && columns.length}
+                            ratings={ratings}
+                            setRatings={setRatings}
                         />
                     </Block>
                 </React.Fragment>
