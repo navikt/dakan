@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 
 import { ThemeProvider, navTheme } from '../../theme'
-import ToggleComments from './ToggleUserText'
+import ToggleUserText from './ToggleUserText'
 
 export default {
   title: 'Components/ToggleComments',
@@ -61,7 +61,7 @@ export const default_theme = () => {
 
   return (
     <ThemeProvider>
-      <ToggleComments
+      <ToggleUserText
         dataId={dataId}
         userTexts={comments}
         setUserTexts={setComments}
@@ -79,7 +79,7 @@ export const NAV_theme = () => {
   return (
     <ThemeProvider theme={navTheme()}>
       <Block marginBottom="scale1200">
-        <ToggleComments
+        <ToggleUserText
           dataId={dataId}
           userTexts={comments}
           setUserTexts={setComments}
@@ -89,7 +89,7 @@ export const NAV_theme = () => {
         />
       </Block>
       <Block>
-        <ToggleComments
+        <ToggleUserText
           dataId={dataId}
           userTexts={comments}
           setUserTexts={setComments}
