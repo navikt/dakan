@@ -56,6 +56,7 @@ export const Rating = (props) => {
       id: `${dataId}.${nodeLabel}_${clientUser.userId}`,
       label: nodeLabel,
       properties: {
+        type: nodeLabel,
         author: clientUser.userId,
         rate: rateValue,
         date: GetCurrentDate(),
