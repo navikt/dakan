@@ -6,6 +6,7 @@ import { Spinner } from 'baseui/spinner'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import env from '@beam-australia/react-env'
+import { useClientUser } from '@dakan/hooks'
 
 import GetCurrentDate, {
   GetCurrentTime,
@@ -15,21 +16,16 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 const graph_server = env('GRAPH_SERVER')
 
 export const Rating = (props) => {
-  const {
-    ratings,
-    setRatings,
-    dataId,
-    edgeLabel,
-    nodeLabel,
-    clientUser,
-  } = props
+  const { ratings, setRatings, dataId, edgeLabel, nodeLabel } = props
+
+  const clientUser = useClientUser()
 
   const [value, setValue] = React.useState(0)
   const [userRate, setUserRate] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
 
   const calculateRatings = () => {
-    if (ratings.length > 0) {
+    if (ratings && ratings.length > 0) {
       let ratingValue = 0
       ratings.forEach((rating) => {
         ratingValue += rating.properties.rate
@@ -41,14 +37,14 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (ratings.length > 0) {
+    if (ratings && ratings.length > 0) {
       ratings.forEach((rating) => {
         if (rating.properties.author === clientUser.userId) {
           setUserRate(rating.properties.rate)
         }
       })
     } else {
-       setUserRate(0)
+      setUserRate(0)
     }
   }
 
@@ -121,12 +117,12 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Average rating: {value.toFixed(2)}</LabelMedium>
+            <LabelMedium>Gjennomsnittlig vurdering {value.toFixed(2)}</LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
-          <Spinner size={22} />
-        )}
+        <Spinner size={22} />
+      )}
     </Block>
   )
 }
