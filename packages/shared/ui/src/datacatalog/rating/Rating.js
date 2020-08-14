@@ -25,7 +25,7 @@ export const Rating = (props) => {
   const [isLoading, setIsLoading] = React.useState(false)
 
   const calculateRatings = () => {
-    if (ratings && ratings.length > 0) {
+    if (ratings && Array.isArray(ratings) && ratings.length > 0) {
       let ratingValue = 0
       ratings.forEach((rating) => {
         ratingValue += rating.properties.rate
@@ -37,7 +37,7 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (clientUser && ratings && ratings.length > 0) {
+    if (clientUser && ratings && Array.isArray(ratings) && ratings.length > 0) {
       ratings.filter((rating) => rating.properties.author === clientUser.userId).map((rate) => {
         setUserRate(rate.properties.rate)
       })
@@ -49,7 +49,7 @@ export const Rating = (props) => {
   const upsertRate = (rateValue) => {
     let userFound = false
     const tokenId = Cookies.get('ClientToken')
-    const newRatings = ratings ? [...ratings] : []
+    const newRatings = ratings && Array.isArray(ratings) ? [...ratings] : []
     const newRating = {
       id: `${dataId}.${nodeLabel}_${clientUser.userId}`,
       label: nodeLabel,
@@ -121,7 +121,7 @@ export const Rating = (props) => {
             <LabelMedium>Gjennomsnittlig vurdering: {value.toFixed(2)}</LabelMedium>
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Antall vurderinger: {ratings ? ratings.length : 0}</LabelMedium>
+            <LabelMedium>Antall vurderinger: {ratings && Array.isArray(ratings) && ratings.length > 0 ? ratings.length : 0}</LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
