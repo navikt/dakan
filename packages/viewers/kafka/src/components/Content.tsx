@@ -4,7 +4,7 @@ import {
   LayoutSplit as Layout,
   LabeledContent,
   Searchbox,
-  ToggleUserTexts,
+  ToggleUserText,
 } from '@dakan/ui'
 
 import GetValue from '../utils/GetValue'
@@ -51,7 +51,7 @@ const Content = (props: any): JSX.Element => {
           left={
             <Block>
               {getTopicContent()}
-              <ToggleUserTexts
+              <ToggleUserText
                 dataId={data.id}
                 userTexts={comments}
                 setUserTexts={setComments}

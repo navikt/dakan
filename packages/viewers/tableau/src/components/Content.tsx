@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import {
   LabeledContent,
-  ToggleUserTexts,
+  ToggleUserText,
   LayoutSplit as Layout,
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
@@ -74,7 +74,7 @@ const Content = (props: any): JSX.Element => {
                   {data.properties.description}
                 </LabeledContent>
               </Block>
-              <ToggleUserTexts
+              <ToggleUserText
                 dataId={data.id}
                 userTexts={comments}
                 setUserTexts={setComments}
