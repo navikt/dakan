@@ -7,6 +7,7 @@ import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
 
 import {OrgTeam} from './OrgTeam'
+import {NaisTeam} from './NaisTeam'
 
 const ITEMS = [
   { item: 'epost', label: 'Epost' },
@@ -31,8 +32,13 @@ const Content = ({ item, id}) => {
   const getAffiliations = () => {
     if (item && item.id) {
       return (
+        <Block>
+          <Block width="100%" marginBottom="scale1200">
+        <OrgTeam id={item.id} />
+      </Block>
         <Block width="100%" marginBottom="scale1200">
-          <OrgTeam id={item.id} />
+          <NaisTeam id={item.id} />
+        </Block>
         </Block>
       )
     }

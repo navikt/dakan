@@ -1,7 +1,7 @@
 import React from 'react'
-import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
-import { useElasticSearch, useNodeEdges } from '@dakan/hooks'
+import { useNode, useNodeEdges } from '@dakan/hooks'
+import { LoadingSpinner } from '@dakan/ui'
 
 import Content from '../components/Content'
 
@@ -10,10 +10,10 @@ import exampleMembers from '../resources/members.json'
 import exampleMemberOf from '../resources/memberOf.json'
 
 const Viewer = (props: any) => {
-  const [data, loading, error] = useElasticSearch(props.match.params.id)
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
   const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(
     props.match.params.id,
-    'memberOf',
+    'appOwnedBy',
   )
 
   if (props.match.params.id === 'test') {
@@ -29,11 +29,12 @@ const Viewer = (props: any) => {
 
   return (
     <React.Fragment>
-      {error}
-      {data && data.content && (
+      {errorLoadingNode && errorMessage}
+      {loadingNode && <LoadingSpinner />}
+      {node && (
         <React.Fragment>
-          <Metrics viewer={'naisapp'} page={data.content.id} section={''} />
-          <Content {...props} item={data.content} memberOf={memberOf} />
+          <Metrics viewer={'naisapp'} page={node.id} section={''} />
+          <Content {...props} id={props.match.params.id} item={node} memberOf={memberOf} />
         </React.Fragment>
       )}
     </React.Fragment>

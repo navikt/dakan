@@ -28,21 +28,18 @@ const getTable = (list) => {
     const data: any = {
       id: item['id'],
       name: item['properties']['name'],
-      type: item['properties']['cluster'],
+      description: item['properties']['description'],
     }
     row['data'] = data
     rows.push(row)
   })
 
   const columns: any[] = [
-    <TableBuilderColumn id="name" header="Navn">
+    <TableBuilderColumn id="name" header="Team">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
     </TableBuilderColumn>,
-    <TableBuilderColumn id="id" header="Id">
-      {(row) => row.data.id}
-    </TableBuilderColumn>,
-    <TableBuilderColumn id="cluster" header="Cluster">
-      {(row) => row.data.type}
+    <TableBuilderColumn id="description" header="Beskrivelse">
+      {(row) => row.data.description}
     </TableBuilderColumn>,
   ]
 

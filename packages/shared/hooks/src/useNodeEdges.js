@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const server = env('GRAPH_SERVER')
 
-export function useNodeEdges(id, type) {
+export function useNodeEdges(id, type, direction='out') {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -15,7 +15,7 @@ export function useNodeEdges(id, type) {
   }
 
   useEffect(() => {
-    const url = `${server}/node/out/${id}/${type}`
+    const url = `${server}/node/${direction}/${id}/${type}`
     console.log('get node edges: ', url)
     const fetchData = async () => {
       setLoading(true)
