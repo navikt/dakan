@@ -2,11 +2,9 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Avatar } from "baseui/avatar";
 import { ParagraphMedium } from 'baseui/typography'
-import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { format } from 'date-fns'
-import GetValue from '../utils/GetValue'
 
-import { LayoutSplit as Layout, LabeledContent } from '@dakan/ui'
+import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+
 
 import {OrgTeam} from './OrgTeam'
 
@@ -20,45 +18,13 @@ const ITEMS = [
 ]
 
 const Content = ({ item, id}) => {
-  const getItems = (items: Array<{}>, content) => {
-    return items.map((entry: any, i: number) => {
-      let value = GetValue(() => content.properties[entry.item], null)
-      if (value && value !== '') {
-        if (entry.format && entry.format === 'date') {
-          const date = new Date(value)
-          if (typeof date.getMonth === 'function') {
-            value = format(date, 'yyyy-MM-dd')
-          }
-        }
-
-        return (
-          <FlexGridItem key={`item_${i}`}>
-            <LabeledContent description={entry.label} list>
-              {value}
-            </LabeledContent>
-            <Block width="scale1000" />
-          </FlexGridItem>
-        )
-      }
-      return null
-    })
-  }
-
-  const Content = () => {
-    if (item) {
-      return (
-        <FlexGrid flexGridColumnCount={[1]}>{getItems(ITEMS, item)}</FlexGrid>
-      )
-    }
-    return null
-  }
 
   const Head = () => (
     <Block>
       <ParagraphMedium>
         {item && item.fornavn}
       </ParagraphMedium>
-      <Content />
+      <ContentItems ITEMS={ITEMS} item={item} />
     </Block>
   )
 
