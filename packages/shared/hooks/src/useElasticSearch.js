@@ -5,7 +5,6 @@ import axios from 'axios'
 const server = env('ES_SERVER')
 
 export function useElasticSearch(id) {
-  console.log('env: ', env())
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)

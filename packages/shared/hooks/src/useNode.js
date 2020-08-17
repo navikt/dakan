@@ -16,10 +16,12 @@ export function useNode(id) {
   }
 
   useEffect(() => {
+    const url = `${server}/node/${id}`
+    console.log('get node: ', url)
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`${server}/node/${id}`)
+        const response = await axios.get(url)
         const data = await getData(response)
         setNode(data)
       } catch (e) {
