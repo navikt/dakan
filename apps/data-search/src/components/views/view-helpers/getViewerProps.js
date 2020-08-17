@@ -4,7 +4,6 @@ import { navTheme } from '@dakan/ui'
 const theme = navTheme()
 
 export function getViewerProps(format) {
-  console.log(format)
   if (!format) {
     return { link: '/viewer', backgroundColor: '#FFA733' }
   }
