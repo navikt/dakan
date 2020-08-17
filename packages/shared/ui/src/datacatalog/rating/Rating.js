@@ -25,7 +25,7 @@ export const Rating = (props) => {
   const [isLoading, setIsLoading] = React.useState(false)
 
   const calculateRatings = () => {
-    if (ratings && ratings.length > 0) {
+    if (ratings && Array.isArray(ratings) && ratings.length > 0) {
       let ratingValue = 0
       ratings.forEach((rating) => {
         ratingValue += rating.properties.rate
@@ -37,11 +37,9 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (ratings && ratings.length > 0) {
-      ratings.forEach((rating) => {
-        if (rating.properties.author === clientUser.userId) {
-          setUserRate(rating.properties.rate)
-        }
+    if (clientUser && ratings && Array.isArray(ratings) && ratings.length > 0) {
+      ratings.filter((rating) => rating.properties.author === clientUser.userId).map((rate) => {
+        setUserRate(rate.properties.rate)
       })
     } else {
       setUserRate(0)
@@ -51,7 +49,7 @@ export const Rating = (props) => {
   const upsertRate = (rateValue) => {
     let userFound = false
     const tokenId = Cookies.get('ClientToken')
-    const newRatings = ratings ? [...ratings] : []
+    const newRatings = ratings && Array.isArray(ratings) ? [...ratings] : []
     const newRating = {
       id: `${dataId}.${nodeLabel}_${clientUser.userId}`,
       label: nodeLabel,
@@ -75,14 +73,13 @@ export const Rating = (props) => {
         headers: { 'JWT-Token': tokenId },
       })
       .then(() => {
-        newRatings.forEach((rating) => {
-          if (rating.properties.author === newRating.properties.author) {
-            rating.properties.rate = rateValue
-            rating.properties.date = newRating.properties.date
-            rating.properties.time = newRating.properties.time
+        newRatings.filter((rating) => rating.properties.author === newRating.properties.author).map(
+          (rate) => {
+            rate.properties.rate = rateValue
+            rate.properties.date = newRating.properties.date
+            rate.properties.time = newRating.properties.time
             userFound = true
-          }
-        })
+          })
         if (userFound) {
           setRatings(newRatings)
         } else {
@@ -90,9 +87,12 @@ export const Rating = (props) => {
           setRatings(newRatings)
         }
         setUserRate(rateValue)
+        setIsLoading(false)
       })
-      .catch((error) => console.log(error))
-    setIsLoading(false)
+      .catch((error) => {
+        console.log(error)
+        setIsLoading(false)
+      })
   }
 
   React.useEffect(() => {
@@ -118,14 +118,15 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>
-              Gjennomsnittlig vurdering {value.toFixed(2)}
-            </LabelMedium>
+            <LabelMedium>Gjennomsnittlig vurdering: {value.toFixed(2)}</LabelMedium>
+          </Block>
+          <Block display="flex" flexDirection="column" justifyContent="center">
+            <LabelMedium>Antall vurderinger: {ratings && Array.isArray(ratings) && ratings.length > 0 ? ratings.length : 0}</LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
-        <Spinner size={22} />
-      )}
+          <Spinner size={22} />
+        )}
     </Block>
   )
 }

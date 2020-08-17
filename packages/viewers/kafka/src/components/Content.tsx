@@ -5,6 +5,7 @@ import {
   LabeledContent,
   Searchbox,
   ToggleUserText,
+  Rating
 } from '@dakan/ui'
 
 import GetValue from '../utils/GetValue'
@@ -50,6 +51,15 @@ const Content = (props: any): JSX.Element => {
           headingText={data.properties.topic_name}
           left={
             <Block>
+              <Block marginBottom="scale800" marginTop="-20px">
+                <Rating
+                  ratings={props.ratings}
+                  setRatings={props.setRatings}
+                  dataId={props.data.id}
+                  edgeLabel="hasRating"
+                  nodeLabel="kafka_rating"
+                />
+              </Block>
               {getTopicContent()}
               <ToggleUserText
                 dataId={data.id}
