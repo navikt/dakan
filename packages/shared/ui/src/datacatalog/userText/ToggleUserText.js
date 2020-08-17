@@ -25,6 +25,159 @@ import {
 
 const graph_server = env('GRAPH_SERVER') || '../'
 
+const getAddTextButton = (setIsAddTextModalOpen, title) => (
+  <Block display="flex" paddingTop="scale400">
+    <Button
+      kind={KIND.secondary}
+      startEnhancer={<AddIcon />}
+      startEnhancerHover={<AddIcon fill="white" />}
+      onClick={() => {
+        CheckIfAuthorized(() => {
+          setIsAddTextModalOpen(true)
+        })
+      }}
+    >
+      Legg til {title.toLowerCase()}
+    </Button>
+  </Block>
+)
+
+export const SingelUserText = (prop) => {
+  const { dataId, userText, setUserText, title, edgeLabel, nodeLabel } = prop
+  const [userTextContent, setUserTextContent] = React.useState({})
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
+    false,
+  )
+  const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
+  const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
+
+  const clientUser = useClientUser()
+
+  const [, theme] = useStyletron()
+
+  const getUserText = () => {
+    return (
+      userText &&
+      userText.properties && (
+        <Block
+          marginBottom="scale800"
+          padding="scale100"
+        >
+          <Block display="flex">
+            <Block flex="1">
+              <Block display={['block', 'block', 'flex']}>
+                <Block marginRight="scale400">
+                  <Block $style={{ ...theme.typography.font300 }}>
+                    {'Publisert ' +
+                      userText.properties.date +
+                      ', kl. ' +
+                      userText.properties.time}
+                  </Block>
+                </Block>
+              </Block>
+              <Block
+                $style={{ ...theme.typography.font300 }}
+                marginTop="scale800"
+              >
+                {userText.properties.text}
+              </Block>
+            </Block>
+          </Block>
+          <Block marginTop="scale800" display="flex">
+            <Block marginRight="scale800">
+              <Button
+                startEnhancer={<EditIcon />}
+                startEnhancerHover={<EditHoverIcon />}
+                kind={KIND.minimal}
+                onClick={() => {
+                  CheckIfAuthorized(() => {
+                    setUserTextContent(userText)
+                    setIsEditTextModalOpen(true)
+                  })
+                }}
+              >
+                Rediger
+                </Button>
+            </Block>
+            <Block>
+              <Button
+                startEnhancer={<DeleteIcon />}
+                startEnhancerHover={<DeleteHoverIcon />}
+                kind={KIND.minimal}
+                onClick={() => {
+                  CheckIfAuthorized(() => {
+                    setUserTextContent(userText)
+                    setIsDeleteTextModalOpen(true)
+                  })
+                }}
+              >
+                Slett
+                </Button>
+            </Block>
+          </Block>
+          <Block
+            $style={{ border: '1px solid #78706A' }}
+            marginTop="scale400"
+          />
+        </Block>
+      )
+    )
+  }
+  return (
+    <Block>
+      {
+        <Block>
+          <AddUserTextModal
+            title={title}
+            dataId={dataId}
+            userTexts={userText}
+            setUserTexts={setUserText}
+            isOpen={isAddTextModalOpen}
+            setIsOpen={setIsAddTextModalOpen}
+            clientUser={clientUser}
+            server={graph_server}
+            edgeLabel={edgeLabel}
+            nodeLabel={nodeLabel}
+          />
+          <EditSingleUserTextModal
+            title={title}
+            isOpen={isEditTextModalOpen}
+            setIsOpen={setIsEditTextModalOpen}
+            userTextContent={userTextContent}
+            userTextIndex={userTextIndex}
+            userText={userText}
+            setUserText={setUserText}
+            clientUser={clientUser}
+            server={graph_server}
+          />
+          <DeleteUserTextModal
+            isOpen={isDeleteTextModalOpen}
+            setIsOpen={setIsDeleteTextModalOpen}
+            index={0}
+            userTextContent={userTextContent}
+            userTexts={userText}
+            setUserTexts={setUserText}
+            clientUser={clientUser}
+            server={graph_server}
+          />
+          <H5>
+            <b>{CapitalizeString(title)}</b>
+          </H5>
+          {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
+            <Block padding="1em" backgroundColor={'#F4F4F4'}>
+              <Block>
+                {getUserText()}
+              </Block>
+            </Block>
+          ) : (
+              getAddTextButton()
+            )}
+        </Block>
+      }
+    </Block>
+  )
+}
+
 export const ToggleUserText = (prop) => {
   const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
@@ -41,23 +194,6 @@ export const ToggleUserText = (prop) => {
   const clientUser = useClientUser()
 
   const [, theme] = useStyletron()
-
-  const getAddTextButton = () => (
-    <Block display="flex" paddingTop="scale400">
-      <Button
-        kind={KIND.secondary}
-        startEnhancer={<AddIcon />}
-        startEnhancerHover={<AddIcon fill="white" />}
-        onClick={() => {
-          CheckIfAuthorized(() => {
-            setIsAddTextModalOpen(true)
-          })
-        }}
-      >
-        Legg til {title.toLowerCase()}
-      </Button>
-    </Block>
-  )
 
   const getUserTexts = () => {
     return userTexts.map((userText, index) => {
@@ -206,8 +342,8 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton()}
             </Block>
           ) : (
-            getAddTextButton()
-          )}
+              getAddTextButton()
+            )}
         </Block>
       }
     </Block>

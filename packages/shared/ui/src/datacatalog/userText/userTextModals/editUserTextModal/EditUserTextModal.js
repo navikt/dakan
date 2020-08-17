@@ -13,6 +13,105 @@ import GetCurrentDate, {
 } from '../../../../utils/GetCurrentDate/GetCurrentDate'
 import { KIND } from 'baseui/button'
 
+export const EditSingleUserTextModal = (props) => {
+  const {
+    title,
+    isOpen,
+    setIsOpen,
+    userTextContent,
+    userText,
+    setUserText,
+    clientUser,
+    server,
+  } = props
+
+  const [text, setText] = React.useState('')
+  const [, theme] = useStyletron()
+
+  React.useEffect(() => {
+    setText(GetValue(() => userTextContent.properties.text))
+  }, [userTextContent])
+
+  const addUserText = () => {
+    const tokenId = Cookies.get('ClientToken')
+    const newUserTexts = userText ? [...userText] : []
+
+    let userTextAuthor = newUserTexts.properties.author
+    if (typeof newUserTexts.properties.author === 'string') {
+      userTextAuthor = [newUserTexts.properties.author]
+    }
+
+    const newAuthor = userTextAuthor.filter((author) => author === clientUser.userId) ? userTextAuthor : userTextAuthor.push(clientUser.userId)
+    
+    const newUserText = {
+      id: userTextContent.id,
+      label: userTextContent.label,
+      properties: {
+        type: userTextContent.properties.type,
+        author: newAuthor,
+        text: text,
+        date: GetCurrentDate(),
+        time: GetCurrentTime(),
+      },
+    }
+
+    axios
+      .put(`${server}/node`, [newUserText], {
+        headers: { 'JWT-Token': tokenId },
+      })
+      .then(() => setUserText([newUserText]))
+      .catch((error) => console.log(error))
+    setText('')
+  }
+
+  return (
+    <Modal
+      overrides={{
+        Dialog: {
+          style: {
+            maxWidth: '1200px',
+            width: '100%',
+          },
+        },
+      }}
+      onClose={() => setIsOpen(false)}
+      isOpen={isOpen}
+    >
+      <ModalHeader>Rediger</ModalHeader>
+      <ModalBody>
+        <Block>
+          <Textarea
+            rows={10}
+            overrides={{
+              InputContainer: {
+                style: {
+                  height: '100%',
+                },
+              },
+            }}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={`Skriv en ${title.toLowerCase()}...`}
+            value={text}
+          />
+        </Block>
+      </ModalBody>
+      <ModalFooter>
+        <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
+          Avbryt
+          </ModalButton>
+        <ModalButton
+          onClick={() => {
+            addUserText()
+            setIsOpen(false)
+          }}
+        >
+          Lagre
+          </ModalButton>
+      </ModalFooter>
+    </Modal>
+  )
+}
+
 export const EditUserTextModal = (props) => {
   const {
     title,
