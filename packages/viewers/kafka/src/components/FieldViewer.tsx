@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { SelectOpplysningstype, Label } from '@dakan/ui'
+import { Tagging, Label } from '@dakan/ui'
 import env from '@beam-australia/react-env'
 import { useNodeEdges } from '@dakan/hooks'
 
@@ -10,7 +10,7 @@ const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
   const { field, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useNodeEdges(field.id, 'hasTag')
+  const [tags, loading, error, setTags] = useNodeEdges(field.id, 'hasKafkaFieldTag')
 
   if (error) {
     console.log(error)
@@ -27,14 +27,16 @@ const FieldViewer = (props: any): JSX.Element => {
             <Block display={['block', 'flex']} marginBottom="scale300">
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
-                  <SelectOpplysningstype
+                  <Tagging
                     isLoading={loading}
                     dataId={field.id}
                     tagOptions={tagOptions}
                     serverUrl={server}
-                    columnTags={tags}
-                    setColumnTags={setTags}
+                    dataTags={tags}
+                    setDataTags={setTags}
                     clientUser={clientUser}
+                    edgeLabel="hasKafkaFieldTag"
+                    tagLabel="name"
                   />
                 </Block>
               </Block>

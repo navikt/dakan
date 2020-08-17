@@ -3,7 +3,7 @@ import { Block } from 'baseui/block'
 import { StyledLink } from 'baseui/link'
 import { LabelMedium } from 'baseui/typography'
 import env from '@beam-australia/react-env'
-import { SelectOpplysningstype } from '@dakan/ui'
+import { Tagging } from '@dakan/ui'
 import { useNodeEdges } from '@dakan/hooks'
 
 import GetValue from '../utils/GetValue'
@@ -12,7 +12,7 @@ const server = env('GRAPH_SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useNodeEdges(view.id, 'hasTag')
+  const [tags, loading, error, setTags] = useNodeEdges(view.id, 'hasTableauViewTag')
 
   if (error) {
     console.log(error)
@@ -40,14 +40,16 @@ const TableauView = (props: any) => {
             </StyledLink>
           </Block>
           <Block marginTop="scale600" marginBottom="scale600">
-            <SelectOpplysningstype
+            <Tagging
               isLoading={loading}
               dataId={view.id}
               tagOptions={tagOptions}
               serverUrl={server}
-              columnTags={tags}
-              setColumnTags={setTags}
+              dataTags={tags}
+              setDataTags={setTags}
               clientUser={clientUser}
+              edgeLabel="hasTableauViewTag"
+              tagLabel="name"
             />
           </Block>
         </Block>
