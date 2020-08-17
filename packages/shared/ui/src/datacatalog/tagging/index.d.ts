@@ -12,5 +12,5 @@ export interface TaggingProps {
   tagLabel?: string
 }
 
-export declare const SelectOpplysningstype: React.FC<TaggingProps>
-export default SelectOpplysningstype
+export declare const Tagging: React.FC<TaggingProps>
+export default Tagging
