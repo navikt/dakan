@@ -17,7 +17,7 @@ export const Tagging = (props) => {
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
-    const newTags = [...dataTags]
+    const newTags = dataTags && Array.isArray(dataTags) ? [...dataTags] : []
 
     newTags.splice(index, 1)
 
@@ -33,7 +33,7 @@ export const Tagging = (props) => {
   const addTag = (value) => {
     const tokenId = Cookies.get('ClientToken')
     const newTag = value[0]
-    const newTags = [...dataTags]
+    const newTags = dataTags && Array.isArray(dataTags) ? [...dataTags] : []
 
     newTags.unshift(newTag)
 
