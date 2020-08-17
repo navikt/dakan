@@ -36,13 +36,13 @@ export const ToggleUserText = (prop) => {
   const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState('')
   const [panelTitle, setPanelTitle] = React.useState('Vis mer')
-  const [commentSize, setCommentSize] = React.useState('250px')
+  const [textScreenSize, setTextScreenSize] = React.useState('250px')
 
   const clientUser = useClientUser()
 
   const [, theme] = useStyletron()
 
-  const getAddCommentButton = () => (
+  const getAddTextButton = () => (
     <Block display="flex" paddingTop="scale400">
       <Button
         kind={KIND.secondary}
@@ -54,12 +54,12 @@ export const ToggleUserText = (prop) => {
           })
         }}
       >
-        Legg til
+        Legg til {title.toLowerCase()}
       </Button>
     </Block>
   )
 
-  const getComments = () => {
+  const getUserTexts = () => {
     return userTexts.map((userText, index) => {
       return (
         userText &&
@@ -178,18 +178,18 @@ export const ToggleUserText = (prop) => {
           </H5>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={'#F4F4F4'}>
-              <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>
-                {getComments()}
+              <Block $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}>
+                {getUserTexts()}
               </Block>
               <Block paddingTop="scale400">
                 <Accordion
                   onChange={(e) => {
                     setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))
                     if (GetValue(() => e.expanded[0].toString(), '') === '0') {
-                      setCommentSize('600px')
+                      setTextScreenSize('600px')
                       setPanelTitle('Vis mindre')
                     } else {
-                      setCommentSize('250px')
+                      setTextScreenSize('250px')
                       setPanelTitle('Vis mer')
                     }
                   }}
@@ -203,10 +203,10 @@ export const ToggleUserText = (prop) => {
                   />
                 </Accordion>
               </Block>
-              {getAddCommentButton()}
+              {getAddTextButton()}
             </Block>
           ) : (
-            getAddCommentButton()
+            getAddTextButton()
           )}
         </Block>
       }
