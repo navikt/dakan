@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Avatar } from "baseui/avatar";
+import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
@@ -8,7 +8,7 @@ import GetValue from '../utils/GetValue'
 
 import { LayoutSplit as Layout, LabeledContent } from '@dakan/ui'
 
-import {OrgTeam} from './OrgTeam'
+import { OrgTeam } from './OrgTeam'
 
 const ITEMS = [
   { item: 'epost', label: 'Epost' },
@@ -19,7 +19,7 @@ const ITEMS = [
   { item: 'sluttdato', label: 'Sluttdato' },
 ]
 
-const Content = ({ item, id}) => {
+const Content = ({ item, id }) => {
   const getItems = (items: Array<{}>, content) => {
     return items.map((entry: any, i: number) => {
       let value = GetValue(() => content.properties[entry.item], null)
@@ -55,9 +55,7 @@ const Content = ({ item, id}) => {
 
   const Head = () => (
     <Block>
-      <ParagraphMedium>
-        {item && item.fornavn}
-      </ParagraphMedium>
+      <ParagraphMedium>{item && item.fornavn}</ParagraphMedium>
       <Content />
     </Block>
   )
@@ -76,11 +74,21 @@ const Content = ({ item, id}) => {
   const getHeadingText = () => {
     const name = getName()
     const avatar = getAvatar()
-    return <Block>{name}{avatar}</Block>
+    return (
+      <Block>
+        {name}
+        {avatar}
+      </Block>
+    )
   }
 
   const getName = () => {
-    if (item && item.properties && item.properties.fornavn && item.properties.etternavn) {
+    if (
+      item &&
+      item.properties &&
+      item.properties.fornavn &&
+      item.properties.etternavn
+    ) {
       return item.properties.fornavn + ' ' + item.properties.etternavn
     }
     return 'Ukjent'
@@ -116,4 +124,3 @@ const Content = ({ item, id}) => {
 }
 
 export default Content
-

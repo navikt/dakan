@@ -118,7 +118,9 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Gjennomsnittlig vurdering {value.toFixed(2)}</LabelMedium>
+            <LabelMedium>
+              Gjennomsnittlig vurdering {value.toFixed(2)}
+            </LabelMedium>
           </Block>
         </React.Fragment>
       ) : (

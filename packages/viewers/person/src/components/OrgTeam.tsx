@@ -5,19 +5,19 @@ import { Label } from '@dakan/ui'
 
 import isEmpty from '../utils/IsEmpty'
 
-export const OrgTeam = ({id}: any) => {
-    const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
-        id, 'memberOfTeam',
-    )
+export const OrgTeam = ({ id }: any) => {
+  const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
+    id,
+    'memberOfTeam',
+  )
 
-   const getContent = (nodes) => {
-       if (!isEmpty(nodes)) {
-           return 'Kommer' //JSON.stringify(nodes)
-       }
-       else {
-           return 'Ingen'
-       }
-   }
+  const getContent = (nodes) => {
+    if (!isEmpty(nodes)) {
+      return 'Kommer' //JSON.stringify(nodes)
+    } else {
+      return 'Ingen'
+    }
+  }
 
   return (
     <React.Fragment>
@@ -25,8 +25,8 @@ export const OrgTeam = ({id}: any) => {
       {loadingNodes && <LoadingSpinner />}
       {nodes && (
         <React.Fragment>
-            <Label>Team</Label>
-            {getContent(nodes)}
+          <Label>Team</Label>
+          {getContent(nodes)}
         </React.Fragment>
       )}
     </React.Fragment>
