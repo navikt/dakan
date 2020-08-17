@@ -1,23 +1,25 @@
 import * as React from 'react';
-import {Block} from 'baseui/block';
-import {format} from 'date-fns';
-import {LargeWidth, LabeledContent, ToggleUserText, Searchbox, Rating} from '@dakan/ui';
-import {LabelLarge} from 'baseui/typography';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {useStyletron} from 'baseui';
+import { Block } from 'baseui/block';
+import { format } from 'date-fns';
+import { LargeWidth, LabeledContent, ToggleUserText, Searchbox, Rating, Panel } from '@dakan/ui';
+import { LabelLarge } from 'baseui/typography';
+import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
+import { useStyletron } from 'baseui';
+import { Accordion } from 'baseui/accordion';
 
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
+import ExtraDescription from './ExtraDescription';
 
 const items = (props: any): JSX.Element[] => {
     const content = props.properties;
 
     const ITEMS = [
-        {item: 'schema_name', label: 'Skjema'},
-        {item: 'team_name', label: 'Team navn'},
-        {item: 'db_name', label: 'Database navn'},
-        {item: 'host', label: 'Host adresse'},
+        { item: 'schema_name', label: 'Skjema' },
+        { item: 'team_name', label: 'Team navn' },
+        { item: 'db_name', label: 'Database navn' },
+        { item: 'host', label: 'Host adresse' },
     ];
 
     return ITEMS.map((entry: any, i: number) => {
@@ -40,7 +42,8 @@ const items = (props: any): JSX.Element[] => {
 };
 
 const Main = (props: any): JSX.Element => {
-    const {data, numberOfColumns} = props;
+    const { data, numberOfColumns } = props;
+    const [isExpanded, setIsExpanded] = React.useState('');
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -50,9 +53,14 @@ const Main = (props: any): JSX.Element => {
                         <LabelLarge>
                             <b>Beskrivelse</b>
                         </LabelLarge>
-                        <Block marginTop="scale200" $style={{...theme.typography.font300}}>
+                        <Block marginTop="scale200" $style={{ ...theme.typography.font300 }}>
                             {data.properties.table_description}
                         </Block>
+                        <Accordion onChange={(e) => setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))}>
+                            <Panel title="Utvidet beskrivelse" isExpanded={isExpanded === '0'}>
+                                <ExtraDescription {...props}/>
+                            </Panel>
+                        </Accordion>
                     </Block>
                     <FlexGrid flexGridColumnCount={[1, 2, 3, 5]}>
                         {items(data)}
@@ -86,7 +94,7 @@ const Content = (props: any): JSX.Element => {
                                 nodeLabel="table_rating"
                             />
                         </Block>
-                        <Main data={props.data} numberOfColumns={props.numberOfColumns} />
+                        <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props}/>
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
