@@ -106,7 +106,6 @@ export const edit_comment_modal = () => {
       <EditSingleUserTextModal
         isOpen={isEditSingleCommentOpen}
         setIsOpen={setIsEditSingleCommentOpen}
-        userTextContent={singleUserText[0]}
         userText={singleUserText}
         setUserText={setSingleUserText}
         clientUser={user}
