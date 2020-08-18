@@ -10,11 +10,9 @@ const getLink = (row) => {
     return '../naisteam/' + row.id
   }
   
-
 export const OrgTeam = ({id}: any) => {
     const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
-        id, 'memberOfTeam', 'in')
-
+        id, 'teamMemberOf', 'in')
    
         const columns: any[] = [
             <TableBuilderColumn id="name" header="Navn">

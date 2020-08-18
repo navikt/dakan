@@ -11,13 +11,13 @@ export function useNode(id) {
   const [errorMessage, setErrorMessage] = useState('')
 
   const getData = (response) => {
-    if (typeof response.data !== 'object') throw Error('Error fetching node')
+    if (response.data && typeof response.data !== 'object') throw Error('Error fetching node')
     return response.data
   }
 
   useEffect(() => {
     const url = `${server}/node/${id}`
-    console.log('get node: ', url )
+    console.log('get node: ', url)
     const fetchData = async () => {
       setLoading(true)
       try {

@@ -10,7 +10,7 @@ export function useNodeEdges(id, type, direction='out') {
   const [error, setError] = useState(false)
 
   const getData = (response) => {
-    if (typeof response.data !== 'object') throw Error('No items found')
+    if (response.data && typeof response.data !== 'object') throw Error('No items found')
     return response.data
   }
 

@@ -1,10 +1,8 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Avatar } from "baseui/avatar";
+import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
-
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
-
 
 import {OrgTeam} from './OrgTeam'
 import {NaisTeam} from './NaisTeam'
@@ -19,7 +17,6 @@ const ITEMS = [
 ]
 
 const Content = ({ item, id}) => {
-
   const Head = () => (
     <Block>
       <ParagraphMedium>
@@ -48,11 +45,21 @@ const Content = ({ item, id}) => {
   const getHeadingText = () => {
     const name = getName()
     const avatar = getAvatar()
-    return <Block>{name}{avatar}</Block>
+    return (
+      <Block>
+        {name}
+        {avatar}
+      </Block>
+    )
   }
 
   const getName = () => {
-    if (item && item.properties && item.properties.fornavn && item.properties.etternavn) {
+    if (
+      item &&
+      item.properties &&
+      item.properties.fornavn &&
+      item.properties.etternavn
+    ) {
       return item.properties.fornavn + ' ' + item.properties.etternavn
     }
     return 'Ukjent'
@@ -88,4 +95,3 @@ const Content = ({ item, id}) => {
 }
 
 export default Content
-

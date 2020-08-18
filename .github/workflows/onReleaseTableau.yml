@@ -15,7 +15,6 @@ jobs:
   package:      
     name: Build and package
     runs-on: ubuntu-latest
-    needs: test
     steps:
       - uses: actions/checkout@v2
         with:

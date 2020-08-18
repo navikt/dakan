@@ -12,12 +12,12 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 
 const graph_server = env('GRAPH_SERVER')
 
-export const SelectOpplysningstype = (props) => {
-  const { tagOptions, dataId, columnTags, setColumnTags } = props
+export const Tagging = (props) => {
+  const { tagOptions, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
-    const newTags = [...columnTags]
+    const newTags = dataTags && Array.isArray(dataTags) ? [...dataTags] : []
 
     newTags.splice(index, 1)
 
@@ -26,14 +26,14 @@ export const SelectOpplysningstype = (props) => {
         params: { n1: dataId, n2: tagId },
         headers: { 'JWT-Token': tokenId },
       })
-      .then(() => setColumnTags(newTags))
+      .then(() => setDataTags(newTags))
       .catch((e) => console.log(e))
   }
 
   const addTag = (value) => {
     const tokenId = Cookies.get('ClientToken')
     const newTag = value[0]
-    const newTags = [...columnTags]
+    const newTags = dataTags && Array.isArray(dataTags) ? [...dataTags] : []
 
     newTags.unshift(newTag)
 
@@ -41,7 +41,7 @@ export const SelectOpplysningstype = (props) => {
       {
         outV: dataId,
         inV: newTag.id,
-        label: 'hasTag',
+        label: edgeLabel,
       },
     ]
 
@@ -49,12 +49,12 @@ export const SelectOpplysningstype = (props) => {
       .put(`${graph_server}/edge`, tagPayload, {
         headers: { 'JWT-Token': tokenId },
       })
-      .then(() => setColumnTags(newTags))
+      .then(() => setDataTags(newTags))
       .catch((e) => console.log(e))
   }
 
   const getTags = () => {
-    return columnTags.map((tag, index) => {
+    return dataTags.map((tag, index) => {
       return (
         <React.Fragment>
           {tag && tag.properties && (
@@ -65,7 +65,7 @@ export const SelectOpplysningstype = (props) => {
                 CheckIfAuthorized(() => deleteTag(index, tag.id))
               }
             >
-              {GetValue(() => tag.properties.name)}
+              {GetValue(() => tag.properties[tagLabel])}
             </Tag>
           )}
         </React.Fragment>
@@ -75,7 +75,7 @@ export const SelectOpplysningstype = (props) => {
 
   const getOptions = () => {
     const options = tagOptions.map((tag) => ({
-      name: GetValue(() => tag.properties.name),
+      name: GetValue(() => tag.properties[tagLabel]),
       id: tag.id,
       properties: tag.properties,
     }))
@@ -94,7 +94,7 @@ export const SelectOpplysningstype = (props) => {
   return (
     <Block>
       {tagOptions && getOptions()}
-      {columnTags && columnTags.length > 0 && (
+      {dataTags && dataTags.length > 0 && (
         <Block marginTop="scale300">
           <Block marginTop="scale300">{getTags()}</Block>
         </Block>
@@ -102,4 +102,4 @@ export const SelectOpplysningstype = (props) => {
     </Block>
   )
 }
-export default SelectOpplysningstype
+export default Tagging
