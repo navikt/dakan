@@ -4,7 +4,7 @@ import { Block } from 'baseui/block'
 import { ThemeProvider, navTheme } from '../../../theme'
 import AddUserTextModal from './addUserTextModal/AddUserTextModal'
 import DeleteUserTextModal from './deleteUserTextModal/DeleteUserTextModal'
-import EditUserTextModal from './editUserTextModal/EditUserTextModal'
+import EditUserTextModal, { EditSingleUserTextModal } from './editUserTextModal/EditUserTextModal'
 import { Button } from '../../../components/button/Button'
 
 export default {
@@ -67,8 +67,8 @@ export const add_comment_modal = () => {
       <AddUserTextModal
         title={title}
         dataId={dataId}
-        userText={comments}
-        setUserText={setComments}
+        userTexts={comments}
+        setUserTexts={setComments}
         isOpen={isAddCommentOpen}
         setIsOpen={setIsAddCommentOpen}
         clientUser={clientUser}
@@ -85,7 +85,9 @@ export const add_comment_modal = () => {
 
 export const edit_comment_modal = () => {
   const [comments, setComments] = React.useState(commentList)
+  const [singleUserText, setSingleUserText] = React.useState([commentList[1]])
   const [isEditCommentOpen, setIsEditCommentOpen] = React.useState(false)
+  const [isEditSingleCommentOpen, setIsEditSingleCommentOpen] = React.useState(false)
   const [user, setUser] = React.useState(clientUser)
 
   return (
@@ -95,8 +97,18 @@ export const edit_comment_modal = () => {
         setIsOpen={setIsEditCommentOpen}
         userTextContent={commentContent}
         userTextIndex={0}
-        userText={comments}
-        setUserText={setComments}
+        userTexts={comments}
+        setUserTexts={setComments}
+        clientUser={user}
+        server={server}
+        title={title}
+      />
+      <EditSingleUserTextModal
+        isOpen={isEditSingleCommentOpen}
+        setIsOpen={setIsEditSingleCommentOpen}
+        userTextContent={singleUserText[0]}
+        userText={singleUserText}
+        setUserText={setSingleUserText}
         clientUser={user}
         server={server}
         title={title}
@@ -112,7 +124,7 @@ export const edit_comment_modal = () => {
             Edit comment modal
           </Button>
         </Block>
-        <Block>
+        <Block marginBottom="scale800">
           <Button
             onClick={() => {
               setIsEditCommentOpen(true)
@@ -120,6 +132,16 @@ export const edit_comment_modal = () => {
             }}
           >
             Edit comment modal invalid user
+          </Button>
+        </Block>
+        <Block>
+          <Button
+            onClick={() => {
+              setIsEditSingleCommentOpen(true)
+              setUser(clientUser)
+            }}
+          >
+            Edit modal for single user text
           </Button>
         </Block>
       </Block>
@@ -139,8 +161,8 @@ export const delete_comment_modal = () => {
         setIsOpen={setIsDeleteModalOpen}
         index={0}
         userTextContent={commentContent}
-        userText={comments}
-        setUserText={setComments}
+        userTexts={comments}
+        setUserTexts={setComments}
         clientUser={user}
         server={server}
       />
