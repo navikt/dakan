@@ -124,6 +124,30 @@ export function getViewerProps(format) {
     }
   }
 
+  if (format === 'nais_team') {
+    return {
+      link: env('NAISTEAM_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'nais_app') {
+    return {
+      link: env('NAISAPP_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'ad_department') {
+    return {
+      link: env('AD_DEPARTMENT_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
   if (format === 'produktområde' || format === 'productarea') {
     return {
       link: env('PRODUCTAREA_VIEWER_URL') || '/viewer',
