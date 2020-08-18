@@ -59,7 +59,7 @@ const Main = (props: any): JSX.Element => {
                             <Panel title="Vis mer" isExpanded={isExpanded === '0'}>
                                 <SingleUserText
                                     dataId={props.data.id}
-                                    userText={props.desription}
+                                    userText={props.description}
                                     setUserText={props.setDescription}
                                     title="Utvidet beskrivelse"
                                     edgeLabel="hasTableDescription"
