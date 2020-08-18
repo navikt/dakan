@@ -12,7 +12,7 @@ const getLink = (row) => {
   
 export const OrgTeam = ({id}: any) => {
     const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
-        id, 'teamMemberOf', 'in')
+        id, 'hasNaisTeamMember', 'in')
    
         const columns: any[] = [
             <TableBuilderColumn id="name" header="Navn">
