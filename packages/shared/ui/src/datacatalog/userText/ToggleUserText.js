@@ -37,7 +37,7 @@ const getAddTextButton = (setIsAddTextModalOpen, title) => (
         })
       }}
     >
-      Legg til {title.toLowerCase()}
+      Legg til {title ? title.toLowerCase() : ''}
     </Button>
   </Block>
 )
@@ -170,7 +170,7 @@ export const SingelUserText = (prop) => {
               </Block>
             </Block>
           ) : (
-              getAddTextButton()
+              getAddTextButton(setIsAddTextModalOpen,title)
             )}
         </Block>
       }
@@ -339,10 +339,10 @@ export const ToggleUserText = (prop) => {
                   />
                 </Accordion>
               </Block>
-              {getAddTextButton()}
+              {getAddTextButton(setIsAddTextModalOpen, title)}
             </Block>
           ) : (
-              getAddTextButton()
+              getAddTextButton(setIsAddTextModalOpen, title)
             )}
         </Block>
       }
