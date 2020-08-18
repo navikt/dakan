@@ -12,7 +12,7 @@ const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
   const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(
     props.match.params.id,
-    'ownsApp',
+    'ownerOfApp',
   )
 
   if (props.match.params.id === 'test') {
