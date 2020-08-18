@@ -64,15 +64,13 @@ export const SingleUserText = (prop) => {
         >
           <Block display="flex">
             <Block flex="1">
-              <Block display={['block', 'block', 'flex']}>
-                <Block marginRight="scale400">
+              <Block display="flex" justifyContent="flex-end">
                   <Block $style={{ ...theme.typography.font300 }}>
                     {'Publisert ' +
                       userText[0].properties.date +
                       ', kl. ' +
                       userText[0].properties.time}
                   </Block>
-                </Block>
               </Block>
               <Block
                 $style={{ ...theme.typography.font300 }}
