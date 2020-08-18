@@ -18,7 +18,6 @@ export const EditSingleUserTextModal = (props) => {
     title,
     isOpen,
     setIsOpen,
-    userTextContent,
     userText,
     setUserText,
     clientUser,
@@ -26,26 +25,25 @@ export const EditSingleUserTextModal = (props) => {
   } = props
 
   const [text, setText] = React.useState('')
-  const [, theme] = useStyletron()
 
   React.useEffect(() => {
-    setText(GetValue(() => userTextContent.properties.text))
-  }, [userTextContent])
+    setText(GetValue(() => userText[0].properties.text))
+  }, [userText])
 
   const addUserText = () => {
     const tokenId = Cookies.get('ClientToken')
-    const newUserTexts = userText ? [...userText] : []
+    const userTextCopy = userText ? [...userText] : []
 
-    const userTextAuthor = Array.isArray(newUserTexts.properties.author) ? [...newUserTexts.properties.author] : [newUserTexts.properties.author]
+    const userTextAuthor = Array.isArray(userTextCopy[0].properties.author) ? [...userTextCopy[0].properties.author] : [userTextCopy[0].properties.author]
 
-    const newAuthor = userTextAuthor.filter((author) => author === clientUser.userId) ? userTextAuthor : userTextAuthor.push(clientUser.userId)
-    
+    userTextAuthor.filter((author) => author === clientUser.userId).length > 0 ? userTextAuthor : userTextAuthor.push(clientUser.userId)
+
     const newUserText = {
       id: userTextContent.id,
       label: userTextContent.label,
       properties: {
         type: userTextContent.properties.type,
-        author: newAuthor,
+        author: userTextAuthor,
         text: text,
         date: GetCurrentDate(),
         time: GetCurrentTime(),
