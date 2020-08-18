@@ -112,10 +112,6 @@ export const SingleUserText = (prop) => {
                 </Button>
             </Block>
           </Block>
-          <Block
-            $style={{ border: '1px solid #78706A' }}
-            marginTop="scale400"
-          />
         </Block>
       )
     )
@@ -171,9 +167,9 @@ export const SingleUserText = (prop) => {
               clientUser={clientUser}
               server={graph_server}
             />)}
-          <H5>
+          <LabelLarge>
             <b>{CapitalizeString(title)}</b>
-          </H5>
+          </LabelLarge>
           {getContent()}
         </Block>
       }
