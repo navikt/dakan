@@ -62,7 +62,7 @@ import {
 import { Like_DislikeRating } from '../datacatalog/like-dislike/Like_DislikeRating'
 import { Alert, ArrowLeft, ArrowRight } from 'baseui/icon'
 import { SIZE, SHAPE, KIND, Button as BaseButton } from 'baseui/button'
-import { SelectOpplysningstype, LoadingSpinner } from '../datacatalog'
+import { Tagging, LoadingSpinner } from '../datacatalog'
 import { Rating } from '../datacatalog/rating'
 import { RadioGroup, Radio, ALIGN } from 'baseui/radio'
 import { StyledLink } from 'baseui/link'
@@ -325,10 +325,10 @@ export const Navbars = () => {
   )
 }
 
-export const SelectOpplysningstyper = () => {
+export const Data_Tagging = () => {
   const tagOptions = [
-    { id: 'tag1', label: 'tag1', properties: { name: 'tag1', type: 'tag1' } },
-    { id: 'tag2', label: 'tag2', properties: { name: 'tag2', type: 'tag2' } },
+    { id: 'tag1', label: 'tag1', properties: { name: 'tag1', type: 'tag1type' } },
+    { id: 'tag2', label: 'tag2', properties: { name: 'tag2', type: 'tag2type' } },
   ]
   const dataId = 123
   const [columnTags, setColumnTags] = React.useState([
@@ -348,12 +348,14 @@ export const SelectOpplysningstyper = () => {
   const theme = getTheme()
   return (
     <ThemeProvider theme={theme}>
-      <SelectOpplysningstype
+      <Tagging
         dataId={dataId}
         tagOptions={tagOptions}
         serverUrl="testUrl"
-        columnTags={columnTags}
-        setColumnTags={setColumnTags}
+        dataTags={columnTags}
+        setDataTags={setColumnTags}
+        edgeLabel="hasTag"
+        tagLabel="name"
       />
     </ThemeProvider>
   )

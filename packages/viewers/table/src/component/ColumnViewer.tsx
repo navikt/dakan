@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {Table} from 'baseui/table-semantic';
-import {LabeledContent, SelectOpplysningstype} from '@dakan/ui';
+import {LabeledContent, Tagging} from '@dakan/ui';
 import {LabelLarge, LabelMedium} from 'baseui/typography';
 import {useStyletron} from 'baseui';
 import env from '@beam-australia/react-env';
@@ -15,7 +15,7 @@ const server = env('SERVER');
 const ColumnViewer = (prop: any) => {
     const {columnData, tagOptions} = prop;
 
-    const [tags, loading, error, setTags] = useNodeEdges(columnData.id, 'hasTag');
+    const [tags, loading, error, setTags] = useNodeEdges(columnData.id, 'hasColumnTag');
 
     const [, theme] = useStyletron();
 
@@ -208,13 +208,15 @@ const ColumnViewer = (prop: any) => {
                                 marginTop="scale600"
                                 marginBottom="scale600"
                             >
-                                <SelectOpplysningstype
+                                <Tagging
                                     isLoading={loading}
                                     dataId={columnData.id}
                                     tagOptions={tagOptions}
                                     serverUrl={server}
-                                    columnTags={tags}
-                                    setColumnTags={setTags}
+                                    dataTags={tags}
+                                    setDataTags={setTags}
+                                    edgeLabel="hasColumnTag"
+                                    tagLabel="name"
                                 />
                             </Block>
                         </Block>

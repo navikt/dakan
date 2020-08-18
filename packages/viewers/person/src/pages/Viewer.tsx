@@ -8,7 +8,8 @@ import Content from '../components/Content'
 import exampleJson from '../resources/example.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode('Person.' + props.match.params.id,
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
+    'Person.' + props.match.params.id,
   )
 
   if (props.match.params.id === 'test') {
