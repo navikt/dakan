@@ -10,7 +10,7 @@ import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
-import EditUserTextModal from './userTextModals/editUserTextModal/EditUserTextModal'
+import EditUserTextModal, {EditSingleUserTextModal} from './userTextModals/editUserTextModal/EditUserTextModal'
 import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
