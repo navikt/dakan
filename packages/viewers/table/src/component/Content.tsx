@@ -56,7 +56,7 @@ const Main = (props: any): JSX.Element => {
                             {data.properties.table_description}
                         </Block>
                         <Accordion onChange={(e) => setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))}>
-                            <Panel title="Vis mer" isExpanded={isExpanded === '0'}>
+                            <Panel title={isExpanded === '0' ? "Vis mindre" : "Vis mer"} isExpanded={isExpanded === '0'}>
                                 <SingleUserText
                                     dataId={props.data.id}
                                     userText={props.description}
