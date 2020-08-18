@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Block } from 'baseui/block';
 import { format } from 'date-fns';
-import { LargeWidth, LabeledContent, ToggleUserText, Searchbox, Rating, Panel } from '@dakan/ui';
+import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating, Panel } from '@dakan/ui';
 import { LabelLarge } from 'baseui/typography';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { useStyletron } from 'baseui';
@@ -10,7 +10,6 @@ import { Accordion } from 'baseui/accordion';
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
-import ExtraDescription from './ExtraDescription';
 
 const items = (props: any): JSX.Element[] => {
     const content = props.properties;
@@ -57,8 +56,14 @@ const Main = (props: any): JSX.Element => {
                             {data.properties.table_description}
                         </Block>
                         <Accordion onChange={(e) => setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))}>
-                            <Panel title="Utvidet beskrivelse" isExpanded={isExpanded === '0'}>
-                                <ExtraDescription {...props}/>
+                            <Panel title="Vis mer" isExpanded={isExpanded === '0'}>
+                                <SingleUserText
+                                    dataId={props.data.id}
+                                    userText={props.desription}
+                                    setUserText={props.setDescription}
+                                    title="Utvidet beskrivelse"
+                                    edgeLabel="hasTableDescription"
+                                    nodeLabel="table_description" />
                             </Panel>
                         </Accordion>
                     </Block>
@@ -94,13 +99,13 @@ const Content = (props: any): JSX.Element => {
                                 nodeLabel="table_rating"
                             />
                         </Block>
-                        <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props}/>
+                        <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
                             setUserTexts={props.setComments}
                             title="Kommentar"
-                            edgeLabel="hasComment"
+                            edgeLabel="hasTableComment"
                             nodeLabel="table_comment"
                         />
                         {props.columns && (
