@@ -10,7 +10,7 @@ import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
-import EditUserTextModal, {EditSingleUserTextModal} from './userTextModals/editUserTextModal/EditUserTextModal'
+import EditUserTextModal, { EditSingleUserTextModal } from './userTextModals/editUserTextModal/EditUserTextModal'
 import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
@@ -42,9 +42,8 @@ const getAddTextButton = (setIsAddTextModalOpen, title) => (
   </Block>
 )
 
-export const SingelUserText = (prop) => {
+export const SingleUserText = (prop) => {
   const { dataId, userText, setUserText, title, edgeLabel, nodeLabel } = prop
-  const [userTextContent, setUserTextContent] = React.useState({})
   const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
     false,
   )
@@ -58,7 +57,7 @@ export const SingelUserText = (prop) => {
   const getUserText = () => {
     return (
       userText &&
-      userText.properties && (
+      userText[0].properties && (
         <Block
           marginBottom="scale800"
           padding="scale100"
@@ -69,9 +68,9 @@ export const SingelUserText = (prop) => {
                 <Block marginRight="scale400">
                   <Block $style={{ ...theme.typography.font300 }}>
                     {'Publisert ' +
-                      userText.properties.date +
+                      userText[0].properties.date +
                       ', kl. ' +
-                      userText.properties.time}
+                      userText[0].properties.time}
                   </Block>
                 </Block>
               </Block>
@@ -79,7 +78,7 @@ export const SingelUserText = (prop) => {
                 $style={{ ...theme.typography.font300 }}
                 marginTop="scale800"
               >
-                {userText.properties.text}
+                {userText[0].properties.text}
               </Block>
             </Block>
           </Block>
@@ -91,7 +90,6 @@ export const SingelUserText = (prop) => {
                 kind={KIND.minimal}
                 onClick={() => {
                   CheckIfAuthorized(() => {
-                    setUserTextContent(userText)
                     setIsEditTextModalOpen(true)
                   })
                 }}
@@ -106,7 +104,6 @@ export const SingelUserText = (prop) => {
                 kind={KIND.minimal}
                 onClick={() => {
                   CheckIfAuthorized(() => {
-                    setUserTextContent(userText)
                     setIsDeleteTextModalOpen(true)
                   })
                 }}
@@ -123,6 +120,21 @@ export const SingelUserText = (prop) => {
       )
     )
   }
+
+  const getContent = () => {
+    if (userText && userText.length > 0) {
+      return (
+        <Block padding="1em" backgroundColor={'#F4F4F4'}>
+          <Block>
+            {getUserText()}
+          </Block>
+        </Block>
+      )
+    } else {
+      return getAddTextButton(setIsAddTextModalOpen, title)
+    }
+  }
+
   return (
     <Block>
       {
@@ -143,35 +155,26 @@ export const SingelUserText = (prop) => {
             title={title}
             isOpen={isEditTextModalOpen}
             setIsOpen={setIsEditTextModalOpen}
-            userTextContent={userTextContent}
-            userTextIndex={userTextIndex}
             userText={userText}
             setUserText={setUserText}
             clientUser={clientUser}
             server={graph_server}
           />
-          <DeleteUserTextModal
-            isOpen={isDeleteTextModalOpen}
-            setIsOpen={setIsDeleteTextModalOpen}
-            index={0}
-            userTextContent={userTextContent}
-            userTexts={userText}
-            setUserTexts={setUserText}
-            clientUser={clientUser}
-            server={graph_server}
-          />
+          {userText && userText.length > 0 && (
+            <DeleteUserTextModal
+              isOpen={isDeleteTextModalOpen}
+              setIsOpen={setIsDeleteTextModalOpen}
+              index={0}
+              userTextContent={userText[0]}
+              userTexts={userText}
+              setUserTexts={setUserText}
+              clientUser={clientUser}
+              server={graph_server}
+            />)}
           <H5>
             <b>{CapitalizeString(title)}</b>
           </H5>
-          {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
-            <Block padding="1em" backgroundColor={'#F4F4F4'}>
-              <Block>
-                {getUserText()}
-              </Block>
-            </Block>
-          ) : (
-              getAddTextButton(setIsAddTextModalOpen,title)
-            )}
+          {getContent()}
         </Block>
       }
     </Block>
