@@ -3,7 +3,8 @@ import { Block } from 'baseui/block'
 import {
   LabeledContent,
   ToggleUserText,
-  LayoutSplit as Layout, Rating
+  LayoutSplit as Layout,
+  Rating,
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
@@ -78,10 +79,10 @@ const Content = (props: any): JSX.Element => {
                 />
               </Block>
               <Block>
-                  <LabeledContent description="Beskrivelse" list>
-                    {data.properties.description}
-                  </LabeledContent>
-                </Block>
+                <LabeledContent description="Beskrivelse" list>
+                  {data.properties.description}
+                </LabeledContent>
+              </Block>
               <Block marginBottom="scale1000">{items(data)}</Block>
               <ToggleUserText
                 dataId={data.id}

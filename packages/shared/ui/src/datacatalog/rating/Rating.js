@@ -38,9 +38,11 @@ export const Rating = (props) => {
 
   const getUserRate = () => {
     if (clientUser && ratings && Array.isArray(ratings) && ratings.length > 0) {
-      ratings.filter((rating) => rating.properties.author === clientUser.userId).map((rate) => {
-        setUserRate(rate.properties.rate)
-      })
+      ratings
+        .filter((rating) => rating.properties.author === clientUser.userId)
+        .map((rate) => {
+          setUserRate(rate.properties.rate)
+        })
     } else {
       setUserRate(0)
     }
@@ -73,8 +75,12 @@ export const Rating = (props) => {
         headers: { 'JWT-Token': tokenId },
       })
       .then(() => {
-        newRatings.filter((rating) => rating.properties.author === newRating.properties.author).map(
-          (rate) => {
+        newRatings
+          .filter(
+            (rating) =>
+              rating.properties.author === newRating.properties.author,
+          )
+          .map((rate) => {
             rate.properties.rate = rateValue
             rate.properties.date = newRating.properties.date
             rate.properties.time = newRating.properties.time
@@ -118,15 +124,22 @@ export const Rating = (props) => {
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Gjennomsnittlig vurdering: {value.toFixed(2)}</LabelMedium>
+            <LabelMedium>
+              Gjennomsnittlig vurdering: {value.toFixed(2)}
+            </LabelMedium>
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
-            <LabelMedium>Antall vurderinger: {ratings && Array.isArray(ratings) && ratings.length > 0 ? ratings.length : 0}</LabelMedium>
+            <LabelMedium>
+              Antall vurderinger:{' '}
+              {ratings && Array.isArray(ratings) && ratings.length > 0
+                ? ratings.length
+                : 0}
+            </LabelMedium>
           </Block>
         </React.Fragment>
       ) : (
-          <Spinner size={22} />
-        )}
+        <Spinner size={22} />
+      )}
     </Block>
   )
 }

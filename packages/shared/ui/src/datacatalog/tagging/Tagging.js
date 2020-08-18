@@ -13,7 +13,14 @@ import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 const graph_server = env('GRAPH_SERVER')
 
 export const Tagging = (props) => {
-  const { tagOptions, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
+  const {
+    tagOptions,
+    dataId,
+    dataTags,
+    setDataTags,
+    edgeLabel,
+    tagLabel,
+  } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')

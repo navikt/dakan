@@ -10,7 +10,9 @@ import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
-import EditUserTextModal, { EditSingleUserTextModal } from './userTextModals/editUserTextModal/EditUserTextModal'
+import EditUserTextModal, {
+  EditSingleUserTextModal,
+} from './userTextModals/editUserTextModal/EditUserTextModal'
 import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
@@ -58,19 +60,16 @@ export const SingleUserText = (prop) => {
     return (
       userText &&
       userText[0].properties && (
-        <Block
-          marginBottom="scale800"
-          padding="scale100"
-        >
+        <Block marginBottom="scale800" padding="scale100">
           <Block display="flex">
             <Block flex="1">
               <Block display="flex" justifyContent="flex-end">
-                  <Block $style={{ ...theme.typography.font300 }}>
-                    {'Publisert ' +
-                      userText[0].properties.date +
-                      ', kl. ' +
-                      userText[0].properties.time}
-                  </Block>
+                <Block $style={{ ...theme.typography.font300 }}>
+                  {'Publisert ' +
+                    userText[0].properties.date +
+                    ', kl. ' +
+                    userText[0].properties.time}
+                </Block>
               </Block>
               <Block
                 $style={{ ...theme.typography.font300 }}
@@ -93,7 +92,7 @@ export const SingleUserText = (prop) => {
                 }}
               >
                 Rediger
-                </Button>
+              </Button>
             </Block>
             <Block>
               <Button
@@ -107,7 +106,7 @@ export const SingleUserText = (prop) => {
                 }}
               >
                 Slett
-                </Button>
+              </Button>
             </Block>
           </Block>
         </Block>
@@ -119,9 +118,7 @@ export const SingleUserText = (prop) => {
     if (userText && userText.length > 0) {
       return (
         <Block padding="1em" backgroundColor={'#F4F4F4'}>
-          <Block>
-            {getUserText()}
-          </Block>
+          <Block>{getUserText()}</Block>
         </Block>
       )
     } else {
@@ -164,7 +161,8 @@ export const SingleUserText = (prop) => {
               setUserTexts={setUserText}
               clientUser={clientUser}
               server={graph_server}
-            />)}
+            />
+          )}
           <LabelLarge>
             <b>{CapitalizeString(title)}</b>
           </LabelLarge>
@@ -311,7 +309,9 @@ export const ToggleUserText = (prop) => {
           </H5>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={'#F4F4F4'}>
-              <Block $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}>
+              <Block
+                $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}
+              >
                 {getUserTexts()}
               </Block>
               <Block paddingTop="scale400">
@@ -339,8 +339,8 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton(setIsAddTextModalOpen, title)}
             </Block>
           ) : (
-              getAddTextButton(setIsAddTextModalOpen, title)
-            )}
+            getAddTextButton(setIsAddTextModalOpen, title)
+          )}
         </Block>
       }
     </Block>

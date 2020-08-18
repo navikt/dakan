@@ -4,7 +4,9 @@ import { Block } from 'baseui/block'
 import { ThemeProvider, navTheme } from '../../../theme'
 import AddUserTextModal from './addUserTextModal/AddUserTextModal'
 import DeleteUserTextModal from './deleteUserTextModal/DeleteUserTextModal'
-import EditUserTextModal, { EditSingleUserTextModal } from './editUserTextModal/EditUserTextModal'
+import EditUserTextModal, {
+  EditSingleUserTextModal,
+} from './editUserTextModal/EditUserTextModal'
 import { Button } from '../../../components/button/Button'
 
 export default {
@@ -87,7 +89,9 @@ export const edit_comment_modal = () => {
   const [comments, setComments] = React.useState(commentList)
   const [singleUserText, setSingleUserText] = React.useState([commentList[1]])
   const [isEditCommentOpen, setIsEditCommentOpen] = React.useState(false)
-  const [isEditSingleCommentOpen, setIsEditSingleCommentOpen] = React.useState(false)
+  const [isEditSingleCommentOpen, setIsEditSingleCommentOpen] = React.useState(
+    false,
+  )
   const [user, setUser] = React.useState(clientUser)
 
   return (

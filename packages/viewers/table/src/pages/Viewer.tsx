@@ -10,7 +10,7 @@ import exampleJson from '../resources/example.json';
 import exampleColumnJson from '../resources/exampleColumn.json';
 import exampleTags from '../resources/exampleTags.json';
 import exampleComments from '../resources/exampleComments.json';
-import exampleDescription from '../resources/exampleDescription.json'
+import exampleDescription from '../resources/exampleDescription.json';
 import TableNotFound from '../component/TableNotFound';
 
 const title = env('TITLE') || 'Data';

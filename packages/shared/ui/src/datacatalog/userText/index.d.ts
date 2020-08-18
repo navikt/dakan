@@ -21,4 +21,3 @@ export declare const ToggleUserText: React.FC<ToggleUserTextProps>
 export declare const SingleUserText: React.FC<SingleUserTextProps>
 export default ToggleUserText
 export * from './userTextModals'
-

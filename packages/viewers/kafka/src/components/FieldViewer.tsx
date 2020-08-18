@@ -10,7 +10,10 @@ const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
   const { field, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useNodeEdges(field.id, 'hasKafkaFieldTag')
+  const [tags, loading, error, setTags] = useNodeEdges(
+    field.id,
+    'hasKafkaFieldTag',
+  )
 
   if (error) {
     console.log(error)

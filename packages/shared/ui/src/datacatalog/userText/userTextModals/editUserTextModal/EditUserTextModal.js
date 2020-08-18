@@ -34,9 +34,13 @@ export const EditSingleUserTextModal = (props) => {
     const tokenId = Cookies.get('ClientToken')
     const userTextCopy = userText ? [...userText] : []
 
-    const userTextAuthor = Array.isArray(userTextCopy[0].properties.author) ? [...userTextCopy[0].properties.author] : [userTextCopy[0].properties.author]
+    const userTextAuthor = Array.isArray(userTextCopy[0].properties.author)
+      ? [...userTextCopy[0].properties.author]
+      : [userTextCopy[0].properties.author]
 
-    userTextAuthor.filter((author) => author === clientUser.userId).length > 0 ? userTextAuthor : userTextAuthor.push(clientUser.userId)
+    userTextAuthor.filter((author) => author === clientUser.userId).length > 0
+      ? userTextAuthor
+      : userTextAuthor.push(clientUser.userId)
 
     const newUserText = {
       id: userTextContent.id,
@@ -93,7 +97,7 @@ export const EditSingleUserTextModal = (props) => {
       <ModalFooter>
         <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
           Avbryt
-          </ModalButton>
+        </ModalButton>
         <ModalButton
           onClick={() => {
             addUserText()
@@ -101,7 +105,7 @@ export const EditSingleUserTextModal = (props) => {
           }}
         >
           Lagre
-          </ModalButton>
+        </ModalButton>
       </ModalFooter>
     </Modal>
   )

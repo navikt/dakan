@@ -11,7 +11,8 @@ export function useNode(id) {
   const [errorMessage, setErrorMessage] = useState('')
 
   const getData = (response) => {
-    if (response.data && typeof response.data !== 'object') throw Error('Error fetching node')
+    if (response.data && typeof response.data !== 'object')
+      throw Error('Error fetching node')
     return response.data
   }
 
