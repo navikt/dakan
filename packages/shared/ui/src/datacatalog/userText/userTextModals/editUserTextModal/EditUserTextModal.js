@@ -36,10 +36,7 @@ export const EditSingleUserTextModal = (props) => {
     const tokenId = Cookies.get('ClientToken')
     const newUserTexts = userText ? [...userText] : []
 
-    let userTextAuthor = newUserTexts.properties.author
-    if (typeof newUserTexts.properties.author === 'string') {
-      userTextAuthor = [newUserTexts.properties.author]
-    }
+    const userTextAuthor = Array.isArray(newUserTexts.properties.author) ? [...newUserTexts.properties.author] : [newUserTexts.properties.author]
 
     const newAuthor = userTextAuthor.filter((author) => author === clientUser.userId) ? userTextAuthor : userTextAuthor.push(clientUser.userId)
     
