@@ -99,7 +99,7 @@ const Content = (props: any): JSX.Element => {
                                 ratings={props.ratings}
                                 setRatings={props.setRatings}
                                 dataId={props.data.id}
-                                edgeLabel="hasRating"
+                                edgeLabel="hasTableRating"
                                 nodeLabel="table_rating"
                             />
                         </Block>
