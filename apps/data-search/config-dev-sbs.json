@@ -3,5 +3,6 @@
   "team": "dataplattform",
   "ingress": "https://dataverk-q.nav.no",
   "ingress_nais_io": "https://dataverk.dev-sbs.nais.io",
-  "app_title": "Åpne data dev"
+  "app_title": "Åpne data dev",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
 }
