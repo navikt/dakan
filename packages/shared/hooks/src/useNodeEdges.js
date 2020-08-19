@@ -10,13 +10,12 @@ export function useNodeEdges(id, type, direction = 'out') {
   const [error, setError] = useState(false)
 
   const getData = (response) => {
-    if (response.data && response.data === "")
-      return {}
+    if (response.data && response.data === '') return {}
 
     if (response.data && typeof response.data !== 'object')
       throw Error('No items found')
 
-      return response.data
+    return response.data
   }
 
   useEffect(() => {

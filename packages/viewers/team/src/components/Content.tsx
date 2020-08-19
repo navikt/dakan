@@ -36,7 +36,10 @@ const Content = ({ item, members }) => {
     let rows: any = []
     if (members) {
       members.map((member) => {
-        const name = member['properties']['fornavn'] + ' ' + member['properties']['etternavn']
+        const name =
+          member['properties']['fornavn'] +
+          ' ' +
+          member['properties']['etternavn']
         const row: any = {}
         row['id'] = member['id']
         const data: any = {
@@ -48,9 +51,8 @@ const Content = ({ item, members }) => {
         row['data'] = data
         rows.push(row)
       })
-    return <TableBuilder data={rows}>{columns}</TableBuilder>
-    }
-    else {
+      return <TableBuilder data={rows}>{columns}</TableBuilder>
+    } else {
       return JSON.stringify(members)
     }
   }
@@ -88,6 +90,5 @@ const Content = ({ item, members }) => {
       </Block>
     </React.Fragment>
   )
-
 }
 export default Content

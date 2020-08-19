@@ -14,7 +14,7 @@ const Viewer = (props: any) => {
   )
   const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(
     props.match.params.id,
-    'ownerOfNaisApp'
+    'ownerOfNaisApp',
   )
 
   if (props.match.params.id === 'test') {
