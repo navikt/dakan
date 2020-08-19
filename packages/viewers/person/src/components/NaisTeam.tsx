@@ -1,19 +1,21 @@
 import React from 'react'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
+
 import { useNodeEdges } from '@dakan/hooks'
 import { LoadingSpinner } from '@dakan/ui'
 import { Label } from '@dakan/ui'
 
+import isEmpty from '../utils/IsEmpty'
+
 const getLink = (row) => {
-  return '../team/' + row.id
+  return '../naisteam/' + row.id
 }
 
-export const OrgTeam = ({ id }: any) => {
+export const NaisTeam = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
     id,
-    'memberOfTeam',
-    'in',
+    'memberOfNaisTeam',
   )
 
   const columns: any[] = [
@@ -41,13 +43,14 @@ export const OrgTeam = ({ id }: any) => {
 
     return <TableBuilder data={rows}>{columns}</TableBuilder>
   }
+
   return (
     <React.Fragment>
-      {errorLoadingNodes && 'Error loading org teams'}
+      {errorLoadingNodes && 'Error loading nais teams'}
       {loadingNodes && <LoadingSpinner />}
       {nodes && (
         <React.Fragment>
-          <Label>Org Team (Teamkatalogen)</Label>
+          <Label>NAIS Team (deploy team)</Label>
           {getTable(nodes)}
         </React.Fragment>
       )}
@@ -55,4 +58,4 @@ export const OrgTeam = ({ id }: any) => {
   )
 }
 
-export default OrgTeam
+export default NaisTeam

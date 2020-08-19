@@ -1,4 +1,4 @@
-const GetValue = (func: any, fallBackValue: any = 'Ingen data') => {
+const GetValue = (func, fallBackValue = 'Ingen data') => {
   try {
     const value = func()
     return value === null || value === undefined ? fallBackValue : value

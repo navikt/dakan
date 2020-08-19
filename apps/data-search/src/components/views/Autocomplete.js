@@ -43,7 +43,7 @@ const tag = (type, link) => {
       backgroundColor={backgroundColor}
       borderColor={borderColor}
     >
-      {label.charAt(0).toUpperCase()}
+      {label}
     </Tag>
   )
 }
@@ -73,9 +73,11 @@ function Autocomplete({ autocompleteResults, autocompletedResults }) {
           width="100%"
           key={`autocomplete_result_${index}`}
           marginBottom="scale400"
+          flexDirection='row'
+          justifyContent='space-between'
+          alignItems='center'
         >
           <Block overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-            {tag(item.type, item.link)}
             <Link
               isAnimateUnderline={false}
               isFocusVisible={false}
@@ -84,6 +86,7 @@ function Autocomplete({ autocompleteResults, autocompletedResults }) {
               {` ${item.title}`}
             </Link>
           </Block>
+          <Block >{tag(item.type, item.link)}</Block>
         </Block>
       )
     })

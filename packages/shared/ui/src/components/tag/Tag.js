@@ -21,7 +21,7 @@ export const Tag = (props) => {
   }
 
   if (props.borderColor) {
-    localOverrides.Root.style.outline = `2px ${props.borderColor} solid`
+    localOverrides.Root.style.border = `2px ${props.borderColor} solid`
   }
 
   const mergedOverrides = merge(themeOverrides, localOverrides)

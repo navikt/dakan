@@ -3,11 +3,8 @@ import { Block } from 'baseui/block'
 import { ParagraphMedium, LabelMedium } from 'baseui/typography'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
-import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { format } from 'date-fns'
-import GetValue from '../utils/GetValue'
 
-import { LayoutSplit as Layout, LabeledContent } from '@dakan/ui'
+import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
 const ITEMS = [
   { item: 'slack', label: 'Slack' },
@@ -31,21 +28,18 @@ const getTable = (list) => {
     const data: any = {
       id: item['id'],
       name: item['properties']['name'],
-      type: item['properties']['cluster'],
+      description: item['properties']['description'],
     }
     row['data'] = data
     rows.push(row)
   })
 
   const columns: any[] = [
-    <TableBuilderColumn id="name" header="Navn">
+    <TableBuilderColumn id="name" header="Team">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
     </TableBuilderColumn>,
-    <TableBuilderColumn id="id" header="Id">
-      {(row) => row.data.id}
-    </TableBuilderColumn>,
-    <TableBuilderColumn id="cluster" header="Cluster">
-      {(row) => row.data.type}
+    <TableBuilderColumn id="description" header="Beskrivelse">
+      {(row) => row.data.description}
     </TableBuilderColumn>,
   ]
 
@@ -53,42 +47,12 @@ const getTable = (list) => {
 }
 
 const Content = ({ item, memberOf }) => {
-  const getItems = (items: Array<{}>, content) => {
-    return items.map((entry: any, i: number) => {
-      let value = GetValue(() => content.properties[entry.item])
-      if (entry.format && entry.format === 'date') {
-        const date = new Date(value)
-        if (typeof date.getMonth === 'function') {
-          value = format(date, 'yyyy-MM-dd')
-        }
-      }
-
-      return (
-        <FlexGridItem key={`item_${i}`}>
-          <LabeledContent description={entry.label} list>
-            {value}
-          </LabeledContent>
-          <Block width="scale1000" />
-        </FlexGridItem>
-      )
-    })
-  }
-
-  const Content = () => {
-    if (item) {
-      return (
-        <FlexGrid flexGridColumnCount={[1]}>{getItems(ITEMS, item)}</FlexGrid>
-      )
-    }
-    return null
-  }
-
   const Head = () => (
     <Block>
       <ParagraphMedium>
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
-      <Content />
+      <ContentItems ITEMS={ITEMS} item={item} />
     </Block>
   )
 
@@ -96,7 +60,7 @@ const Content = ({ item, memberOf }) => {
     if (item) {
       return (
         <Block width="100%" marginBottom="scale1200">
-          <LabelMedium>Tilhører</LabelMedium>
+          <LabelMedium>Tilhører team</LabelMedium>
           {getTable(memberOf)}
         </Block>
       )

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { StatelessAccordion } from 'baseui/accordion'
 
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 import { Tabs } from '../../components/tabs/Tabs'
 import { Tab } from '../../components/tabs/Tab'
 import { Panel } from './Panel'

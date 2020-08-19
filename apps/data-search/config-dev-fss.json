@@ -3,5 +3,6 @@
   "team": "dataplattform",
   "ingress": "https://data.nais.preprod.local",
   "ingress_nais_io": "https://data.dev-fss.nais.io",
-  "app_title": "Datakatalogen dev"
+  "app_title": "Datakatalogen dev",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
 }

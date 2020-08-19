@@ -1,4 +1,4 @@
-import { navTheme, lightTheme, darkTheme, ThemeProvider } from '../theme'
+import { navTheme, lightTheme, darkTheme, ThemeProvider } from '@dakan/theme'
 import * as React from 'react'
 import {
   Button,
@@ -741,6 +741,6 @@ const Checkboxes = () => {
 }
 
 export const Theme = () => {
-  const theme = getTheme()
+  const theme = navTheme()
   return <pre>{JSON.stringify(theme, null, 2)}</pre>
 }

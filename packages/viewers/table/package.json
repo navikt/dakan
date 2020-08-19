@@ -7,6 +7,7 @@
     "@deetly/plotly-view": "0.0.74",
     "@dakan/metrics": "^0.0.3",
     "@dakan/ui": "^0.0.3",
+    "@dakan/theme": "^0.0.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",

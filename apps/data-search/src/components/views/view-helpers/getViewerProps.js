@@ -1,5 +1,5 @@
 import env from '@beam-australia/react-env'
-import { navTheme } from '@dakan/ui'
+import { navTheme } from '@dakan/theme'
 
 const theme = navTheme()
 
@@ -13,6 +13,7 @@ export function getViewerProps(format) {
   }
 
   if (typeof format != 'string') {
+    console.log(format)
     return { link: '/viewer', backgroundColor: '#FFA733' }
   }
 
@@ -119,6 +120,30 @@ export function getViewerProps(format) {
   if (format === 'team') {
     return {
       link: env('TEAM_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'nais_team') {
+    return {
+      link: env('NAISTEAM_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'nais_app') {
+    return {
+      link: env('NAISAPP_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'ad_department') {
+    return {
+      link: env('AD_DEPARTMENT_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagPurposeBackgroundColor,
       borderColor: theme.colors.tagPurposeBorderColor,
     }
