@@ -9,7 +9,7 @@ import { Label } from '@dakan/ui'
 import isEmpty from '../utils/IsEmpty'
 
 const getLink = (row) => {
-  return '../naisteam/' + row.id
+  return '../team/' + row.id
 }
 
 export const OrgTeam = ({ id }: any) => {
