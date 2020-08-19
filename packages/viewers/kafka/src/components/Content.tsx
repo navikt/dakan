@@ -56,7 +56,7 @@ const Content = (props: any): JSX.Element => {
                   ratings={props.ratings}
                   setRatings={props.setRatings}
                   dataId={props.data.id}
-                  edgeLabel="hasRating"
+                  edgeLabel="hasKafkaRating"
                   nodeLabel="kafka_rating"
                 />
               </Block>
@@ -66,7 +66,7 @@ const Content = (props: any): JSX.Element => {
                 userTexts={comments}
                 setUserTexts={setComments}
                 title="Kommentar"
-                edgeLabel="hasComment"
+                edgeLabel="hasKafkaComment"
                 nodeLabel="kafka_comment"
               />
             </Block>

@@ -23,7 +23,7 @@ const Viewer = (props: any) => {
     loadingRatings,
     errorLoadingRatings,
     setRatings,
-  ] = useNodeEdges(props.match.params.id, 'hasRating')
+  ] = useNodeEdges(props.match.params.id, 'hasTableauRating')
   const [viewList, loadingViewList, errorLoadingViewList] = useNodeEdges(
     props.match.params.id,
     'hasMember',
@@ -36,7 +36,7 @@ const Viewer = (props: any) => {
     loadingCommnets,
     errorLoadingComments,
     setComments,
-  ] = useNodeEdges(props.match.params.id, 'hasComment')
+  ] = useNodeEdges(props.match.params.id, 'hasTableauComment')
 
   const getHeader = () => (
     <Header

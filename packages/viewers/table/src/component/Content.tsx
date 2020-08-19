@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {format} from 'date-fns';
-import {LargeWidth, LabeledContent, ToggleUserText, Searchbox, Rating} from '@dakan/ui';
+import {LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating, Panel} from '@dakan/ui';
 import {LabelLarge} from 'baseui/typography';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {useStyletron} from 'baseui';
+import {Accordion} from 'baseui/accordion';
 
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
@@ -41,6 +42,7 @@ const items = (props: any): JSX.Element[] => {
 
 const Main = (props: any): JSX.Element => {
     const {data, numberOfColumns} = props;
+    const [isExpanded, setIsExpanded] = React.useState('');
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -53,6 +55,21 @@ const Main = (props: any): JSX.Element => {
                         <Block marginTop="scale200" $style={{...theme.typography.font300}}>
                             {data.properties.table_description}
                         </Block>
+                        <Accordion onChange={(e) => setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))}>
+                            <Panel
+                                title={isExpanded === '0' ? 'Vis mindre' : 'Vis mer'}
+                                isExpanded={isExpanded === '0'}
+                            >
+                                <SingleUserText
+                                    dataId={props.data.id}
+                                    userText={props.description}
+                                    setUserText={props.setDescription}
+                                    title="Utvidet beskrivelse"
+                                    edgeLabel="hasTableDescription"
+                                    nodeLabel="table_description"
+                                />
+                            </Panel>
+                        </Accordion>
                     </Block>
                     <FlexGrid flexGridColumnCount={[1, 2, 3, 5]}>
                         {items(data)}
@@ -82,17 +99,17 @@ const Content = (props: any): JSX.Element => {
                                 ratings={props.ratings}
                                 setRatings={props.setRatings}
                                 dataId={props.data.id}
-                                edgeLabel="hasRating"
+                                edgeLabel="hasTableRating"
                                 nodeLabel="table_rating"
                             />
                         </Block>
-                        <Main data={props.data} numberOfColumns={props.numberOfColumns} />
+                        <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
                             setUserTexts={props.setComments}
                             title="Kommentar"
-                            edgeLabel="hasComment"
+                            edgeLabel="hasTableComment"
                             nodeLabel="table_comment"
                         />
                         {props.columns && (

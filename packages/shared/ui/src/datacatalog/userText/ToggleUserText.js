@@ -10,7 +10,9 @@ import env from '@beam-australia/react-env'
 
 import { Button } from '../../components/button/Button'
 import AddUserTextModal from './userTextModals/addUserTextModal/AddUserTextModal'
-import EditUserTextModal from './userTextModals/editUserTextModal/EditUserTextModal'
+import EditUserTextModal, {
+  EditSingleUserTextModal,
+} from './userTextModals/editUserTextModal/EditUserTextModal'
 import DeleteUserTextModal from './userTextModals/deleteUserTextModal/DeleteUserTextModal'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
@@ -25,6 +27,152 @@ import {
 
 const graph_server = env('GRAPH_SERVER') || '../'
 
+const getAddTextButton = (setIsAddTextModalOpen, title) => (
+  <Block display="flex" paddingTop="scale400">
+    <Button
+      kind={KIND.secondary}
+      startEnhancer={<AddIcon />}
+      startEnhancerHover={<AddIcon fill="white" />}
+      onClick={() => {
+        CheckIfAuthorized(() => {
+          setIsAddTextModalOpen(true)
+        })
+      }}
+    >
+      Legg til {title ? title.toLowerCase() : ''}
+    </Button>
+  </Block>
+)
+
+export const SingleUserText = (prop) => {
+  const { dataId, userText, setUserText, title, edgeLabel, nodeLabel } = prop
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
+    false,
+  )
+  const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
+  const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
+
+  const clientUser = useClientUser()
+
+  const [, theme] = useStyletron()
+
+  const getUserText = () => {
+    return (
+      userText &&
+      userText[0].properties && (
+        <Block marginBottom="scale800" padding="scale100">
+          <Block display="flex">
+            <Block flex="1">
+              <Block display="flex" justifyContent="flex-end">
+                <Block $style={{ ...theme.typography.font300 }}>
+                  {'Publisert ' +
+                    userText[0].properties.date +
+                    ', kl. ' +
+                    userText[0].properties.time}
+                </Block>
+              </Block>
+              <Block
+                $style={{ ...theme.typography.font300 }}
+                marginTop="scale800"
+              >
+                {userText[0].properties.text}
+              </Block>
+            </Block>
+          </Block>
+          <Block marginTop="scale800" display="flex">
+            <Block marginRight="scale800">
+              <Button
+                startEnhancer={<EditIcon />}
+                startEnhancerHover={<EditHoverIcon />}
+                kind={KIND.minimal}
+                onClick={() => {
+                  CheckIfAuthorized(() => {
+                    setIsEditTextModalOpen(true)
+                  })
+                }}
+              >
+                Rediger
+              </Button>
+            </Block>
+            <Block>
+              <Button
+                startEnhancer={<DeleteIcon />}
+                startEnhancerHover={<DeleteHoverIcon />}
+                kind={KIND.minimal}
+                onClick={() => {
+                  CheckIfAuthorized(() => {
+                    setIsDeleteTextModalOpen(true)
+                  })
+                }}
+              >
+                Slett
+              </Button>
+            </Block>
+          </Block>
+        </Block>
+      )
+    )
+  }
+
+  const getContent = () => {
+    if (userText && userText.length > 0) {
+      return (
+        <Block padding="1em" backgroundColor={'#F4F4F4'}>
+          <Block>{getUserText()}</Block>
+        </Block>
+      )
+    } else {
+      return getAddTextButton(setIsAddTextModalOpen, title)
+    }
+  }
+
+  return (
+    <Block>
+      {
+        <Block>
+          <AddUserTextModal
+            title={title}
+            dataId={dataId}
+            userTexts={userText}
+            setUserTexts={setUserText}
+            isOpen={isAddTextModalOpen}
+            setIsOpen={setIsAddTextModalOpen}
+            clientUser={clientUser}
+            server={graph_server}
+            edgeLabel={edgeLabel}
+            nodeLabel={nodeLabel}
+          />
+          <EditSingleUserTextModal
+            title={title}
+            isOpen={isEditTextModalOpen}
+            setIsOpen={setIsEditTextModalOpen}
+            userText={userText}
+            setUserText={setUserText}
+            clientUser={clientUser}
+            server={graph_server}
+          />
+          {userText && userText.length > 0 && (
+            <DeleteUserTextModal
+              isOpen={isDeleteTextModalOpen}
+              setIsOpen={setIsDeleteTextModalOpen}
+              index={0}
+              userTextContent={userText[0]}
+              userTexts={userText}
+              setUserTexts={setUserText}
+              clientUser={clientUser}
+              server={graph_server}
+            />
+          )}
+          <LabelLarge>
+            <b>{CapitalizeString(title)}</b>
+          </LabelLarge>
+          {getContent()}
+        </Block>
+      }
+    </Block>
+  )
+}
+
 export const ToggleUserText = (prop) => {
   const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
@@ -36,30 +184,13 @@ export const ToggleUserText = (prop) => {
   const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState('')
   const [panelTitle, setPanelTitle] = React.useState('Vis mer')
-  const [commentSize, setCommentSize] = React.useState('250px')
+  const [textScreenSize, setTextScreenSize] = React.useState('250px')
 
   const clientUser = useClientUser()
 
   const [, theme] = useStyletron()
 
-  const getAddCommentButton = () => (
-    <Block display="flex" paddingTop="scale400">
-      <Button
-        kind={KIND.secondary}
-        startEnhancer={<AddIcon />}
-        startEnhancerHover={<AddIcon fill="white" />}
-        onClick={() => {
-          CheckIfAuthorized(() => {
-            setIsAddTextModalOpen(true)
-          })
-        }}
-      >
-        Legg til
-      </Button>
-    </Block>
-  )
-
-  const getComments = () => {
+  const getUserTexts = () => {
     return userTexts.map((userText, index) => {
       return (
         userText &&
@@ -178,18 +309,20 @@ export const ToggleUserText = (prop) => {
           </H5>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={'#F4F4F4'}>
-              <Block $style={{ maxHeight: commentSize, overflowY: 'scroll' }}>
-                {getComments()}
+              <Block
+                $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}
+              >
+                {getUserTexts()}
               </Block>
               <Block paddingTop="scale400">
                 <Accordion
                   onChange={(e) => {
                     setIsExpanded(GetValue(() => e.expanded[0].toString(), ''))
                     if (GetValue(() => e.expanded[0].toString(), '') === '0') {
-                      setCommentSize('600px')
+                      setTextScreenSize('600px')
                       setPanelTitle('Vis mindre')
                     } else {
-                      setCommentSize('250px')
+                      setTextScreenSize('250px')
                       setPanelTitle('Vis mer')
                     }
                   }}
@@ -203,10 +336,10 @@ export const ToggleUserText = (prop) => {
                   />
                 </Accordion>
               </Block>
-              {getAddCommentButton()}
+              {getAddTextButton(setIsAddTextModalOpen, title)}
             </Block>
           ) : (
-            getAddCommentButton()
+            getAddTextButton(setIsAddTextModalOpen, title)
           )}
         </Block>
       }

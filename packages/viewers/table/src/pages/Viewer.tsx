@@ -10,6 +10,7 @@ import exampleJson from '../resources/example.json';
 import exampleColumnJson from '../resources/exampleColumn.json';
 import exampleTags from '../resources/exampleTags.json';
 import exampleComments from '../resources/exampleComments.json';
+import exampleDescription from '../resources/exampleDescription.json';
 import TableNotFound from '../component/TableNotFound';
 
 const title = env('TITLE') || 'Data';
@@ -18,10 +19,14 @@ const Viewer = (props: any) => {
     const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id);
     const [columns, loadingColumns, errorLoadingColumns] = useNodeEdges(props.match.params.id, 'hasMember');
     const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype');
-    const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasRating');
+    const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasTableRating');
     const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(
         props.match.params.id,
-        'hasComment'
+        'hasTableComment'
+    );
+    const [description, loadingDescription, errorLoadingDescription, setDescription] = useNodeEdges(
+        props.match.params.id,
+        'hasTableDescription'
     );
 
     const getHeader = () => (
@@ -57,7 +62,9 @@ const Viewer = (props: any) => {
                     tagOptions={exampleTags}
                     numberOfColumns={exampleColumnJson.length}
                     comments={exampleComments}
+                    description={exampleDescription}
                     setComments={setComments}
+                    setDescription={setDescription}
                 />
             </Block>
         );
@@ -89,6 +96,8 @@ const Viewer = (props: any) => {
                             tagOptions={tagOptions}
                             comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
                             setComments={setComments}
+                            description={description}
+                            setDescription={setDescription}
                             numberOfColumns={columns && columns.length}
                             ratings={ratings}
                             setRatings={setRatings}

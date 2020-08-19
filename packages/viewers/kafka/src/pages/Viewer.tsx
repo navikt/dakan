@@ -21,7 +21,7 @@ const Viewer = (props: any) => {
     loadingRatings,
     errorLoadingRatings,
     setRatings,
-  ] = useNodeEdges(props.match.params.id, 'hasRating')
+  ] = useNodeEdges(props.match.params.id, 'hasKafkaRating')
   const [fields, loadingFields, errorLoadingFields] = useNodeEdges(
     props.match.params.id,
     'hasMember',
@@ -34,7 +34,7 @@ const Viewer = (props: any) => {
     loadingCommnets,
     errorLoadingComments,
     setComments,
-  ] = useNodeEdges(props.match.params.id, 'hasComment')
+  ] = useNodeEdges(props.match.params.id, 'hasKafkaComment')
 
   const getHeader = () => (
     <Header

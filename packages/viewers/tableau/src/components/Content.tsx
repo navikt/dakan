@@ -74,7 +74,7 @@ const Content = (props: any): JSX.Element => {
                   ratings={props.ratings}
                   setRatings={props.setRatings}
                   dataId={props.data.id}
-                  edgeLabel="hasRating"
+                  edgeLabel="hasTableauRating"
                   nodeLabel="tableau_rating"
                 />
               </Block>
@@ -89,7 +89,7 @@ const Content = (props: any): JSX.Element => {
                 userTexts={comments}
                 setUserTexts={setComments}
                 title="Kommentar"
-                edgeLabel="hasComment"
+                edgeLabel="hasTableauComment"
                 nodeLabel="tableau_comment"
               />
             </Block>
