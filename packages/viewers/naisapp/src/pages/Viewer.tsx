@@ -10,7 +10,9 @@ import exampleMembers from '../resources/members.json'
 import exampleMemberOf from '../resources/memberOf.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id)
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
+    props.match.params.id,
+  )
   const [memberOf, loadingMemberOf, errorLoadingMemberOf] = useNodeEdges(
     props.match.params.id,
     'hasAppOwner',
@@ -34,7 +36,12 @@ const Viewer = (props: any) => {
       {node && (
         <React.Fragment>
           <Metrics viewer={'naisapp'} page={node.id} section={''} />
-          <Content {...props} id={props.match.params.id} item={node} memberOf={memberOf} />
+          <Content
+            {...props}
+            id={props.match.params.id}
+            item={node}
+            memberOf={memberOf}
+          />
         </React.Fragment>
       )}
     </React.Fragment>

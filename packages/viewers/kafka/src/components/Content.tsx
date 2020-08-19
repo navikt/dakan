@@ -5,7 +5,7 @@ import {
   LabeledContent,
   Searchbox,
   ToggleUserText,
-  Rating
+  Rating,
 } from '@dakan/ui'
 
 import GetValue from '../utils/GetValue'

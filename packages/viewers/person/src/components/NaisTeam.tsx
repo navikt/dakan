@@ -12,36 +12,37 @@ const getLink = (row) => {
   return '../naisteam/' + row.id
 }
 
-export const NaisTeam = ({id}: any) => {
-    const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
-        id, 'memberOfNaisTeam',
-    )
+export const NaisTeam = ({ id }: any) => {
+  const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
+    id,
+    'memberOfNaisTeam',
+  )
 
-    const columns: any[] = [
-      <TableBuilderColumn id="name" header="Navn">
-        {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
-      </TableBuilderColumn>,
-      <TableBuilderColumn id="description" header="Beskrivelse">
-        {(row) => row.data.description}
-      </TableBuilderColumn>,
-    ]
-  
-    const getTable = (nodes) => {
-      let rows: any = []
-      nodes.map((node) => {
-        const row: any = {}
-        row['id'] = node['id']
-        const data: any = {
-          id: node['id'],
-          name: node['properties']['name'],
-          description: node['properties']['description'],
-        }
-        row['data'] = data
-        rows.push(row)
-      })
-  
-      return <TableBuilder data={rows}>{columns}</TableBuilder>
-    }
+  const columns: any[] = [
+    <TableBuilderColumn id="name" header="Navn">
+      {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
+    </TableBuilderColumn>,
+    <TableBuilderColumn id="description" header="Beskrivelse">
+      {(row) => row.data.description}
+    </TableBuilderColumn>,
+  ]
+
+  const getTable = (nodes) => {
+    let rows: any = []
+    nodes.map((node) => {
+      const row: any = {}
+      row['id'] = node['id']
+      const data: any = {
+        id: node['id'],
+        name: node['properties']['name'],
+        description: node['properties']['description'],
+      }
+      row['data'] = data
+      rows.push(row)
+    })
+
+    return <TableBuilder data={rows}>{columns}</TableBuilder>
+  }
 
   return (
     <React.Fragment>
@@ -49,8 +50,8 @@ export const NaisTeam = ({id}: any) => {
       {loadingNodes && <LoadingSpinner />}
       {nodes && (
         <React.Fragment>
-            <Label>NAIS Team (deploy team)</Label>
-            {getTable(nodes)}
+          <Label>NAIS Team (deploy team)</Label>
+          {getTable(nodes)}
         </React.Fragment>
       )}
     </React.Fragment>

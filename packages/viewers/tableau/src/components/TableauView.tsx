@@ -12,7 +12,10 @@ const server = env('GRAPH_SERVER')
 
 const TableauView = (props: any) => {
   const { view, tagOptions, clientUser } = props
-  const [tags, loading, error, setTags] = useNodeEdges(view.id, 'hasTableauViewTag')
+  const [tags, loading, error, setTags] = useNodeEdges(
+    view.id,
+    'hasTableauViewTag',
+  )
 
   if (error) {
     console.log(error)

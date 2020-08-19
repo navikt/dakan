@@ -13,6 +13,7 @@ export function getViewerProps(format) {
   }
 
   if (typeof format != 'string') {
+    console.log(format)
     return { link: '/viewer', backgroundColor: '#FFA733' }
   }
 

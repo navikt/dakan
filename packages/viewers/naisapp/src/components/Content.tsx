@@ -47,7 +47,6 @@ const getTable = (list) => {
 }
 
 const Content = ({ item, memberOf }) => {
-  
   const Head = () => (
     <Block>
       <ParagraphMedium>

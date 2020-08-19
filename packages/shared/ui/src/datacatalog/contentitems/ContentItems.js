@@ -5,9 +5,7 @@ import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from './GetValue'
 
-
 export const ContentItems = ({ ITEMS, item }) => {
-
   const getItems = (items, content) => {
     return items.map((entry, index) => {
       let value = GetValue(() => content.properties[entry.item], null)
@@ -34,11 +32,11 @@ export const ContentItems = ({ ITEMS, item }) => {
 
   return (
     <React.Fragment>
-        {item && 
-            <FlexGrid flexGridColumnCount={[1]}>{getItems(ITEMS, item)}</FlexGrid>
-        }
+      {item && (
+        <FlexGrid flexGridColumnCount={[1]}>{getItems(ITEMS, item)}</FlexGrid>
+      )}
     </React.Fragment>
-    )
-  }
+  )
+}
 
 export default ContentItems

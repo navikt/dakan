@@ -4,8 +4,8 @@ import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
-import {OrgTeam} from './OrgTeam'
-import {NaisTeam} from './NaisTeam'
+import { OrgTeam } from './OrgTeam'
+import { NaisTeam } from './NaisTeam'
 
 const ITEMS = [
   { item: 'epost', label: 'Epost' },
@@ -16,12 +16,10 @@ const ITEMS = [
   { item: 'sluttdato', label: 'Sluttdato' },
 ]
 
-const Content = ({ item, id}) => {
+const Content = ({ item, id }) => {
   const Head = () => (
     <Block>
-      <ParagraphMedium>
-        {item && item.fornavn}
-      </ParagraphMedium>
+      <ParagraphMedium>{item && item.fornavn}</ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
     </Block>
   )
@@ -31,11 +29,11 @@ const Content = ({ item, id}) => {
       return (
         <Block>
           <Block width="100%" marginBottom="scale1200">
-        <OrgTeam id={item.id} />
-      </Block>
-        <Block width="100%" marginBottom="scale1200">
-          <NaisTeam id={item.id} />
-        </Block>
+            <OrgTeam id={item.id} />
+          </Block>
+          <Block width="100%" marginBottom="scale1200">
+            <NaisTeam id={item.id} />
+          </Block>
         </Block>
       )
     }

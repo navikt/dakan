@@ -16,7 +16,12 @@ const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
     props.match.params.id,
   )
-  const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasRating');
+  const [
+    ratings,
+    loadingRatings,
+    errorLoadingRatings,
+    setRatings,
+  ] = useNodeEdges(props.match.params.id, 'hasRating')
   const [fields, loadingFields, errorLoadingFields] = useNodeEdges(
     props.match.params.id,
     'hasMember',

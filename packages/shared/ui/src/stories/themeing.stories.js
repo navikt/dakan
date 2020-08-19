@@ -327,8 +327,16 @@ export const Navbars = () => {
 
 export const Data_Tagging = () => {
   const tagOptions = [
-    { id: 'tag1', label: 'tag1', properties: { name: 'tag1', type: 'tag1type' } },
-    { id: 'tag2', label: 'tag2', properties: { name: 'tag2', type: 'tag2type' } },
+    {
+      id: 'tag1',
+      label: 'tag1',
+      properties: { name: 'tag1', type: 'tag1type' },
+    },
+    {
+      id: 'tag2',
+      label: 'tag2',
+      properties: { name: 'tag2', type: 'tag2type' },
+    },
   ]
   const dataId = 123
   const [columnTags, setColumnTags] = React.useState([
