@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Badge } from './Badge'
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 
 export default {
   title: 'Components/Badge',

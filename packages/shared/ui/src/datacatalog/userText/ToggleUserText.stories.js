@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 import ToggleUserText from './ToggleUserText'
 
 export default {

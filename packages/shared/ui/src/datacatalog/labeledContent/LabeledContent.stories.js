@@ -4,7 +4,7 @@ import { Block } from 'baseui/block'
 import { LabelLarge } from 'baseui/typography'
 import { Card } from 'baseui/card'
 
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 import LabeledContent from './LabeledContent'
 
 export default {

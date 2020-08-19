@@ -1,7 +1,8 @@
 import React from 'react';
 import {Block} from 'baseui/block';
 import {Switch, Route} from 'react-router-dom';
-import {ThemeProvider, navTheme, Header} from '@dakan/ui';
+import { Header } from '@dakan/ui'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 import env from '@beam-australia/react-env';
 
 import Viewer from './pages/Viewer';

@@ -12,7 +12,7 @@ import { Display4 } from 'baseui/typography'
 import { Paragraph1 } from 'baseui/typography'
 
 import { Header } from '../header'
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 import { Footer } from '../footer'
 import {
   Layout,
