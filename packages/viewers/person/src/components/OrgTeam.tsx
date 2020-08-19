@@ -6,7 +6,7 @@ import { LoadingSpinner } from '@dakan/ui'
 import { Label } from '@dakan/ui'
 
 const getLink = (row) => {
-  return '../naisteam/' + row.id
+  return '../team/' + row.id
 }
 
 export const OrgTeam = ({ id }: any) => {
