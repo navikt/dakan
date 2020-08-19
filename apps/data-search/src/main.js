@@ -2,7 +2,8 @@ import * as React from 'react'
 import { Router } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
 import env from '@beam-australia/react-env'
-import { CatalogHeader, ThemeProvider, navTheme, localeOverrideNo as navLocaleOverride} from '@dakan/ui'
+import { CatalogHeader, localeOverrideNo as navLocaleOverride} from '@dakan/ui'
+import { ThemeProvider, navTheme} from '@dakan/theme'
 // eslint-disable-next-line no-unused-vars
 import {LocaleProvider} from 'baseui';
 import ListPage from './pages/ListPage'

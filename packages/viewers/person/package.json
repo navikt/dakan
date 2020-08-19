@@ -3,8 +3,9 @@
   "version": "0.0.3",
   "private": true,
   "dependencies": {
-    "@dakan/hooks": "0.0.3",
-    "@dakan/ui": "0.0.3",
+    "@dakan/hooks": "^0.0.3",
+    "@dakan/ui": "^0.0.3",
+    "@dakan/theme": "^0.0.3",
     "axios": "^0.19.1",
     "babel-polyfill": "^6.26.0",
     "baseui": "^9.89.0",

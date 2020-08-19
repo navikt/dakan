@@ -1,5 +1,5 @@
 import env from '@beam-australia/react-env'
-import { navTheme } from '@dakan/ui'
+import { navTheme } from '@dakan/theme'
 
 const theme = navTheme()
 

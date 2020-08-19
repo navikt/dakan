@@ -146,7 +146,9 @@ export const buttonMinimalOverrides = {
 
 export const tagOverrides = {
   Root: {
-    style: {},
+    style: {
+        borderRadius: '20px'
+    }
   },
 }
 

@@ -3,7 +3,7 @@ import { Block } from 'baseui/block'
 import { LabelLarge } from 'baseui/typography'
 
 import { BackButton, BackLink } from './'
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 
 export default {
   title: 'Components/Back',

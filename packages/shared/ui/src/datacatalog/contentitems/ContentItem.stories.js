@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ThemeProvider, navTheme } from '../../theme'
+import { ThemeProvider, navTheme } from '@dakan/theme'
 
 import { ContentItems } from './ContentItems'
 

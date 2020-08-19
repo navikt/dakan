@@ -6,6 +6,7 @@
     "@beam-australia/react-env": "^2.1.2",
     "@dakan/hooks": "0.0.3",
     "@dakan/ui": "0.0.3",
+    "@dakan/theme": "^0.0.3",
     "axios": "^0.19.1",
     "babel-polyfill": "^6.26.0",
     "baseui": "^9.89.0",

@@ -50,18 +50,31 @@ const ResultView = ({ result, titleField }) => {
   return (
     <Block marginBottom="scale400">
       {title && id && (
-        <Label1>
-          <StyledLink href={link}>
-            <span dangerouslySetInnerHTML={{ __html: title }} />
-          </StyledLink>
-        </Label1>
+        <Block
+        display="flex"
+        width="100%"
+        marginBottom="scale400"
+        flexDirection='row'
+        justifyContent='space-between'
+        alignItems='center'
+      >
+        <Block overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+          <Label1>
+            <StyledLink href={link}>
+              <span dangerouslySetInnerHTML={{ __html: title }} />
+            </StyledLink>
+          </Label1>
+        </Block>
+        <Block>{getTag(type)}</Block>
+      </Block>
+       
       )}
       <Paragraph2 overflow={'wrap'}>
         {description && (
           <span dangerouslySetInnerHTML={{ __html: description }} />
         )}
       </Paragraph2>
-      <Block marginTop="scale400">{getTag(type)}</Block>
+      <Block marginTop="scale400"></Block>
       <Block
         marginTop="scale400"
         width="100%"
