@@ -60,7 +60,7 @@ const Content = ({ item, memberOf }) => {
     if (item) {
       return (
         <Block width="100%" marginBottom="scale1200">
-          <LabelMedium>Tilhører</LabelMedium>
+          <LabelMedium>Tilhører team</LabelMedium>
           {getTable(memberOf)}
         </Block>
       )
