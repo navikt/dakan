@@ -43,10 +43,10 @@ export const EditSingleUserTextModal = (props) => {
       : userTextAuthor.push(clientUser.userId)
 
     const newUserText = {
-      id: userTextContent.id,
-      label: userTextContent.label,
+      id: userTextCopy[0].id,
+      label: userTextCopy[0].label,
       properties: {
-        type: userTextContent.properties.type,
+        type: userTextCopy[0].properties.type,
         author: userTextAuthor,
         text: text,
         date: GetCurrentDate(),
