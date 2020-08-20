@@ -86,7 +86,7 @@ const Content = (props: any): JSX.Element => {
                   {data.properties.description}
                 </LabeledContent>
               </Block>
-              <Block marginTop="scale800">
+              <Block marginTop="scale800" marginBottom="scale800">
                 <SingleUserText
                   dataId={data.id}
                   userText={description}
@@ -96,15 +96,17 @@ const Content = (props: any): JSX.Element => {
                   nodeLabel="tableau_description"
                 />
               </Block>
-              <Block marginBottom="scale1000">{items(data)}</Block>
-              <ToggleUserText
-                dataId={data.id}
-                userTexts={comments}
-                setUserTexts={setComments}
-                title="Kommentar"
-                edgeLabel="hasTableauComment"
-                nodeLabel="tableau_comment"
-              />
+              <Block marginBottom="scale800">{items(data)}</Block>
+              <Block marginBottom="scale800">
+                <ToggleUserText
+                  dataId={data.id}
+                  userTexts={comments}
+                  setUserTexts={setComments}
+                  title="Kommentar"
+                  edgeLabel="hasTableauComment"
+                  nodeLabel="tableau_comment"
+                />
+              </Block>
             </Block>
           }
           right={
