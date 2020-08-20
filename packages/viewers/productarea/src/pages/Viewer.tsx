@@ -1,21 +1,16 @@
 import React from 'react'
-import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
-import { useElasticSearch } from '@dakan/hooks'
+import { useNode } from '@dakan/hooks'
+import { LoadingSpinner } from '@dakan/ui'
 
 import Content from '../components/Content'
 
 import exampleJson from '../resources/example.json'
 
 const Viewer = (props: any) => {
-  const [data, loading, error] = useElasticSearch(props.match.params.id)
-  const [page, setPage] = React.useState('')
-
-  React.useEffect(() => {
-    if (data !== undefined) {
-      setPage(data.content.productarea)
-    }
-  }, [data])
+  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
+    props.match.params.id
+  )
 
   if (props.match.params.id === 'test') {
     return <Content {...props} item={exampleJson._source.content} />
@@ -23,11 +18,12 @@ const Viewer = (props: any) => {
 
   return (
     <React.Fragment>
-      {error}
-      {data && data.content && (
+      {errorLoadingNode && errorMessage}
+      {loadingNode && <LoadingSpinner />}
+      {node && (
         <React.Fragment>
-          <Metrics viewer={'productarea'} page={page} section={''} />
-          <Content {...props} item={data.content} />
+          <Metrics viewer={'productarea'} page={node.id} section={''} />
+          <Content {...props} id={props.match.params.id} item={node} />
         </React.Fragment>
       )}
     </React.Fragment>
@@ -35,3 +31,4 @@ const Viewer = (props: any) => {
 }
 
 export default Viewer
+

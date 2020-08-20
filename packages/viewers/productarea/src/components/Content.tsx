@@ -1,98 +1,33 @@
-/* eslint-disable react/jsx-pascal-case */
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { LabelMedium } from 'baseui/typography'
-import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
-import { LayoutSplit as Layout } from '@dakan/ui'
-import { StyledLink as Link } from 'baseui/link'
-import env from '@beam-australia/react-env'
+import { Avatar } from 'baseui/avatar'
+import { ParagraphMedium } from 'baseui/typography'
+import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
-const teamViewerUrl = env('TEAM_VIEWER_URL') || '../team'
-const personViewerUrl = env('TEAM_VIEWER_URL') || '../person'
+import { Resources } from './Resources'
+import { OrgTeam } from './OrgTeam'
 
-const getPeople = (item) => {
-  const columnsPerson: any[] = [
-    <TableBuilderColumn key="col_person_name" id="name" header="Navn">
-      {(row) => (
-        <Link key={`link_${row.data.id}`} href={`${personViewerUrl}/${row.id}`}>
-          {row.data.name}
-        </Link>
-      )}
-    </TableBuilderColumn>,
-    <TableBuilderColumn key="col_person_id" id="id" header="Ident">
-      {(row) => row.data.id}
-    </TableBuilderColumn>,
-    <TableBuilderColumn key="col_person_roles" id="roles" header="Rolle">
-      {(row) => row.data.roles}
-    </TableBuilderColumn>,
-    <TableBuilderColumn key="col_person_type" id="type" header="Ansatt">
-      {(row) => row.data.type}
-    </TableBuilderColumn>,
-  ]
+const ITEMS = [
+  { item: 'lastchanged', label: 'Oppdatert' },
+]
 
-  let rows: any = []
-  item['members_area'].map((member) => {
-    const row: any = {}
-    row['id'] = member['navIdent']
-    const data: any = {
-      id: member['navIdent'],
-      name: member['resource']['fullName'],
-      roles: member['roles'],
-      type: member['resource']['resourceType'],
-    }
-    row['data'] = data
-    rows.push(row)
-  })
+const Content = ({ item, id }) => {
+  const Head = () => (
+    <Block>
+      <ParagraphMedium>{item && item.properties && item.properties.description}</ParagraphMedium>
+      <ContentItems ITEMS={ITEMS} item={item} />
+    </Block>
+  )
 
-  return <TableBuilder data={rows}>{columnsPerson}</TableBuilder>
-}
-
-const getTeams = (item) => {
-  const columnsTeam: any[] = [
-    <TableBuilderColumn key="col_team_name" id="name" header="Navn">
-      {(row) => (
-        <Link href={`${teamViewerUrl}/${row.id}`}>{row.data.name}</Link>
-      )}
-    </TableBuilderColumn>,
-    <TableBuilderColumn
-      key="col_team_description"
-      id="description"
-      header="Beskrivelse"
-    >
-      {(row) => row.data.description}
-    </TableBuilderColumn>,
-  ]
-
-  let rows: any = []
-  item['teams'].map((team) => {
-    const row: any = {}
-    row['id'] = team['id_team']
-    const data: any = {
-      id: team['id_team'],
-      name: team['name_team'],
-      description: team['description_team'],
-    }
-    row['data'] = data
-    rows.push(row)
-  })
-
-  return <TableBuilder data={rows}>{columnsTeam}</TableBuilder>
-}
-
-const Content = ({ item }) => {
-  const Head = () => <Block>{item['description_area']}</Block>
-
-  const Tables = () => {
-    if (item) {
+  const getAffiliations = () => {
+    if (item && item.id) {
       return (
-        <Block width="100%" marginBottom="scale1200">
-          <Block>
-            <LabelMedium>Ansatte</LabelMedium>
-            {getPeople(item)}
+        <Block>
+          <Block width="100%" marginBottom="scale1200">
+            <Resources id={item.id} />
           </Block>
-          <Block marginTop="scale1200">
-            <LabelMedium>Team</LabelMedium>
-            {getTeams(item)}
+          <Block width="100%" marginBottom="scale1200">
+            <OrgTeam id={item.id} />
           </Block>
         </Block>
       )
@@ -100,17 +35,26 @@ const Content = ({ item }) => {
     return null
   }
 
+  const getHeadingText = () => {
+    return (
+      <Block>
+        {item && item.properties && item.properties.name}
+      </Block>
+    )
+  }
+
   return (
     <React.Fragment>
       <Block>
         <Layout
           headingLabel="Produktområde"
-          headingText={item && item['name_area']}
+          headingText={getHeadingText()}
           left={<Head />}
-          right={<Tables />}
-        ></Layout>
+          right={getAffiliations()}
+        />
       </Block>
     </React.Fragment>
   )
 }
+
 export default Content

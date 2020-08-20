@@ -17,6 +17,11 @@ export const ContentItems = ({ ITEMS, item }) => {
           }
         }
 
+        if (entry.format && entry.format === 'slackchannel') {
+          const link = value.replace('#', 'https://nav-it.slack.com/archives/')
+          value = <a href={link}>{value}</a>
+        }
+
         return (
           <FlexGridItem key={`item_${index}`}>
             <LabeledContent description={entry.label} list>

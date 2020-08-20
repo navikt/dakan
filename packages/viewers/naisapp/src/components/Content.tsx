@@ -7,7 +7,7 @@ import { StyledLink as Link } from 'baseui/link'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
 const ITEMS = [
-  { item: 'slack', label: 'Slack' },
+  { item: 'slack', label: 'Slack', format: 'slackchannel' },
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
 ]
