@@ -24,6 +24,8 @@
     "naisteam": "cd packages/viewers/naisteam && yarn run start",
     "naisteam:build": "cd packages/viewers/naisteam && yarn run build",
     "naisteam:test": "cd packages/viewers/naisteam && yarn run test",
+    "office": "cd packages/viewers/office && yarn run start",
+    "office:build": "cd packages/viewers/office && yarn run build",
     "person": "cd packages/viewers/person && yarn run start",
     "person:build": "cd packages/viewers/person && yarn run build",
     "person:install": "cd packages/viewers/person && yarn install",
