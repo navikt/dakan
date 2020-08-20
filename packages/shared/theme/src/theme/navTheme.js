@@ -144,6 +144,33 @@ export const buttonMinimalOverrides = {
   },
 }
 
+export const panelOverrides = {
+  ToggleIcon: {
+    component: () => null,
+  },
+  Header: {
+    style: {
+      borderBottomStyle: 'none',
+      borderBottomWidth: 'none',
+      borderBottomColor: 'none',
+      paddingLeft: 'none',
+      paddingRight: 'none',
+    },
+  },
+  Content: {
+    style: {
+      paddingLeft: 'none',
+      paddingRight: 'none',
+      paddingBottom: 'none',
+      paddingTop: 'none',
+      backgroundColor: 'none',
+      borderBottomStyle: 'none',
+      borderBottomWidth: 'none',
+      borderBottomColor: 'none',
+    },
+  },
+}
+
 export const tagOverrides = {
   Root: {
     style: {
@@ -328,6 +355,7 @@ export const navTheme = (borderRadius = '0px') => {
     buttonMinimalOverrides,
     sliderOverrides,
     inputOverrides,
+    panelOverrides,
     tagOverrides,
     tabOverrides,
 
