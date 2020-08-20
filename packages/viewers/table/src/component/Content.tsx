@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Block } from 'baseui/block';
 import { format } from 'date-fns';
-import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating, Panel } from '@dakan/ui';
+import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating } from '@dakan/ui';
 import { LabelLarge } from 'baseui/typography';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { useStyletron } from 'baseui';
-import { Accordion } from 'baseui/accordion';
 
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
