@@ -86,29 +86,29 @@ jobs:
         RESOURCE: packages/viewers/naisteam/naisarator-fss.yml
         VARS: packages/viewers/naisteam/config-dev-fss.json
 
-  deploy_dev-sbs:
-    name: Build and deploy to dev-sbs
-    needs: test_and_package
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: refs/heads/master
-    - name: Download artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: img_tag
-    - name: Setup image env
-      run: |
-        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-        echo ${VALUE}
-        echo ::set-env name=IMAGE::${VALUE}
-        echo ${IMAGE}
-    - name: Deploy to nais
-      uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-sbs
-        RESOURCE: packages/viewers/naisteam/naisarator-sbs.yml
-        VARS: packages/viewers/naisteam/config-dev-sbs.json
+  # deploy_dev-sbs:
+  #   name: Build and deploy to dev-sbs
+  #   needs: test_and_package
+  #   if: github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       ref: refs/heads/master
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v1
+  #     with:
+  #       name: img_tag
+  #   - name: Setup image env
+  #     run: |
+  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+  #       echo ${VALUE}
+  #       echo ::set-env name=IMAGE::${VALUE}
+  #       echo ${IMAGE}
+  #   - name: Deploy to nais
+  #     uses: nais/deploy/actions/deploy@v1
+  #     env:
+  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+  #       CLUSTER: dev-sbs
+  #       RESOURCE: packages/viewers/naisteam/naisarator-sbs.yml
+  #       VARS: packages/viewers/naisteam/config-dev-sbs.json
