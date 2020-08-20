@@ -6,7 +6,7 @@ import Viewer from './pages/Viewer'
 import env from '@beam-australia/react-env'
 import { Block } from 'baseui/block'
 
-const title = env('TITLE') || 'nais team'
+const title = env('TITLE') || 'Office'
 const link = env('HOME_URL') || '../'
 
 export default function App() {
