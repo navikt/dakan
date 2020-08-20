@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
-    "@dakan/hooks": "^0.0.3",
-    "@dakan/ui": "^0.0.3",
-    "@dakan/theme": "^0.0.3",
+    "@dakan/hooks": "0.0.4",
+    "@dakan/metrics": "0.0.4",
+    "@dakan/ui": "0.0.4",
+    "@dakan/theme": "^0.0.4",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
     "@testing-library/user-event": "^12.0.6",

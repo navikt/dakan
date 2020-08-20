@@ -5,9 +5,10 @@
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
     "@deetly/plotly-view": "0.0.74",
-    "@dakan/metrics": "^0.0.3",
-    "@dakan/ui": "^0.0.3",
-    "@dakan/theme": "^0.0.3",
+    "@dakan/hooks": "0.0.4",
+    "@dakan/metrics": "0.0.4",
+    "@dakan/ui": "0.0.4",
+    "@dakan/theme": "^0.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
