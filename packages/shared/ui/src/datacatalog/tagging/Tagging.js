@@ -60,6 +60,20 @@ export const Tagging = (props) => {
       .catch((e) => console.log(e))
   }
 
+  const getName = (tag) => {
+    if(Array.isArray(tagLabel)){
+      let name = ""
+      tagLabel.forEach((label) => {
+        name += GetValue(() => tag.properties[label])
+        name += " "
+      })
+      const finalName = name.slice(0, -1)
+      return finalName
+    } else {
+      return GetValue(() => tag.properties[tagLabel])
+    }
+  }
+
   const getTags = () => {
     return dataTags.map((tag, index) => {
       return (
@@ -72,7 +86,7 @@ export const Tagging = (props) => {
                 CheckIfAuthorized(() => deleteTag(index, tag.id))
               }
             >
-              {GetValue(() => tag.properties[tagLabel])}
+              {getName(tag)}
             </Tag>
           )}
         </React.Fragment>
@@ -82,10 +96,11 @@ export const Tagging = (props) => {
 
   const getOptions = () => {
     const options = tagOptions.map((tag) => ({
-      name: GetValue(() => tag.properties[tagLabel]),
+      name: getName(tag),
       id: tag.id,
       properties: tag.properties,
     }))
+    console.log(options)
     return (
       <Select
         options={options}
