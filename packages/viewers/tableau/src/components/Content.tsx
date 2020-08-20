@@ -3,6 +3,7 @@ import { Block } from 'baseui/block'
 import {
   LabeledContent,
   ToggleUserText,
+  SingleUserText,
   LayoutSplit as Layout,
   Rating,
 } from '@dakan/ui'
@@ -59,6 +60,8 @@ const Content = (props: any): JSX.Element => {
     comments,
     setComments,
     clientUser,
+    description,
+    setDescription,
   } = props
 
   return (
@@ -82,6 +85,16 @@ const Content = (props: any): JSX.Element => {
                 <LabeledContent description="Beskrivelse" list>
                   {data.properties.description}
                 </LabeledContent>
+              </Block>
+              <Block marginTop="scale800">
+                <SingleUserText
+                  dataId={data.id}
+                  userText={description}
+                  setUserText={setDescription}
+                  title="Utvidet beskrivelse"
+                  edgeLabel="hasTableauDescription"
+                  nodeLabel="tableau_description"
+                />
               </Block>
               <Block marginBottom="scale1000">{items(data)}</Block>
               <ToggleUserText

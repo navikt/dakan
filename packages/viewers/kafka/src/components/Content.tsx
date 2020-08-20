@@ -5,6 +5,7 @@ import {
   LabeledContent,
   Searchbox,
   ToggleUserText,
+  SingleUserText,
   Rating,
 } from '@dakan/ui'
 
@@ -20,6 +21,8 @@ const Content = (props: any): JSX.Element => {
     numberOfFields,
     comments,
     setComments,
+    description,
+    setDescription,
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
@@ -32,6 +35,16 @@ const Content = (props: any): JSX.Element => {
             <LabeledContent description="Beskrivelse" list>
               {GetValue(() => data.topic_description)}
             </LabeledContent>
+            <Block marginTop="scale800">
+              <SingleUserText
+                dataId={data.id}
+                userText={description}
+                setUserText={setDescription}
+                title="Utvidet beskrivelse"
+                edgeLabel="hasKafkaDescription"
+                nodeLabel="kafka_description"
+              />
+            </Block>
             <Block flex="1">
               <LabeledContent description="Antall felter" list>
                 {numberOfFields}
