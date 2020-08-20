@@ -1,0 +1,41 @@
+[{
+  "id": "Person.T1000",
+  "label": "Person",
+  "type": "vertex",
+  "properties": {
+    "navident": "T1000",
+    "epost": "T1000@nav.no",
+    "fornavn": "T",
+    "etternavn": "1000",
+    "ressurstype": "INTERN",
+    "startdato": "1999-9-10",
+    "sluttdato": null,
+    "avdeling": "Robotics",
+    "tlf": [
+      "00001000 (Kontor)"
+    ],
+    "trygdeident": "test indent",
+    "profilbilde": "",
+    "type": "Person"
+  }}
+  ,{
+  "id": "Person.T-100",
+  "label": "Person",
+  "type": "vertex",
+  "properties": {
+    "navident": "T-100",
+    "epost": "T100@nav.no",
+    "fornavn": "T",
+    "etternavn": "100",
+    "ressurstype": "INTERN",
+    "startdato": "1999-9-10",
+    "sluttdato": null,
+    "avdeling": "Robotics",
+    "tlf": [
+      "00000100 (Kontor)"
+    ],
+    "trygdeident": "test indent",
+    "profilbilde": "",
+    "type": "Person"
+  }
+}]
