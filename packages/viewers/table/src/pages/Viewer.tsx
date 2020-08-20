@@ -11,6 +11,7 @@ import exampleColumnJson from '../resources/exampleColumn.json';
 import exampleTags from '../resources/exampleTags.json';
 import exampleComments from '../resources/exampleComments.json';
 import exampleDescription from '../resources/exampleDescription.json';
+import examplePerson from '../resources/examplePerson.json';
 import TableNotFound from '../component/TableNotFound';
 
 const title = env('TITLE') || 'Data';
@@ -19,14 +20,21 @@ const Viewer = (props: any) => {
     const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id);
     const [columns, loadingColumns, errorLoadingColumns] = useNodeEdges(props.match.params.id, 'hasMember');
     const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype');
+    const [tagPersonOptions, loadingtagPersonOptions, errorLoadingtagPersonOptions] = useContent('Person');
     const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasTableRating');
     const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(
         props.match.params.id,
         'hasTableComment'
     );
+    
     const [description, loadingDescription, errorLoadingDescription, setDescription] = useNodeEdges(
         props.match.params.id,
         'hasTableDescription'
+    );
+
+    const [personTags, loadingPersonTags, errorLoadingPersonTags, setPersonTags] = useNodeEdges(
+        props.match.params.id,
+        'hasTablePersonTag'
     );
 
     const getHeader = () => (
@@ -60,6 +68,9 @@ const Viewer = (props: any) => {
                     data={exampleJson}
                     columns={exampleColumnJson}
                     tagOptions={exampleTags}
+                    tagPersonOptions={examplePerson}
+                    personTags={examplePerson}
+                    setPersonTags={setPersonTags}
                     numberOfColumns={exampleColumnJson.length}
                     comments={exampleComments}
                     description={exampleDescription}
@@ -94,6 +105,9 @@ const Viewer = (props: any) => {
                             data={node}
                             columns={columns}
                             tagOptions={tagOptions}
+                            tagPersonOptions={tagPersonOptions}
+                            personTags={personTags}
+                            setPersonTags={setPersonTags}
                             comments={comments && comments.length > 0 && sortNodesByPropertyTime(comments)}
                             setComments={setComments}
                             description={description}
