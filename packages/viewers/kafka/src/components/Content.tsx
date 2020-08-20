@@ -35,7 +35,7 @@ const Content = (props: any): JSX.Element => {
             <LabeledContent description="Beskrivelse" list>
               {GetValue(() => data.topic_description)}
             </LabeledContent>
-            <Block marginTop="scale800">
+            <Block marginTop="scale800" marginBottom="scale800">
               <SingleUserText
                 dataId={data.id}
                 userText={description}
