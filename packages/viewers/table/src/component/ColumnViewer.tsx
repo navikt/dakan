@@ -217,6 +217,7 @@ const ColumnViewer = (prop: any) => {
                                     setDataTags={setTags}
                                     edgeLabel="hasColumnTag"
                                     tagLabel="name"
+                                    placeholder="Velg opplysningstype"
                                 />
                             </Block>
                         </Block>

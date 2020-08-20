@@ -44,15 +44,13 @@ const TableauView = (props: any) => {
           </Block>
           <Block marginTop="scale600" marginBottom="scale600">
             <Tagging
-              isLoading={loading}
               dataId={view.id}
               tagOptions={tagOptions}
-              serverUrl={server}
               dataTags={tags}
               setDataTags={setTags}
-              clientUser={clientUser}
               edgeLabel="hasTableauViewTag"
               tagLabel="name"
+              placeholder="Velg opplysningstype"
             />
           </Block>
         </Block>

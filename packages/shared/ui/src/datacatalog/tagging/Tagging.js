@@ -92,7 +92,7 @@ export const Tagging = (props) => {
         labelKey="name"
         valueKey="name"
         onChange={(tag) => CheckIfAuthorized(() => addTag(tag.value))}
-        placeholder="Velg opplysningtype"
+        placeholder={props.placeholder ? props.placeholder : "Velg"}
         maxDropdownHeight="300px"
       />
     )
