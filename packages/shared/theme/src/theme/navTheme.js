@@ -260,7 +260,7 @@ export const navTheme = (borderRadius = '0px') => {
     typography: {},
 
     colors: {
-      accent: nadaDypBla,
+      accent: nadaLysBla,
       black: black,
       border: grayDark,
       borderFocus: primary,
