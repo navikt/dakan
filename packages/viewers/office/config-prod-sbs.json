@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-office-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.nav.no/office",
+  "ingress_nais_io": "https://data.prod-sbs.nais.io/office",
+  "kv_path": "secret/dataplattform/datakatalog/prod_sbs"
+}

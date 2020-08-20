@@ -1,0 +1,59 @@
+{
+    "_index": "dcat_v3",
+    "_type": "_doc",
+    "_id": "Nais.arbeidsgiver",
+    "_version": 7,
+    "found": true,
+    "_source": {
+      "id": "Nais.arbeidsgiver",
+      "type": "nais_team",
+      "suggest": "arbeidsgiver Produktområde arbeidsgiver",
+      "description": "Produktområde arbeidsgiver",
+      "title": "arbeidsgiver",
+      "format": "Nais team",
+      "category": "Nais",
+      "provenance": "Nais",
+      "master": "NAV",
+      "purpose": [
+        "Nais"
+      ],
+      "legalbasis": [],
+      "pii": [
+        "Ingen"
+      ],
+      "issued": "2020-06-08T20:17:14.504Z",
+      "modified": "2020-08-06T07:45:05.678Z",
+      "created": "2020-06-08T20:17:14.504Z",
+      "policy": [],
+      "distribution": null,
+      "keywords": [
+        "nais",
+        "team"
+      ],
+      "theme": [
+        "Nais team"
+      ],
+      "accessRights": "public",
+      "publisher": {
+        "name": "NAV"
+      },
+      "spatial": "Norge",
+      "url": [
+        "url"
+      ],
+      "haspart": [],
+      "content": {
+        "id": "Nais.arbeidsgiver",
+        "label": "nais_team",
+        "properties": {
+          "type": "nais_team",
+          "name": "arbeidsgiver",
+          "slack": "arbeidsgiver-general",
+          "description": "Produktområde arbeidsgiver",
+          "created": "2020-06-08T20:17:14.504Z",
+          "modified": "2020-08-06T07:45:05.678Z",
+          "group_id": "cb3545ec-63b2-495a-b4b8-c2c0acdebc40"
+        }
+      }
+    }
+  }

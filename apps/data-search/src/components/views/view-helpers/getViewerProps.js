@@ -125,7 +125,7 @@ export function getViewerProps(format) {
     }
   }
 
-  if (format === 'nais_team') {
+  if (format === 'nais_team' || format === 'naisteam') {
     return {
       link: env('NAISTEAM_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -133,9 +133,17 @@ export function getViewerProps(format) {
     }
   }
 
-  if (format === 'nais_app') {
+  if (format === 'nais_app' || format === 'naisapp') {
     return {
       link: env('NAISAPP_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagPurposeBackgroundColor,
+      borderColor: theme.colors.tagPurposeBorderColor,
+    }
+  }
+
+  if (format === 'office') {
+    return {
+      link: env('OFFICE_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagPurposeBackgroundColor,
       borderColor: theme.colors.tagPurposeBorderColor,
     }
