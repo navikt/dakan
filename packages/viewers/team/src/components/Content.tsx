@@ -8,7 +8,7 @@ import { StyledLink as Link } from 'baseui/link'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
 const ITEMS = [
-  { item: 'slackChannel', label: 'Slack' },
+  { item: 'slackChannel', label: 'Slack', format: 'slackchannel' },
   { item: 'lastChanged', label: 'Oppdatert', format: 'date' },
 ]
 
@@ -70,7 +70,7 @@ const Content = ({ item, members }) => {
     if (item) {
       return (
         <Block width="100%" height="800px">
-          <LabelMedium>Medlemmer</LabelMedium>
+          <LabelMedium>Medlemmer av teamet</LabelMedium>
           {getTable()}
         </Block>
       )
