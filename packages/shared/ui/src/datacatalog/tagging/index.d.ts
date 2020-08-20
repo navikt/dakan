@@ -7,7 +7,7 @@ export interface TaggingProps {
   dataTags?: any
   setdataTags?: any
   edgeLabel: string
-  tagLabel?: string
+  tagLabel?: any
 }
 
 export declare const Tagging: React.FC<TaggingProps>
