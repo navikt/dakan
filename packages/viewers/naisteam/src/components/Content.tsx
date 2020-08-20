@@ -6,6 +6,8 @@ import { StyledLink as Link } from 'baseui/link'
 
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
+import { Members } from './Members'
+
 const ITEMS = [
   { item: 'slack', label: 'Slack' },
   { item: 'created', label: 'Opprettet', format: 'date' },
@@ -56,12 +58,18 @@ const Content = ({ item, members }) => {
     </Block>
   )
 
-  const Members = () => {
+  const Parts = () => {
     if (item) {
       return (
         <Block width="100%" marginBottom="scale1200">
-          <LabelMedium>Applikasjoner</LabelMedium>
-          {members && typeof members == 'object' && getTable()}
+          <Block marginBottom="scale1200">
+            <LabelMedium>Applikasjoner</LabelMedium>
+            {members && typeof members == 'object' && getTable()}
+          </Block>
+          <Block width="100%" marginBottom="scale1200">
+            <LabelMedium>Personer</LabelMedium>
+            <Members id={item.id} />
+          </Block>
         </Block>
       )
     }
@@ -75,7 +83,7 @@ const Content = ({ item, members }) => {
           headingLabel="Nais team"
           headingText={item && item.properties && item.properties.name}
           left={<Head />}
-          right={<Members />}
+          right={<Parts />}
         />
       </Block>
     </React.Fragment>

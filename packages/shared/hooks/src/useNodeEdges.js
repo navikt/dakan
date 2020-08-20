@@ -21,7 +21,6 @@ export function useNodeEdges(id, type, direction = 'out') {
 
   useEffect(() => {
     const url = `${server}/node/${direction}/${id}/${type}`
-    console.log('get node edges: ', url)
     const fetchData = async () => {
       setLoading(true)
       try {
