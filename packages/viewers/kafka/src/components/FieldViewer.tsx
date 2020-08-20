@@ -31,15 +31,13 @@ const FieldViewer = (props: any): JSX.Element => {
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
                   <Tagging
-                    isLoading={loading}
                     dataId={field.id}
                     tagOptions={tagOptions}
-                    serverUrl={server}
                     dataTags={tags}
                     setDataTags={setTags}
-                    clientUser={clientUser}
                     edgeLabel="hasKafkaFieldTag"
                     tagLabel="name"
+                    placeholder="Velg opplysningstype"
                   />
                 </Block>
               </Block>
