@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Block } from 'baseui/block';
 import { format } from 'date-fns';
-import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating, Tagging } from '@dakan/ui';
+import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating } from '@dakan/ui';
 import { LabelLarge, LabelMedium } from 'baseui/typography';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { useStyletron } from 'baseui';
@@ -97,20 +97,6 @@ const Content = (props: any): JSX.Element => {
                             />
                         </Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
-                        <Block>
-                            <Block marginBottom="scale400">
-                            <LabelMedium><b>Kontakt person</b></LabelMedium>
-                            </Block>
-                            <Tagging
-                                dataId={props.data.id}
-                                tagOptions={props.tagPersonOptions}
-                                dataTags={props.personTags}
-                                setDataTags={props.setPersonTags}
-                                edgeLabel="hasTablePersonTag"
-                                tagLabel="navident"
-                                placeholder="Velg kontakt person"
-                            />
-                        </Block>
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
