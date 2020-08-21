@@ -51,7 +51,7 @@ export const Resources = ({ id }: any) => {
       })
       return <TableBuilder data={rows}>{columns}</TableBuilder>
     } else {
-      return nullLiteral
+      return null
     }
   }
 
