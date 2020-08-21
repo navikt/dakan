@@ -73,5 +73,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: packages/viewers/office/naiserator-fss.yml
+        RESOURCE: packages/viewers/office/naisarator-fss.yml
         VARS: packages/viewers/office/config-prod-fss.json
