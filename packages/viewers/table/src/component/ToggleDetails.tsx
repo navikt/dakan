@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {Accordion} from 'baseui/accordion';
-import {Panel} from '@dakan/ui';
+import {Panel, GetValue} from '@dakan/ui';
 import TabViewer from './TabViewer';
 import {Block} from 'baseui/block';
-
-import GetValue from '../utils/GetValue';
 
 const ToggleDetails = (prop: any) => {
     const {dataTypeMetrics, plotlyChart, metaData, countTable} = prop;

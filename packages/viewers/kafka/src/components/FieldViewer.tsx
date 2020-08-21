@@ -1,10 +1,8 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Tagging, Label } from '@dakan/ui'
+import { Tagging, Label, GetValue } from '@dakan/ui'
 import env from '@beam-australia/react-env'
 import { useNodeEdges } from '@dakan/hooks'
-
-import GetValue from '../utils/GetValue'
 
 const server = env('GRAPH_SERVER')
 

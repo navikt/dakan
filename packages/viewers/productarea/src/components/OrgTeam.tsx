@@ -3,7 +3,7 @@ import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
 
 import { useNodeEdges } from '@dakan/hooks'
-import { LoadingSpinner } from '@dakan/ui'
+import { LoadingSpinner, isEmpty } from '@dakan/ui'
 import { Label } from '@dakan/ui'
 
 const getLink = (row) => {
