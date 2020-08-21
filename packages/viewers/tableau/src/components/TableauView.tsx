@@ -3,10 +3,8 @@ import { Block } from 'baseui/block'
 import { StyledLink } from 'baseui/link'
 import { LabelMedium } from 'baseui/typography'
 import env from '@beam-australia/react-env'
-import { Tagging } from '@dakan/ui'
+import { Tagging, GetValue } from '@dakan/ui'
 import { useNodeEdges } from '@dakan/hooks'
-
-import GetValue from '../utils/GetValue'
 
 const server = env('GRAPH_SERVER')
 

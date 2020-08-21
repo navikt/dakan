@@ -5,13 +5,12 @@ import {
   ToggleUserText,
   SingleUserText,
   LayoutSplit as Layout,
-  Rating,
+  Rating, GetValue
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
 
 import TableauViewList from './TableauViewList'
-import GetValue from '../utils/GetValue'
 
 const items = (props: any): JSX.Element => {
   const content = props.properties

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {Table} from 'baseui/table-semantic';
-import {LabeledContent, Tagging} from '@dakan/ui';
+import {LabeledContent, Tagging, GetValue} from '@dakan/ui';
 import {LabelLarge, LabelMedium} from 'baseui/typography';
 import {useStyletron} from 'baseui';
 import env from '@beam-australia/react-env';
 
-import GetValue from '../utils/GetValue';
 import ToggleDetails from './ToggleDetails';
 import {useNodeEdges} from '@dakan/hooks';
 
