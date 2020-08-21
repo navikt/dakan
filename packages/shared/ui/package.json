@@ -43,7 +43,7 @@
         "babel-loader": "^8.0.6",
         "babel-plugin-styled-components": "^1.10.6",
         "jest": "^26.4.0",
-        "typescript": "^3.6.3"
+        "typescript": "^4.0.2"
     },
     "dependencies": {
         "@beam-australia/react-env": "^2.1.2",
@@ -52,7 +52,7 @@
         "@fortawesome/react-fontawesome": "^0.1.8",
         "@dakan/theme": "^0.0.3",
         "amplitude-js": "^7.1.0",
-        "axios": "^0.19.2",
+        "axios": "^0.20.0",
         "baseui": "^9.89.0",
         "deepmerge": "^4.2.2",
         "js-cookie": "^2.2.1",
