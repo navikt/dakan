@@ -8,6 +8,9 @@ import { LayoutSplit as Layout, ContentItems, PersonTable } from '@dakan/ui'
 
 const ITEMS = [
   { item: 'slackChannel', label: 'Slack', format: 'slackchannel' },
+  { item: 'teamType', label: 'Type team' },
+  { item: 'tags', label: 'Tags', format: 'list' },
+  { item: 'naisTeams', label: 'NAIS teams', format: 'list' },
   { item: 'lastChanged', label: 'Oppdatert', format: 'date' },
 ]
 
