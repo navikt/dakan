@@ -1,6 +1,6 @@
 import React from 'react'
 import { LoadingSpinner, PersonTable } from '@dakan/ui'
-import { useNodeEdges} from '@dakan/hooks'
+import { useNodeEdges } from '@dakan/hooks'
 
 export const Members = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
@@ -8,14 +8,11 @@ export const Members = ({ id }: any) => {
     'hasNaisTeamMember',
   )
 
-
   return (
     <React.Fragment>
       {errorLoadingNodes && 'Error loading nais team members'}
       {loadingNodes && <LoadingSpinner />}
-      {nodes && (
-        <PersonTable members={nodes} />
-      )}
+      {nodes && <PersonTable members={nodes} />}
     </React.Fragment>
   )
 }

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Block } from 'baseui/block';
-import { format } from 'date-fns';
-import { LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating } from '@dakan/ui';
-import { LabelLarge, LabelMedium } from 'baseui/typography';
-import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
-import { useStyletron } from 'baseui';
+import {Block} from 'baseui/block';
+import {format} from 'date-fns';
+import {LargeWidth, LabeledContent, ToggleUserText, SingleUserText, Searchbox, Rating} from '@dakan/ui';
+import {LabelLarge, LabelMedium} from 'baseui/typography';
+import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
+import {useStyletron} from 'baseui';
 
 import GetValue from '../utils/GetValue';
 import ColumnListFilter from '../utils/ColumnListFilter';
@@ -14,10 +14,10 @@ const items = (props: any): JSX.Element[] => {
     const content = props.properties;
 
     const ITEMS = [
-        { item: 'schema_name', label: 'Skjema' },
-        { item: 'team_name', label: 'Team navn' },
-        { item: 'db_name', label: 'Database navn' },
-        { item: 'host', label: 'Host adresse' },
+        {item: 'schema_name', label: 'Skjema'},
+        {item: 'team_name', label: 'Team navn'},
+        {item: 'db_name', label: 'Database navn'},
+        {item: 'host', label: 'Host adresse'},
     ];
 
     return ITEMS.map((entry: any, i: number) => {
@@ -40,7 +40,7 @@ const items = (props: any): JSX.Element[] => {
 };
 
 const Main = (props: any): JSX.Element => {
-    const { data, numberOfColumns } = props;
+    const {data, numberOfColumns} = props;
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -50,7 +50,7 @@ const Main = (props: any): JSX.Element => {
                         <LabelLarge>
                             <b>Beskrivelse</b>
                         </LabelLarge>
-                        <Block marginTop="scale200" $style={{ ...theme.typography.font300 }}>
+                        <Block marginTop="scale200" $style={{...theme.typography.font300}}>
                             {data.properties.table_description}
                         </Block>
                         <Block marginTop="scale800">

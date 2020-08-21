@@ -19,8 +19,6 @@ const getLink = (row) => {
 }
 
 const Content = ({ item, members }) => {
-  
-
   const Head = () => (
     <Block>
       <ParagraphMedium>
@@ -35,7 +33,9 @@ const Content = ({ item, members }) => {
       return (
         <Block width="100%" marginBottom="scale1200">
           <LabelMedium>Ansatte</LabelMedium>
-          {members && typeof members == 'object' && <PersonTable members={members} />}
+          {members && typeof members == 'object' && (
+            <PersonTable members={members} />
+          )}
         </Block>
       )
     }

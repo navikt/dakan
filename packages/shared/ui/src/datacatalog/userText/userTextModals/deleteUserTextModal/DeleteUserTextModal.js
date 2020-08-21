@@ -53,8 +53,19 @@ export const DeleteUserTextModal = (props) => {
   )
 
   const checkAuthor = () => {
-    if (userTextContent && userTextContent.properties && userTextContent.properties.author  && clientUser && clientUser.userId) {
-      if (Array.isArray(userTextContent.properties.author) && userTextContent.properties.author.filter((userId) => userId === clientUser.userId)) {
+    if (
+      userTextContent &&
+      userTextContent.properties &&
+      userTextContent.properties.author &&
+      clientUser &&
+      clientUser.userId
+    ) {
+      if (
+        Array.isArray(userTextContent.properties.author) &&
+        userTextContent.properties.author.filter(
+          (userId) => userId === clientUser.userId,
+        )
+      ) {
         return true
       }
       if (userTextContent.properties.author === clientUser.userId) {

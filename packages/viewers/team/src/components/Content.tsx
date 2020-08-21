@@ -15,7 +15,6 @@ const getLink = (row) => {
 }
 
 const Content = ({ item, members }) => {
-  
   const Head = () => (
     <Block>
       <ParagraphMedium>

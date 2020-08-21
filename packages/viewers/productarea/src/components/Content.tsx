@@ -7,14 +7,14 @@ import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 import { Resources } from './Resources'
 import { OrgTeam } from './OrgTeam'
 
-const ITEMS = [
-  { item: 'lastchanged', label: 'Oppdatert' },
-]
+const ITEMS = [{ item: 'lastchanged', label: 'Oppdatert' }]
 
 const Content = ({ item, id }) => {
   const Head = () => (
     <Block>
-      <ParagraphMedium>{item && item.properties && item.properties.description}</ParagraphMedium>
+      <ParagraphMedium>
+        {item && item.properties && item.properties.description}
+      </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
     </Block>
   )
@@ -36,11 +36,7 @@ const Content = ({ item, id }) => {
   }
 
   const getHeadingText = () => {
-    return (
-      <Block>
-        {item && item.properties && item.properties.name}
-      </Block>
-    )
+    return <Block>{item && item.properties && item.properties.name}</Block>
   }
 
   return (

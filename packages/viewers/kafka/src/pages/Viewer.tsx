@@ -9,7 +9,7 @@ import TopicNotFound from '../components/TopicNotFound'
 
 import exampleKafkaJson from '../resources/exampleKafka.json'
 import exampleTopicFieldJson from '../resources/exampleTopicField.json'
-import exampleDescription from '../resources/exampleDescription.json';
+import exampleDescription from '../resources/exampleDescription.json'
 import exampleTags from '../resources/exampleTags.json'
 import exampleComments from '../resources/exampleComments.json'
 
@@ -37,10 +37,12 @@ const Viewer = (props: any) => {
     setComments,
   ] = useNodeEdges(props.match.params.id, 'hasKafkaComment')
 
-  const [description, loadingDescription, errorLoadingDescription, setDescription] = useNodeEdges(
-    props.match.params.id,
-    'hasKafkaDescription'
-);
+  const [
+    description,
+    loadingDescription,
+    errorLoadingDescription,
+    setDescription,
+  ] = useNodeEdges(props.match.params.id, 'hasKafkaDescription')
 
   const getHeader = () => (
     <Header

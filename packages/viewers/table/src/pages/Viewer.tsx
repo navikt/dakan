@@ -19,17 +19,19 @@ const Viewer = (props: any) => {
     const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id);
     const [columns, loadingColumns, errorLoadingColumns] = useNodeEdges(props.match.params.id, 'hasMember');
     const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent('opplysningstype');
-    const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(props.match.params.id, 'hasTableRating');
+    const [ratings, loadingRatings, errorLoadingRatings, setRatings] = useNodeEdges(
+        props.match.params.id,
+        'hasTableRating'
+    );
     const [comments, loadingCommnets, errorLoadingComments, setComments] = useNodeEdges(
         props.match.params.id,
         'hasTableComment'
     );
-    
+
     const [description, loadingDescription, errorLoadingDescription, setDescription] = useNodeEdges(
         props.match.params.id,
         'hasTableDescription'
     );
-
 
     const getHeader = () => (
         <Header
