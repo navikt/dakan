@@ -6,10 +6,9 @@ import {
   Searchbox,
   ToggleUserText,
   SingleUserText,
-  Rating,
+  Rating, GetValue
 } from '@dakan/ui'
 
-import GetValue from '../utils/GetValue'
 import FilterFieldList from '../utils/FilterFieldList'
 import TopicFields from './TopicFields'
 
