@@ -12,7 +12,7 @@
     "@elastic/react-search-ui-views": "1.4.1",
     "@elastic/search-ui": "1.4.1",
     "amplitude-js": "^7.1.0",
-    "axios": "^0..0",
+    "axios": "^0.20.0",
     "baseui": "^9.52.1",
     "date-fns": "^2.8.1",
     "prop-types": "^15.7.2",
