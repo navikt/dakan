@@ -3,7 +3,7 @@ import { Block } from 'baseui/block'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
-import GetValue from './GetValue'
+import GetValue from '../../utils/GetValue/GetValue'
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {

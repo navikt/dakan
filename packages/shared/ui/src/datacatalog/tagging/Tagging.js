@@ -61,11 +61,11 @@ export const Tagging = (props) => {
   }
 
   const getName = (tag) => {
-    if(Array.isArray(tagLabel)){
-      let name = ""
+    if (Array.isArray(tagLabel)) {
+      let name = ''
       tagLabel.forEach((label) => {
         name += GetValue(() => tag.properties[label])
-        name += " "
+        name += ' '
       })
       const finalName = name.slice(0, -1)
       return finalName
@@ -107,7 +107,7 @@ export const Tagging = (props) => {
         labelKey="name"
         valueKey="name"
         onChange={(tag) => CheckIfAuthorized(() => addTag(tag.value))}
-        placeholder={props.placeholder ? props.placeholder : "Velg"}
+        placeholder={props.placeholder ? props.placeholder : 'Velg'}
         maxDropdownHeight="300px"
       />
     )

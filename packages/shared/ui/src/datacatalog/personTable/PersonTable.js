@@ -9,30 +9,34 @@ const getLink = (row) => {
 }
 
 const getPerson = (row) => {
-if (row && row.data) {
-  return (
-    <Block 
-      key={row.id} 
-      display='flex'
-      alignItems='center'
-      justifyContent='flex-start'
-    >
-      <Avatar src={row.data.profilbilde} name={row.data.name} size='scale800' />
-      <Block  marginLeft='scale400'>{row.data.name}</Block>
-    </Block>
-  )
-}
-return null
+  if (row && row.data) {
+    return (
+      <Block
+        key={row.id}
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-start"
+      >
+        <Avatar
+          src={row.data.profilbilde}
+          name={row.data.name}
+          size="scale800"
+        />
+        <Block marginLeft="scale400">{row.data.name}</Block>
+      </Block>
+    )
+  }
+  return null
 }
 
-export const PersonTable= ({ members }) => {
+export const PersonTable = ({ members }) => {
   const columns = [
     <TableBuilderColumn id="name" header="Navn">
       {(row) => <Link href={getLink(row)}>{getPerson(row)}</Link>}
     </TableBuilderColumn>,
     <TableBuilderColumn id="type" header="Ansatt">
       {(row) => row.data.type}
-    </TableBuilderColumn>
+    </TableBuilderColumn>,
   ]
 
   const getTable = (members) => {
@@ -49,7 +53,7 @@ export const PersonTable= ({ members }) => {
           id: member['properties']['navident'],
           name: name,
           type: member['properties']['ressurstype'],
-          profilbilde: member['properties']['profilbilde']
+          profilbilde: member['properties']['profilbilde'],
         }
         row['data'] = data
         rows.push(row)

@@ -12,7 +12,7 @@ const getLink = (row) => {
 export const Resources = ({ id }: any) => {
   const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(
     id,
-    'memberOfProductArea'
+    'memberOfProductArea',
   )
 
   const columns: any[] = [
@@ -54,8 +54,6 @@ export const Resources = ({ id }: any) => {
       return nullLiteral
     }
   }
-
-
 
   return (
     <React.Fragment>

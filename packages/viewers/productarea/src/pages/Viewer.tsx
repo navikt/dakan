@@ -9,7 +9,7 @@ import exampleJson from '../resources/example.json'
 
 const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
-    props.match.params.id
+    props.match.params.id,
   )
 
   if (props.match.params.id === 'test') {
@@ -31,4 +31,3 @@ const Viewer = (props: any) => {
 }
 
 export default Viewer
-

@@ -31,7 +31,7 @@ const UserText = [
       date: '27.des.2014',
       time: '10:12',
     },
-  }
+  },
 ]
 
 export const default_theme = () => {
@@ -47,7 +47,9 @@ export const default_theme = () => {
         edgeLabel={edgeLabel}
         nodeLabel={nodeLabel}
       />
-      <Block marginTop="scale1000" marginBottom="scale800">Empty state</Block>
+      <Block marginTop="scale1000" marginBottom="scale800">
+        Empty state
+      </Block>
       <Block>
         <SingleUserText
           dataId={dataId}
@@ -77,7 +79,9 @@ export const NAV_theme = () => {
           nodeLabel={nodeLabel}
         />
       </Block>
-      <Block marginTop="scale1000" marginBottom="scale800">Empty state</Block>
+      <Block marginTop="scale1000" marginBottom="scale800">
+        Empty state
+      </Block>
       <Block>
         <SingleUserText
           dataId={dataId}

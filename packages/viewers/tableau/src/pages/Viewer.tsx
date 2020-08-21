@@ -11,7 +11,7 @@ import ErrorViewer from '../components/ErrorViewer'
 import Content from '../components/Content'
 import exampleComments from '../resources/exampleComments.json'
 import exampleTags from '../resources/exampleTags.json'
-import exampleDescription from '../resources/exampleDescription.json';
+import exampleDescription from '../resources/exampleDescription.json'
 
 const title = env('TITLE') || 'Tableau'
 
@@ -39,10 +39,12 @@ const Viewer = (props: any) => {
     setComments,
   ] = useNodeEdges(props.match.params.id, 'hasTableauComment')
 
-  const [description, loadingDescription, errorLoadingDescription, setDescription] = useNodeEdges(
-    props.match.params.id,
-    'hasTableauDescription'
-);
+  const [
+    description,
+    loadingDescription,
+    errorLoadingDescription,
+    setDescription,
+  ] = useNodeEdges(props.match.params.id, 'hasTableauDescription')
 
   const getHeader = () => (
     <Header

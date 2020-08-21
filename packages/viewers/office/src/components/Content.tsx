@@ -8,6 +8,9 @@ import { LayoutSplit as Layout, ContentItems, PersonTable } from '@dakan/ui'
 
 const ITEMS = [
   { item: 'slackChannel', label: 'Slack', format: 'slackchannel' },
+  { item: 'teamType', label: 'Type team' },
+  { item: 'tags', label: 'Tags', format: 'list' },
+  { item: 'naisTeams', label: 'NAIS teams', format: 'list' },
   { item: 'lastChanged', label: 'Oppdatert', format: 'date' },
 ]
 
@@ -16,8 +19,6 @@ const getLink = (row) => {
 }
 
 const Content = ({ item, members }) => {
-  
-
   const Head = () => (
     <Block>
       <ParagraphMedium>
@@ -32,7 +33,9 @@ const Content = ({ item, members }) => {
       return (
         <Block width="100%" marginBottom="scale1200">
           <LabelMedium>Ansatte</LabelMedium>
-          {members && typeof members == 'object' && <PersonTable members={members} />}
+          {members && typeof members == 'object' && (
+            <PersonTable members={members} />
+          )}
         </Block>
       )
     }
