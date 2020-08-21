@@ -27,20 +27,22 @@ export const OrgTeam = ({ id }: any) => {
 
   const getTable = (nodes) => {
     let rows: any = []
-    nodes.map((node) => {
-      const row: any = {}
-      row['id'] = node['id']
-      const data: any = {
-        id: node['id'],
-        name: node['properties']['name'],
-        description: node['properties']['description'],
-      }
-      row['data'] = data
-      rows.push(row)
-    })
-
-    return <TableBuilder data={rows}>{columns}</TableBuilder>
+    if (nodes && Array.isArray(nodes)) {
+      nodes.map((node) => {
+        const row: any = {}
+        row['id'] = node['id']
+        const data: any = {
+          id: node['id'],
+          name: node['properties']['name'],
+          description: node['properties']['description'],
+        }
+        row['data'] = data
+        rows.push(row)
+      })
+      return <TableBuilder data={rows}>{columns}</TableBuilder>
+    } else return null
   }
+
   return (
     <React.Fragment>
       {errorLoadingNodes && 'Error loading org teams'}

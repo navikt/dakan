@@ -6,8 +6,6 @@ import { useNodeEdges } from '@dakan/hooks'
 import { LoadingSpinner } from '@dakan/ui'
 import { Label } from '@dakan/ui'
 
-import isEmpty from '../utils/IsEmpty'
-
 const getLink = (row) => {
   return '../team/' + row.id
 }
@@ -29,19 +27,21 @@ export const OrgTeam = ({ id }: any) => {
 
   const getTable = (nodes) => {
     let rows: any = []
-    nodes.map((node) => {
-      const row: any = {}
-      row['id'] = node['id']
-      const data: any = {
-        id: node['id'],
-        name: node['properties']['name'],
-        description: node['properties']['description'],
-      }
-      row['data'] = data
-      rows.push(row)
-    })
-
-    return <TableBuilder data={rows}>{columns}</TableBuilder>
+    if (nodes && Array.isArray(nodes)) {
+      nodes.map((node) => {
+        const row: any = {}
+        row['id'] = node['id']
+        const data: any = {
+          id: node['id'],
+          name: node['properties']['name'],
+          description: node['properties']['description'],
+        }
+        row['data'] = data
+        rows.push(row)
+      })
+      return <TableBuilder data={rows}>{columns}</TableBuilder>
+    }
+    return false
   }
 
   return (

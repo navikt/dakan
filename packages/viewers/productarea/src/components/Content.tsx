@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
-import { Resources } from './Resources'
+import { Members } from './Members'
 import { OrgTeam } from './OrgTeam'
 
 const ITEMS = [{ item: 'lastchanged', label: 'Oppdatert' }]
@@ -24,7 +23,7 @@ const Content = ({ item, id }) => {
       return (
         <Block>
           <Block width="100%" marginBottom="scale1200">
-            <Resources id={item.id} />
+            <Members id={item.id} />
           </Block>
           <Block width="100%" marginBottom="scale1200">
             <OrgTeam id={item.id} />
