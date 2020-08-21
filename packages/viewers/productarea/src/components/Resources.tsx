@@ -32,7 +32,7 @@ export const Resources = ({ id }: any) => {
 
   const getTable = (members) => {
     let rows: any = []
-    if (members) {
+    if (members && Array.isArray(members)) {
       members.map((member) => {
         const name =
           member['properties']['fornavn'] +
