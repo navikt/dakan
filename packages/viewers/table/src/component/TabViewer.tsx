@@ -6,8 +6,29 @@ import {useStyletron} from 'baseui';
 
 const TabViewer = (props: any) => {
     const {dataTypeMetrics, plotlyChart, metaData, countTable} = props;
-    const [activeKey, setActiveKey] = React.useState('statestikk');
+    const [activeKey, setActiveKey] = React.useState('');
     const [, theme] = useStyletron();
+
+    const getActiveKey = () => {
+        if(dataTypeMetrics && dataTypeMetrics.props.children){
+            return 'statestikk'
+        }
+        else if (plotlyChart) {
+            return "histogram"
+        }
+        else if (countTable && countTable.props.children) {
+            return "mest"
+        }
+        else if (metaData && metaData.props.children) {
+            return "metaData"
+        } else {
+            return ''
+        }
+    }
+
+    React.useEffect(()=> {
+        setActiveKey(getActiveKey())
+    },[])
 
     const getTitle = (title: string, key: string) => {
         return (

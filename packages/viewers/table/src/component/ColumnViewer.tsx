@@ -138,7 +138,7 @@ const ColumnViewer = (prop: any) => {
         return (
             <Block>
                 {dataTypeItems && (
-                    <Table columns={[`${columnData.properties.data_type} Metrikker`]} data={dataTypeItems} />
+                    <Table columns={[`${columnData.properties.data_type} Metrikker`, '']} data={dataTypeItems} />
                 )}
             </Block>
         );
@@ -160,7 +160,7 @@ const ColumnViewer = (prop: any) => {
             ];
         }
 
-        return <Block>{metaData && <Table columns={[]} data={metaData} />}</Block>;
+        return <Block>{metaData && metaData.length > 0 && <Table columns={['','']} data={metaData} />}</Block>;
     };
 
     const getCountTable = () => {
