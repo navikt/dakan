@@ -1,6 +1,7 @@
 import React from 'react'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
+import { Block } from 'baseui/block'
 
 import { useNodeEdges } from '@dakan/hooks'
 import { LoadingSpinner, isEmpty } from '@dakan/ui'
@@ -49,12 +50,12 @@ export const OrgTeam = ({ id }: any) => {
       {errorLoadingNodes && 'Error loading nais teams'}
       {loadingNodes && <LoadingSpinner />}
       {nodes && (
-        <React.Fragment>
+        <Block width="100%" marginBottom="scale1200">
           <Label>Org. team (Teamkatalogen)</Label>
           {getTable(nodes)}
-        </React.Fragment>
+        </Block>
       )}
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 

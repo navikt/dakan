@@ -22,12 +22,8 @@ const Content = ({ item, id }) => {
     if (item && item.id) {
       return (
         <Block>
-          <Block width="100%" marginBottom="scale1200">
-            <Members id={item.id} />
-          </Block>
-          <Block width="100%" marginBottom="scale1200">
-            <OrgTeam id={item.id} />
-          </Block>
+          <Members id={item.id} />
+          <OrgTeam id={item.id} />
         </Block>
       )
     }
