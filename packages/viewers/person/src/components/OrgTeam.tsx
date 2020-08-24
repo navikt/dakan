@@ -13,7 +13,6 @@ export const OrgTeam = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
     id,
     'memberOfTeam',
-    'in',
   )
 
   const columns: any[] = [

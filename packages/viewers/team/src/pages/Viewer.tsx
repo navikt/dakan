@@ -13,7 +13,7 @@ const Viewer = (props: any) => {
   )
   const [members, loadingMembers, errorLoadingMembers] = useNodeEdges(
     props.match.params.id,
-    'memberOfTeam',
+    'hasTeamMember',
   )
 
   if (props.match.params.id === 'test') {

@@ -13,7 +13,7 @@ const getLink = (row) => {
 export const OrgTeam = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
     id,
-    'partOfProductArea',
+    'hasTeam',
   )
 
   const columns: any[] = [

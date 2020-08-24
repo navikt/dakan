@@ -5,7 +5,7 @@ import { useNodeEdges } from '@dakan/hooks'
 export const Members = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
     id,
-    'memberOfProductArea',
+    'hasProductAreaMember',
   )
 
   return (
