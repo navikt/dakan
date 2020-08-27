@@ -3,8 +3,7 @@ import { Select } from 'baseui/select'
 import axios from 'axios'
 import env from '@beam-australia/react-env'
 
-const server = env('ELASTIC_ENDPOINT')
-const index = env('ELASTIC_INDEX')
+const server = env('ES_SERVER')
 
 const debounce = (fn: any, delay: any) => {
   let timeoutId: any;
@@ -59,7 +58,7 @@ const SelectPerson = () => {
     }
     setIsLoading(true);
     setTimeout(() => {
-      axios.post(`${server}/${index}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
+      axios.post(`${server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
         .then((res) => {
           setOptions(res.data);
           console.log(res.data)
