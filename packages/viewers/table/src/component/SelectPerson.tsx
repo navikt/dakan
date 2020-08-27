@@ -61,7 +61,6 @@ const SelectPerson = () => {
       axios.post(`${server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
         .then((res) => {
           if (res.data) {
-            setOptions(res.data);
             console.log(res.data)
           }
           setIsLoading(false);
