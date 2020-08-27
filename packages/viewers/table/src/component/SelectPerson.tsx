@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Select } from 'baseui/select'
 import axios from 'axios'
 import env from '@beam-australia/react-env'
+import { GetValue } from '@dakan/ui';
 
 const server = env('ES_SERVER')
 
@@ -47,10 +48,45 @@ const buildAutocompleteRequest = (searchTerm: any) => {
   return body
 }
 
-const SelectPerson = () => {
-  const [value, setValue] = React.useState({});
-  const [options, setOptions] = React.useState([]);
+const getName = (tag: any, tagLabel: any) => {
+  if (Array.isArray(tagLabel)) {
+    let name = ''
+    tagLabel.forEach((label) => {
+      name += GetValue(() => tag.properties[label])
+      name += ' '
+    })
+    const finalName = name.slice(0, -1)
+    return finalName
+  } else {
+    return GetValue(() => tag.properties[tagLabel])
+  }
+}
+
+const transformData = (data: any) => {
+  let transformedData: any[] = []
+  data.forEach((rawData: any) => {
+    const newData = {
+      id: GetValue(() => rawData.id),
+      properties: {
+        title: GetValue(() => rawData._source.title)
+      }
+    }
+    transformedData.push(newData)
+  })
+  return transformedData
+}
+
+const SelectPerson = (props: any) => {
+  const { tagOptions,
+    dataId,
+    dataTags,
+    setDataTags,
+    edgeLabel,
+    tagLabel } = props
+
+  const [options, setOptions] = React.useState([{}]);
   const [isLoading, setIsLoading] = React.useState(false);
+
   const handleInputChange = debounce((term: any) => {
     if (!term.value) {
       setOptions([]);
@@ -61,21 +97,31 @@ const SelectPerson = () => {
       axios.post(`${server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
         .then((res) => {
           if (res.data && res.data['hits'] && res.data['hits']['hits']) {
-            console.log(res.data['hits']['hits'])
+            const rawData = transformData(res.data['hits']['hits'])
+            const options = rawData.map((tag) => ({
+              name: getName(tag, tagLabel),
+              id: tag.id,
+              properties: tag.properties,
+            }))
+            setOptions(options)
           }
           setIsLoading(false);
         }
         ).catch((e) => console.log(e))
     }, 1000);
   }, 400);
+
   return (
     <Select
+      labelKey="name"
+      valueKey="name"
       isLoading={isLoading}
       options={options}
       onChange={(tag) => {
-        setValue(tag.value)
-        console.log(tag.value)
+
       }}
+      placeholder={props.placeholder ? props.placeholder : 'Velg'}
+      maxDropdownHeight="300px"
       onInputChange={event => {
         const target = event.target;
         handleInputChange(target);

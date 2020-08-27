@@ -97,7 +97,7 @@ const Content = (props: any): JSX.Element => {
                             />
                         </Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
-                        <SelectPerson />
+                        <SelectPerson tagLabel="title"/>
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
