@@ -60,8 +60,8 @@ const SelectPerson = () => {
     setTimeout(() => {
       axios.post(`${server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
         .then((res) => {
-          if (res.data) {
-            console.log(res.data)
+          if (res.data && res.data['hits'] && res.data['hits']['hits']) {
+            console.log(res.data['hits']['hits'])
           }
           setIsLoading(false);
         }
