@@ -67,7 +67,10 @@ const SelectPerson = () => {
     <Select
       isLoading={isLoading}
       options={options}
-      onChange={(tag) => setValue(tag.value)}
+      onChange={(tag) => {
+        setValue(tag.value)
+        console.log(tag.value)
+      }}
       onInputChange={event => {
         const target = event.target;
         handleInputChange(target);
