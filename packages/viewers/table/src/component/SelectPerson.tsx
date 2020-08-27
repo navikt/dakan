@@ -37,6 +37,11 @@ const buildAutocompleteRequest = (searchTerm: any) => {
             },
           },
         ],
+        filter: {
+          term: {
+            type : 'person'
+          }
+        }
       },
     },
   }
