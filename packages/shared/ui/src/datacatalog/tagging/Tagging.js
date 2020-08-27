@@ -100,7 +100,6 @@ export const Tagging = (props) => {
       id: tag.id,
       properties: tag.properties,
     }))
-    console.log(options)
     return (
       <Select
         options={options}
