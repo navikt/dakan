@@ -7,7 +7,7 @@ const server = env('ES_SERVER')
 
 const debounce = (fn: any, delay: any) => {
   let timeoutId: any;
-  function debounced(...args: any[]) {
+  const debounced = (...args: any[]) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       fn(...args);
@@ -38,7 +38,7 @@ const buildAutocompleteRequest = (searchTerm: any) => {
         ],
         filter: {
           term: {
-            type : 'person'
+            type: 'person'
           }
         }
       },
@@ -60,11 +60,13 @@ const SelectPerson = () => {
     setTimeout(() => {
       axios.post(`${server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
         .then((res) => {
-          setOptions(res.data);
-          console.log(res.data)
+          if (res.data) {
+            setOptions(res.data);
+            console.log(res.data)
+          }
           setIsLoading(false);
         }
-        )
+        ).catch((e) => console.log(e))
     }, 1000);
   }, 400);
   return (
