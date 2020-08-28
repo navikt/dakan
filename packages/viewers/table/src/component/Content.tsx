@@ -8,7 +8,6 @@ import {useStyletron} from 'baseui';
 
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
-import SelectPerson from './SelectPerson';
 
 const items = (props: any): JSX.Element[] => {
     const content = props.properties;
@@ -97,7 +96,6 @@ const Content = (props: any): JSX.Element => {
                             />
                         </Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
-                        <SelectPerson tagLabel="title"/>
                         <ToggleUserText
                             dataId={props.data.id}
                             userTexts={props.comments}
