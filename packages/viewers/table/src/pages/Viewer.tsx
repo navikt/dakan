@@ -33,6 +33,11 @@ const Viewer = (props: any) => {
         'hasTableDescription'
     );
 
+    const [personTags, loadingPersonTags, errorLoadingPersonTags, setPersonTags] = useNodeEdges(
+        props.match.params.id,
+        'hasTablePersonTag'
+    );
+
     const getHeader = () => (
         <Header
             config={{
@@ -69,6 +74,8 @@ const Viewer = (props: any) => {
                     description={exampleDescription}
                     setComments={setComments}
                     setDescription={setDescription}
+                    personTags={personTags}
+                    setPersonTags={setPersonTags}
                 />
             </Block>
         );
