@@ -18,7 +18,6 @@ export interface ElasticTaggingProps {
   setdataTags?: any
   edgeLabel: string
   tagLabel?: string
-  esLabel?: string
 }
 
 export declare const ElasticTagging: React.FC<ElasticTaggingProps>

@@ -118,7 +118,6 @@ const Content = (props: any): JSX.Element => {
                                 setDataTags={props.setPersonTags}
                                 edgeLabel={'hasTablePersonTag'}
                                 tagLabel={['fornavn', 'etternavn']}
-                                esLabel={'fullName'}
                                 placeholder="Velg kontaktperson"
                             />
                         </Block>

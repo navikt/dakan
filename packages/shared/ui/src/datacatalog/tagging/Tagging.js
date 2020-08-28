@@ -96,7 +96,7 @@ const DataTags = (props) => {
 }
 
 export const ElasticTagging = (props) => {
-  const { tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel, esLabel } = props
+  const { tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
 
   const [options, setOptions] = React.useState([{}])
   const [isLoading, setIsLoading] = React.useState(false)
@@ -148,7 +148,7 @@ export const ElasticTagging = (props) => {
     data.forEach((rawData) => {
       const newData = {
         id: GetValue(() => rawData._id),
-        properties: GetValue(() => rawData._source.content)
+        name: GetValue(() => rawData._source.title)
       }
       transformedData.push(newData)
     })
@@ -170,12 +170,7 @@ export const ElasticTagging = (props) => {
         )
         .then((res) => {
           if (res.data && res.data['hits'] && res.data['hits']['hits']) {
-            const rawData = transformData(res.data['hits']['hits'])
-            const options = rawData.map((tag) => ({
-              name: getName(tag, esLabel),
-              id: tag.id,
-              properties: tag.properties,
-            }))
+            const options = transformData(res.data['hits']['hits'])
             setOptions(options)
           }
           setIsLoading(false)
