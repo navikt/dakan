@@ -3,6 +3,9 @@ import { navTheme } from '@dakan/theme'
 
 const theme = navTheme()
 
+const DEFAULT_COLOR = '#FFA733'
+const DEFAULT_BORDER_COLOR = '#FFA733'
+
 export function getViewerProps(format) {
   if (!format) {
     return { link: '/viewer', backgroundColor: '#FFA733' }
@@ -41,6 +44,14 @@ export function getViewerProps(format) {
     }
   }
 
+  if (format === 'apier') {
+    return {
+      link: env('API_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagApiBackgroundColor,
+      borderColor: theme.colors.tagApiBorderColor,
+    }
+  }
+
   if (format === 'begrep' || format === 'term') {
     return {
       link: env('TERM_VIEWER_URL') || '/viewer',
@@ -54,6 +65,14 @@ export function getViewerProps(format) {
       link: env('TERM_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagTermBackgroundColor,
       borderColor: theme.colors.tagTermBorderColor,
+    }
+  }
+
+  if (format === 'system') {
+    return {
+      link: env('SYSTEM_VIEWER_URL') || '/system',
+      backgroundColor: theme.colors.tagSystemBackgroundColor || DEFAULT_COLOR,
+      borderColor: theme.colors.tagSystemBorderColor || DEFAULT_BORDER_COLOR ,
     }
   }
 

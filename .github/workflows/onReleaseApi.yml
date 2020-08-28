@@ -3,13 +3,13 @@ name: Deploy to prod on release
 on:
   push:
     tags:
-      - 'system.*.*.*'
+      - 'api.*.*.*'
 
 env: 
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-system-viewer
-  PUBLIC_URL: /system
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-api-viewer
+  PUBLIC_URL: /apier
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/system
+  PACKAGE_PATH: packages/viewers/api
 
 jobs:
  
@@ -25,7 +25,7 @@ jobs:
       - name: Build shared packages
         run: yarn run shared:build
       - name: Build
-        run: yarn system:build
+        run: yarn api:build
         env:
           CI: false
       - name: Generate docker tag
@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with: 
           name: img_tag
-          path: packages/viewers/system/docker_img_tag.txt
+          path: packages/viewers/api/docker_img_tag.txt
       - name: Build and Publish to Docker Image
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,8 +73,8 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: packages/viewers/system/naisarator-fss.yml
-        VARS: packages/viewers/system/config-prod-fss.json
+        RESOURCE: packages/viewers/api/naisarator-fss.yml
+        VARS: packages/viewers/api/config-prod-fss.json
 
   # deploy_prod-sbs: 
   #   name: Build and deploy to prod-sbs
@@ -99,5 +99,5 @@ jobs:
   #     env:
   #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
   #       CLUSTER: prod-sbs
-  #       RESOURCE: packages/viewers/system/naisarator-sbs.yml
-  #       VARS: packages/viewers/system/config-prod-sbs.json
+  #       RESOURCE: packages/viewers/api/naisarator-sbs.yml
+  #       VARS: packages/viewers/api/config-prod-sbs.json

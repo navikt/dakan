@@ -1,0 +1,1 @@
+{"id":"API.FellesdatakatalogAPI","label":"api","type":"vertex","properties":{"name":"Felles datakatalog API","description":"API for hente metadata i RDF format om NAV godkjente begreper og offentlig publiserte datasett","app":"digdir-api","swagger":"https://data.nav.no/digdir-api/docs","type":"api"}}
