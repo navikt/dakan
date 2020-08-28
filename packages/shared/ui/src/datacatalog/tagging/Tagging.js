@@ -51,7 +51,7 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-  const { dataTags, setDataTags, dataId } = props
+  const { dataTags, setDataTags, dataId, tagLabel } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
@@ -77,7 +77,7 @@ const DataTags = (props) => {
                 CheckIfAuthorized(() => deleteTag(index, tag.id))
               }
             >
-              {getName(tag)}
+              {getName(tag, tagLabel)}
             </Tag>
           )}
         </React.Fragment>
@@ -205,7 +205,7 @@ export const ElasticTagging = (props) => {
           handleInputChange(target)
         }}
       />
-      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} />
+      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
     </Block>
   )
 }
@@ -245,7 +245,7 @@ export const Tagging = (props) => {
   return (
     <Block>
       {tagOptions && getOptions()}
-      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} />
+      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel}/>
     </Block>
   )
 }
