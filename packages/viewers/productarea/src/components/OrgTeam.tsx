@@ -12,10 +12,7 @@ const getLink = (row) => {
 }
 
 export const OrgTeam = ({ id }: any) => {
-  const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(
-    id,
-    'hasTeam',
-  )
+  const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(id, 'hasTeam')
 
   const columns: any[] = [
     <TableBuilderColumn id="name" header="Navn">
@@ -55,7 +52,7 @@ export const OrgTeam = ({ id }: any) => {
           {getTable(nodes)}
         </Block>
       )}
-    </React.Fragment >
+    </React.Fragment>
   )
 }
 

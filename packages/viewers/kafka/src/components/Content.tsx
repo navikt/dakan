@@ -6,7 +6,8 @@ import {
   Searchbox,
   ToggleUserText,
   SingleUserText,
-  Rating, GetValue
+  Rating,
+  GetValue,
 } from '@dakan/ui'
 
 import FilterFieldList from '../utils/FilterFieldList'
