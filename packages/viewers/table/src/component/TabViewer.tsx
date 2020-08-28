@@ -10,25 +10,22 @@ const TabViewer = (props: any) => {
     const [, theme] = useStyletron();
 
     const getActiveKey = () => {
-        if(dataTypeMetrics && dataTypeMetrics.props.children){
-            return 'statestikk'
-        }
-        else if (plotlyChart) {
-            return "histogram"
-        }
-        else if (countTable && countTable.props.children) {
-            return "mest"
-        }
-        else if (metaData && metaData.props.children) {
-            return "metaData"
+        if (dataTypeMetrics && dataTypeMetrics.props.children) {
+            return 'statestikk';
+        } else if (plotlyChart) {
+            return 'histogram';
+        } else if (countTable && countTable.props.children) {
+            return 'mest';
+        } else if (metaData && metaData.props.children) {
+            return 'metaData';
         } else {
-            return ''
+            return '';
         }
-    }
+    };
 
-    React.useEffect(()=> {
-        setActiveKey(getActiveKey())
-    },[])
+    React.useEffect(() => {
+        setActiveKey(getActiveKey());
+    }, []);
 
     const getTitle = (title: string, key: string) => {
         return (

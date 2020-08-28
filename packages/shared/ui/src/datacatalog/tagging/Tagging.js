@@ -51,7 +51,6 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-
   const { dataTags, setDataTags, dataId } = props
 
   const deleteTag = (index, tagId) => {
@@ -97,26 +96,20 @@ const DataTags = (props) => {
 }
 
 export const ElasticTagging = (props) => {
+  const { tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
 
-  const { tagType,
-    dataId,
-    dataTags,
-    setDataTags,
-    edgeLabel,
-    tagLabel } = props
-
-  const [options, setOptions] = React.useState([{}]);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [options, setOptions] = React.useState([{}])
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const debounce = (fn, delay) => {
-    let timeoutId;
+    let timeoutId
     const debounced = (...args) => {
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutId)
       timeoutId = setTimeout(() => {
-        fn(...args);
-      }, delay);
+        fn(...args)
+      }, delay)
     }
-    return debounced;
+    return debounced
   }
 
   const buildAutocompleteRequest = (searchTerm) => {
@@ -141,9 +134,9 @@ export const ElasticTagging = (props) => {
           ],
           filter: {
             term: {
-              type: tagType
-            }
-          }
+              type: tagType,
+            },
+          },
         },
       },
     }
@@ -156,8 +149,8 @@ export const ElasticTagging = (props) => {
       const newData = {
         id: GetValue(() => rawData.id),
         properties: {
-          title: GetValue(() => rawData._source.title)
-        }
+          title: GetValue(() => rawData._source.title),
+        },
       }
       transformedData.push(newData)
     })
@@ -166,12 +159,17 @@ export const ElasticTagging = (props) => {
 
   const handleInputChange = debounce((term) => {
     if (!term.value) {
-      setOptions([]);
-      return;
+      setOptions([])
+      return
     }
-    setIsLoading(true);
+    setIsLoading(true)
     setTimeout(() => {
-      axios.post(`${es_server}`, JSON.stringify(buildAutocompleteRequest(term.value)), { headers: { 'content-type': 'application/json; charset=utf-8' } })
+      axios
+        .post(
+          `${es_server}`,
+          JSON.stringify(buildAutocompleteRequest(term.value)),
+          { headers: { 'content-type': 'application/json; charset=utf-8' } },
+        )
         .then((res) => {
           if (res.data && res.data['hits'] && res.data['hits']['hits']) {
             const rawData = transformData(res.data['hits']['hits'])
@@ -182,11 +180,11 @@ export const ElasticTagging = (props) => {
             }))
             setOptions(options)
           }
-          setIsLoading(false);
-        }
-        ).catch((e) => console.log(e))
-    }, 1000);
-  }, 400);
+          setIsLoading(false)
+        })
+        .catch((e) => console.log(e))
+    }, 1000)
+  }, 400)
 
   return (
     <Block>
@@ -195,17 +193,21 @@ export const ElasticTagging = (props) => {
         valueKey="name"
         isLoading={isLoading}
         options={options}
-        onChange={(tag) => CheckIfAuthorized(() => addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel))}
+        onChange={(tag) =>
+          CheckIfAuthorized(() =>
+            addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+          )
+        }
         placeholder={props.placeholder ? props.placeholder : 'Velg'}
         maxDropdownHeight="300px"
-        onInputChange={event => {
-          const target = event.target;
-          handleInputChange(target);
+        onInputChange={(event) => {
+          const target = event.target
+          handleInputChange(target)
         }}
       />
       <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} />
     </Block>
-  );
+  )
 }
 
 export const Tagging = (props) => {
@@ -229,7 +231,11 @@ export const Tagging = (props) => {
         options={options}
         labelKey="name"
         valueKey="name"
-        onChange={(tag) => CheckIfAuthorized(() => addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel))}
+        onChange={(tag) =>
+          CheckIfAuthorized(() =>
+            addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+          )
+        }
         placeholder={props.placeholder ? props.placeholder : 'Velg'}
         maxDropdownHeight="300px"
       />

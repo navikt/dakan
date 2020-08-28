@@ -5,7 +5,8 @@ import {
   ToggleUserText,
   SingleUserText,
   LayoutSplit as Layout,
-  Rating, GetValue
+  Rating,
+  GetValue,
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'

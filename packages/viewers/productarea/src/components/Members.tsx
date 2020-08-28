@@ -11,7 +11,6 @@ export const Members = ({ id }: any) => {
 
   return (
     <React.Fragment>
-
       {errorLoadingNodes && 'Error loading team members'}
       {loadingNodes && <LoadingSpinner />}
       {nodes && (
