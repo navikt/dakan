@@ -112,6 +112,8 @@ const Viewer = (props: any) => {
                             numberOfColumns={columns && columns.length}
                             ratings={ratings}
                             setRatings={setRatings}
+                            personTags={personTags}
+                            setPersonTags={setPersonTags}
                         />
                     </Block>
                 </React.Fragment>
