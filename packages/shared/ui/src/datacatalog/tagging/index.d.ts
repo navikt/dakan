@@ -17,7 +17,8 @@ export interface ElasticTaggingProps {
   dataTags?: any
   setdataTags?: any
   edgeLabel: string
-  tagLabel?: any
+  tagLabel?: string
+  esLabel?: string
 }
 
 export declare const ElasticTagging: React.FC<ElasticTaggingProps>
