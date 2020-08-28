@@ -147,7 +147,7 @@ export const ElasticTagging = (props) => {
     let transformedData = []
     data.forEach((rawData) => {
       const newData = {
-        id: GetValue(() => rawData.id),
+        id: GetValue(() => rawData._id),
         properties: {
           title: GetValue(() => rawData._source.title),
         },
@@ -232,11 +232,9 @@ export const Tagging = (props) => {
         labelKey="name"
         valueKey="name"
         onChange={(tag) =>
-          {console.log(tag)
           CheckIfAuthorized(() =>
             addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
           )}
-        }
         placeholder={props.placeholder ? props.placeholder : 'Velg'}
         maxDropdownHeight="300px"
       />
@@ -246,7 +244,7 @@ export const Tagging = (props) => {
   return (
     <Block>
       {tagOptions && getOptions()}
-      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel}/>
+      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
     </Block>
   )
 }
