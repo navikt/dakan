@@ -17,7 +17,7 @@ const getName = (tag, tagLabel) => {
   if (Array.isArray(tagLabel)) {
     let name = ''
     tagLabel.forEach((label) => {
-      name += GetValue(() => tag.properties[label])
+      name += GetValue(() => tag.properties[label], '')
       name += ' '
     })
     const finalName = name.slice(0, -1)
@@ -150,6 +150,8 @@ export const ElasticTagging = (props) => {
         id: GetValue(() => rawData._id),
         name: GetValue(() => rawData._source.title)
       }
+      if(tagLabel && Array.isArray(tagLabel)) {newData.properties[tagLabel[0]] = GetValue(() => rawData._source.title)}
+      else {newData.properties[tagLabel] = GetValue(() => rawData._source.title)}
       transformedData.push(newData)
     })
     return transformedData
