@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-api-viewer",
+  "org_name": "navikt",
+  "ingress": "https://dataverk-q.nav.no/api",
+  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/api",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
+}

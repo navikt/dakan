@@ -1,9 +1,16 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
+import { StyledLink } from "baseui/link";
 import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from '../../utils/GetValue/GetValue'
+
+const getLink = (value) => (
+  <StyledLink href={value}>
+    {value}
+  </StyledLink>
+)
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
@@ -18,8 +25,13 @@ export const ContentItems = ({ ITEMS, item }) => {
         }
 
         if (entry.format && entry.format === 'slackchannel') {
-          const link = value.replace('#', 'https://nav-it.slack.com/archives/')
-          value = <a href={link}>{value}</a>
+          value = value.replace('#','')
+          const link = `https://nav-it.slack.com/archives/${value}`
+          value = getLink(value)
+        }
+
+        if (entry.format && entry.format === 'link') {
+          value = getLink(value)
         }
 
         return (

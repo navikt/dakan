@@ -6,6 +6,9 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
+    "api": "cd packages/viewers/api && yarn run start",
+    "api:build": "cd packages/viewers/api && yarn run build",
+    "api:test": "cd packages/viewers/api && yarn test",
     "clean": "lerna clean -f --yes && rm -rf node_modules",
     "datasearch": "cd apps/data-search && yarn run start",
     "datasearch:build": "cd apps/data-search && yarn run build",
@@ -42,6 +45,8 @@
     "storybook:build": "cd packages/shared/ui && yarn run storybook:build",
     "storybook:deploy": "cd packages/shared/ui && yarn run storybook:deploy",
     "system": "cd packages/viewers/system && yarn run start",
+    "system:build": "cd packages/viewers/system && yarn run build",
+    "system:test": "cd packages/viewers/system && yarn test",
     "table": "cd packages/viewers/table && yarn run start",
     "table:build": "cd packages/viewers/table && yarn run build",
     "table:test": "cd packages/viewers/table && yarn test",

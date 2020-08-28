@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-api-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/api",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/api",
+  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
+}
