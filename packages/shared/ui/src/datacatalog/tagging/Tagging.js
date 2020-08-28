@@ -232,9 +232,10 @@ export const Tagging = (props) => {
         labelKey="name"
         valueKey="name"
         onChange={(tag) =>
+          {console.log(tag)
           CheckIfAuthorized(() =>
             addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
-          )
+          )}
         }
         placeholder={props.placeholder ? props.placeholder : 'Velg'}
         maxDropdownHeight="300px"
