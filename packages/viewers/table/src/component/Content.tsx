@@ -130,7 +130,7 @@ const Content = (props: any): JSX.Element => {
                                     </LabelMedium>
                                 </Block>
                                 <ElasticTagging
-                                    tagType={['person']}
+                                    tagType={['person', 'team']}
                                     dataId={props.data.id}
                                     dataTags={props.personTags}
                                     setDataTags={props.setPersonTags}
