@@ -46,7 +46,7 @@ const Content = (props: any) => {
         <Block key={entry.item + index} marginBottom={'1em'}>
           <LabeledContent arialabel="label" description={entry.label}>
             {indexEntry[entry.item] ? (
-              <ReactMarkdown source={indexEntry[entry.item]} />
+              <ReactMarkdown source={indexEntry[entry.item].replace("(www", "(//www")} />
             ) : (
               <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>
             )}
@@ -70,11 +70,9 @@ const Content = (props: any) => {
 
     return ITEMS.map((entry: any, index: number) => {
       if (entry.item === 'oppdatert') {
-        const content = entry.label.replace("(www", "(//www")
-        console.log(content)
         return (
           <Block key={entry.item + index} marginBottom="1em">
-            <LabeledContent aria-label="label" description={content} list>
+            <LabeledContent aria-label="label" description={entry.label} list>
               {getDate()}
             </LabeledContent>
           </Block>
