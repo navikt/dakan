@@ -70,9 +70,11 @@ const Content = (props: any) => {
 
     return ITEMS.map((entry: any, index: number) => {
       if (entry.item === 'oppdatert') {
+        const content = entry.label.replace("(www", "(//www")
+        console.log(content)
         return (
           <Block key={entry.item + index} marginBottom="1em">
-            <LabeledContent aria-label="label" description={entry.label.replace("(www", "(//www")} list>
+            <LabeledContent aria-label="label" description={content} list>
               {getDate()}
             </LabeledContent>
           </Block>
