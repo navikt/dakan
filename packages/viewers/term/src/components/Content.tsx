@@ -23,7 +23,7 @@ const Content = (props: any) => {
 
   const getRightContent = () => {
     const ITEMS = [
-      { item: 'alternativ_navn', label: 'Alternative termer' },
+      { item: 'alternativ_navn', label: 'Søkeord' },
       { item: 'definisjon', label: 'Definisjon' },
       { item: 'begrepsforklaring', label: 'Begrepsforklaring' },
       { item: 'eksempel', label: 'Eksempel' },
