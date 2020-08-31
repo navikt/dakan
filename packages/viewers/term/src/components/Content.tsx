@@ -72,7 +72,7 @@ const Content = (props: any) => {
       if (entry.item === 'oppdatert') {
         return (
           <Block key={entry.item + index} marginBottom="1em">
-            <LabeledContent aria-label="label" description={entry.label} list>
+            <LabeledContent aria-label="label" description={entry.label.replace("(www", "(//www")} list>
               {getDate()}
             </LabeledContent>
           </Block>
