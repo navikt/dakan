@@ -148,9 +148,12 @@ export const ElasticTagging = (props) => {
     data.forEach((rawData) => {
       const newData = {
         id: GetValue(() => rawData._id),
-        name: GetValue(() => rawData._source.title)
+        name: GetValue(() => rawData._source.title),
+        properties:{}
       }
-      if(tagLabel && Array.isArray(tagLabel)) {newData.properties[tagLabel[0]] = GetValue(() => rawData._source.title)}
+      if(tagLabel && Array.isArray(tagLabel)) {
+        newData.properties[tagLabel[0]] = GetValue(() => rawData._source.title)
+      }
       else {newData.properties[tagLabel] = GetValue(() => rawData._source.title)}
       transformedData.push(newData)
     })
