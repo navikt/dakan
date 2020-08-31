@@ -51,7 +51,7 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-  const { dataTags, setDataTags, dataId, tagLabel } = props
+  const { defaultTags, dataTags, setDataTags, dataId, tagLabel } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
@@ -66,29 +66,55 @@ const DataTags = (props) => {
       .catch((e) => console.log(e))
   }
   const getTags = () => {
-    return dataTags.map((tag, index) => {
-      return (
-        <React.Fragment>
-          {tag && tag.properties && (
-            <Tag
-              key={'tag_' + index}
-              variant={VARIANT.outlined}
-              onActionClick={() =>
-                CheckIfAuthorized(() => deleteTag(index, tag.id))
-              }
-            >
-              {getName(tag, tagLabel)}
-            </Tag>
-          )}
-        </React.Fragment>
-      )
-    })
+    if (dataTags && dataTags.length > 0) {
+      return dataTags.map((tag, index) => {
+        return (
+          <React.Fragment>
+            {tag && tag.properties && (
+              <Tag
+                key={'tag_' + index}
+                variant={VARIANT.outlined}
+                onActionClick={() =>
+                  CheckIfAuthorized(() => deleteTag(index, tag.id))
+                }
+              >
+                {getName(tag, tagLabel)}
+              </Tag>
+            )}
+          </React.Fragment>
+        )
+      })
+    } else {
+      return <Block />
+    }
   }
+
+  const getDefaultTags = () => {
+    if (defaultTags && defaultTags.length > 0) {
+      return defaultTags.map((tag, index) => {
+        if (tag !== '') {
+          return (
+            <React.Fragment>
+              <Tag closeable={false} key={'defaultTag_' + index}>
+                {tag}
+              </Tag>
+            </React.Fragment>
+          )
+        }
+      })
+    } else {
+      return <Block />
+    }
+  }
+
   return (
     <Block>
-      {dataTags && dataTags.length > 0 && (
+      {(dataTags && dataTags.length > 0) || (defaultTags && defaultTags.length > 0) && (
         <Block marginTop="scale300">
-          <Block marginTop="scale300">{getTags()}</Block>
+          <Block marginTop="scale300">
+            {getDefaultTags()}
+            {getTags()}
+          </Block>
         </Block>
       )}
     </Block>
@@ -96,7 +122,7 @@ const DataTags = (props) => {
 }
 
 export const ElasticTagging = (props) => {
-  const { tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
+  const { defaultTags, tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
 
   const [options, setOptions] = React.useState([{}])
   const [isLoading, setIsLoading] = React.useState(false)
@@ -133,8 +159,8 @@ export const ElasticTagging = (props) => {
             },
           ],
           filter: {
-            term: {
-              type: tagType,
+            terms: {
+              type: [...tagType],
             },
           },
         },
@@ -149,12 +175,12 @@ export const ElasticTagging = (props) => {
       const newData = {
         id: GetValue(() => rawData._id),
         name: GetValue(() => rawData._source.title),
-        properties:{}
+        properties: {}
       }
-      if(tagLabel && Array.isArray(tagLabel)) {
+      if (tagLabel && Array.isArray(tagLabel)) {
         newData.properties[tagLabel[0]] = GetValue(() => rawData._source.title)
       }
-      else {newData.properties[tagLabel] = GetValue(() => rawData._source.title)}
+      else { newData.properties[tagLabel] = GetValue(() => rawData._source.title) }
       transformedData.push(newData)
     })
     return transformedData
@@ -203,13 +229,14 @@ export const ElasticTagging = (props) => {
           handleInputChange(target)
         }}
       />
-      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
+      <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
     </Block>
   )
 }
 
 export const Tagging = (props) => {
   const {
+    defaultTags,
     tagOptions,
     dataId,
     dataTags,
@@ -242,7 +269,7 @@ export const Tagging = (props) => {
   return (
     <Block>
       {tagOptions && getOptions()}
-      <DataTags dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
+      <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
     </Block>
   )
 }

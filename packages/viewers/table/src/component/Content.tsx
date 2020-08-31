@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Block} from 'baseui/block';
-import {format} from 'date-fns';
+import { Block } from 'baseui/block';
+import { format } from 'date-fns';
 import {
     LargeWidth,
     LabeledContent,
@@ -11,9 +11,9 @@ import {
     GetValue,
     ElasticTagging,
 } from '@dakan/ui';
-import {LabelLarge, LabelMedium} from 'baseui/typography';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {useStyletron} from 'baseui';
+import { LabelLarge, LabelMedium } from 'baseui/typography';
+import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
+import { useStyletron } from 'baseui';
 
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
@@ -22,10 +22,9 @@ const items = (props: any): JSX.Element[] => {
     const content = props.properties;
 
     const ITEMS = [
-        {item: 'schema_name', label: 'Skjema'},
-        {item: 'team_name', label: 'Team navn'},
-        {item: 'db_name', label: 'Database navn'},
-        {item: 'host', label: 'Host adresse'},
+        { item: 'schema_name', label: 'Skjema' },
+        { item: 'db_name', label: 'Database navn' },
+        { item: 'host', label: 'Host adresse' },
     ];
 
     return ITEMS.map((entry: any, i: number) => {
@@ -48,7 +47,7 @@ const items = (props: any): JSX.Element[] => {
 };
 
 const Main = (props: any): JSX.Element => {
-    const {data, numberOfColumns} = props;
+    const { data, numberOfColumns } = props;
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -58,7 +57,7 @@ const Main = (props: any): JSX.Element => {
                         <LabelLarge>
                             <b>Beskrivelse</b>
                         </LabelLarge>
-                        <Block marginTop="scale200" $style={{...theme.typography.font300}}>
+                        <Block marginTop="scale200" $style={{ ...theme.typography.font300 }}>
                             {data.properties.table_description}
                         </Block>
                         <Block marginTop="scale800">
@@ -105,21 +104,41 @@ const Content = (props: any): JSX.Element => {
                             />
                         </Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
-                        <Block>
-                            <Block marginBottom="scale400">
-                                <LabelMedium>
-                                    <b>Kontaktperson</b>
-                                </LabelMedium>
+                        <Block marginTop="scale800" display={["block","block","flex","flex"]}>
+                            <Block flex="1">
+                                <Block marginBottom="scale400">
+                                    <LabelMedium>
+                                        <b>Team navn</b>
+                                    </LabelMedium>
+                                </Block>
+                                <ElasticTagging
+                                    defaultTags={[GetValue(() => props.data.properties.team_name)]}
+                                    tagType={['team', 'NaisTeam']}
+                                    dataId={props.data.id}
+                                    dataTags={props.teamTags}
+                                    setDataTags={props.setTeamTags}
+                                    edgeLabel={'hasTableTeamTag'}
+                                    tagLabel={'name'}
+                                    placeholder="Velg team"
+                                />
                             </Block>
-                            <ElasticTagging
-                                tagType={'person'}
-                                dataId={props.data.id}
-                                dataTags={props.personTags}
-                                setDataTags={props.setPersonTags}
-                                edgeLabel={'hasTablePersonTag'}
-                                tagLabel={['fornavn', 'etternavn']}
-                                placeholder="Velg kontaktperson"
-                            />
+                            <Block width={["none","none","scale800", "scale800"]}/>
+                            <Block flex="1">
+                                <Block marginBottom="scale400">
+                                    <LabelMedium>
+                                        <b>Kontaktperson</b>
+                                    </LabelMedium>
+                                </Block>
+                                <ElasticTagging
+                                    tagType={['person']}
+                                    dataId={props.data.id}
+                                    dataTags={props.personTags}
+                                    setDataTags={props.setPersonTags}
+                                    edgeLabel={'hasTablePersonTag'}
+                                    tagLabel={['fornavn', 'etternavn']}
+                                    placeholder="Velg kontaktperson"
+                                />
+                            </Block>
                         </Block>
                         <ToggleUserText
                             dataId={props.data.id}

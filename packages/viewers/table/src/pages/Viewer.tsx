@@ -1,9 +1,9 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
-import {Block} from 'baseui/block';
-import {Header, LoadingSpinner} from '@dakan/ui';
-import {Metrics} from '@dakan/metrics';
-import {useNode, useNodeEdges, useContent} from '@dakan/hooks';
+import { Block } from 'baseui/block';
+import { Header, LoadingSpinner } from '@dakan/ui';
+import { Metrics } from '@dakan/metrics';
+import { useNode, useNodeEdges, useContent } from '@dakan/hooks';
 
 import Content from '../component/Content';
 import exampleJson from '../resources/example.json';
@@ -36,6 +36,11 @@ const Viewer = (props: any) => {
     const [personTags, loadingPersonTags, errorLoadingPersonTags, setPersonTags] = useNodeEdges(
         props.match.params.id,
         'hasTablePersonTag'
+    );
+
+    const [teamTags, loadingTeamTags, errorLoadingTeamTags, setTeamTags] = useNodeEdges(
+        props.match.params.id,
+        'hasTableTeamTag'
     );
 
     const getHeader = () => (
@@ -76,6 +81,8 @@ const Viewer = (props: any) => {
                     setDescription={setDescription}
                     personTags={personTags}
                     setPersonTags={setPersonTags}
+                    teamTags={teamTags}
+                    setTeamTags={setTeamTags}
                 />
             </Block>
         );
@@ -114,6 +121,8 @@ const Viewer = (props: any) => {
                             setRatings={setRatings}
                             personTags={personTags}
                             setPersonTags={setPersonTags}
+                            teamTags={teamTags}
+                            setTeamTags={setTeamTags}
                         />
                     </Block>
                 </React.Fragment>
