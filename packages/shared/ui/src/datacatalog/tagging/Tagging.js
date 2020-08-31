@@ -67,7 +67,6 @@ const DataTags = (props) => {
   }
   const getTags = () => {
     if (dataTags && dataTags.length > 0) {
-      console.log(dataTags)
       return dataTags.map((tag, index) => {
         return (
           <React.Fragment>
@@ -220,10 +219,8 @@ export const ElasticTagging = (props) => {
           handleInputChange(target)
         }}
       />
-      <Block marginTop="scale300">
-        <Block marginTop="scale300">
-          <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
-        </Block>
+      <Block marginTop="scale600">
+        <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
       </Block >
     </Block >
   )
@@ -264,7 +261,9 @@ export const Tagging = (props) => {
   return (
     <Block>
       {tagOptions && getOptions()}
-      <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
+      <Block marginTop="scale600">
+        <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
+      </Block >
     </Block>
   )
 }
