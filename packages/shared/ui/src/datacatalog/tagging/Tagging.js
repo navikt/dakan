@@ -134,20 +134,9 @@ export const ElasticTagging = (props) => {
       size: 9,
       query: {
         bool: {
-          must: [
-            {
-              multi_match: {
-                query: searchTerm.toLowerCase(),
-                type: 'best_fields',
-                fields: [
-                  'title^20',
-                  'title.search^6',
-                  'decription^2',
-                  'description.search',
-                ],
-              },
-            },
-          ],
+          must: {
+            match: { title: searchTerm.toLowerCase()},
+          },
           filter: {
             terms: {
               type: [...tagType],

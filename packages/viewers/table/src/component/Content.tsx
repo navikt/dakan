@@ -113,7 +113,7 @@ const Content = (props: any): JSX.Element => {
                                 </Block>
                                 <ElasticTagging
                                     defaultTags={[GetValue(() => props.data.properties.team_name)]}
-                                    tagType={['NaisTeam', 'team']}
+                                    tagType={['naisteam', 'team']}
                                     dataId={props.data.id}
                                     dataTags={props.teamTags}
                                     setDataTags={props.setTeamTags}
@@ -130,7 +130,7 @@ const Content = (props: any): JSX.Element => {
                                     </LabelMedium>
                                 </Block>
                                 <ElasticTagging
-                                    tagType={['person', 'team']}
+                                    tagType={['person']}
                                     dataId={props.data.id}
                                     dataTags={props.personTags}
                                     setDataTags={props.setPersonTags}
