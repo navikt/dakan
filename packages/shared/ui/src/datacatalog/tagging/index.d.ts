@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 export interface TaggingProps {
+  defaultTags?: string[]
   tagOptions?: any
   dataId?: any
   placeholder?: string
@@ -11,7 +12,8 @@ export interface TaggingProps {
 }
 
 export interface ElasticTaggingProps {
-  tagType: string
+  defaultTags?: string[]
+  tagType: string[]
   dataId?: any
   placeholder?: string
   dataTags?: any
