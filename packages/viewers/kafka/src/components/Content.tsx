@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
+import { LabelMedium } from 'baseui/typography';
 import {
   LayoutSplit as Layout,
   LabeledContent,
@@ -8,6 +9,11 @@ import {
   SingleUserText,
   Rating,
   GetValue,
+  ElasticTagging,
+  teamTags,
+  setTeamTags,
+  personTags,
+  setPersonTags
 } from '@dakan/ui'
 
 import FilterFieldList from '../utils/FilterFieldList'
@@ -23,6 +29,7 @@ const Content = (props: any): JSX.Element => {
     setComments,
     description,
     setDescription,
+
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
@@ -74,6 +81,38 @@ const Content = (props: any): JSX.Element => {
                 />
               </Block>
               {getTopicContent()}
+              <Block marginBottom="scale800">
+                <Block marginBottom="scale400">
+                  <LabelMedium>
+                    <b>Team navn</b>
+                  </LabelMedium>
+                </Block>
+                <ElasticTagging
+                  tagType={['naisteam', 'team']}
+                  dataId={data.id}
+                  dataTags={teamTags}
+                  setDataTags={setTeamTags}
+                  edgeLabel={'hasKafkaTeamTag'}
+                  tagLabel={'name'}
+                  placeholder="Velg team"
+                />
+              </Block>
+              <Block marginBottom="scale800">
+                <Block marginBottom="scale400">
+                  <LabelMedium>
+                    <b>Kontaktperson</b>
+                  </LabelMedium>
+                </Block>
+                <ElasticTagging
+                  tagType={['person']}
+                  dataId={data.id}
+                  dataTags={personTags}
+                  setDataTags={setPersonTags}
+                  edgeLabel={'hasKafkaPersonTag'}
+                  tagLabel={['fornavn', 'etternavn']}
+                  placeholder="Velg kontaktperson"
+                />
+              </Block>
               <ToggleUserText
                 dataId={data.id}
                 userTexts={comments}
