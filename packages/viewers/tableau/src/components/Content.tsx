@@ -64,6 +64,10 @@ const Content = (props: any): JSX.Element => {
     clientUser,
     description,
     setDescription,
+    teamTags,
+    setTeamTags,
+    personTags,
+    setPersonTags,
   } = props
 
   return (
@@ -99,25 +103,23 @@ const Content = (props: any): JSX.Element => {
                 />
               </Block>
               <Block marginBottom="scale800">{items(data)}</Block>
-              <Block flex="1" marginBottom={["scale800", "scale800", "none", "none"]}>
+              <Block marginBottom="scale800">
                 <Block marginBottom="scale400">
                   <LabelMedium>
                     <b>Team navn</b>
                   </LabelMedium>
                 </Block>
                 <ElasticTagging
-                  defaultTags={[GetValue(() => props.data.properties.team_name)]}
                   tagType={['naisteam', 'team']}
-                  dataId={props.data.id}
-                  dataTags={props.teamTags}
-                  setDataTags={props.setTeamTags}
-                  edgeLabel={'hasTableTeamTag'}
+                  dataId={data.id}
+                  dataTags={teamTags}
+                  setDataTags={setTeamTags}
+                  edgeLabel={'hasTableauTeamTag'}
                   tagLabel={'name'}
                   placeholder="Velg team"
                 />
               </Block>
-              <Block width={["none", "none", "scale800", "scale800"]} />
-              <Block flex="1" marginBottom={["scale800", "scale800", "none", "none"]}>
+              <Block marginBottom="scale800">
                 <Block marginBottom="scale400">
                   <LabelMedium>
                     <b>Kontaktperson</b>
@@ -125,10 +127,10 @@ const Content = (props: any): JSX.Element => {
                 </Block>
                 <ElasticTagging
                   tagType={['person']}
-                  dataId={props.data.id}
-                  dataTags={props.personTags}
-                  setDataTags={props.setPersonTags}
-                  edgeLabel={'hasTablePersonTag'}
+                  dataId={data.id}
+                  dataTags={personTags}
+                  setDataTags={setPersonTags}
+                  edgeLabel={'hasTableauPersonTag'}
                   tagLabel={['fornavn', 'etternavn']}
                   placeholder="Velg kontaktperson"
                 />
