@@ -105,7 +105,7 @@ const Content = (props: any): JSX.Element => {
                         </Block>
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
                         <Block marginTop="scale800" display={["block","block","flex","flex"]}>
-                            <Block flex="1">
+                            <Block flex="1" marginBottom={["scale800","scale800","none","none"]}>
                                 <Block marginBottom="scale400">
                                     <LabelMedium>
                                         <b>Team navn</b>
@@ -123,7 +123,7 @@ const Content = (props: any): JSX.Element => {
                                 />
                             </Block>
                             <Block width={["none","none","scale800", "scale800"]}/>
-                            <Block flex="1">
+                            <Block flex="1" marginBottom={["scale800","scale800","none","none"]}>
                                 <Block marginBottom="scale400">
                                     <LabelMedium>
                                         <b>Kontaktperson</b>
