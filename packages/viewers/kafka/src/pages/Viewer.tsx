@@ -121,8 +121,6 @@ const Viewer = (props: any) => {
     return <TopicNotFound error={errorMessage} />
   }
 
-  console.log('test')
-
   return (
     <React.Fragment>
       {getHeader()}
