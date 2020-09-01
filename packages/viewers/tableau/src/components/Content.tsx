@@ -7,9 +7,11 @@ import {
   LayoutSplit as Layout,
   Rating,
   GetValue,
+  ElasticTagging,
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
+import { LabelMedium } from 'baseui/typography';
 
 import TableauViewList from './TableauViewList'
 
@@ -62,6 +64,10 @@ const Content = (props: any): JSX.Element => {
     clientUser,
     description,
     setDescription,
+    teamTags,
+    setTeamTags,
+    personTags,
+    setPersonTags,
   } = props
 
   return (
@@ -97,6 +103,38 @@ const Content = (props: any): JSX.Element => {
                 />
               </Block>
               <Block marginBottom="scale800">{items(data)}</Block>
+              <Block marginBottom="scale800">
+                <Block marginBottom="scale400">
+                  <LabelMedium>
+                    <b>Team navn</b>
+                  </LabelMedium>
+                </Block>
+                <ElasticTagging
+                  tagType={['naisteam', 'team']}
+                  dataId={data.id}
+                  dataTags={teamTags}
+                  setDataTags={setTeamTags}
+                  edgeLabel={'hasTableauTeamTag'}
+                  tagLabel={'name'}
+                  placeholder="Velg team"
+                />
+              </Block>
+              <Block marginBottom="scale800">
+                <Block marginBottom="scale400">
+                  <LabelMedium>
+                    <b>Kontaktperson</b>
+                  </LabelMedium>
+                </Block>
+                <ElasticTagging
+                  tagType={['person']}
+                  dataId={data.id}
+                  dataTags={personTags}
+                  setDataTags={setPersonTags}
+                  edgeLabel={'hasTableauPersonTag'}
+                  tagLabel={['fornavn', 'etternavn']}
+                  placeholder="Velg kontaktperson"
+                />
+              </Block>
               <Block marginBottom="scale800">
                 <ToggleUserText
                   dataId={data.id}

@@ -46,6 +46,21 @@ const Viewer = (props: any) => {
     setDescription,
   ] = useNodeEdges(props.match.params.id, 'hasTableauDescription')
 
+  const [
+    personTags,
+    loadingPersonTags,
+    errorLoadingPersonTags,
+    setPersonTags,
+  ] = useNodeEdges(props.match.params.id, 'hasTableauPersonTag')
+
+  const [
+    teamTags,
+    loadingTeamTags,
+    errorLoadingTeamTags,
+    setTeamTags,
+  ] = useNodeEdges(props.match.params.id, 'hasTableauTeamTag')
+
+
   const getHeader = () => (
     <Header
       config={{
@@ -88,6 +103,10 @@ const Viewer = (props: any) => {
           setComments={setComments}
           description={exampleDescription}
           setDescription={setDescription}
+          teamTags={teamTags}
+          setTeamTags={setTeamTags}
+          personTags={personTags}
+          setPersonTags={setPersonTags}
         />
       </Block>
     )
@@ -126,6 +145,10 @@ const Viewer = (props: any) => {
               setDescription={setDescription}
               ratings={ratings}
               setRatings={setRatings}
+              teamTags={teamTags}
+              setTeamTags={setTeamTags}
+              personTags={personTags}
+              setPersonTags={setPersonTags}
             />
           </React.Fragment>
         )}
