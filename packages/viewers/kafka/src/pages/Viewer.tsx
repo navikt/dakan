@@ -44,6 +44,20 @@ const Viewer = (props: any) => {
     setDescription,
   ] = useNodeEdges(props.match.params.id, 'hasKafkaDescription')
 
+  const [
+    personTags,
+    loadingPersonTags,
+    errorLoadingPersonTags,
+    setPersonTags,
+  ] = useNodeEdges(props.match.params.id, 'hasKafkaPersonTag')
+
+  const [
+    teamTags,
+    loadingTeamTags,
+    errorLoadingTeamTags,
+    setTeamTags,
+  ] = useNodeEdges(props.match.params.id, 'hasKafkaTeamTag')
+
   const getHeader = () => (
     <Header
       config={{
@@ -126,6 +140,10 @@ const Viewer = (props: any) => {
             setRatings={setRatings}
             description={description}
             setDescription={setDescription}
+            personTags={personTags}
+            setPersonTags={setPersonTags}
+            teamTags={teamTags}
+            setTeamTags={setTeamTags}
           />
         </Block>
       )}
