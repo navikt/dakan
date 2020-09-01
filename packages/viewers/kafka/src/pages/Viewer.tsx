@@ -82,6 +82,10 @@ const Viewer = (props: any) => {
           setComments={setComments}
           description={exampleDescription}
           setDescription={setDescription}
+          personTags={personTags}
+          setPersonTags={setPersonTags}
+          teamTags={teamTags}
+          setTeamTags={setTeamTags}
         />
       </Block>
     )

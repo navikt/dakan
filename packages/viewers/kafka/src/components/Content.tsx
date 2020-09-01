@@ -10,10 +10,6 @@ import {
   Rating,
   GetValue,
   ElasticTagging,
-  teamTags,
-  setTeamTags,
-  personTags,
-  setPersonTags
 } from '@dakan/ui'
 
 import FilterFieldList from '../utils/FilterFieldList'
@@ -29,6 +25,10 @@ const Content = (props: any): JSX.Element => {
     setComments,
     description,
     setDescription,
+    teamTags,
+    setTeamTags,
+    personTags,
+    setPersonTags
 
   } = props
   const [filterFields, setFilterFields] = React.useState()
