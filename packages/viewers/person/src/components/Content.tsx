@@ -2,15 +2,17 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
-import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
+import {StyledLink} from 'baseui/link'
 
 import { OrgTeam } from './OrgTeam'
 import { NaisTeam } from './NaisTeam'
 
 const ITEMS = [
   { item: 'epost', label: 'Epost' },
-  { item: 'tlf', label: 'telefon' },
-  { item: 'avdeling', label: 'avdeling' },
+  { item: 'tlf', label: 'Kontor telefon' },
+  { item: 'mobil', label: 'Mobiltelefon' },
+  { item: 'avdeling', label: 'Avdeling' },
   { item: 'resourcetype', label: 'Ansatt' },
   { item: 'startdato', label: 'Startdato' },
   { item: 'sluttdato', label: 'Sluttdato' },
@@ -21,6 +23,11 @@ const Content = ({ item, id }) => {
     <Block>
       <ParagraphMedium>{item && item.fornavn}</ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
+      <Block>
+        <LabeledContent description="Bruker info" list>
+        <StyledLink href={"https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/" + item.aad_id}>Link</StyledLink>
+        </LabeledContent>
+      </Block>
     </Block>
   )
 
