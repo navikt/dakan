@@ -27,6 +27,7 @@ const Content = ({ item, id }) => {
           <StyledLink
             href={
               item &&
+              item.properties &&
               'https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/' +
                 item.properties.aad_id
             }
