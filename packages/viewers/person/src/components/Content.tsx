@@ -24,7 +24,15 @@ const Content = ({ item, id }) => {
       <ContentItems ITEMS={ITEMS} item={item} />
       <Block>
         <LabeledContent description="Bruker info" list>
-          <StyledLink href={item && ("https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/" + item.properties.aad_id)}>Link</StyledLink>
+          <StyledLink
+            href={
+              item &&
+              'https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/' +
+                item.properties.aad_id
+            }
+          >
+            Link
+          </StyledLink>
         </LabeledContent>
       </Block>
     </Block>

@@ -1,9 +1,9 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
-import { Block } from 'baseui/block';
-import { Header, LoadingSpinner } from '@dakan/ui';
-import { Metrics } from '@dakan/metrics';
-import { useNode, useNodeEdges, useContent } from '@dakan/hooks';
+import {Block} from 'baseui/block';
+import {Header, LoadingSpinner} from '@dakan/ui';
+import {Metrics} from '@dakan/metrics';
+import {useNode, useNodeEdges, useContent} from '@dakan/hooks';
 
 import Content from '../component/Content';
 import exampleJson from '../resources/example.json';

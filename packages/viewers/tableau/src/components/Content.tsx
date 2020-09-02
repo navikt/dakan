@@ -11,7 +11,7 @@ import {
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
-import { LabelMedium } from 'baseui/typography';
+import { LabelMedium } from 'baseui/typography'
 
 import TableauViewList from './TableauViewList'
 
