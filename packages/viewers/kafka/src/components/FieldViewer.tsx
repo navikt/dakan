@@ -3,6 +3,7 @@ import { Block } from 'baseui/block'
 import { Tagging, Label, GetValue } from '@dakan/ui'
 import env from '@beam-australia/react-env'
 import { useNodeEdges } from '@dakan/hooks'
+import {LabelMedium, LabelLarge} from 'baseui/typography';
 
 const server = env('GRAPH_SERVER')
 
@@ -23,11 +24,16 @@ const FieldViewer = (props: any): JSX.Element => {
         {field.properties && (
           <Block>
             <Block>
-              <Label>{GetValue(() => field.properties.field_name)}</Label>
+              <LabelLarge><b>{GetValue(() => field.properties.field_name)}</b></LabelLarge>
             </Block>
             <Block display={['block', 'flex']} marginBottom="scale300">
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
+                  <Block marginBottom="scale400">
+                    <LabelMedium>
+                      <b>Opplysningstype</b>
+                    </LabelMedium>
+                  </Block>
                   <Tagging
                     dataId={field.id}
                     tagOptions={tagOptions}

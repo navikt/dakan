@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { StyledLink } from 'baseui/link'
-import { LabelMedium } from 'baseui/typography'
+import { LabelMedium, LabelLarge } from 'baseui/typography'
 import env from '@beam-australia/react-env'
 import { Tagging, GetValue } from '@dakan/ui'
 import { useNodeEdges } from '@dakan/hooks'
@@ -26,9 +26,9 @@ const TableauView = (props: any) => {
           <Block>
             <Block>
               <StyledLink href={GetValue(() => view.properties.contentUrl)}>
-                <LabelMedium>
-                  {GetValue(() => view.properties.view_name)}
-                </LabelMedium>
+                <LabelLarge>
+                  <b>{GetValue(() => view.properties.view_name)}</b>
+                </LabelLarge>
               </StyledLink>
             </Block>
             <StyledLink href={GetValue(() => view.properties.contentUrl)}>
@@ -41,6 +41,11 @@ const TableauView = (props: any) => {
             </StyledLink>
           </Block>
           <Block marginTop="scale600" marginBottom="scale600">
+            <Block marginBottom="scale400">
+              <LabelMedium>
+                <b>Opplysningstype</b>
+              </LabelMedium>
+            </Block>
             <Tagging
               dataId={view.id}
               tagOptions={tagOptions}
