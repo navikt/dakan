@@ -1,4 +1,4 @@
-name: Deploy to prod on release
+name: Product Area deploy to prod on release
 
 on:
   push:

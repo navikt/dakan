@@ -1,4 +1,4 @@
-name: Deploy to prod on release
+name: Person deploy to prod on release
 
 on:
   push:
