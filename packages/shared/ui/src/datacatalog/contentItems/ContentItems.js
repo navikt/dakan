@@ -17,6 +17,11 @@ export const ContentItems = ({ ITEMS, item }) => {
     return items.map((entry, index) => {
       let value = GetValue(() => content.properties[entry.item], null)
       if (value && value !== '') {
+        if (Array.isArray(value)) {
+          value = value.map(item => {
+            return <Block>{item}</Block>
+          })
+        }
         if (entry.format && entry.format === 'date') {
           const date = new Date(value)
           if (typeof date.getMonth === 'function') {
@@ -25,7 +30,7 @@ export const ContentItems = ({ ITEMS, item }) => {
         }
 
         if (entry.format && entry.format === 'slackchannel') {
-          value = value.replace('#','')
+          value = value.replace('#', '')
           const link = `https://nav-it.slack.com/archives/${value}`
           value = getLink(value)
         }
