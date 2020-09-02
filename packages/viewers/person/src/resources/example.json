@@ -1,52 +1,20 @@
 {
-    "_index": "dcat_v3",
-    "_type": "_doc",
-    "_id": "ON9999",
-    "_version": 17,
-    "found": true,
-    "_source": {
-        "id": "ON9999",
-        "type": "person",
-        "suggest": "Ola Normann",
-        "description": "ON9999. Ola.Normann@nav.no. Team: Team Arena leverandør (Capgemini). Rolle: DEVELOPER",
-        "title": "Ola Normann",
-        "format": "Person",
-        "category": "Teamkatalogen",
-        "provenance": "Teamkatalogen",
-        "master": "NAV",
-        "purpose": [""],
-        "legalbasis": [],
-        "pii": ["Persondata"],
-        "issued": "2020-07-27T13:46:43.206598",
-        "modified": "2020-07-27T13:46:43.206602",
-        "created": "2020-07-27T13:46:43.206603",
-        "policy": [],
-        "distribution": "None",
-        "keywords": ["team, person, teamkatalog"],
-        "theme": ["Teamkatalog"],
-        "accessRights": "public",
-        "publisher": {"name": "NAV"},
-        "spatial": "Norge",
-        "url": ["url"],
-        "haspart": [],
-        "content": {
-            "navIdent": "ON9999",
-            "givenName": "Ola",
-            "familyName": "Normann",
-            "fullName": "Ola Normann",
-            "email": "Ola.Normann@nav.no",
-            "resourceType": "EXTERNAL",
-            "startDate": "2006-06-23",
-            "endDate": "None",
-            "stale": false,
-            "teams": [
-                {
-                    "teamname": "Team Arena leverandør (Capgemini)",
-                    "team_type": "ADMINISTRATION",
-                    "slack": "Ukjent",
-                    "roles": ["DEVELOPER"]
-                }
-            ]
-        }
+    "id": "Person.T12345",
+    "label": "Person",
+    "type": "vertex",
+    "properties": {
+      "navident": "T12345",
+      "epost": "Test.Test.Test@test.test",
+      "fornavn": "Test Test",
+      "etternavn": "Test",
+      "ressurstype": "INTERN",
+      "startdato": "0000-00-00",
+      "sluttdato": null,
+      "avdeling": "0000 TEST AVDELING",
+      "tlf": ["12 23 23 23", "12 34 56 78", "87 65 43 21"],
+      "trygdeident": "TEST12345",
+      "profilbilde": "",
+      "type": "Person",
+      "aad_id": "TEST_ADD_ID"
     }
-}
+  }

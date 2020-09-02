@@ -13,7 +13,7 @@ const Viewer = (props: any) => {
   )
 
   if (props.match.params.id === 'test') {
-    return <Content {...props} item={exampleJson._source.content} />
+    return <Content {...props} id={exampleJson.id} item={exampleJson} />
   }
 
   return (
