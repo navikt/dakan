@@ -12,6 +12,7 @@
       "sluttdato": null,
       "avdeling": "0000 TEST AVDELING",
       "tlf": ["12 23 23 23", "12 34 56 78", "87 65 43 21"],
+      "mobil": "12 34 56 78",
       "trygdeident": "TEST12345",
       "profilbilde": "",
       "type": "Person",
