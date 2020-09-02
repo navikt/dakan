@@ -3,7 +3,7 @@ import { Block } from 'baseui/block'
 import { Avatar } from 'baseui/avatar'
 import { ParagraphMedium } from 'baseui/typography'
 import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
-import {StyledLink} from 'baseui/link'
+import { StyledLink } from 'baseui/link'
 
 import { OrgTeam } from './OrgTeam'
 import { NaisTeam } from './NaisTeam'
@@ -21,11 +21,10 @@ const ITEMS = [
 const Content = ({ item, id }) => {
   const Head = () => (
     <Block>
-      <ParagraphMedium>{item && item.fornavn}</ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
       <Block>
         <LabeledContent description="Bruker info" list>
-        <StyledLink href={"https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/" + item.aad_id}>Link</StyledLink>
+          <StyledLink href={item && ("https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/" + item.properties.aad_id)}>Link</StyledLink>
         </LabeledContent>
       </Block>
     </Block>
