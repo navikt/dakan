@@ -1,4 +1,4 @@
-name: Deploy to prod on release
+name: Tableau deploy to prod on release
 
 on:
   push:

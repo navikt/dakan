@@ -1,4 +1,4 @@
-name: Publish
+name: Hooks publish
 
 on:
   push:

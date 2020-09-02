@@ -1,4 +1,4 @@
-name: Build, test, package and deploy
+name: API build, test, package and deploy
 
 on:
   push:
