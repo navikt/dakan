@@ -16,13 +16,13 @@ spec:
       max: 2
       cpuThresholdPercentage: 70
   liveness:
-    path: /api/isAlive
+    path: /apier/isAlive
     timeout: 1
     initialDelay: 5
     periodSeconds: 5
     failureThreshold: 30
   readiness:
-    path: /api/isReady
+    path: /apier/isReady
     timeout: 1
     initialDelay: 5	
     periodSeconds: 5
@@ -35,7 +35,7 @@ spec:
         mountPath: /var/run/secrets/nais.io/common
   prometheus:
     enabled: true
-    path: /api
+    path: /apier
   istio:
     enabled: false
   resources:
