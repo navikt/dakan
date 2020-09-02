@@ -11,8 +11,8 @@ env:
   PACKAGE_PATH: apps/data-search
 
 jobs:
-  name: Build, test and package
   build:
+    name: Build, test and package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
