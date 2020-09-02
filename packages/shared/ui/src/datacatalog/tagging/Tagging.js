@@ -105,19 +105,23 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-      {!dataTags && !defaultTags && (
-        <Tag closeable={false} >
-          Ingen Data
-        </Tag>
-      )}
+      {!dataTags && !defaultTags && <Tag closeable={false}>Ingen Data</Tag>}
       {getDefaultTags()}
       {getTags()}
-    </React.Fragment >
+    </React.Fragment>
   )
 }
 
 export const ElasticTagging = (props) => {
-  const { defaultTags, tagType, dataId, dataTags, setDataTags, edgeLabel, tagLabel } = props
+  const {
+    defaultTags,
+    tagType,
+    dataId,
+    dataTags,
+    setDataTags,
+    edgeLabel,
+    tagLabel,
+  } = props
 
   const [options, setOptions] = React.useState([{}])
   const [isLoading, setIsLoading] = React.useState(false)
@@ -155,7 +159,6 @@ export const ElasticTagging = (props) => {
                 ],
               },
             },
-
           ],
           filter: {
             terms: {
@@ -174,12 +177,13 @@ export const ElasticTagging = (props) => {
       const newData = {
         id: GetValue(() => rawData._id),
         name: GetValue(() => rawData._source.title),
-        properties: {}
+        properties: {},
       }
       if (tagLabel && Array.isArray(tagLabel)) {
         newData.properties[tagLabel[0]] = GetValue(() => rawData._source.title)
+      } else {
+        newData.properties[tagLabel] = GetValue(() => rawData._source.title)
       }
-      else { newData.properties[tagLabel] = GetValue(() => rawData._source.title) }
       transformedData.push(newData)
     })
     return transformedData
@@ -211,27 +215,35 @@ export const ElasticTagging = (props) => {
 
   return (
     <Block>
-      {clientUser && tokenId && (<Select
-        labelKey="name"
-        valueKey="name"
-        isLoading={isLoading}
-        options={options}
-        onChange={(tag) =>
-          CheckIfAuthorized(() =>
-            addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
-          )
-        }
-        placeholder={props.placeholder ? props.placeholder : 'Velg'}
-        maxDropdownHeight="300px"
-        onInputChange={(event) => {
-          const target = event.target
-          handleInputChange(target)
-        }}
-      />)}
+      {clientUser && tokenId && (
+        <Select
+          labelKey="name"
+          valueKey="name"
+          isLoading={isLoading}
+          options={options}
+          onChange={(tag) =>
+            CheckIfAuthorized(() =>
+              addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+            )
+          }
+          placeholder={props.placeholder ? props.placeholder : 'Velg'}
+          maxDropdownHeight="300px"
+          onInputChange={(event) => {
+            const target = event.target
+            handleInputChange(target)
+          }}
+        />
+      )}
       <Block marginTop="scale600">
-        <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
-      </Block >
-    </Block >
+        <DataTags
+          defaultTags={defaultTags}
+          dataTags={dataTags}
+          setDataTags={setDataTags}
+          dataId={dataId}
+          tagLabel={tagLabel}
+        />
+      </Block>
+    </Block>
   )
 }
 
@@ -256,17 +268,20 @@ export const Tagging = (props) => {
     }))
     return (
       <React.Fragment>
-        {clientUser && tokenId && (<Select
-          options={options}
-          labelKey="name"
-          valueKey="name"
-          onChange={(tag) =>
-            CheckIfAuthorized(() =>
-              addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
-            )}
-          placeholder={props.placeholder ? props.placeholder : 'Velg'}
-          maxDropdownHeight="300px"
-        />)}
+        {clientUser && tokenId && (
+          <Select
+            options={options}
+            labelKey="name"
+            valueKey="name"
+            onChange={(tag) =>
+              CheckIfAuthorized(() =>
+                addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+              )
+            }
+            placeholder={props.placeholder ? props.placeholder : 'Velg'}
+            maxDropdownHeight="300px"
+          />
+        )}
       </React.Fragment>
     )
   }
@@ -275,8 +290,14 @@ export const Tagging = (props) => {
     <Block>
       {tagOptions && getOptions()}
       <Block marginTop="scale600">
-        <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
-      </Block >
+        <DataTags
+          defaultTags={defaultTags}
+          dataTags={dataTags}
+          setDataTags={setDataTags}
+          dataId={dataId}
+          tagLabel={tagLabel}
+        />
+      </Block>
     </Block>
   )
 }

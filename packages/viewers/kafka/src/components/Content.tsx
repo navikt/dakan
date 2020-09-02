@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { LabelMedium } from 'baseui/typography';
+import { LabelMedium } from 'baseui/typography'
 import {
   LayoutSplit as Layout,
   LabeledContent,
@@ -28,8 +28,7 @@ const Content = (props: any): JSX.Element => {
     teamTags,
     setTeamTags,
     personTags,
-    setPersonTags
-
+    setPersonTags,
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()

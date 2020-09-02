@@ -60,7 +60,6 @@ const Viewer = (props: any) => {
     setTeamTags,
   ] = useNodeEdges(props.match.params.id, 'hasTableauTeamTag')
 
-
   const getHeader = () => (
     <Header
       config={{

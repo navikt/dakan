@@ -1,16 +1,12 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { StyledLink } from "baseui/link";
+import { StyledLink } from 'baseui/link'
 import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from '../../utils/GetValue/GetValue'
 
-const getLink = (value) => (
-  <StyledLink href={value}>
-    {value}
-  </StyledLink>
-)
+const getLink = (value) => <StyledLink href={value}>{value}</StyledLink>
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
@@ -18,7 +14,7 @@ export const ContentItems = ({ ITEMS, item }) => {
       let value = GetValue(() => content.properties[entry.item], null)
       if (value && value !== '') {
         if (Array.isArray(value)) {
-          value = value.map(item => {
+          value = value.map((item) => {
             return <Block>{item}</Block>
           })
         }

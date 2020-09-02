@@ -3,7 +3,10 @@ import { Block } from 'baseui/block'
 import { ParagraphMedium } from 'baseui/typography'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
-const ITEMS = [{ item: 'slack', label: 'Slack', format: 'slackchannel' }, {item: 'swagger', label: 'Url', format: 'link'}]
+const ITEMS = [
+  { item: 'slack', label: 'Slack', format: 'slackchannel' },
+  { item: 'swagger', label: 'Url', format: 'link' },
+]
 
 const Content = ({ item, id }) => {
   const Head = () => (
