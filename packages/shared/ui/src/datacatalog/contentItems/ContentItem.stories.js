@@ -18,7 +18,7 @@ const ITEMS = [
 
 const item = {
   properties: {
-    tlf: '2122232425',
+    tlf: ['2122232425'],
     epost: 'Ola.Normann@nav.no',
     startdato: '2006-06-23',
     sluttdato: 'None',
