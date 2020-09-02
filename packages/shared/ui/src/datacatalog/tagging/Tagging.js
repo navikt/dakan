@@ -105,6 +105,11 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
+      {!dataTags && !defaultTags && (
+        <Tag closeable={false} >
+          Ingen Data
+        </Tag>
+      )}
       {getDefaultTags()}
       {getTags()}
     </React.Fragment >
@@ -116,6 +121,9 @@ export const ElasticTagging = (props) => {
 
   const [options, setOptions] = React.useState([{}])
   const [isLoading, setIsLoading] = React.useState(false)
+
+  const clientUser = Cookies.get('ClientUser')
+  const tokenId = Cookies.get('ClientToken')
 
   const debounce = (fn, delay) => {
     let timeoutId
@@ -147,7 +155,7 @@ export const ElasticTagging = (props) => {
                 ],
               },
             },
-            
+
           ],
           filter: {
             terms: {
@@ -203,7 +211,7 @@ export const ElasticTagging = (props) => {
 
   return (
     <Block>
-      <Select
+      {clientUser && tokenId && (<Select
         labelKey="name"
         valueKey="name"
         isLoading={isLoading}
@@ -219,7 +227,7 @@ export const ElasticTagging = (props) => {
           const target = event.target
           handleInputChange(target)
         }}
-      />
+      />)}
       <Block marginTop="scale600">
         <DataTags defaultTags={defaultTags} dataTags={dataTags} setDataTags={setDataTags} dataId={dataId} tagLabel={tagLabel} />
       </Block >
@@ -239,23 +247,27 @@ export const Tagging = (props) => {
   } = props
 
   const getOptions = () => {
+    const clientUser = Cookies.get('ClientUser')
+    const tokenId = Cookies.get('ClientToken')
     const options = tagOptions.map((tag) => ({
       name: getName(tag, tagLabel),
       id: tag.id,
       properties: tag.properties,
     }))
     return (
-      <Select
-        options={options}
-        labelKey="name"
-        valueKey="name"
-        onChange={(tag) =>
-          CheckIfAuthorized(() =>
-            addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
-          )}
-        placeholder={props.placeholder ? props.placeholder : 'Velg'}
-        maxDropdownHeight="300px"
-      />
+      <React.Fragment>
+        {clientUser && tokenId && (<Select
+          options={options}
+          labelKey="name"
+          valueKey="name"
+          onChange={(tag) =>
+            CheckIfAuthorized(() =>
+              addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+            )}
+          placeholder={props.placeholder ? props.placeholder : 'Velg'}
+          maxDropdownHeight="300px"
+        />)}
+      </React.Fragment>
     )
   }
 
