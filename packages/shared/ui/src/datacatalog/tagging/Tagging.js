@@ -5,6 +5,7 @@ import { Block } from 'baseui/block'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import env from '@beam-australia/react-env'
+import { LabelMedium } from 'baseui/typography'
 
 import { Tag } from '../../components/tag/Tag'
 import GetValue from '../../utils/GetValue/GetValue'
@@ -114,6 +115,7 @@ const DataTags = (props) => {
 
 export const ElasticTagging = (props) => {
   const {
+    header,
     defaultTags,
     tagType,
     dataId,
@@ -215,6 +217,13 @@ export const ElasticTagging = (props) => {
 
   return (
     <Block>
+      {header && (
+        <Block marginBottom="scale400">
+          <LabelMedium>
+            <b>{header}</b>
+          </LabelMedium>
+        </Block>
+      )}
       {clientUser && tokenId && (
         <Select
           labelKey="name"
@@ -249,6 +258,7 @@ export const ElasticTagging = (props) => {
 
 export const Tagging = (props) => {
   const {
+    header,
     defaultTags,
     tagOptions,
     dataId,
@@ -288,6 +298,13 @@ export const Tagging = (props) => {
 
   return (
     <Block>
+      {header && (
+        <Block marginBottom="scale400">
+          <LabelMedium>
+            <b>{header}</b>
+          </LabelMedium>
+        </Block>
+      )}
       {tagOptions && getOptions()}
       <Block marginTop="scale600">
         <DataTags
