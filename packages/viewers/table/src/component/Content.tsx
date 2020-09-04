@@ -115,7 +115,7 @@ const Content = (props: any): JSX.Element => {
                                     setDataTags={props.setTeamTags}
                                     edgeLabel={'hasTableTeamTag'}
                                     tagLabel={'name'}
-                                    placeholder="Søk team"
+                                    placeholder="Søk og legg til team"
                                 />
                             </Block>
                             <Block width={['none', 'none', 'scale800', 'scale800']} />
@@ -128,7 +128,7 @@ const Content = (props: any): JSX.Element => {
                                     setDataTags={props.setPersonTags}
                                     edgeLabel={'hasTablePersonTag'}
                                     tagLabel={['fornavn', 'etternavn']}
-                                    placeholder="Søk kontaktperson"
+                                    placeholder="Søk og legg til kontaktperson"
                                 />
                             </Block>
                         </Block>

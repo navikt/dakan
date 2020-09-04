@@ -49,7 +49,7 @@ const TableauView = (props: any) => {
               setDataTags={setTags}
               edgeLabel="hasTableauViewTag"
               tagLabel="name"
-              placeholder="Velg opplysningstype"
+              placeholder="Søk og legg til opplysningstype"
             />
           </Block>
         </Block>

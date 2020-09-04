@@ -39,7 +39,7 @@ const FieldViewer = (props: any): JSX.Element => {
                     setDataTags={setTags}
                     edgeLabel="hasKafkaFieldTag"
                     tagLabel="name"
-                    placeholder="Velg opplysningstype"
+                    placeholder="Søk og legg til opplysningstype"
                   />
                 </Block>
               </Block>

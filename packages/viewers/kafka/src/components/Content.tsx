@@ -89,7 +89,7 @@ const Content = (props: any): JSX.Element => {
                   setDataTags={setTeamTags}
                   edgeLabel={'hasKafkaTeamTag'}
                   tagLabel={'name'}
-                  placeholder="Søk team"
+                  placeholder="Søk og legg til team"
                 />
               </Block>
               <Block marginBottom="scale800">
@@ -101,7 +101,7 @@ const Content = (props: any): JSX.Element => {
                   setDataTags={setPersonTags}
                   edgeLabel={'hasKafkaPersonTag'}
                   tagLabel={['fornavn', 'etternavn']}
-                  placeholder="Søk kontaktperson"
+                  placeholder="Søk og legg til kontaktperson"
                 />
               </Block>
               <ToggleUserText

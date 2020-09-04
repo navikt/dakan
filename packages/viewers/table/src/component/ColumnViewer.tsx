@@ -217,7 +217,7 @@ const ColumnViewer = (prop: any) => {
                                     setDataTags={setTags}
                                     edgeLabel="hasColumnTag"
                                     tagLabel="name"
-                                    placeholder="Velg opplysningstype"
+                                    placeholder="Søk og legg til opplysningstype"
                                 />
                             </Block>
                         </Block>
