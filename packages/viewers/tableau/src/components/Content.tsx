@@ -104,35 +104,27 @@ const Content = (props: any): JSX.Element => {
               </Block>
               <Block marginBottom="scale800">{items(data)}</Block>
               <Block marginBottom="scale800">
-                <Block marginBottom="scale400">
-                  <LabelMedium>
-                    <b>Team navn</b>
-                  </LabelMedium>
-                </Block>
                 <ElasticTagging
+                  header="Team navn"
                   tagType={['naisteam', 'team']}
                   dataId={data.id}
                   dataTags={teamTags}
                   setDataTags={setTeamTags}
                   edgeLabel={'hasTableauTeamTag'}
                   tagLabel={'name'}
-                  placeholder="Velg team"
+                  placeholder="Søk og legg til team"
                 />
               </Block>
               <Block marginBottom="scale800">
-                <Block marginBottom="scale400">
-                  <LabelMedium>
-                    <b>Kontaktperson</b>
-                  </LabelMedium>
-                </Block>
                 <ElasticTagging
+                  header="Kontaktperson"
                   tagType={['person']}
                   dataId={data.id}
                   dataTags={personTags}
                   setDataTags={setPersonTags}
                   edgeLabel={'hasTableauPersonTag'}
                   tagLabel={['fornavn', 'etternavn']}
-                  placeholder="Velg kontaktperson"
+                  placeholder="Søk og legg til kontaktperson"
                 />
               </Block>
               <Block marginBottom="scale800">

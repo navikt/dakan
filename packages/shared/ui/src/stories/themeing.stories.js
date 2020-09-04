@@ -357,6 +357,7 @@ export const Data_Tagging = () => {
   return (
     <ThemeProvider theme={theme}>
       <Tagging
+        header="Tagging"
         dataId={dataId}
         tagOptions={tagOptions}
         serverUrl="testUrl"

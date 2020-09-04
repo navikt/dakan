@@ -41,19 +41,15 @@ const TableauView = (props: any) => {
             </StyledLink>
           </Block>
           <Block marginTop="scale600" marginBottom="scale600">
-            <Block marginBottom="scale400">
-              <LabelMedium>
-                <b>Opplysningstype</b>
-              </LabelMedium>
-            </Block>
             <Tagging
+              header="Opplysningstype"
               dataId={view.id}
               tagOptions={tagOptions}
               dataTags={tags}
               setDataTags={setTags}
               edgeLabel="hasTableauViewTag"
               tagLabel="name"
-              placeholder="Velg opplysningstype"
+              placeholder="Søk og legg til opplysningstype"
             />
           </Block>
         </Block>

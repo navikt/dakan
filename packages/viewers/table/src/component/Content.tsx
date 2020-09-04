@@ -106,12 +106,8 @@ const Content = (props: any): JSX.Element => {
                         <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
                         <Block marginTop="scale800" display={['block', 'block', 'flex', 'flex']}>
                             <Block flex="1" marginBottom={['scale800', 'scale800', 'none', 'none']}>
-                                <Block marginBottom="scale400">
-                                    <LabelMedium>
-                                        <b>Team navn</b>
-                                    </LabelMedium>
-                                </Block>
                                 <ElasticTagging
+                                    header="Team navn"
                                     defaultTags={[GetValue(() => props.data.properties.team_name)]}
                                     tagType={['naisteam', 'team']}
                                     dataId={props.data.id}
@@ -119,24 +115,20 @@ const Content = (props: any): JSX.Element => {
                                     setDataTags={props.setTeamTags}
                                     edgeLabel={'hasTableTeamTag'}
                                     tagLabel={'name'}
-                                    placeholder="Velg team"
+                                    placeholder="Søk og legg til team"
                                 />
                             </Block>
                             <Block width={['none', 'none', 'scale800', 'scale800']} />
                             <Block flex="1" marginBottom={['scale800', 'scale800', 'none', 'none']}>
-                                <Block marginBottom="scale400">
-                                    <LabelMedium>
-                                        <b>Kontaktperson</b>
-                                    </LabelMedium>
-                                </Block>
                                 <ElasticTagging
+                                    header="Kontaktperson"
                                     tagType={['person']}
                                     dataId={props.data.id}
                                     dataTags={props.personTags}
                                     setDataTags={props.setPersonTags}
                                     edgeLabel={'hasTablePersonTag'}
                                     tagLabel={['fornavn', 'etternavn']}
-                                    placeholder="Velg kontaktperson"
+                                    placeholder="Søk og legg til kontaktperson"
                                 />
                             </Block>
                         </Block>
