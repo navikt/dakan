@@ -6,14 +6,14 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import env from '@beam-australia/react-env'
 import { LabelMedium } from 'baseui/typography'
-import { KIND, SIZE } from 'baseui/button'
+import { KIND } from 'baseui/button'
 import { StyledLink } from 'baseui/link'
 
 import { Tag } from '../../components/tag/Tag'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 import Button from '../../components/button/Button'
-import { AddIcon, AddHoverIcon } from '../../components/icons/AddIcon'
+import { AddIcon } from '../../components/icons/AddIcon'
 
 const graph_server = env('GRAPH_SERVER')
 const es_server = env('ES_SERVER')
@@ -117,29 +117,39 @@ const DataTags = (props) => {
   )
 }
 
-const getHeader = (header) => {
+const Header = (props) => {
+  const { header } = props
   const clientUser = Cookies.get('ClientUser')
   const tokenId = Cookies.get('ClientToken')
 
   return (
     <React.Fragment>
+      {header && (
+        <Block marginBottom="scale400" display="flex">
+          <LabelMedium>
+            <b>{header}</b>
+          </LabelMedium>
+        </Block>
+      )}
+      {props.children}
       {!clientUser && !tokenId && (
-        <Block marginLeft="scale800">
+        <Block marginTop="scale400" marginBottom="scale400">
           <StyledLink
             href={`${graph_server}/login?redirect_url=${window.location.href}`}
             style={{ textDecoration: 'none' }}
           >
             <Button
-              kind={KIND.minimal}
-              size={SIZE.compact}
-              startEnhancer={<AddIcon size={19} />}
-              startEnhancerHover={<AddHoverIcon size={19} />}
+              kind={KIND.secondary}
+              startEnhancer={<AddIcon />}
+              startEnhancerHover={<AddIcon fill="white" />}
             >
               Legg til {header}
             </Button>
           </StyledLink>
         </Block>
       )}
+
+
     </React.Fragment>
   )
 }
@@ -249,42 +259,36 @@ export const ElasticTagging = (props) => {
 
   return (
     <Block>
-      {header && (
-        <Block marginBottom="scale400" display="flex" justifyContent="center">
-          <LabelMedium>
-            <b>{header}</b>
-          </LabelMedium>
-          {getHeader(header)}
+      <Header header={header}>
+        {clientUser && tokenId && (
+          <Select
+            labelKey="name"
+            valueKey="name"
+            isLoading={isLoading}
+            options={options}
+            onChange={(tag) =>
+              CheckIfAuthorized(() =>
+                addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
+              )
+            }
+            placeholder={props.placeholder ? props.placeholder : 'Velg'}
+            maxDropdownHeight="300px"
+            onInputChange={(event) => {
+              const target = event.target
+              handleInputChange(target)
+            }}
+          />
+        )}
+        <Block marginTop="scale600">
+          <DataTags
+            defaultTags={defaultTags}
+            dataTags={dataTags}
+            setDataTags={setDataTags}
+            dataId={dataId}
+            tagLabel={tagLabel}
+          />
         </Block>
-      )}
-      {clientUser && tokenId && (
-        <Select
-          labelKey="name"
-          valueKey="name"
-          isLoading={isLoading}
-          options={options}
-          onChange={(tag) =>
-            CheckIfAuthorized(() =>
-              addTag(tag.value, dataTags, setDataTags, dataId, edgeLabel),
-            )
-          }
-          placeholder={props.placeholder ? props.placeholder : 'Velg'}
-          maxDropdownHeight="300px"
-          onInputChange={(event) => {
-            const target = event.target
-            handleInputChange(target)
-          }}
-        />
-      )}
-      <Block marginTop="scale600">
-        <DataTags
-          defaultTags={defaultTags}
-          dataTags={dataTags}
-          setDataTags={setDataTags}
-          dataId={dataId}
-          tagLabel={tagLabel}
-        />
-      </Block>
+      </Header>
     </Block>
   )
 }
@@ -332,26 +336,18 @@ export const Tagging = (props) => {
 
   return (
     <Block>
-      {header && (
-        <Block marginBottom="scale400" display="flex" >
-          <Block justifyContent="center" display="flex" flexDirection="column">
-            <LabelMedium>
-              <b>{header}</b>
-            </LabelMedium>
-          </Block>
-          {getHeader(header)}
+      <Header header={header}>
+        {tagOptions && getOptions()}
+        <Block marginTop="scale600">
+          <DataTags
+            defaultTags={defaultTags}
+            dataTags={dataTags}
+            setDataTags={setDataTags}
+            dataId={dataId}
+            tagLabel={tagLabel}
+          />
         </Block>
-      )}
-      {tagOptions && getOptions()}
-      <Block marginTop="scale600">
-        <DataTags
-          defaultTags={defaultTags}
-          dataTags={dataTags}
-          setDataTags={setDataTags}
-          dataId={dataId}
-          tagLabel={tagLabel}
-        />
-      </Block>
+      </Header>
     </Block>
   )
 }
