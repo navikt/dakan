@@ -118,9 +118,7 @@ const DataTags = (props) => {
 }
 
 const Header = (props) => {
-  const { header } = props
-  const clientUser = Cookies.get('ClientUser')
-  const tokenId = Cookies.get('ClientToken')
+  const { header, clientUser, tokenId } = props
 
   return (
     <React.Fragment>
@@ -259,7 +257,7 @@ export const ElasticTagging = (props) => {
 
   return (
     <Block>
-      <Header header={header}>
+      <Header header={header} clientUser={clientUser} tokenId={tokenId}>
         {clientUser && tokenId && (
           <Select
             labelKey="name"
@@ -336,7 +334,7 @@ export const Tagging = (props) => {
 
   return (
     <Block>
-      <Header header={header}>
+      <Header header={header} clientUser={clientUser} tokenId={tokenId}>
         {tagOptions && getOptions()}
         <Block marginTop="scale600">
           <DataTags
