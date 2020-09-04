@@ -6,10 +6,14 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import env from '@beam-australia/react-env'
 import { LabelMedium } from 'baseui/typography'
+import { KIND, SIZE } from 'baseui/button'
+import { StyledLink } from 'baseui/link'
 
 import { Tag } from '../../components/tag/Tag'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
+import Button from '../../components/button/Button'
+import { AddIcon, AddHoverIcon } from '../../components/icons/AddIcon'
 
 const graph_server = env('GRAPH_SERVER')
 const es_server = env('ES_SERVER')
@@ -112,6 +116,34 @@ const DataTags = (props) => {
     </React.Fragment>
   )
 }
+
+const getHeader = (header) => {
+  const clientUser = Cookies.get('ClientUser')
+  const tokenId = Cookies.get('ClientToken')
+
+  return (
+    <React.Fragment>
+      {!clientUser && !tokenId && (
+        <Block marginLeft="scale800">
+          <StyledLink
+            href={`${graph_server}/login?redirect_url=${window.location.href}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Button
+              kind={KIND.minimal}
+              size={SIZE.compact}
+              startEnhancer={<AddIcon size={19} />}
+              startEnhancerHover={<AddHoverIcon size={19} />}
+            >
+              Legg til {header}
+            </Button>
+          </StyledLink>
+        </Block>
+      )}
+    </React.Fragment>
+  )
+}
+
 
 export const ElasticTagging = (props) => {
   const {
@@ -218,10 +250,11 @@ export const ElasticTagging = (props) => {
   return (
     <Block>
       {header && (
-        <Block marginBottom="scale400">
+        <Block marginBottom="scale400" display="flex" justifyContent="center">
           <LabelMedium>
             <b>{header}</b>
           </LabelMedium>
+          {getHeader(header)}
         </Block>
       )}
       {clientUser && tokenId && (
@@ -268,9 +301,10 @@ export const Tagging = (props) => {
     tagLabel,
   } = props
 
+  const clientUser = Cookies.get('ClientUser')
+  const tokenId = Cookies.get('ClientToken')
+
   const getOptions = () => {
-    const clientUser = Cookies.get('ClientUser')
-    const tokenId = Cookies.get('ClientToken')
     const options = tagOptions.map((tag) => ({
       name: getName(tag, tagLabel),
       id: tag.id,
@@ -299,10 +333,13 @@ export const Tagging = (props) => {
   return (
     <Block>
       {header && (
-        <Block marginBottom="scale400">
-          <LabelMedium>
-            <b>{header}</b>
-          </LabelMedium>
+        <Block marginBottom="scale400" display="flex" >
+          <Block justifyContent="center" display="flex" flexDirection="column">
+            <LabelMedium>
+              <b>{header}</b>
+            </LabelMedium>
+          </Block>
+          {getHeader(header)}
         </Block>
       )}
       {tagOptions && getOptions()}
