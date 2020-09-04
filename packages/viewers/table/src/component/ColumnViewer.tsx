@@ -207,12 +207,8 @@ const ColumnViewer = (prop: any) => {
                                 marginTop="scale600"
                                 marginBottom="scale600"
                             >
-                                <Block marginBottom="scale400">
-                                    <LabelMedium>
-                                        <b>Opplysningstype</b>
-                                    </LabelMedium>
-                                </Block>
                                 <Tagging
+                                    header="Opplysningstype"
                                     isLoading={loading}
                                     dataId={columnData.id}
                                     tagOptions={tagOptions}

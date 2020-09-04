@@ -31,12 +31,8 @@ const FieldViewer = (props: any): JSX.Element => {
             <Block display={['block', 'flex']} marginBottom="scale300">
               <Block flex="1">
                 <Block flex="1" marginTop="scale600" marginBottom="scale600">
-                  <Block marginBottom="scale400">
-                    <LabelMedium>
-                      <b>Opplysningstype</b>
-                    </LabelMedium>
-                  </Block>
                   <Tagging
+                    header="Opplysningstype"
                     dataId={field.id}
                     tagOptions={tagOptions}
                     dataTags={tags}
