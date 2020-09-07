@@ -16,26 +16,13 @@ const ITEMS = [
   { item: 'resourcetype', label: 'Ansatt' },
   { item: 'startdato', label: 'Startdato' },
   { item: 'sluttdato', label: 'Sluttdato' },
+  { item: 'aad_id', label: 'Profil', format: 'ad_profile' },
 ]
 
 const Content = ({ item, id }) => {
   const Head = () => (
     <Block>
       <ContentItems ITEMS={ITEMS} item={item} />
-      <Block>
-        <LabeledContent description="Bruker info" list>
-          <StyledLink
-            href={
-              item &&
-              item.properties &&
-              'https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/' +
-                item.properties.aad_id
-            }
-          >
-            Link
-          </StyledLink>
-        </LabeledContent>
-      </Block>
     </Block>
   )
 
