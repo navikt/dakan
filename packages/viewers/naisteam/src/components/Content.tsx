@@ -9,9 +9,10 @@ import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 import { Members } from './Members'
 
 const ITEMS = [
-  { item: 'slack', label: 'Slack' },
+  { item: 'slack', label: 'Slack', format:'slackchannel' },
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
+  { item: 'group_id', label: 'Gruppe', format: 'ad_group' },
 ]
 
 const getLink = (row) => {

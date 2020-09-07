@@ -6,13 +6,13 @@ import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from '../../utils/GetValue/GetValue'
 
-const getLink = (value) => <StyledLink href={value}>{value}</StyledLink>
+const getLink = (url, value) => <StyledLink href={url}>{value}</StyledLink>
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
     return items.map((entry, index) => {
       let value = GetValue(() => content.properties[entry.item], null)
-      if (value && value !== '') {
+      if (value && value !== '' && value.length > 0) {
         if (Array.isArray(value)) {
           value = value.map((item) => {
             return <Block>{item}</Block>
@@ -28,7 +28,17 @@ export const ContentItems = ({ ITEMS, item }) => {
         if (entry.format && entry.format === 'slackchannel') {
           value = value.replace('#', '')
           const link = `https://nav-it.slack.com/archives/${value}`
-          value = getLink(value)
+          value = getLink(link, value)
+        }
+
+        if (entry.format && entry.format === 'ad_group') {
+          const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupDetailsMenuBlade/Members/groupId/${value}`
+          value = getLink(link, 'Azure AD')
+        }
+
+        if (entry.format && entry.format === 'ad_profile') {
+          const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/${value}`
+          value = getLink(link, 'Azure AD')
         }
 
         if (entry.format && entry.format === 'link') {
