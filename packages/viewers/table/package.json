@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
-    "@deetly/plotly-view": "0.0.74",
+    "@deetly/plotly-view": "0.0.76",
     "@dakan/hooks": "0.0.4",
     "@dakan/metrics": "0.0.4",
     "@dakan/ui": "0.0.4",
