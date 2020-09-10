@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Block} from 'baseui/block';
-import {format} from 'date-fns';
+import { Block } from 'baseui/block';
+import { KIND } from 'baseui/button'
+import { format } from 'date-fns';
 import {
     LargeWidth,
     LabeledContent,
@@ -10,10 +11,13 @@ import {
     Rating,
     GetValue,
     ElasticTagging,
+    Button,
+    EditIcon,
+    CheckIfAuthorized,
 } from '@dakan/ui';
-import {LabelLarge, LabelMedium} from 'baseui/typography';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {useStyletron} from 'baseui';
+import { LabelLarge } from 'baseui/typography';
+import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
+import { useStyletron } from 'baseui';
 
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
@@ -22,9 +26,9 @@ const items = (props: any): JSX.Element[] => {
     const content = props.properties;
 
     const ITEMS = [
-        {item: 'schema_name', label: 'Skjema'},
-        {item: 'db_name', label: 'Database navn'},
-        {item: 'host', label: 'Host adresse'},
+        { item: 'schema_name', label: 'Skjema' },
+        { item: 'db_name', label: 'Database navn' },
+        { item: 'host', label: 'Host adresse' },
     ];
 
     return ITEMS.map((entry: any, i: number) => {
@@ -47,7 +51,7 @@ const items = (props: any): JSX.Element[] => {
 };
 
 const Main = (props: any): JSX.Element => {
-    const {data, numberOfColumns} = props;
+    const { data, numberOfColumns, isEditMode, description, setDescription } = props;
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -57,17 +61,18 @@ const Main = (props: any): JSX.Element => {
                         <LabelLarge>
                             <b>Beskrivelse</b>
                         </LabelLarge>
-                        <Block marginTop="scale200" $style={{...theme.typography.font300}}>
+                        <Block marginTop="scale200" $style={{ ...theme.typography.font300 }}>
                             {data.properties.table_description}
                         </Block>
                         <Block marginTop="scale800">
                             <SingleUserText
-                                dataId={props.data.id}
-                                userText={props.description}
-                                setUserText={props.setDescription}
+                                dataId={data.id}
+                                userText={description}
+                                setUserText={setDescription}
                                 title="Utvidet beskrivelse"
                                 edgeLabel="hasTableDescription"
                                 nodeLabel="table_description"
+                                isEditMode={isEditMode}
                             />
                         </Block>
                     </Block>
@@ -88,22 +93,36 @@ const Main = (props: any): JSX.Element => {
 const Content = (props: any): JSX.Element => {
     const [filteredColumns, setFilteredColumns] = React.useState();
     const [filterText, setFilterText] = React.useState();
+    const [isEditMode, setIsEditMode] = React.useState(false);
 
     return (
         <Block>
             {props.data.properties && props.data.properties.table_name && (
                 <LargeWidth headingLabel={<b>Databasetabell</b>} headingText={props.data.properties.table_name}>
                     <Block>
-                        <Block marginBottom="scale800" marginTop="-20px">
-                            <Rating
-                                ratings={props.ratings}
-                                setRatings={props.setRatings}
-                                dataId={props.data.id}
-                                edgeLabel="hasTableRating"
-                                nodeLabel="table_rating"
-                            />
+                        <Block  display="flex" marginBottom="scale800" marginTop="-20px">
+                            <Block display="flex" flex="1" justifyContent="flex-start">
+                                <Rating
+                                    ratings={props.ratings}
+                                    setRatings={props.setRatings}
+                                    dataId={props.data.id}
+                                    edgeLabel="hasTableRating"
+                                    nodeLabel="table_rating"
+                                />
+                            </Block>
+                            <Block display="flex" flex="1" justifyContent="flex-end" >
+                                <Button
+                                    kind={KIND.secondary}
+                                    startEnhancer={<EditIcon />}
+                                    startEnhancerHover={<EditIcon fill="white" />}
+                                    onClick={() =>
+                                        CheckIfAuthorized(() => setIsEditMode(!isEditMode))
+                                      }>
+                                    Rediger innhold
+                                </Button>
+                            </Block>
                         </Block>
-                        <Main data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
+                        <Main isEditMode={isEditMode} data={props.data} numberOfColumns={props.numberOfColumns} {...props} />
                         <Block marginTop="scale800" display={['block', 'block', 'flex', 'flex']}>
                             <Block flex="1" marginBottom={['scale800', 'scale800', 'none', 'none']}>
                                 <ElasticTagging
