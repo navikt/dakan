@@ -65,35 +65,45 @@ export const Rating = (props) => {
     }
 
     const RatingPayload = {
-      source_id: dataId,
-      edge_label: edgeLabel,
-      node_body: newRating,
+      outV: dataId,
+      label: edgeLabel,
+      inV: newRating.id
     }
     setIsLoading(true)
     axios
-      .put(`${graph_server}/node/edge/upsert`, RatingPayload, {
+      .put(`${graph_server}/node`, [newRating], {
         headers: { 'JWT-Token': tokenId },
       })
-      .then(() => {
-        newRatings
-          .filter(
-            (rating) =>
-              rating.properties.author === newRating.properties.author,
-          )
-          .map((rate) => {
-            rate.properties.rate = rateValue
-            rate.properties.date = newRating.properties.date
-            rate.properties.time = newRating.properties.time
-            userFound = true
-          })
-        if (userFound) {
-          setRatings(newRatings)
-        } else {
-          newRatings.push(newRating)
-          setRatings(newRatings)
+      .then((response) => {
+        if (response.status === 200) {
+          axios
+            .put(`${graph_server}/edge`, [RatingPayload], {
+              headers: { 'JWT-Token': tokenId },
+            }).then(() => {
+              newRatings
+                .filter(
+                  (rating) =>
+                    rating.properties.author === newRating.properties.author,
+                )
+                .map((rate) => {
+                  rate.properties.rate = rateValue
+                  rate.properties.date = newRating.properties.date
+                  rate.properties.time = newRating.properties.time
+                  userFound = true
+                })
+              if (userFound) {
+                setRatings(newRatings)
+              } else {
+                newRatings.push(newRating)
+                setRatings(newRatings)
+              }
+              setUserRate(rateValue)
+              setIsLoading(false)
+            }).catch((error) => {
+              console.log(error)
+              setIsLoading(false)
+            })
         }
-        setUserRate(rateValue)
-        setIsLoading(false)
       })
       .catch((error) => {
         console.log(error)
@@ -138,8 +148,8 @@ export const Rating = (props) => {
           </Block>
         </React.Fragment>
       ) : (
-        <Spinner size={22} />
-      )}
+          <Spinner size={22} />
+        )}
     </Block>
   )
 }
