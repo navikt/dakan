@@ -68,6 +68,7 @@ export const default_theme = () => {
         title={title}
         edgeLabel={edgeLabel}
         nodeLabel={nodeLabel}
+        isEditMode={true}
       />
     </ThemeProvider>
   )
@@ -86,6 +87,7 @@ export const NAV_theme = () => {
           title={title}
           edgeLabel={edgeLabel}
           nodeLabel={nodeLabel}
+          isEditMode={true}
         />
       </Block>
       <Block>
@@ -96,6 +98,7 @@ export const NAV_theme = () => {
           title="Beskrivelse"
           edgeLabel="hasDescription"
           nodeLabel="table_description"
+          isEditMode={true}
         />
       </Block>
     </ThemeProvider>

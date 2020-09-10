@@ -27,9 +27,9 @@ import {
 
 const graph_server = env('GRAPH_SERVER') || '../'
 
-const getAddTextButton = (setIsAddTextModalOpen, title) => (
+const getAddTextButton = (setIsAddTextModalOpen, title, isEditMode) => (
   <Block display="flex" paddingTop="scale400">
-    <Button
+    {isEditMode && <Button
       kind={KIND.secondary}
       startEnhancer={<AddIcon />}
       startEnhancerHover={<AddIcon fill="white" />}
@@ -40,12 +40,12 @@ const getAddTextButton = (setIsAddTextModalOpen, title) => (
       }}
     >
       Legg til {title ? title.toLowerCase() : ''}
-    </Button>
+    </Button>}
   </Block>
 )
 
 export const SingleUserText = (prop) => {
-  const { dataId, userText, setUserText, title, edgeLabel, nodeLabel } = prop
+  const { dataId, userText, setUserText, title, edgeLabel, nodeLabel, isEditMode } = prop
   const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
     false,
   )
@@ -79,7 +79,7 @@ export const SingleUserText = (prop) => {
               </Block>
             </Block>
           </Block>
-          <Block marginTop="scale800" display="flex">
+          {isEditMode && <Block marginTop="scale800" display="flex">
             <Block marginRight="scale800">
               <Button
                 startEnhancer={<EditIcon />}
@@ -108,13 +108,13 @@ export const SingleUserText = (prop) => {
                 Slett
               </Button>
             </Block>
-          </Block>
+          </Block>}
         </Block>
       )
     )
   }
 
-  const getContent = () => {
+  const getContent = (isEditMode) => {
     if (userText && userText.length > 0) {
       return (
         <Block padding="1em" backgroundColor={'#F4F4F4'}>
@@ -122,7 +122,7 @@ export const SingleUserText = (prop) => {
         </Block>
       )
     } else {
-      return getAddTextButton(setIsAddTextModalOpen, title)
+      return getAddTextButton(setIsAddTextModalOpen, title, isEditMode)
     }
   }
 
@@ -166,7 +166,7 @@ export const SingleUserText = (prop) => {
           <LabelLarge>
             <b>{CapitalizeString(title)}</b>
           </LabelLarge>
-          {getContent()}
+          {getContent(isEditMode)}
         </Block>
       }
     </Block>
@@ -174,7 +174,7 @@ export const SingleUserText = (prop) => {
 }
 
 export const ToggleUserText = (prop) => {
-  const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel } = prop
+  const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel, isEditMode } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
   const [userTextContent, setUserTextContent] = React.useState({})
   const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
@@ -223,7 +223,7 @@ export const ToggleUserText = (prop) => {
                 </Block>
               </Block>
             </Block>
-            <Block marginTop="scale800" display="flex">
+            {isEditMode && <Block marginTop="scale800" display="flex">
               <Block marginRight="scale800">
                 <Button
                   startEnhancer={<EditIcon />}
@@ -256,7 +256,7 @@ export const ToggleUserText = (prop) => {
                   Slett
                 </Button>
               </Block>
-            </Block>
+            </Block>}
             <Block
               $style={{ border: '1px solid #78706A' }}
               marginTop="scale400"
@@ -336,10 +336,10 @@ export const ToggleUserText = (prop) => {
                   />
                 </Accordion>
               </Block>
-              {getAddTextButton(setIsAddTextModalOpen, title)}
+              {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
             </Block>
           ) : (
-            getAddTextButton(setIsAddTextModalOpen, title)
+            getAddTextButton(setIsAddTextModalOpen, title, isEditMode)
           )}
         </Block>
       }
