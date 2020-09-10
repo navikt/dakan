@@ -49,18 +49,25 @@ export const AddUserTextModal = (props) => {
     }
     newUserTexts.unshift(newUserText)
     const userTextPayload = {
-      source_id: dataId,
-      edge_label: edgeLabel,
-      node_body: newUserText,
+      outV: dataId,
+      label: edgeLabel,
+      inV: newUserText.id,
     }
     axios
-      .put(`${server}/node/edge/upsert`, userTextPayload, {
+      .put(`${server}/node`, [newUserText], {
         headers: { 'JWT-Token': tokenId },
       })
-      .then(() => {
-        setUserTexts(newUserTexts)
-        setShowSpinner(false)
-        setIsOpen(false)
+      .then((response) => {
+        if (response.status === 200) {
+          axios
+            .put(`${server}/edge`, [userTextPayload],
+              { headers: { 'JWT-Token': tokenId } })
+            .then(() => {
+              setUserTexts(newUserTexts)
+              setShowSpinner(false)
+              setIsOpen(false)
+            }).catch((error) => console.log(error))
+        }
       })
       .catch((error) => console.log(error))
     setText('')
@@ -107,37 +114,37 @@ export const AddUserTextModal = (props) => {
           </Block>
         </Block>
       ) : (
-        <Block>
-          <ModalBody>
-            <Textarea
-              rows={10}
-              overrides={{
-                InputContainer: {
-                  style: {
-                    height: '250px',
+          <Block>
+            <ModalBody>
+              <Textarea
+                rows={10}
+                overrides={{
+                  InputContainer: {
+                    style: {
+                      height: '250px',
+                    },
                   },
-                },
-              }}
-              onChange={(e) => setText(e.target.value)}
-              placeholder={`Skriv en ${title.toLowerCase()}...`}
-              value={text}
-            />
-          </ModalBody>
-          <ModalFooter>
-            <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
-              Avbryt
+                }}
+                onChange={(e) => setText(e.target.value)}
+                placeholder={`Skriv en ${title.toLowerCase()}...`}
+                value={text}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
+                Avbryt
             </ModalButton>
-            <ModalButton
-              onClick={() => {
-                addText()
-                setShowSpinner(true)
-              }}
-            >
-              Lagre
+              <ModalButton
+                onClick={() => {
+                  addText()
+                  setShowSpinner(true)
+                }}
+              >
+                Lagre
             </ModalButton>
-          </ModalFooter>
-        </Block>
-      )}
+            </ModalFooter>
+          </Block>
+        )}
     </Modal>
   )
 }
