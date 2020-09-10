@@ -29,23 +29,33 @@ const graph_server = env('GRAPH_SERVER') || '../'
 
 const getAddTextButton = (setIsAddTextModalOpen, title, isEditMode) => (
   <Block display="flex" paddingTop="scale400">
-    {isEditMode && <Button
-      kind={KIND.secondary}
-      startEnhancer={<AddIcon />}
-      startEnhancerHover={<AddIcon fill="white" />}
-      onClick={() => {
-        CheckIfAuthorized(() => {
-          setIsAddTextModalOpen(true)
-        })
-      }}
-    >
-      Legg til {title ? title.toLowerCase() : ''}
-    </Button>}
+    {isEditMode && (
+      <Button
+        kind={KIND.secondary}
+        startEnhancer={<AddIcon />}
+        startEnhancerHover={<AddIcon fill="white" />}
+        onClick={() => {
+          CheckIfAuthorized(() => {
+            setIsAddTextModalOpen(true)
+          })
+        }}
+      >
+        Legg til {title ? title.toLowerCase() : ''}
+      </Button>
+    )}
   </Block>
 )
 
 export const SingleUserText = (prop) => {
-  const { dataId, userText, setUserText, title, edgeLabel, nodeLabel, isEditMode } = prop
+  const {
+    dataId,
+    userText,
+    setUserText,
+    title,
+    edgeLabel,
+    nodeLabel,
+    isEditMode,
+  } = prop
   const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
     false,
   )
@@ -79,36 +89,38 @@ export const SingleUserText = (prop) => {
               </Block>
             </Block>
           </Block>
-          {isEditMode && <Block marginTop="scale800" display="flex">
-            <Block marginRight="scale800">
-              <Button
-                startEnhancer={<EditIcon />}
-                startEnhancerHover={<EditHoverIcon />}
-                kind={KIND.minimal}
-                onClick={() => {
-                  CheckIfAuthorized(() => {
-                    setIsEditTextModalOpen(true)
-                  })
-                }}
-              >
-                Rediger
-              </Button>
+          {isEditMode && (
+            <Block marginTop="scale800" display="flex">
+              <Block marginRight="scale800">
+                <Button
+                  startEnhancer={<EditIcon />}
+                  startEnhancerHover={<EditHoverIcon />}
+                  kind={KIND.minimal}
+                  onClick={() => {
+                    CheckIfAuthorized(() => {
+                      setIsEditTextModalOpen(true)
+                    })
+                  }}
+                >
+                  Rediger
+                </Button>
+              </Block>
+              <Block>
+                <Button
+                  startEnhancer={<DeleteIcon />}
+                  startEnhancerHover={<DeleteHoverIcon />}
+                  kind={KIND.minimal}
+                  onClick={() => {
+                    CheckIfAuthorized(() => {
+                      setIsDeleteTextModalOpen(true)
+                    })
+                  }}
+                >
+                  Slett
+                </Button>
+              </Block>
             </Block>
-            <Block>
-              <Button
-                startEnhancer={<DeleteIcon />}
-                startEnhancerHover={<DeleteHoverIcon />}
-                kind={KIND.minimal}
-                onClick={() => {
-                  CheckIfAuthorized(() => {
-                    setIsDeleteTextModalOpen(true)
-                  })
-                }}
-              >
-                Slett
-              </Button>
-            </Block>
-          </Block>}
+          )}
         </Block>
       )
     )
@@ -124,7 +136,11 @@ export const SingleUserText = (prop) => {
     } else {
       return (
         <React.Fragment>
-          <Block marginTop="scale400" marginBottom="scale400" $style={{ ...theme.typography.font300 }}>
+          <Block
+            marginTop="scale400"
+            marginBottom="scale400"
+            $style={{ ...theme.typography.font300 }}
+          >
             Ingen data
           </Block>
           {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
@@ -181,7 +197,15 @@ export const SingleUserText = (prop) => {
 }
 
 export const ToggleUserText = (prop) => {
-  const { dataId, userTexts, setUserTexts, title, edgeLabel, nodeLabel, isEditMode } = prop
+  const {
+    dataId,
+    userTexts,
+    setUserTexts,
+    title,
+    edgeLabel,
+    nodeLabel,
+    isEditMode,
+  } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
   const [userTextContent, setUserTextContent] = React.useState({})
   const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
@@ -230,40 +254,42 @@ export const ToggleUserText = (prop) => {
                 </Block>
               </Block>
             </Block>
-            {isEditMode && <Block marginTop="scale800" display="flex">
-              <Block marginRight="scale800">
-                <Button
-                  startEnhancer={<EditIcon />}
-                  startEnhancerHover={<EditHoverIcon />}
-                  kind={KIND.minimal}
-                  onClick={() => {
-                    CheckIfAuthorized(() => {
-                      setUserTextIndex(index)
-                      setUserTextContent(userText)
-                      setIsEditTextModalOpen(true)
-                    })
-                  }}
-                >
-                  Rediger
-                </Button>
+            {isEditMode && (
+              <Block marginTop="scale800" display="flex">
+                <Block marginRight="scale800">
+                  <Button
+                    startEnhancer={<EditIcon />}
+                    startEnhancerHover={<EditHoverIcon />}
+                    kind={KIND.minimal}
+                    onClick={() => {
+                      CheckIfAuthorized(() => {
+                        setUserTextIndex(index)
+                        setUserTextContent(userText)
+                        setIsEditTextModalOpen(true)
+                      })
+                    }}
+                  >
+                    Rediger
+                  </Button>
+                </Block>
+                <Block>
+                  <Button
+                    startEnhancer={<DeleteIcon />}
+                    startEnhancerHover={<DeleteHoverIcon />}
+                    kind={KIND.minimal}
+                    onClick={() => {
+                      CheckIfAuthorized(() => {
+                        setUserTextIndex(index)
+                        setUserTextContent(userText)
+                        setIsDeleteTextModalOpen(true)
+                      })
+                    }}
+                  >
+                    Slett
+                  </Button>
+                </Block>
               </Block>
-              <Block>
-                <Button
-                  startEnhancer={<DeleteIcon />}
-                  startEnhancerHover={<DeleteHoverIcon />}
-                  kind={KIND.minimal}
-                  onClick={() => {
-                    CheckIfAuthorized(() => {
-                      setUserTextIndex(index)
-                      setUserTextContent(userText)
-                      setIsDeleteTextModalOpen(true)
-                    })
-                  }}
-                >
-                  Slett
-                </Button>
-              </Block>
-            </Block>}
+            )}
             <Block
               $style={{ border: '1px solid #78706A' }}
               marginTop="scale400"
@@ -346,13 +372,17 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
             </Block>
           ) : (
-              <React.Fragment>
-                <Block marginTop="scale400" marginBottom="scale400" $style={{ ...theme.typography.font300 }}>
-                  Ingen data
-                </Block>
-                {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
-              </React.Fragment>
-            )}
+            <React.Fragment>
+              <Block
+                marginTop="scale400"
+                marginBottom="scale400"
+                $style={{ ...theme.typography.font300 }}
+              >
+                Ingen data
+              </Block>
+              {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
+            </React.Fragment>
+          )}
         </Block>
       }
     </Block>

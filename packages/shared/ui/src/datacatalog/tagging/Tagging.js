@@ -134,7 +134,6 @@ const Header = (props) => {
   )
 }
 
-
 export const ElasticTagging = (props) => {
   const {
     header,
@@ -241,7 +240,7 @@ export const ElasticTagging = (props) => {
   return (
     <Block>
       <Header header={header} clientUser={clientUser} tokenId={tokenId}>
-        {clientUser && tokenId && isEditMode &&(
+        {clientUser && tokenId && isEditMode && (
           <Select
             labelKey="name"
             valueKey="name"
@@ -298,7 +297,7 @@ export const Tagging = (props) => {
     }))
     return (
       <React.Fragment>
-        {clientUser && tokenId && isEditMode &&(
+        {clientUser && tokenId && isEditMode && (
           <Select
             options={options}
             labelKey="name"

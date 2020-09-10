@@ -58,8 +58,8 @@ export const default_theme = () => {
           setUserTexts={setUserText}
           title={title}
           edgeLabel={edgeLabel}
-        isEditMode={true}
-        nodeLabel={nodeLabel}
+          isEditMode={true}
+          nodeLabel={nodeLabel}
         />
       </Block>
     </ThemeProvider>
@@ -77,8 +77,8 @@ export const NAV_theme = () => {
           userText={userText}
           setUserText={setUserText}
           title={title}
-        isEditMode={true}
-        edgeLabel={edgeLabel}
+          isEditMode={true}
+          edgeLabel={edgeLabel}
           nodeLabel={nodeLabel}
         />
       </Block>
@@ -91,8 +91,8 @@ export const NAV_theme = () => {
           userTexts={[]}
           setUserTexts={setUserText}
           title={title}
-        isEditMode={true}
-        edgeLabel={edgeLabel}
+          isEditMode={true}
+          edgeLabel={edgeLabel}
           nodeLabel={nodeLabel}
         />
       </Block>
