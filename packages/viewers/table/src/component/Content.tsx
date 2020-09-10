@@ -135,6 +135,7 @@ const Content = (props: any): JSX.Element => {
                                     edgeLabel={'hasTableTeamTag'}
                                     tagLabel={'name'}
                                     placeholder="Søk og legg til team"
+                                    isEditMode={isEditMode}
                                 />
                             </Block>
                             <Block width={['none', 'none', 'scale800', 'scale800']} />
@@ -148,6 +149,7 @@ const Content = (props: any): JSX.Element => {
                                     edgeLabel={'hasTablePersonTag'}
                                     tagLabel={['fornavn', 'etternavn']}
                                     placeholder="Søk og legg til kontaktperson"
+                                    isEditMode={isEditMode}
                                 />
                             </Block>
                         </Block>
@@ -158,6 +160,7 @@ const Content = (props: any): JSX.Element => {
                             title="Kommentar"
                             edgeLabel="hasTableComment"
                             nodeLabel="table_comment"
+                            isEditMode={isEditMode}
                         />
                         {props.columns && (
                             <React.Fragment>
@@ -175,6 +178,7 @@ const Content = (props: any): JSX.Element => {
                                 <TableColumns
                                     columnsToView={filterText ? filteredColumns : props.columns}
                                     tagOptions={props.tagOptions}
+                                    isEditMode={isEditMode}
                                 />
                             </React.Fragment>
                         )}
