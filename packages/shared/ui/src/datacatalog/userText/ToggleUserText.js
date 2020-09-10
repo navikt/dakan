@@ -122,7 +122,14 @@ export const SingleUserText = (prop) => {
         </Block>
       )
     } else {
-      return getAddTextButton(setIsAddTextModalOpen, title, isEditMode)
+      return (
+        <React.Fragment>
+          <Block marginTop="scale400" marginBottom="scale400" $style={{ ...theme.typography.font300 }}>
+            Ingen data
+          </Block>
+          {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
+        </React.Fragment>
+      )
     }
   }
 
@@ -339,8 +346,13 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
             </Block>
           ) : (
-            getAddTextButton(setIsAddTextModalOpen, title, isEditMode)
-          )}
+              <React.Fragment>
+                <Block marginTop="scale400" marginBottom="scale400" $style={{ ...theme.typography.font300 }}>
+                  Ingen data
+                </Block>
+                {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
+              </React.Fragment>
+            )}
         </Block>
       }
     </Block>
