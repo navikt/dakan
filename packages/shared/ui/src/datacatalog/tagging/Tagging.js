@@ -130,24 +130,6 @@ const Header = (props) => {
         </Block>
       )}
       {props.children}
-      {!clientUser && !tokenId && (
-        <Block marginTop="scale400" marginBottom="scale400">
-          <StyledLink
-            href={`${graph_server}/login?redirect_url=${window.location.href}`}
-            style={{ textDecoration: 'none' }}
-          >
-            <Button
-              kind={KIND.secondary}
-              startEnhancer={<AddIcon />}
-              startEnhancerHover={<AddIcon fill="white" />}
-            >
-              Legg til {header}
-            </Button>
-          </StyledLink>
-        </Block>
-      )}
-
-
     </React.Fragment>
   )
 }
@@ -163,6 +145,7 @@ export const ElasticTagging = (props) => {
     setDataTags,
     edgeLabel,
     tagLabel,
+    isEditMode,
   } = props
 
   const [options, setOptions] = React.useState([{}])
@@ -258,7 +241,7 @@ export const ElasticTagging = (props) => {
   return (
     <Block>
       <Header header={header} clientUser={clientUser} tokenId={tokenId}>
-        {clientUser && tokenId && (
+        {clientUser && tokenId && isEditMode &&(
           <Select
             labelKey="name"
             valueKey="name"
@@ -301,6 +284,7 @@ export const Tagging = (props) => {
     setDataTags,
     edgeLabel,
     tagLabel,
+    isEditMode,
   } = props
 
   const clientUser = Cookies.get('ClientUser')
@@ -314,7 +298,7 @@ export const Tagging = (props) => {
     }))
     return (
       <React.Fragment>
-        {clientUser && tokenId && (
+        {clientUser && tokenId && isEditMode &&(
           <Select
             options={options}
             labelKey="name"

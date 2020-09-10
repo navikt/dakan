@@ -10,6 +10,7 @@ export interface TaggingProps {
   setdataTags?: any
   edgeLabel: string
   tagLabel?: any
+  isEditMode?: boolean
 }
 
 export interface ElasticTaggingProps {
@@ -22,6 +23,7 @@ export interface ElasticTaggingProps {
   setdataTags?: any
   edgeLabel: string
   tagLabel?: string
+  isEditMode?: boolean
 }
 
 export declare const ElasticTagging: React.FC<ElasticTaggingProps>

@@ -5,7 +5,7 @@ import {LabelLarge} from 'baseui/typography';
 import ColumnViewer from './ColumnViewer';
 
 const TableColumns = (props: any): JSX.Element => {
-    const {columnsToView, tagOptions} = props;
+    const {columnsToView, tagOptions, isEditMode} = props;
 
     if (!columnsToView.length) {
         return (
@@ -18,7 +18,7 @@ const TableColumns = (props: any): JSX.Element => {
     return columnsToView.map((column: any, index: number) => {
         return (
             <React.Fragment key={`Column_list_item_${index}`}>
-                {columnsToView && <ColumnViewer columnData={column} tagOptions={tagOptions} />}
+                {columnsToView && <ColumnViewer columnData={column} tagOptions={tagOptions} isEditMode={isEditMode}/>}
             </React.Fragment>
         );
     });

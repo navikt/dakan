@@ -365,6 +365,7 @@ export const Data_Tagging = () => {
         setDataTags={setColumnTags}
         edgeLabel="hasTag"
         tagLabel="name"
+        isEditMode={true}
       />
     </ThemeProvider>
   )

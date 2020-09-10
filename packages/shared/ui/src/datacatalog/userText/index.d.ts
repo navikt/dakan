@@ -7,6 +7,7 @@ export interface ToggleUserTextProps {
   edgeLabel: string
   nodeLabel: string
   title?: string
+  isEditMode?: boolean
 }
 export interface SingleUserTextProps {
   userText?: any
@@ -15,6 +16,7 @@ export interface SingleUserTextProps {
   edgeLabel: string
   nodeLabel: string
   title?: string
+  isEditMode?: boolean
 }
 
 export declare const ToggleUserText: React.FC<ToggleUserTextProps>

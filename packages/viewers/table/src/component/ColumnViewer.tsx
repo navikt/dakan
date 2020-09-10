@@ -12,7 +12,7 @@ import {useNodeEdges} from '@dakan/hooks';
 const server = env('SERVER');
 
 const ColumnViewer = (prop: any) => {
-    const {columnData, tagOptions} = prop;
+    const {columnData, tagOptions, isEditMode} = prop;
 
     const [tags, loading, error, setTags] = useNodeEdges(columnData.id, 'hasColumnTag');
 
@@ -218,6 +218,7 @@ const ColumnViewer = (prop: any) => {
                                     edgeLabel="hasColumnTag"
                                     tagLabel="name"
                                     placeholder="Søk og legg til opplysningstype"
+                                    isEditMode={isEditMode}
                                 />
                             </Block>
                         </Block>
