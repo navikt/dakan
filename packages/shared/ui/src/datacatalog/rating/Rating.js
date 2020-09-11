@@ -23,7 +23,7 @@ export const Rating = (props) => {
   const [value, setValue] = React.useState(0)
   const [userRate, setUserRate] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
-  const [userFound, setUserFound] = React.useEffect(false)
+  const [userFound, setUserFound] = React.useState(false)
 
   const calculateRatings = () => {
     if (ratings && Array.isArray(ratings) && ratings.length > 0) {
@@ -113,13 +113,13 @@ export const Rating = (props) => {
   }
 
   React.useEffect(() => {
-    setValue(calculateRatings())
     getUserRate()
   }, [ratings])
 
   const expiresIn5mins = 0.0035;
 
   React.useEffect(() => {
+    getUserRate()
     const rateSelected = Cookies.get('RateSelected');
     const clientUser = Cookies.get('ClientUser');
     const tokenId = Cookies.get('ClientToken');
