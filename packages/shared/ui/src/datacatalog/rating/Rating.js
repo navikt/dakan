@@ -23,7 +23,8 @@ export const Rating = (props) => {
   const [value, setValue] = React.useState(0)
   const [userRate, setUserRate] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
-
+  const [userFound, setUserFound] = React.useEffect(false)
+ 
   const calculateRatings = () => {
     if (ratings && Array.isArray(ratings) && ratings.length > 0) {
       let ratingValue = 0
@@ -37,19 +38,16 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (clientUser && ratings && Array.isArray(ratings) && ratings.length > 0) {
+    if (clientUser && ratings && Array.isArray(ratings)) {
       ratings
         .filter((rating) => rating.properties.author === clientUser.userId)
         .map((rate) => {
           setUserRate(rate.properties.rate)
         })
-    } else {
-      setUserRate(0)
     }
   }
 
   const upsertRate = (rateValue) => {
-    let userFound = false
     const tokenId = Cookies.get('ClientToken')
     const newRatings = ratings && Array.isArray(ratings) ? [...ratings] : []
     const newRating = {
@@ -87,10 +85,10 @@ export const Rating = (props) => {
                     rating.properties.author === newRating.properties.author,
                 )
                 .map((rate) => {
+                  setUserFound(true)
                   rate.properties.rate = rateValue
                   rate.properties.date = newRating.properties.date
                   rate.properties.time = newRating.properties.time
-                  userFound = true
                 })
               if (userFound) {
                 setRatings(newRatings)
@@ -118,6 +116,18 @@ export const Rating = (props) => {
     getUserRate()
   }, [ratings])
 
+  const expiresIn5mins =  0.0035;
+
+  React.useEffect(() => {
+    const rateSelected = Cookies.get('RateSelected');
+    const clientUser = Cookies.get('ClientUser');
+    const tokenId = Cookies.get('ClientToken');
+    if (rateSelected && clientUser && tokenId) {
+        upsertRate(rateSelected);
+    }
+    Cookies.remove('RateSelected');
+}, []);
+
   return (
     <Block display="block" justifyContent="center">
       {!isLoading ? (
@@ -132,7 +142,10 @@ export const Rating = (props) => {
               numItems={5}
               size={22}
               value={userRate}
-              onChange={(e) => CheckIfAuthorized(() => upsertRate(e.value))}
+              onChange={(e) => {
+                Cookies.set('RateSelected', e.value, {expires: expiresIn5mins});
+                CheckIfAuthorized(() => upsertRate(e.value))
+              }}
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
