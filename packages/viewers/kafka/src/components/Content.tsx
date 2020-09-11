@@ -32,6 +32,7 @@ const Content = (props: any): JSX.Element => {
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
+  const [isEditMode, setIsEditMode] = React.useState(false)
 
   const getTopicContent = () => {
     return (
@@ -102,6 +103,7 @@ const Content = (props: any): JSX.Element => {
                   edgeLabel={'hasKafkaPersonTag'}
                   tagLabel={['fornavn', 'etternavn']}
                   placeholder="Søk og legg til kontaktperson"
+                  isEditMode={isEditMode}
                 />
               </Block>
               <ToggleUserText
@@ -111,6 +113,7 @@ const Content = (props: any): JSX.Element => {
                 title="Kommentar"
                 edgeLabel="hasKafkaComment"
                 nodeLabel="kafka_comment"
+                isEditMode={isEditMode}
               />
             </Block>
           }
