@@ -105,8 +105,8 @@ export const MediumWidth = (props) => {
   const [, theme] = useStyletron()
   return (
     <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
       <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
         <Block display="flex" justifyContent="center" width="100%">
           <Block
             display="flex"
@@ -138,7 +138,14 @@ export const SingleColumn = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <ToolBar {...props} />
+      <Block
+        display="flex"
+        justifyContent=""
+        width="100%"
+        paddingLeft={PADDING_LEFT}
+      >
+        <ToolBar {...props} />
+      </Block>
       <Block
         display="flex"
         justifyContent=""
@@ -166,7 +173,14 @@ const TwoCols = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
+      <Block
+        display="flex"
+        justifyContent="center"
+        width="100%"
+        paddingLeft={PADDING_LEFT}
+      >
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
+      </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block
           display="flex"
@@ -207,7 +221,14 @@ const ThreeCols = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+       <Block
+          display="flex"
+          justifyContent="center"
+          width="100%"
+          paddingLeft={PADDING_LEFT}
+        >
+          <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+        </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block
           display="flex"
@@ -281,8 +302,8 @@ export const LayoutSplit = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       <Block paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
         <Block
           display="flex"
           width="100%"
