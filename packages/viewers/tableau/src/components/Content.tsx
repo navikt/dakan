@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { KIND } from 'baseui/button';
+import { KIND } from 'baseui/button'
 import Cookies from 'js-cookie'
 import {
   LabeledContent,
@@ -80,13 +80,13 @@ const Content = (props: any): JSX.Element => {
   const expiresIn5mins = 0.0035
 
   React.useEffect(() => {
-    const editModeActivated = Cookies.get("TableauEditModeActivated")
+    const editModeActivated = Cookies.get('TableauEditModeActivated')
     const clientUser = Cookies.get('ClientUser')
     const tokenId = Cookies.get('ClientToken')
     if (editModeActivated && clientUser && tokenId) {
       setIsEditMode(true)
     }
-    Cookies.remove("TableauEditModeActivated")
+    Cookies.remove('TableauEditModeActivated')
   }, [])
 
   return (
@@ -102,16 +102,17 @@ const Content = (props: any): JSX.Element => {
                 startEnhancer={<EditIcon />}
                 startEnhancerHover={<EditIcon fill="white" />}
                 onClick={() => {
-                  Cookies.set("TableauEditModeActivated", "true", { expires: expiresIn5mins })
-                  if(isEditMode === true) {
-                    Cookies.remove("TableauEditModeActivated")
+                  Cookies.set('TableauEditModeActivated', 'true', {
+                    expires: expiresIn5mins,
+                  })
+                  if (isEditMode === true) {
+                    Cookies.remove('TableauEditModeActivated')
                   }
                   CheckIfAuthorized(() => setIsEditMode(!isEditMode))
-                }
-                }
+                }}
               >
                 Rediger innhold
-            </Button>
+              </Button>
             </Block>
           }
           left={

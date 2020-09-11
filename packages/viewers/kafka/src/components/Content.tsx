@@ -41,14 +41,14 @@ const Content = (props: any): JSX.Element => {
   const expiresIn5mins = 0.0035
 
   React.useEffect(() => {
-      const editModeActivated = Cookies.get("KafkaEditModeActivated")
-      const clientUser = Cookies.get('ClientUser')
-      const tokenId = Cookies.get('ClientToken')
-      if(editModeActivated && clientUser && tokenId) {
-          setIsEditMode(true)
-      } 
-      Cookies.remove("KafkaEditModeActivated")
-  },[])
+    const editModeActivated = Cookies.get('KafkaEditModeActivated')
+    const clientUser = Cookies.get('ClientUser')
+    const tokenId = Cookies.get('ClientToken')
+    if (editModeActivated && clientUser && tokenId) {
+      setIsEditMode(true)
+    }
+    Cookies.remove('KafkaEditModeActivated')
+  }, [])
 
   const getTopicContent = () => {
     return (
@@ -88,22 +88,23 @@ const Content = (props: any): JSX.Element => {
           headingText={data.properties.topic_name}
           toolbar={
             <Block display="flex" flex="1" justifyContent="flex-end">
-            <Button
+              <Button
                 kind={KIND.secondary}
                 startEnhancer={<EditIcon />}
                 startEnhancerHover={<EditIcon fill="white" />}
                 onClick={() => {
-                  Cookies.set("KafkaEditModeActivated", "true", { expires: expiresIn5mins })
-                  if(isEditMode === true) {
-                    Cookies.remove("KafkaEditModeActivated")
+                  Cookies.set('KafkaEditModeActivated', 'true', {
+                    expires: expiresIn5mins,
+                  })
+                  if (isEditMode === true) {
+                    Cookies.remove('KafkaEditModeActivated')
                   }
                   CheckIfAuthorized(() => setIsEditMode(!isEditMode))
-              }
-              }
-            >
+                }}
+              >
                 Rediger innhold
-            </Button>
-        </Block>
+              </Button>
+            </Block>
           }
           left={
             <Block>

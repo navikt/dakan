@@ -237,7 +237,11 @@ export const DynamicHeading = () => {
             left={<Block backgroundColor="yellow">{itemcontent()}</Block>}
             right={<Block backgroundColor="blue">{itemcontent()}</Block>}
             options={<Block backgroundColor="green">{itemcontent()}</Block>}
-            toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}
+            toolbar={
+              <Block display="flex" justifyContent="flex-end">
+                <Button kind={KIND.secondary}>test button</Button>
+              </Block>
+            }
           />
         </Block>
       </Block>
@@ -254,7 +258,11 @@ export const Split = () => (
         headingText="Heading text"
         left={<Block backgroundColor="yellow">{itemcontent()}</Block>}
         right={<Block backgroundColor="blue">{itemcontent()}</Block>}
-        toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}
+        toolbar={
+          <Block display="flex" justifyContent="flex-end">
+            <Button kind={KIND.secondary}>test button</Button>
+          </Block>
+        }
       />
     </Block>
   </ThemeProvider>
@@ -294,7 +302,15 @@ export const MediumWidths = () => (
 export const MediumWidthHeading = () => (
   <ThemeProvider theme={navTheme()}>
     <Header></Header>
-    <MediumWidth headingLabel="Heading label" headingText="Heading text" toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}>
+    <MediumWidth
+      headingLabel="Heading label"
+      headingText="Heading text"
+      toolbar={
+        <Block display="flex" justifyContent="flex-end">
+          <Button kind={KIND.secondary}>test button</Button>
+        </Block>
+      }
+    >
       {itemcontent()}
     </MediumWidth>
   </ThemeProvider>
@@ -303,7 +319,15 @@ export const MediumWidthHeading = () => (
 export const LargeWidthHeading = () => (
   <ThemeProvider theme={navTheme()}>
     <Header></Header>
-    <LargeWidth headingLabel="Heading label" headingText="Heading text" toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}>
+    <LargeWidth
+      headingLabel="Heading label"
+      headingText="Heading text"
+      toolbar={
+        <Block display="flex" justifyContent="flex-end">
+          <Button kind={KIND.secondary}>test button</Button>
+        </Block>
+      }
+    >
       {itemcontent()}
     </LargeWidth>
   </ThemeProvider>

@@ -67,7 +67,7 @@ export const Rating = (props) => {
     const RatingPayload = {
       outV: dataId,
       label: edgeLabel,
-      inV: newRating.id
+      inV: newRating.id,
     }
     setIsLoading(true)
     axios
@@ -79,7 +79,8 @@ export const Rating = (props) => {
           axios
             .put(`${graph_server}/edge`, [RatingPayload], {
               headers: { 'JWT-Token': tokenId },
-            }).then(() => {
+            })
+            .then(() => {
               newRatings
                 .filter(
                   (rating) =>
@@ -99,7 +100,8 @@ export const Rating = (props) => {
               }
               setUserRate(rateValue)
               setIsLoading(false)
-            }).catch((error) => {
+            })
+            .catch((error) => {
               console.log(error)
               setIsLoading(false)
             })
@@ -148,8 +150,8 @@ export const Rating = (props) => {
           </Block>
         </React.Fragment>
       ) : (
-          <Spinner size={22} />
-        )}
+        <Spinner size={22} />
+      )}
     </Block>
   )
 }

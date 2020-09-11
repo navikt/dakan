@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Block } from 'baseui/block';
-import { KIND } from 'baseui/button';
-import { format } from 'date-fns';
-import Cookies from 'js-cookie'
+import {Block} from 'baseui/block';
+import {KIND} from 'baseui/button';
+import {format} from 'date-fns';
+import Cookies from 'js-cookie';
 import {
     LargeWidth,
     LabeledContent,
@@ -16,9 +16,9 @@ import {
     EditIcon,
     CheckIfAuthorized,
 } from '@dakan/ui';
-import { LabelLarge } from 'baseui/typography';
-import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
-import { useStyletron } from 'baseui';
+import {LabelLarge} from 'baseui/typography';
+import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
+import {useStyletron} from 'baseui';
 
 import ColumnListFilter from '../utils/ColumnListFilter';
 import TableColumns from './TableColumns';
@@ -27,9 +27,9 @@ const items = (props: any): JSX.Element[] => {
     const content = props.properties;
 
     const ITEMS = [
-        { item: 'schema_name', label: 'Skjema' },
-        { item: 'db_name', label: 'Database navn' },
-        { item: 'host', label: 'Host adresse' },
+        {item: 'schema_name', label: 'Skjema'},
+        {item: 'db_name', label: 'Database navn'},
+        {item: 'host', label: 'Host adresse'},
     ];
 
     return ITEMS.map((entry: any, i: number) => {
@@ -52,7 +52,7 @@ const items = (props: any): JSX.Element[] => {
 };
 
 const Main = (props: any): JSX.Element => {
-    const { data, numberOfColumns, isEditMode, description, setDescription } = props;
+    const {data, numberOfColumns, isEditMode, description, setDescription} = props;
     const [, theme] = useStyletron();
     return (
         <React.Fragment>
@@ -62,7 +62,7 @@ const Main = (props: any): JSX.Element => {
                         <LabelLarge>
                             <b>Beskrivelse</b>
                         </LabelLarge>
-                        <Block marginTop="scale200" $style={{ ...theme.typography.font300 }}>
+                        <Block marginTop="scale200" $style={{...theme.typography.font300}}>
                             {data.properties.table_description}
                         </Block>
                         <Block marginTop="scale800">
@@ -96,17 +96,17 @@ const Content = (props: any): JSX.Element => {
     const [filterText, setFilterText] = React.useState();
     const [isEditMode, setIsEditMode] = React.useState(false);
 
-    const expiresIn5mins = 0.0035
+    const expiresIn5mins = 0.0035;
 
     React.useEffect(() => {
-        const editModeActivated = Cookies.get("TableEditModeActivated")
-        const clientUser = Cookies.get('ClientUser')
-        const tokenId = Cookies.get('ClientToken')
+        const editModeActivated = Cookies.get('TableEditModeActivated');
+        const clientUser = Cookies.get('ClientUser');
+        const tokenId = Cookies.get('ClientToken');
         if (editModeActivated && clientUser && tokenId) {
-            setIsEditMode(true)
+            setIsEditMode(true);
         }
-        Cookies.remove("TableEditModeActivated")
-    }, [])
+        Cookies.remove('TableEditModeActivated');
+    }, []);
 
     return (
         <Block>
@@ -121,16 +121,15 @@ const Content = (props: any): JSX.Element => {
                                 startEnhancer={<EditIcon />}
                                 startEnhancerHover={<EditIcon fill="white" />}
                                 onClick={() => {
-                                    Cookies.set("TableEditModeActivated", "true", { expires: expiresIn5mins })
+                                    Cookies.set('TableEditModeActivated', 'true', {expires: expiresIn5mins});
                                     if (isEditMode === true) {
-                                        Cookies.remove("TableEditModeActivated")
+                                        Cookies.remove('TableEditModeActivated');
                                     }
-                                    CheckIfAuthorized(() => setIsEditMode(!isEditMode))
-                                }
-                                }
+                                    CheckIfAuthorized(() => setIsEditMode(!isEditMode));
+                                }}
                             >
                                 Rediger innhold
-                                </Button>
+                            </Button>
                         </Block>
                     }
                 >

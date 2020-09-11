@@ -5,7 +5,7 @@ import { LabelLarge } from 'baseui/typography'
 import FieldViewer from './FieldViewer'
 
 const TopicFields = (props: any): JSX.Element => {
-  const { fieldsToView, tagOptions, clientUser, isEditMode} = props
+  const { fieldsToView, tagOptions, clientUser, isEditMode } = props
   if (!fieldsToView.length) {
     return (
       <Block display="flex" justifyContent="center" marginTop="scale1000">

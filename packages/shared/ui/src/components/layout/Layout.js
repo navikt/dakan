@@ -20,14 +20,12 @@ export const ToolBar = (props) => {
           marginBottom="scale400"
           marginTop="scale400"
         >
-          <Block flex="1">
-            {props.toolbar}
-          </Block>
+          <Block flex="1">{props.toolbar}</Block>
         </Block>
       </Block>
     )
   } else {
-    return (<React.Fragment />)
+    return <React.Fragment />
   }
 }
 
@@ -76,7 +74,7 @@ export const LargeWidth = (props) => {
     >
       <Block width="100%">
         <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
-        <Block display="flex" justifyContent="center" width="100%" >
+        <Block display="flex" justifyContent="center" width="100%">
           <Block
             display="flex"
             justifyContent="center"

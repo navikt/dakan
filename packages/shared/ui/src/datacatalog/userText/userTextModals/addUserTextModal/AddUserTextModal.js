@@ -60,13 +60,15 @@ export const AddUserTextModal = (props) => {
       .then((response) => {
         if (response.status === 200) {
           axios
-            .put(`${server}/edge`, [userTextPayload],
-              { headers: { 'JWT-Token': tokenId } })
+            .put(`${server}/edge`, [userTextPayload], {
+              headers: { 'JWT-Token': tokenId },
+            })
             .then(() => {
               setUserTexts(newUserTexts)
               setShowSpinner(false)
               setIsOpen(false)
-            }).catch((error) => console.log(error))
+            })
+            .catch((error) => console.log(error))
         }
       })
       .catch((error) => console.log(error))
@@ -114,37 +116,37 @@ export const AddUserTextModal = (props) => {
           </Block>
         </Block>
       ) : (
-          <Block>
-            <ModalBody>
-              <Textarea
-                rows={10}
-                overrides={{
-                  InputContainer: {
-                    style: {
-                      height: '250px',
-                    },
+        <Block>
+          <ModalBody>
+            <Textarea
+              rows={10}
+              overrides={{
+                InputContainer: {
+                  style: {
+                    height: '250px',
                   },
-                }}
-                onChange={(e) => setText(e.target.value)}
-                placeholder={`Skriv en ${title.toLowerCase()}...`}
-                value={text}
-              />
-            </ModalBody>
-            <ModalFooter>
-              <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
-                Avbryt
+                },
+              }}
+              onChange={(e) => setText(e.target.value)}
+              placeholder={`Skriv en ${title.toLowerCase()}...`}
+              value={text}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <ModalButton kind={KIND.minimal} onClick={() => setIsOpen(false)}>
+              Avbryt
             </ModalButton>
-              <ModalButton
-                onClick={() => {
-                  addText()
-                  setShowSpinner(true)
-                }}
-              >
-                Lagre
+            <ModalButton
+              onClick={() => {
+                addText()
+                setShowSpinner(true)
+              }}
+            >
+              Lagre
             </ModalButton>
-            </ModalFooter>
-          </Block>
-        )}
+          </ModalFooter>
+        </Block>
+      )}
     </Modal>
   )
 }
