@@ -70,7 +70,7 @@ export const LargeWidth = (props) => {
       display="flex"
       width="100%"
       minHeight="100vh"
-      lexDirection="column"
+      flexDirection="column"
       paddingLeft={MARGIN_LEFT}
       paddingRight={MARGIN_RIGHT}
     >
