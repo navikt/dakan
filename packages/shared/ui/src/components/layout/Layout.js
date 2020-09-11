@@ -9,6 +9,28 @@ const PADDING_LEFT = '16px'
 const MARGIN_RIGHT = '20px'
 const LEFT_MENU_WIDTH = '320px'
 
+export const ToolBar = (props) => {
+  if (props && props.toolbar) {
+    return (
+      <Block display="flex" width="100%" justifyContent="center">
+        <Block
+          display="flex"
+          width="100%"
+          maxWidth={props.breakpointWidth + 'px'}
+          marginBottom="scale400"
+          marginTop="scale400"
+        >
+          <Block flex="1">
+            {props.toolbar}
+          </Block>
+        </Block>
+      </Block>
+    )
+  } else {
+    return (<React.Fragment />)
+  }
+}
+
 export const Heading = (props) => {
   if (props && props.headingLabel && props.headingText) {
     return (
@@ -44,16 +66,22 @@ export const FullWidth = (props) => {
 export const LargeWidth = (props) => {
   const [, theme] = useStyletron()
   return (
-    <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
+    <Block
+      display="flex"
+      width="100%"
+      minHeight="100vh"
+      lexDirection="column"
+      paddingLeft={MARGIN_LEFT}
+      paddingRight={MARGIN_RIGHT}
+    >
       <Block width="100%">
-        <Block display="flex" justifyContent="center" width="100%">
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+        <Block display="flex" justifyContent="center" width="100%" >
           <Block
             display="flex"
             justifyContent="center"
             width="100%"
             maxWidth={theme.breakpoints.large + 'px'}
-            paddingLeft={MARGIN_LEFT}
-            paddingRight={MARGIN_RIGHT}
           >
             <Block flex="1">
               <Heading {...props} />
@@ -65,8 +93,6 @@ export const LargeWidth = (props) => {
             flex="1"
             width="100%"
             maxWidth={theme.breakpoints.large + 'px'}
-            paddingLeft={MARGIN_LEFT}
-            paddingRight={MARGIN_RIGHT}
           >
             {props.children}
           </Block>
@@ -81,6 +107,7 @@ export const MediumWidth = (props) => {
   const [, theme] = useStyletron()
   return (
     <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
       <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
         <Block display="flex" justifyContent="center" width="100%">
           <Block
@@ -113,6 +140,7 @@ export const SingleColumn = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
+      <ToolBar {...props} />
       <Block
         display="flex"
         justifyContent=""
@@ -140,6 +168,7 @@ const TwoCols = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
       <Block display="flex" justifyContent="center" width="100%">
         <Block
           display="flex"
@@ -180,6 +209,7 @@ const ThreeCols = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       <Block display="flex" justifyContent="center" width="100%">
         <Block
           display="flex"
@@ -253,6 +283,7 @@ export const LayoutSplit = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       <Block paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
         <Block
           display="flex"
