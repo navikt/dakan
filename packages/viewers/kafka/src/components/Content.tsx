@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { LabelMedium } from 'baseui/typography'
+import { KIND } from 'baseui/button'
 import {
   LayoutSplit as Layout,
   LabeledContent,
@@ -10,6 +10,9 @@ import {
   Rating,
   GetValue,
   ElasticTagging,
+  Button,
+  EditIcon,
+  CheckIfAuthorized,
 } from '@dakan/ui'
 
 import FilterFieldList from '../utils/FilterFieldList'
@@ -32,7 +35,7 @@ const Content = (props: any): JSX.Element => {
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
-  const [isEditMode, setIsEditMode] = React.useState(false)
+  const [isEditMode, setIsEditMode] = React.useState(true)
 
   const getTopicContent = () => {
     return (
@@ -69,6 +72,18 @@ const Content = (props: any): JSX.Element => {
         <Layout
           headingLabel="Kafka topic"
           headingText={data.properties.topic_name}
+          toolbar={
+            <Block display="flex" flex="1" justifyContent="flex-end">
+            <Button
+                kind={KIND.secondary}
+                startEnhancer={<EditIcon />}
+                startEnhancerHover={<EditIcon fill="white" />}
+                onClick={() => CheckIfAuthorized(() => setIsEditMode(!isEditMode))}
+            >
+                Rediger innhold
+            </Button>
+        </Block>
+          }
           left={
             <Block>
               <Block marginBottom="scale800" marginTop="-20px">
@@ -91,6 +106,7 @@ const Content = (props: any): JSX.Element => {
                   edgeLabel={'hasKafkaTeamTag'}
                   tagLabel={'name'}
                   placeholder="Søk og legg til team"
+                  isEditMode={isEditMode}
                 />
               </Block>
               <Block marginBottom="scale800">
@@ -133,6 +149,7 @@ const Content = (props: any): JSX.Element => {
                     />
                   </Block>
                   <TopicFields
+                    isEditMode={isEditMode}
                     fieldsToView={filterText ? filterFields : fields}
                     tagOptions={tagOptions}
                   />

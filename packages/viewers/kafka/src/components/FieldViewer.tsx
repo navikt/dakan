@@ -8,7 +8,7 @@ import { LabelMedium, LabelLarge } from 'baseui/typography'
 const server = env('GRAPH_SERVER')
 
 const FieldViewer = (props: any): JSX.Element => {
-  const { field, tagOptions, clientUser } = props
+  const { field, tagOptions, clientUser, isEditMode } = props
   const [tags, loading, error, setTags] = useNodeEdges(
     field.id,
     'hasKafkaFieldTag',
@@ -40,6 +40,7 @@ const FieldViewer = (props: any): JSX.Element => {
                     edgeLabel="hasKafkaFieldTag"
                     tagLabel="name"
                     placeholder="Søk og legg til opplysningstype"
+                    isEditMode={isEditMode}
                   />
                 </Block>
               </Block>
