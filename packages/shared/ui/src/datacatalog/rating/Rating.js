@@ -24,7 +24,7 @@ export const Rating = (props) => {
   const [userRate, setUserRate] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(false)
   const [userFound, setUserFound] = React.useEffect(false)
- 
+
   const calculateRatings = () => {
     if (ratings && Array.isArray(ratings) && ratings.length > 0) {
       let ratingValue = 0
@@ -38,7 +38,7 @@ export const Rating = (props) => {
   }
 
   const getUserRate = () => {
-    if (clientUser && ratings && Array.isArray(ratings)) {
+    if (clientUser && ratings && Array.isArray(ratings) && ratings.length > 0) {
       ratings
         .filter((rating) => rating.properties.author === clientUser.userId)
         .map((rate) => {
@@ -109,6 +109,7 @@ export const Rating = (props) => {
         console.log(error)
         setIsLoading(false)
       })
+    Cookies.remove('RateSelected');
   }
 
   React.useEffect(() => {
@@ -116,17 +117,16 @@ export const Rating = (props) => {
     getUserRate()
   }, [ratings])
 
-  const expiresIn5mins =  0.0035;
+  const expiresIn5mins = 0.0035;
 
   React.useEffect(() => {
     const rateSelected = Cookies.get('RateSelected');
     const clientUser = Cookies.get('ClientUser');
     const tokenId = Cookies.get('ClientToken');
     if (rateSelected && clientUser && tokenId) {
-        upsertRate(rateSelected);
+      upsertRate(rateSelected);
     }
-    Cookies.remove('RateSelected');
-}, []);
+  }, []);
 
   return (
     <Block display="block" justifyContent="center">
@@ -143,7 +143,7 @@ export const Rating = (props) => {
               size={22}
               value={userRate}
               onChange={(e) => {
-                Cookies.set('RateSelected', e.value, {expires: expiresIn5mins});
+                Cookies.set('RateSelected', e.value, { expires: expiresIn5mins });
                 CheckIfAuthorized(() => upsertRate(e.value))
               }}
             />
@@ -163,8 +163,8 @@ export const Rating = (props) => {
           </Block>
         </React.Fragment>
       ) : (
-        <Spinner size={22} />
-      )}
+          <Spinner size={22} />
+        )}
     </Block>
   )
 }
