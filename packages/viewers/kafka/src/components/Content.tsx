@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
+import Cookies from 'js-cookie'
 import {
   LayoutSplit as Layout,
   LabeledContent,
@@ -36,6 +37,18 @@ const Content = (props: any): JSX.Element => {
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
   const [isEditMode, setIsEditMode] = React.useState(false)
+
+  const expiresIn5mins = 0.0035
+
+  React.useEffect(() => {
+      const editModeActivated = Cookies.get("EditModeActivated")
+      const clientUser = Cookies.get('ClientUser')
+      const tokenId = Cookies.get('ClientToken')
+      if(editModeActivated && clientUser && tokenId) {
+          setIsEditMode(true)
+      } 
+      Cookies.remove("EditModeActivated")
+  },[])
 
   const getTopicContent = () => {
     return (
@@ -79,7 +92,11 @@ const Content = (props: any): JSX.Element => {
                 kind={KIND.secondary}
                 startEnhancer={<EditIcon />}
                 startEnhancerHover={<EditIcon fill="white" />}
-                onClick={() => CheckIfAuthorized(() => setIsEditMode(!isEditMode))}
+                onClick={() => {
+                  Cookies.set("EditModeActivated", "true", { expires: expiresIn5mins })
+                  CheckIfAuthorized(() => setIsEditMode(!isEditMode))
+              }
+              }
             >
                 Rediger innhold
             </Button>
