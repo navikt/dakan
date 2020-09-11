@@ -113,12 +113,7 @@ export const Rating = (props) => {
   }
 
   React.useEffect(() => {
-    getUserRate()
-  }, [ratings])
-
-  const expiresIn5mins = 0.0035;
-
-  React.useEffect(() => {
+    setValue(calculateRatings())
     getUserRate()
     const rateSelected = Cookies.get('RateSelected');
     const clientUser = Cookies.get('ClientUser');
@@ -126,7 +121,9 @@ export const Rating = (props) => {
     if (rateSelected && clientUser && tokenId) {
       upsertRate(rateSelected);
     }
-  }, []);
+  }, [dataId])
+
+  const expiresIn5mins = 0.0035;
 
   return (
     <Block display="block" justifyContent="center">
