@@ -49,6 +49,7 @@ export const Rating = (props) => {
 
   const upsertRate = (rateValue) => {
     const tokenId = Cookies.get('ClientToken')
+    const clientUser = Cookies.get('ClientUser');
     const newRatings = ratings && Array.isArray(ratings) ? [...ratings] : []
     const newRating = {
       id: `${dataId}.${nodeLabel}_${clientUser.userId}`,
@@ -115,13 +116,18 @@ export const Rating = (props) => {
   React.useEffect(() => {
     setValue(calculateRatings())
     getUserRate()
+  }, [ratings])
+
+  React.useEffect(() => {
+    setValue(calculateRatings())
+    getUserRate()
     const rateSelected = Cookies.get('RateSelected');
     const clientUser = Cookies.get('ClientUser');
     const tokenId = Cookies.get('ClientToken');
     if (rateSelected && clientUser && tokenId) {
       upsertRate(rateSelected);
     }
-  }, [dataId])
+  }, [])
 
   const expiresIn5mins = 0.0035;
 
