@@ -53,6 +53,7 @@ const Content = (props: any): JSX.Element => {
                 title="Utvidet beskrivelse"
                 edgeLabel="hasKafkaDescription"
                 nodeLabel="kafka_description"
+                isEditMode={isEditMode}
               />
             </Block>
             <Block flex="1">
