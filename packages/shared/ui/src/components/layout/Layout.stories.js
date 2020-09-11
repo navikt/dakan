@@ -1,7 +1,7 @@
 import React from 'react'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { Block } from 'baseui/block'
-import { Button } from 'baseui/button'
+import { KIND } from 'baseui/button'
 import { Card, StyledBody, StyledAction, StyledThumbnail } from 'baseui/card'
 import { LabelLarge } from 'baseui/typography'
 import { Navigation } from 'baseui/side-navigation'
@@ -23,6 +23,7 @@ import {
 } from './Layout'
 import { ITEMS, nav } from './data'
 import { BackLink } from '../back/Back'
+import { Button } from '../button/Button'
 
 const setLocation = (id) => {
   console.log(id)
@@ -236,6 +237,7 @@ export const DynamicHeading = () => {
             left={<Block backgroundColor="yellow">{itemcontent()}</Block>}
             right={<Block backgroundColor="blue">{itemcontent()}</Block>}
             options={<Block backgroundColor="green">{itemcontent()}</Block>}
+            toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}
           />
         </Block>
       </Block>
@@ -252,6 +254,7 @@ export const Split = () => (
         headingText="Heading text"
         left={<Block backgroundColor="yellow">{itemcontent()}</Block>}
         right={<Block backgroundColor="blue">{itemcontent()}</Block>}
+        toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}
       />
     </Block>
   </ThemeProvider>
@@ -291,7 +294,7 @@ export const MediumWidths = () => (
 export const MediumWidthHeading = () => (
   <ThemeProvider theme={navTheme()}>
     <Header></Header>
-    <MediumWidth headingLabel="Heading label" headingText="Heading text">
+    <MediumWidth headingLabel="Heading label" headingText="Heading text" toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}>
       {itemcontent()}
     </MediumWidth>
   </ThemeProvider>
@@ -300,7 +303,7 @@ export const MediumWidthHeading = () => (
 export const LargeWidthHeading = () => (
   <ThemeProvider theme={navTheme()}>
     <Header></Header>
-    <LargeWidth headingLabel="Heading label" headingText="Heading text">
+    <LargeWidth headingLabel="Heading label" headingText="Heading text" toolbar={(<Block display="flex" justifyContent="flex-end"><Button kind={KIND.secondary}>test button</Button></Block>)}>
       {itemcontent()}
     </LargeWidth>
   </ThemeProvider>
