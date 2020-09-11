@@ -110,26 +110,12 @@ export const Rating = (props) => {
         console.log(error)
         setIsLoading(false)
       })
-    Cookies.remove('RateSelected');
   }
 
   React.useEffect(() => {
     setValue(calculateRatings())
     getUserRate()
   }, [ratings])
-
-  React.useEffect(() => {
-    setValue(calculateRatings())
-    getUserRate()
-    const rateSelected = Cookies.get('RateSelected');
-    const clientUser = Cookies.get('ClientUser');
-    const tokenId = Cookies.get('ClientToken');
-    if (rateSelected && clientUser && tokenId) {
-      upsertRate(rateSelected);
-    }
-  }, [])
-
-  const expiresIn5mins = 0.0035;
 
   return (
     <Block display="block" justifyContent="center">
@@ -146,7 +132,6 @@ export const Rating = (props) => {
               size={22}
               value={userRate}
               onChange={(e) => {
-                Cookies.set('RateSelected', e.value, { expires: expiresIn5mins });
                 CheckIfAuthorized(() => upsertRate(e.value))
               }}
             />
