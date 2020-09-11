@@ -9,7 +9,7 @@ import { useNodeEdges } from '@dakan/hooks'
 const server = env('GRAPH_SERVER')
 
 const TableauView = (props: any) => {
-  const { view, tagOptions, clientUser } = props
+  const { view, tagOptions, clientUser, isEditMode } = props
   const [tags, loading, error, setTags] = useNodeEdges(
     view.id,
     'hasTableauViewTag',
@@ -50,6 +50,7 @@ const TableauView = (props: any) => {
               edgeLabel="hasTableauViewTag"
               tagLabel="name"
               placeholder="Søk og legg til opplysningstype"
+              isEditMode={isEditMode}
             />
           </Block>
         </Block>

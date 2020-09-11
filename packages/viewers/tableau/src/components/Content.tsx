@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
+import { KIND } from 'baseui/button';
 import {
   LabeledContent,
   ToggleUserText,
@@ -8,6 +9,9 @@ import {
   Rating,
   GetValue,
   ElasticTagging,
+  Button,
+  EditIcon,
+  CheckIfAuthorized,
 } from '@dakan/ui'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
 import { format } from 'date-fns'
@@ -70,12 +74,26 @@ const Content = (props: any): JSX.Element => {
     setPersonTags,
   } = props
 
+  const [isEditMode, setIsEditMode] = React.useState(false)
+
   return (
     <Block>
       {data && data.id && data.properties && data.properties.workbook_name && (
         <Layout
           headingLabel="Tableau workbook"
           headingText={data.id}
+          toolbar={
+            <Block display="flex" flex="1" justifyContent="flex-end">
+              <Button
+                kind={KIND.secondary}
+                startEnhancer={<EditIcon />}
+                startEnhancerHover={<EditIcon fill="white" />}
+                onClick={() => CheckIfAuthorized(() => setIsEditMode(!isEditMode))}
+              >
+                Rediger innhold
+            </Button>
+            </Block>
+          }
           left={
             <Block>
               <Block marginBottom="scale800" marginTop="-20px">
@@ -100,6 +118,7 @@ const Content = (props: any): JSX.Element => {
                   title="Utvidet beskrivelse"
                   edgeLabel="hasTableauDescription"
                   nodeLabel="tableau_description"
+                  isEditMode={isEditMode}
                 />
               </Block>
               <Block marginBottom="scale800">{items(data)}</Block>
@@ -113,6 +132,7 @@ const Content = (props: any): JSX.Element => {
                   edgeLabel={'hasTableauTeamTag'}
                   tagLabel={'name'}
                   placeholder="Søk og legg til team"
+                  isEditMode={isEditMode}
                 />
               </Block>
               <Block marginBottom="scale800">
@@ -125,6 +145,7 @@ const Content = (props: any): JSX.Element => {
                   edgeLabel={'hasTableauPersonTag'}
                   tagLabel={['fornavn', 'etternavn']}
                   placeholder="Søk og legg til kontaktperson"
+                  isEditMode={isEditMode}
                 />
               </Block>
               <Block marginBottom="scale800">
@@ -135,6 +156,7 @@ const Content = (props: any): JSX.Element => {
                   title="Kommentar"
                   edgeLabel="hasTableauComment"
                   nodeLabel="tableau_comment"
+                  isEditMode={isEditMode}
                 />
               </Block>
             </Block>
@@ -147,6 +169,7 @@ const Content = (props: any): JSX.Element => {
                     viewList={viewList}
                     tagOptions={tagOptions}
                     clientUser={clientUser}
+                    isEditMode={isEditMode}
                   />
                 </Block>
               )}

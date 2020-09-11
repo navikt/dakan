@@ -35,7 +35,7 @@ const Content = (props: any): JSX.Element => {
   } = props
   const [filterFields, setFilterFields] = React.useState()
   const [filterText, setFilterText] = React.useState()
-  const [isEditMode, setIsEditMode] = React.useState(true)
+  const [isEditMode, setIsEditMode] = React.useState(false)
 
   const getTopicContent = () => {
     return (
