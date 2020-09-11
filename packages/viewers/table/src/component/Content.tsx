@@ -99,14 +99,14 @@ const Content = (props: any): JSX.Element => {
     const expiresIn5mins = 0.0035
 
     React.useEffect(() => {
-        const editModeActivated = Cookies.get("EditModeActivated")
+        const editModeActivated = Cookies.get("TableEditModeActivated")
         const clientUser = Cookies.get('ClientUser')
         const tokenId = Cookies.get('ClientToken')
-        if(editModeActivated && clientUser && tokenId) {
+        if (editModeActivated && clientUser && tokenId) {
             setIsEditMode(true)
-        } 
-        Cookies.remove("EditModeActivated")
-    },[])
+        }
+        Cookies.remove("TableEditModeActivated")
+    }, [])
 
     return (
         <Block>
@@ -121,7 +121,10 @@ const Content = (props: any): JSX.Element => {
                                 startEnhancer={<EditIcon />}
                                 startEnhancerHover={<EditIcon fill="white" />}
                                 onClick={() => {
-                                    Cookies.set("EditModeActivated", "true", { expires: expiresIn5mins })
+                                    Cookies.set("TableEditModeActivated", "true", { expires: expiresIn5mins })
+                                    if (isEditMode === true) {
+                                        Cookies.remove("TableEditModeActivated")
+                                    }
                                     CheckIfAuthorized(() => setIsEditMode(!isEditMode))
                                 }
                                 }
