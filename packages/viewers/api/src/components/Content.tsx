@@ -26,9 +26,12 @@ const Content = ({ item, id }) => {
     return <Block>{item._source.content && item._source.content.name}</Block>
   }
 
+  if(item){ console.log(item)}
+
   return (
     <React.Fragment>
-      {item && item._source && (<Block>
+      {item && item._source && (
+      <Block>
         <Layout
           headingLabel="API"
           headingText={getHeadingText()}
