@@ -10,32 +10,32 @@ const ITEMS = [
 
 const Content = ({ item, id }) => {
   const Head = () =>{ 
-    const node = {
-      properties: item && item._source && item._source.content
+    const itemProperties = {
+      properties: item._source.content
     }
     return (
     <Block>
       <ParagraphMedium>
-        {item && item._source && item._source.content && item._source.content.description }
+        {item._source.content && item._source.content.description }
       </ParagraphMedium>
-      <ContentItems ITEMS={ITEMS} item={node} />
+      <ContentItems ITEMS={ITEMS} item={itemProperties} />
     </Block>
   )}
 
   const getHeadingText = () => {
-    return <Block>{item && item._source && item._source.content && item._source.content.name}</Block>
+    return <Block>{item._source.content && item._source.content.name}</Block>
   }
 
   return (
     <React.Fragment>
-      <Block>
+      {item && item._source && (<Block>
         <Layout
           headingLabel="API"
           headingText={getHeadingText()}
           left={<Head />}
           right={null}
         />
-      </Block>
+      </Block>)}
     </React.Fragment>
   )
 }
