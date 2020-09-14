@@ -9,17 +9,21 @@ const ITEMS = [
 ]
 
 const Content = ({ item, id }) => {
-  const Head = () => (
+  const Head = () =>{ 
+    const node = {
+      properties: item && item._source && item._source.content
+    }
+    return (
     <Block>
       <ParagraphMedium>
-        {item && item.properties && item.properties.description}
+        {item && item._source && item._source.content && item._source.content.description }
       </ParagraphMedium>
-      <ContentItems ITEMS={ITEMS} item={item} />
+      <ContentItems ITEMS={ITEMS} item={node} />
     </Block>
-  )
+  )}
 
   const getHeadingText = () => {
-    return <Block>{item && item.properties && item.properties.name}</Block>
+    return <Block>{item && item._source && item._source.content && item._source.content.name}</Block>
   }
 
   return (

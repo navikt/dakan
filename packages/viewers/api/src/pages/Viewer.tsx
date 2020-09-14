@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metrics } from '@dakan/metrics'
-import { useNode } from '@dakan/hooks'
+import { useElasticSearch } from '@dakan/hooks'
 import { LoadingSpinner } from '@dakan/ui'
 
 import Content from '../components/Content'
@@ -8,7 +8,7 @@ import Content from '../components/Content'
 import exampleJson from '../resources/example.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
+  const [node, loadingNode, errorLoadingNode ] = useElasticSearch(
     props.match.params.id,
   )
 
@@ -18,7 +18,7 @@ const Viewer = (props: any) => {
 
   return (
     <React.Fragment>
-      {errorLoadingNode && errorMessage}
+      {errorLoadingNode }
       {loadingNode && <LoadingSpinner />}
       {node && (
         <React.Fragment>
