@@ -42,7 +42,7 @@ export const ContentItems = ({ ITEMS, item }) => {
         }
 
         if (entry.format && entry.format === 'link') {
-          value = getLink(value)
+          value = getLink(value, value)
         }
 
         return (
