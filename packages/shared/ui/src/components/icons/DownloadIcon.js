@@ -2,6 +2,8 @@ import * as React from 'react'
 import Icon from './Icon'
 
 export const DownloadIcon = ({ size, fill }) => {
+  const iconFill = fill || '#19548A'
+
   return (
     <Icon size={size} fill={fill}>
       <path
@@ -15,6 +17,8 @@ export const DownloadIcon = ({ size, fill }) => {
 }
 
 export const DownloadHoverIcon = ({ size, fill }) => {
+  const iconFill = fill || '#19548A'
+
   return (
     <Icon size={size} fill={fill}>
       <path
@@ -28,6 +32,8 @@ export const DownloadHoverIcon = ({ size, fill }) => {
 }
 
 export const DownloadActiveIcon = ({ size, fill }) => {
+  const iconFill = fill || '#19548A'
+
   return (
     <Icon size={size} fill={fill}>
       <rect width="24" height="24" fill="white" />
