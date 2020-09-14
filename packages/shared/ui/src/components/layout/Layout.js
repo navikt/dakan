@@ -221,14 +221,14 @@ const ThreeCols = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-       <Block
-          display="flex"
-          justifyContent="center"
-          width="100%"
-          paddingLeft={PADDING_LEFT}
-        >
-          <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
-        </Block>
+      <Block
+        display="flex"
+        justifyContent="center"
+        width="100%"
+        paddingLeft={PADDING_LEFT}
+      >
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+      </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block
           display="flex"
