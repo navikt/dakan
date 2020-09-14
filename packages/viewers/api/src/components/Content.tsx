@@ -11,26 +11,24 @@ const ITEMS = [
 const Content = ({ item, id }) => {
   const Head = () =>{ 
     const itemProperties = {
-      properties: item._source.content
+      properties: item.content
     }
     return (
     <Block>
       <ParagraphMedium>
-        {item._source.content && item._source.content.description }
+        {item.content.description }
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={itemProperties} />
     </Block>
   )}
 
   const getHeadingText = () => {
-    return <Block>{item._source.content && item._source.content.name}</Block>
+    return <Block>{item.content.name}</Block>
   }
-
-  if(item){ console.log(item)}
 
   return (
     <React.Fragment>
-      {item && item._source && (
+      {item && item.content && (
       <Block>
         <Layout
           headingLabel="API"
