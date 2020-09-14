@@ -320,7 +320,7 @@ export const navTheme = (borderRadius = '0px') => {
       inputEnhancerFill: primary,
       inputFillActive: '#F2F2F2',
       inputFill: white,
-      inputPlaceholder: grayLightest,
+      inputPlaceholder: nadaDypBla,
       linkText: '#1A548A',
       linkVisited: navLilla,
       primary: primary,
