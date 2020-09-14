@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Icon from './Icon'
 
-export const InfoIcon = (props) => {
+export const InfoIcon = ({ size, fill }) => {
   const iconFill = fill || '#19548A'
 
   return (
-    <Icon size={props.size} fill={props.fill}>
+    <Icon size={size} fill={fill}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -16,11 +16,11 @@ export const InfoIcon = (props) => {
   )
 }
 
-export const InfoHoverIcon = (props) => {
+export const InfoHoverIcon = ({ size, fill }) => {
   const iconFill = fill || '#0067C5'
 
   return (
-    <Icon size={props.size} fill={props.fill}>
+    <Icon size={size} fill={fill}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

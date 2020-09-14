@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Icon from './Icon'
 
-export const MenuIcon = (props) => {
+export const MenuIcon = ({ size, fill }) => {
   const iconFill = fill || '#19548A'
 
   return (
-    <Icon size={props.size} fill={props.fill}>
+    <Icon size={size} fill={fill}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
