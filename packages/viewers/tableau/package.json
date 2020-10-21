@@ -23,7 +23,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.4",
     "serialize-javascript": ">=2.1.1",
     "styletron-engine-atomic": "^1.4.3",
     "styletron-react": "^5.2.6",
