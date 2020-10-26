@@ -56,7 +56,7 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-  const { defaultTags, dataTags, setDataTags, dataId, tagLabel } = props
+  const { defaultTags, dataTags, setDataTags, dataId, tagLabel, isEditMode } = props
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
@@ -75,7 +75,14 @@ const DataTags = (props) => {
       return dataTags.map((tag, index) => {
         return (
           <React.Fragment>
-            {tag && tag.properties && (
+            {tag && tag.properties && isEditMode && (
+              <Block
+                key={'tag_' + index}
+              >
+                {getName(tag, tagLabel)}
+              </Block>
+            )}
+            {tag && tag.properties && !isEditMode && (
               <Tag
                 key={'tag_' + index}
                 variant={VARIANT.outlined}
@@ -98,9 +105,9 @@ const DataTags = (props) => {
         if (tag !== '') {
           return (
             <React.Fragment>
-              <Tag closeable={false} key={'defaultTag_' + index}>
+              <Block key={'defaultTag_' + index}>
                 {tag}
-              </Tag>
+              </Block>
             </React.Fragment>
           )
         }
@@ -110,7 +117,7 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-      {!dataTags && !defaultTags && <Tag closeable={false}>Ingen Data</Tag>}
+      {!dataTags && !defaultTags && <Block>Ingen Data</Block>}
       {getDefaultTags()}
       {getTags()}
     </React.Fragment>
@@ -266,6 +273,7 @@ export const ElasticTagging = (props) => {
             setDataTags={setDataTags}
             dataId={dataId}
             tagLabel={tagLabel}
+            isEditMode={isEditMode}
           />
         </Block>
       </Header>
@@ -326,6 +334,7 @@ export const Tagging = (props) => {
             setDataTags={setDataTags}
             dataId={dataId}
             tagLabel={tagLabel}
+            isEditMode={isEditMode}
           />
         </Block>
       </Header>
