@@ -14,6 +14,7 @@ import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
 import Button from '../../components/button/Button'
 import { AddIcon } from '../../components/icons/AddIcon'
+import { useStyletron } from 'baseui'
 
 const graph_server = env('GRAPH_SERVER')
 const es_server = env('ES_SERVER')
@@ -57,6 +58,7 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 
 const DataTags = (props) => {
   const { defaultTags, dataTags, setDataTags, dataId, tagLabel, isEditMode } = props
+  const [, theme] = useStyletron()
 
   const deleteTag = (index, tagId) => {
     const tokenId = Cookies.get('ClientToken')
@@ -78,6 +80,8 @@ const DataTags = (props) => {
             {tag && tag.properties && isEditMode && (
               <Block
                 key={'tag_' + index}
+                $style={{ ...theme.typography.font300 }}
+                marginRight="scale400"
               >
                 {getName(tag, tagLabel)}
               </Block>
@@ -105,7 +109,11 @@ const DataTags = (props) => {
         if (tag !== '') {
           return (
             <React.Fragment>
-              <Block key={'defaultTag_' + index}>
+              <Block
+                key={'defaultTag_' + index}
+                $style={{ ...theme.typography.font300 }}
+                marginRight="scale400"
+              >
                 {tag}
               </Block>
             </React.Fragment>
@@ -117,9 +125,11 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-      {!dataTags && !defaultTags && <Block>Ingen Data</Block>}
-      {getDefaultTags()}
-      {getTags()}
+      <Block display="flex">
+        {!dataTags && !defaultTags && <Block $style={{ ...theme.typography.font300 }}>Ingen Data</Block>}
+        {getDefaultTags()}
+        {getTags()}
+      </Block>
     </React.Fragment>
   )
 }
