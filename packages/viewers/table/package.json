@@ -16,7 +16,7 @@
     "@types/js-cookie": "^2.2.6",
     "@types/shortid": "0.0.29",
     "amplitude-js": "^7.1.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "babel-polyfill": "^6.26.0",
     "baseui": "^9.89.0",
     "classnames": "^2.2.6",
