@@ -7,7 +7,7 @@
     "@dakan/metrics": "0.0.4",
     "@dakan/ui": "0.0.4",
     "@dakan/theme": "^0.0.4",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "babel-polyfill": "^6.26.0",
     "baseui": "^9.89.0",
     "classnames": "^2.2.6",

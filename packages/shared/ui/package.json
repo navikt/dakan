@@ -51,7 +51,7 @@
         "@fortawesome/react-fontawesome": "^0.1.8",
         "@dakan/theme": "^0.0.4",
         "amplitude-js": "^7.1.0",
-        "axios": "^0.20.0",
+        "axios": "^0.21.0",
         "baseui": "^9.89.0",
         "deepmerge": "^4.2.2",
         "js-cookie": "^2.2.1",
