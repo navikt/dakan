@@ -46,6 +46,3 @@ Slack: #datakalog-design
 
 ### Theming
 Theming av frontend er definert i en [json fil](https://navikt.github.io/dakan/story/themes-nav--theme)  
-
-
-
