@@ -30,7 +30,7 @@
         "axios": "^0.20.0",
         "baseui": "^9.91.0",
         "js-cookie": "^2.2.1",
-        "react": "^16.8.6",
+        "react": "^17.0.1",
         "react-dom": "^16.8.6",
         "react-markdown": "^4.3.1",
         "styletron-react": "^5.2.7"

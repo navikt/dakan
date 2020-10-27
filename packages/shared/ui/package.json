@@ -55,7 +55,7 @@
         "baseui": "^9.89.0",
         "deepmerge": "^4.2.2",
         "js-cookie": "^2.2.1",
-        "react": "^16.8.6",
+        "react": "^17.0.1",
         "react-dom": "^16.8.6",
         "react-markdown": "^4.3.1",
         "react-virtualized-auto-sizer": "^1.0.2",
