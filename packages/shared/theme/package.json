@@ -31,7 +31,7 @@
         "baseui": "^9.89.0",
         "polished": "^3.4.1",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6",
+        "react-dom": "^17.0.1",
         "styled-components": "^4.4.0",
         "styletron-engine-atomic": "^1.4.4",
         "styletron-react": "^5.2.6"
