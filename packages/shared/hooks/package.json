@@ -30,8 +30,8 @@
         "axios": "^0.21.0",
         "baseui": "^9.91.0",
         "js-cookie": "^2.2.1",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
         "react-markdown": "^5.0.2",
         "styletron-react": "^5.2.7"
     }
