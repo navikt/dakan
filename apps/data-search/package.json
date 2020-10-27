@@ -18,7 +18,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-markdown": "^4.3.1",
+    "react-markdown": "^5.0.2",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.3.1",
     "styletron-engine-atomic": "^1.4.4",
