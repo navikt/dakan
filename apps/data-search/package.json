@@ -8,7 +8,7 @@
     "@dakan/metrics": "^0.0.4",
     "@dakan/ui": "^0.0.4",
     "@dakan/theme": "^0.0.4",
-    "@elastic/react-search-ui": "1.4.1",
+    "@elastic/react-search-ui": "1.5.0",
     "@elastic/react-search-ui-views": "1.4.1",
     "@elastic/search-ui": "1.4.1",
     "amplitude-js": "^7.1.0",
