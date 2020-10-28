@@ -77,7 +77,7 @@ const DataTags = (props) => {
       return dataTags.map((tag, index) => {
         return (
           <React.Fragment>
-            {tag && tag.properties && isEditMode && (
+            {tag && tag.properties && !isEditMode && (
               <Block
                 key={'tag_' + index}
                 $style={{ ...theme.typography.font300 }}
@@ -86,7 +86,7 @@ const DataTags = (props) => {
                 {getName(tag, tagLabel)}
               </Block>
             )}
-            {tag && tag.properties && !isEditMode && (
+            {tag && tag.properties && isEditMode && (
               <Tag
                 key={'tag_' + index}
                 variant={VARIANT.outlined}
