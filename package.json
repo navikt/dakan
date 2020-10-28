@@ -9,7 +9,7 @@
     "api": "cd packages/viewers/api && yarn run start",
     "api:build": "cd packages/viewers/api && yarn run build",
     "api:test": "cd packages/viewers/api && yarn test",
-    "clean": "lerna clean -f --yes && rm -rf node_modules",
+    "clean": "lerna clean --yes && rm -rf node_modules",
     "datasearch": "cd apps/data-search && yarn run start",
     "datasearch:build": "cd apps/data-search && yarn run build",
     "format_packages": "prettier --write \"packages/*/*/**/*.{js,jsx,ts,tsx}\"",
@@ -69,5 +69,8 @@
       "apps/*",
       "packages/**"
     ]
+  },
+  "dependencies": {
+    "webpack": "4.42.0"
   }
 }
