@@ -125,7 +125,7 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-        {!dataTags && !defaultTags && <Block $style={{ ...theme.typography.font300 }}>Ingen Data</Block>}
+        {!dataTags && !defaultTags && <Block $style={{ ...theme.typography.font300 }}>Ingen data</Block>}
         {getDefaultTags()}
         {getTags()}
     </React.Fragment>
