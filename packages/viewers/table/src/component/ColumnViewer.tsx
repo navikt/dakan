@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Block} from 'baseui/block';
 import {Table} from 'baseui/table-semantic';
-import {LabeledContent, Tagging, GetValue} from '@dakan/ui';
+import {LabeledContent, Tagging, GetValue, CapitalizeString} from '@dakan/ui';
 import {LabelLarge, LabelMedium} from 'baseui/typography';
 import {useStyletron} from 'baseui';
 import env from '@beam-australia/react-env';
@@ -29,18 +29,21 @@ const ColumnViewer = (prop: any) => {
         ];
 
         return items.map((entry: any, index: number) => {
+            let value = GetValue(() => columnData.properties[entry.item])
+            if (entry.label === 'Personopplysninger'){
+                if(value === 0) {
+                    value = 'False'
+                } else if (value === 1) {
+                    value = 'True'
+                } else {
+                    value = 'Ikke vurdert'
+                }
+            }
+
             return (
                 <Block key={`item_${index}`} top="relative">
                     <LabeledContent description={entry.label} list>
-                        {entry.label === 'Personopplysninger'
-                            ? GetValue(() =>
-                                  columnData.properties.sens === 0
-                                      ? 'False'
-                                      : columnData.properties.sens === 1
-                                      ? 'True'
-                                      : 'Ikke vurdert'
-                              )
-                            : columnData.properties[entry.item]}
+                        {CapitalizeString(value)}
                     </LabeledContent>
                 </Block>
             );
