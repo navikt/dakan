@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import env from '@beam-australia/react-env';
 import {Block} from 'baseui/block';
