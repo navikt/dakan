@@ -15,6 +15,7 @@ import {
     Button,
     EditIcon,
     CheckIfAuthorized,
+    CapitalizeString
 } from '@dakan/ui';
 import {LabelLarge} from 'baseui/typography';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
@@ -43,7 +44,7 @@ const items = (props: any): JSX.Element[] => {
         return (
             <FlexGridItem key={`item_${i}`}>
                 <LabeledContent description={entry.label} list>
-                    {value}
+                    {CapitalizeString(value)}
                 </LabeledContent>
                 <Block width="scale1000" />
             </FlexGridItem>
