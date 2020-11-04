@@ -80,7 +80,7 @@ jobs:
       run: |
         VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
         echo ${VALUE}
-        echo "IMAGE=${VALUE}" >> $GITHUB_EN
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
         echo ${IMAGE}
     - name: Deploy to nais
       uses: nais/deploy/actions/deploy@v1
