@@ -77,7 +77,7 @@ jobs:
       run: |
         VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
         echo ${VALUE}
-        echo ::set-env name=IMAGE::${VALUE}
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
         echo ${IMAGE}
     - name: Deploy to nais
       uses: nais/deploy/actions/deploy@v1
