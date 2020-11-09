@@ -10,6 +10,10 @@ const ITEMS = [
   { item: 'slack', label: 'Slack', format: 'slackchannel' },
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
+  { item: 'repo', label: 'Github repo', format: 'link'},
+  { item: 'repo_description', label: 'Github repo beskrivelse'},
+  { item: 'commit_count', label: 'Total commits'},
+
 ]
 
 const getLink = (row) => {
