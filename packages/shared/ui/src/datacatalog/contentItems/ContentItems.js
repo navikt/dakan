@@ -12,36 +12,37 @@ export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
     return items.map((entry, index) => {
       let value = GetValue(() => content.properties[entry.item], null)
-      if (value && value !== '' && value.length > 0) {
+      if (value) {
         if (Array.isArray(value)) {
           value = value.map((item) => {
             return <Block>{item}</Block>
           })
         }
-        if (entry.format && entry.format === 'date') {
+
+        else if (entry.format && entry.format === 'date') {
           const date = new Date(value)
           if (typeof date.getMonth === 'function') {
             value = format(date, 'yyyy-MM-dd')
           }
         }
 
-        if (entry.format && entry.format === 'slackchannel') {
+        else if (entry.format && entry.format === 'slackchannel') {
           value = value.replace('#', '')
           const link = `https://nav-it.slack.com/archives/${value}`
           value = getLink(link, value)
         }
 
-        if (entry.format && entry.format === 'ad_group') {
+        else if (entry.format && entry.format === 'ad_group') {
           const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupDetailsMenuBlade/Members/groupId/${value}`
           value = getLink(link, 'Azure AD')
         }
 
-        if (entry.format && entry.format === 'ad_profile') {
+        else if (entry.format && entry.format === 'ad_profile') {
           const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/${value}`
           value = getLink(link, 'Azure AD')
         }
 
-        if (entry.format && entry.format === 'link') {
+        else if (entry.format && entry.format === 'link') {
           value = getLink(value, value)
         }
 
