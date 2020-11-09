@@ -21,6 +21,7 @@
     "kafka:test": "cd packages/viewers/kafka && yarn test",
     "kafkaaiven": "cd packages/viewers/kafkaaiven && yarn run start",
     "kafkaaiven:build": "cd packages/viewers/kafkaaiven && yarn run build",
+    
     "kafkaaiven:test": "cd packages/viewers/kafkaaiven && yarn test",
     "metrics": "cd packages/shared/metrics && yarn run start",
     "metrics:build": "cd packages/shared/metrics && yarn run build",
