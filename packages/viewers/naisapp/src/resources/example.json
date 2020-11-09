@@ -1,60 +1,278 @@
 {
-    "_index": "dcat_v3",
-    "_type": "_doc",
-    "_id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
-    "_version": 5,
-    "found": true,
-    "_source": {
-      "id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
-      "type": "nais_app",
-      "suggest": "altinn-rettigheter-proxy altinn-rettigheter-proxy prod-fss fss",
-      "description": "altinn-rettigheter-proxy prod-fss fss",
-      "title": "altinn-rettigheter-proxy",
-      "format": "Nais applikasjon",
-      "category": "Nais",
-      "provenance": "Nais",
-      "master": "NAV",
-      "purpose": [
-        "Nais"
-      ],
-      "legalbasis": [],
-      "pii": [
-        "Ingen"
-      ],
-      "issued": "2020-06-08T20:17:14.504Z",
-      "modified": "2020-08-06T07:45:05.678Z",
-      "created": "2020-06-08T20:17:14.504Z",
-      "policy": [],
-      "distribution": null,
-      "keywords": [
-        "nais",
-        "app"
-      ],
-      "theme": [
-        "Nais app"
-      ],
-      "accessRights": "public",
-      "publisher": {
-        "name": "NAV"
+  "id": "NaisApp.Test",
+  "label": "NaisApp",
+  "properties": {
+    "type": "NaisApp",
+    "name": "Test",
+    "team": "Test Team",
+    "cluster": "Test-cluster",
+    "zone": "Test-zone",
+    "created": "2020-09-09T07:31:41.506Z",
+    "modified": "2020-09-09T07:31:41.506Z",
+    "kilde": "naiserator",
+    "repo": "https://github.com",
+    "weekly_commit_frequency": [
+      {
+        "commits": 15,
+        "week_year": "2019-46"
       },
-      "spatial": "Norge",
-      "url": [
-        "url"
-      ],
-      "haspart": [],
-      "content": {
-        "id": "Nais.arbeidsgiver.altinn-rettigheter-proxy",
-        "label": "nais_app",
-        "properties": {
-          "type": "nais_app",
-          "name": "altinn-rettigheter-proxy",
-          "team": "arbeidsgiver",
-          "cluster": "prod-fss",
-          "zone": "fss",
-          "created": "2020-06-08T20:17:14.504Z",
-          "modified": "2020-08-06T07:45:05.678Z",
-          "kilde": ""
-        }
+      {
+        "commits": 26,
+        "week_year": "2019-47"
+      },
+      {
+        "commits": 9,
+        "week_year": "2019-48"
+      },
+      {
+        "commits": 6,
+        "week_year": "2019-49"
+      },
+      {
+        "commits": 26,
+        "week_year": "2019-50"
+      },
+      {
+        "commits": 0,
+        "week_year": "2019-51"
+      },
+      {
+        "commits": 0,
+        "week_year": "2019-52"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-1"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-2"
+      },
+      {
+        "commits": 4,
+        "week_year": "2020-3"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-4"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-5"
+      },
+      {
+        "commits": 4,
+        "week_year": "2020-6"
+      },
+      {
+        "commits": 2,
+        "week_year": "2020-7"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-8"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-9"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-10"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-11"
+      },
+      {
+        "commits": 3,
+        "week_year": "2020-12"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-13"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-14"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-15"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-16"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-17"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-18"
+      },
+      {
+        "commits": 7,
+        "week_year": "2020-19"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-20"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-21"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-22"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-23"
+      },
+      {
+        "commits": 4,
+        "week_year": "2020-24"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-25"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-26"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-27"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-28"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-29"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-30"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-31"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-32"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-33"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-34"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-35"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-36"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-37"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-38"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-39"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-40"
+      },
+      {
+        "commits": 1,
+        "week_year": "2020-41"
+      },
+      {
+        "commits": 3,
+        "week_year": "2020-42"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-43"
+      },
+      {
+        "commits": 0,
+        "week_year": "2020-44"
+      },
+      {
+        "commits": 10,
+        "week_year": "2020-45"
       }
-    }
+    ],
+    "read_me_content": "# Etiam diam ligula, ornare vitae quam non, fermentum tempor urna.\n Etiam vitae purus mollis, congue risus vitae, elementum ex. Curabitur ut enim eu neque luctus commodo. Vestibulum euismod, ipsum sed luctus euismod, dui dui sagittis sapien, sed suscipit mauris arcu ac diam.\n Nam mauris lacus, venenatis sed bibendum sed, tincidunt interdum tortor.\n Mauris cursus imperdiet bibendum. Ut eget libero ut nisi dapibus posuere nec at neque. Suspendisse potenti. Proin vehicula in enim vel placerat. Etiam maximus vestibulum semper. Etiam commodo vitae turpis eget lobortis. Sed aliquet eleifend dolor, et maximus mauris tempor in. Cras porttitor feugiat dui, non molestie sapien maximus sed. Aenean aliquam viverra tortor. Curabitur ornare non risus ut hendrerit.\n",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas massa id sapien facilisis sodales. Donec quis erat at sem semper vehicula. Nunc efficitur gravida leo, at eleifend lorem blandit commodo. Nunc vitae orci suscipit, varius tortor eu, interdum nulla. Cras id libero id tortor porttitor viverra. Duis a aliquet arcu. Morbi non dapibus ante. Morbi risus mauris, iaculis a massa non, dapibus ultricies dolor.",
+    "commit_count": 123,
+    "latest_commiters": [
+      {
+        "name": "Test 0",
+        "date": "2020-11-03T11:29:54Z"
+      },
+      {
+        "name": "Test 1",
+        "date": "2020-11-03T11:26:21Z"
+      },
+      {
+        "name": "Test 2",
+        "date": "2020-11-02T10:22:14Z"
+      },
+      {
+        "name": "Test 3",
+        "date": "2020-10-12T06:58:06Z"
+      },
+      {
+        "name": "Test 4",
+        "date": "2020-10-08T08:29:13Z"
+      },
+      {
+        "name": "Test 5",
+        "date": "2020-06-10T10:26:23Z"
+      },
+      {
+        "name": "Test 6",
+        "date": "2020-01-14T07:14:14Z"
+      },
+      {
+        "name": "Test 7",
+        "date": "2019-12-09T12:12:02Z"
+      },
+      {
+        "name": "Test 8",
+        "date": "2019-01-02T12:50:49Z"
+      },
+      {
+        "name": "Test 9",
+        "date": "2018-12-03T12:53:49Z"
+      },
+      {
+        "name": "Test 10",
+        "date": "2018-10-02T14:22:49Z"
+      },
+      {
+        "name": "Test 11",
+        "date": "2018-09-13T19:28:12Z"
+      }
+    ]
   }
+}
