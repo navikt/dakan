@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-kafka-aiven-topic-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/kafkaaiven",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/kafkaaiven",
+  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
+}

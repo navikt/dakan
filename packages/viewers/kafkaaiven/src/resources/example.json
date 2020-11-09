@@ -1,0 +1,58 @@
+{
+  "id": "kafka.aiven_topic.test",
+  "label": "kafka_aiven_topic",
+  "type": "vertex",
+  "properties": {
+    "object": {
+      "apiVersion": "kafka.nais.io/v1",
+      "kind": "Topic",
+      "metadata": {
+        "annotations": {
+          "nais.io/deploymentCorrelationID": "123456-243453453-535353-54535345"
+        },
+        "creationTimestamp": "2020-11-03T14:13:46Z",
+        "generation": 17,
+        "labels": {
+          "team": "test team"
+        },
+        "name": "test",
+        "namespace": "test team",
+        "resourceVersion": "272075023",
+        "selfLink": "/apis/kafka.nais.io/v1/namespaces/test_team/topics/test",
+        "uid": "123456-243453453-535353-54535345"
+      },
+      "spec": {
+        "acl": [
+          {
+            "access": "write",
+            "application": "test app",
+            "team": "test team 2"
+          },
+          {
+            "access": "read",
+            "application": "test app 2",
+            "team": "test team 3"
+          }
+        ],
+        "config": {
+          "cleanupPolicy": "compact",
+          "minimumInSyncReplicas": 1,
+          "partitions": 1,
+          "replication": 3,
+          "retentionBytes": -1,
+          "retentionHours": 72
+        },
+        "pool": "test-pool"
+      },
+      "status": {
+        "credentialsExpiryTime": "2020-11-06T14:00:41Z",
+        "message": "Topic configuration synchronized to Kafka pool",
+        "synchronizationHash": "a123134342545453c",
+        "synchronizationState": "RolloutComplete",
+        "synchronizationTime": "2020-11-05T14:00:41Z"
+      }
+    },
+    "cluster": "test-cluster",
+    "type": "kafka_aiven_topic"
+  }
+}
