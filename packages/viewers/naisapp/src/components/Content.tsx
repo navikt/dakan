@@ -3,16 +3,17 @@ import { Block } from 'baseui/block'
 import { ParagraphMedium, LabelMedium } from 'baseui/typography'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
-
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+
+import RepoContributers from './RepoContributers'
 
 const ITEMS = [
   { item: 'slack', label: 'Slack', format: 'slackchannel' },
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
-  { item: 'repo', label: 'Github repo', format: 'link'},
-  { item: 'repo_description', label: 'Github repo beskrivelse'},
-  { item: 'commit_count', label: 'Total commits'},
+  { item: 'repo', label: 'Github repo', format: 'link' },
+  { item: 'repo_description', label: 'Github repo beskrivelse' },
+  { item: 'commit_count', label: 'Total commits' },
 
 ]
 
@@ -57,6 +58,9 @@ const Content = ({ item, memberOf }) => {
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
+      {item && item.properties && item.properties.latest_commiters && (
+        <RepoContributers tableData={item.properties.latest_commiters} />
+      )}
     </Block>
   )
 
