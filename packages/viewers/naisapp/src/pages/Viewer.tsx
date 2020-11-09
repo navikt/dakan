@@ -22,7 +22,7 @@ const Viewer = (props: any) => {
     return (
       <Content
         {...props}
-        item={exampleJson._source.content}
+        item={exampleJson}
         members={exampleMembers}
         memberOf={exampleMemberOf}
       />

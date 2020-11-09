@@ -14,10 +14,12 @@ const ITEMS = [
   { item: 'resourcetype', label: 'Ansatt' },
   { item: 'startdato', label: 'Startdato' },
   { item: 'sluttdato', label: 'Sluttdato' },
+  { item: 'testNumber', label: 'number'}
 ]
 
 const item = {
   properties: {
+    testNumber: 123,
     tlf: ['2122232425'],
     epost: 'Ola.Normann@nav.no',
     startdato: '2006-06-23',
