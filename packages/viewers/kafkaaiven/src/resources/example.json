@@ -8,7 +8,18 @@
       "kind": "Topic",
       "metadata": {
         "annotations": {
-          "nais.io/deploymentCorrelationID": "123456-243453453-535353-54535345"
+          "dcat.data.nav.no/accessRights": "internal",
+          "dcat.data.nav.no/catalog": "internal",
+          "dcat.data.nav.no/creator": "dataplattform",
+          "dcat.data.nav.no/description": "Test topic beskrivelse",
+          "dcat.data.nav.no/keyword": "test,nada",
+          "dcat.data.nav.no/language": "NO",
+          "dcat.data.nav.no/license": "MIT",
+          "dcat.data.nav.no/publisher": "NAV",
+          "dcat.data.nav.no/rights": "Copyright 2020, NAV",
+          "dcat.data.nav.no/temporal": "2020/2020",
+          "dcat.data.nav.no/theme": "Test topic beskrivelse",
+          "dcat.data.nav.no/title": "Test topic tittel"
         },
         "creationTimestamp": "2020-11-03T14:13:46Z",
         "generation": 17,
