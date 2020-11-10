@@ -112,6 +112,14 @@ export function getViewerProps(format) {
     }
   }
 
+  if (format === 'kafka aiven topic' || format === 'kafka topic aiven') {
+    return {
+      link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer',
+      backgroundColor: theme.colors.tagKafkaBackgroundColor,
+      borderColor: theme.colors.tagKafkaBorderColor,
+    }
+  }
+
   if (format === 'opplysningstype' || format === 'informationtype') {
     return {
       link: env('INFORMATION_TYPE_VIEWER_URL') || '/viewer',
