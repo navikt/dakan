@@ -1,21 +1,22 @@
-name: Kafka build, test, package and deploy
+name: Kafka Aiven build, test, package and deploy
 
 on: 
   push:
     paths:
-      - 'packages/viewers/kafka/**'
+      - 'packages/viewers/kafkaaiven/**'
     branches:
       - '**'
     tags-ignore:
       - '*.*.*'
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-topic-viewer
-  PUBLIC_URL: /kafka
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-kafka-aiven-topic-viewer
+  PUBLIC_URL: /kafkaaiven
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/kafka
+  PACKAGE_PATH: packages/viewers/kafkaaiven
 
 jobs:
+  
   test_and_package:
     name: Build, test and package
     runs-on: ubuntu-latest
@@ -26,7 +27,7 @@ jobs:
     - name: Build shared packages
       run: yarn run shared:build
     - name: Run test
-      run: yarn kafka:test
+      run: yarn kafkaaiven:test
       env:
         CI: true
     - name: Generate tag
@@ -43,10 +44,10 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: img_tag
-        path: packages/viewers/kafka/docker_img_tag.txt
+        path: packages/viewers/kafkaaiven/docker_img_tag.txt
     - name: Build
       if: github.ref == 'refs/heads/master'
-      run: yarn kafka:build
+      run: yarn kafkaaiven:build
       env:
         CI: false
     - name: Build and Publish to Docker Image
@@ -84,5 +85,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
-        RESOURCE: packages/viewers/kafka/naiserator.yml
-        VARS: packages/viewers/kafka/config-dev-fss.json
+        RESOURCE: packages/viewers/kafkaaiven/naiserator.yml
+        VARS: packages/viewers/kafkaaiven/config-dev-fss.json
