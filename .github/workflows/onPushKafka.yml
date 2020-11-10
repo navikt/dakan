@@ -16,14 +16,11 @@ env:
   PACKAGE_PATH: packages/viewers/kafka
 
 jobs:
-  
   test_and_package:
     name: Build, test and package
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      with: 
-        ref: refs/heads/master
+    - uses: actions/checkout@v2
     - name: Install dependencies
       run: yarn run setup
     - name: Build shared packages
