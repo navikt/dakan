@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Layout, ContentItems, LabeledContent } from '@dakan/ui'
-import { LanguageServiceMode } from 'typescript'
 
 
 const ITEMS = [
