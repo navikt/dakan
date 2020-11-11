@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
 
-
 const ITEMS = [
   { item: 'namespace', label: 'namespace' },
   { item: 'resourceVersion', label: 'resourceVersion' },
