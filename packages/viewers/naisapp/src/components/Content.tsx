@@ -5,6 +5,7 @@ import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
 
+import Heatmap from '../components/Heatmap'
 import RepoContributers from './RepoContributers'
 
 const ITEMS = [
@@ -61,6 +62,7 @@ const Content = ({ item, memberOf }) => {
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
+          <Heatmap />
     </Block>
   )
 
