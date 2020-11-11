@@ -3,8 +3,9 @@ import { Block } from 'baseui/block'
 import { ParagraphMedium, LabelMedium } from 'baseui/typography'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
-import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
 
+import Heatmap from '../components/Heatmap'
 import RepoContributers from './RepoContributers'
 
 const ITEMS = [
@@ -60,6 +61,11 @@ const Content = ({ item, memberOf }) => {
       <ContentItems ITEMS={ITEMS} item={item} />
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
+      )}
+      {item && item.properties && item.properties.daily_commit_frequency && (
+        <LabeledContent description='Commit historikk' list>
+        <Heatmap data={item.properties.daily_commit_frequency} />
+        </LabeledContent>
       )}
     </Block>
   )
