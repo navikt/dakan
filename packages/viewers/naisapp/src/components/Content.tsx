@@ -62,7 +62,9 @@ const Content = ({ item, memberOf }) => {
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
-          <Heatmap />
+      {item && item.properties && item.properties.daily_commit_frequency && (
+        <Heatmap data={item.properties.daily_commit_frequency} />
+      )}
     </Block>
   )
 
