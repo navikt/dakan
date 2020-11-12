@@ -59,13 +59,15 @@ const Content = ({ item, memberOf }) => {
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
-      {item && item.properties && item.properties.latest_commiters && (
-        <RepoContributers tableData={item.properties.latest_commiters} />
-      )}
+
       {item && item.properties && item.properties.daily_commit_frequency && (
         <LabeledContent description='Commit historikk' list>
-        <Heatmap data={item.properties.daily_commit_frequency} />
+          <Heatmap data={item.properties.daily_commit_frequency} />
         </LabeledContent>
+      )}
+
+      {item && item.properties && item.properties.latest_commiters && (
+        <RepoContributers tableData={item.properties.latest_commiters} />
       )}
     </Block>
   )
