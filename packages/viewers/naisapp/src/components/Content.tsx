@@ -13,8 +13,8 @@ const ITEMS = [
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
   { item: 'repo', label: 'Github repo', format: 'link' },
-  { item: 'repo_description', label: 'Github repo beskrivelse' },
-  { item: 'commit_count', label: 'Total commits' },
+/*   { item: 'repo_description', label: 'Github repo beskrivelse' },
+  { item: 'commit_count', label: 'Total commits' }, */
 
 ]
 
@@ -60,6 +60,7 @@ const Content = ({ item, memberOf }) => {
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
 
+{/* 
       {item && item.properties && item.properties.daily_commit_frequency && (
         <LabeledContent description='Commit historikk' list>
           <Heatmap data={item.properties.daily_commit_frequency} />
@@ -69,6 +70,7 @@ const Content = ({ item, memberOf }) => {
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
+*/}
     </Block>
   )
 
