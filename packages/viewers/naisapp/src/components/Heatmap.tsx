@@ -5,9 +5,16 @@ import ReactTooltip from 'react-tooltip';
 
 const Heatmap = (props) => {
   const { data } = props
+  
+  const today = new Date().toISOString().split('T')[0]
+  const oneYearAgo = new Date()
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear()-1)
+
   return (
     <React.Fragment>
       <CalendarHeatmap
+      startDate={oneYearAgo.toISOString().split('T')[0]}
+      endDate={today}
         values={data}
         classForValue={value => {
           if (!value) {
