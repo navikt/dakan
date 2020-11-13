@@ -58,7 +58,7 @@ const Content = (props: any): JSX.Element => {
       properties: data.properties.object.spec.config
     }
     return (
-        <ContentItems ITEMS={SPEC_ITEMS} item={item} />
+      <ContentItems ITEMS={SPEC_ITEMS} item={item} />
     )
   }
 
@@ -79,16 +79,16 @@ const Content = (props: any): JSX.Element => {
           headingText={data.properties.object.metadata.name}
           left={
             <Block width="100%" >
-              {data.properties.object.metadata.annotations && (
-                <Annotations />
+              <Head />
+              {data.properties.object.spec && data.properties.object.spec.config && (
+                <Spec />
               )}
             </Block>
           }
           right={
             <Block width="100%" >
-              <Head />
-              {data.properties.object.spec && data.properties.object.spec.config && (
-                <Spec />
+              {data.properties.object.metadata.annotations && (
+                <Annotations />
               )}
             </Block>
           }
