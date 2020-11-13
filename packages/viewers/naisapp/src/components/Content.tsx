@@ -41,10 +41,10 @@ const getTable = (list) => {
   })
 
   const columns: any[] = [
-    <TableBuilderColumn id="name" header="Team">
+    <TableBuilderColumn key="table_name" id="name" header="Team">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
     </TableBuilderColumn>,
-    <TableBuilderColumn id="description" header="Beskrivelse">
+    <TableBuilderColumn key="table_description" id="description" header="Beskrivelse">
       {(row) => row.data.description}
     </TableBuilderColumn>,
   ]
