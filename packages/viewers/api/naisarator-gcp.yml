@@ -40,4 +40,5 @@ spec:
       cpu: 50m
       memory: 128Mi
   envFrom: 
-    - configmap: {{}}
+    - configmap: {{config_map}}
+    
