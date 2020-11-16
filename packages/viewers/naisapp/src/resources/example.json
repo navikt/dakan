@@ -195,10 +195,8 @@
       {"date": "2018-05-02", "count": 1},
       {"date": "2018-04-27", "count": 1},
       {"date": "2018-04-25", "count": 2}],
-    "read_me_content": {
-      "content": "# Etiam diam ligula, ornare vitae quam non, fermentum tempor urna.\n Etiam vitae purus mollis, congue risus vitae, elementum ex. Curabitur ut enim eu neque luctus commodo. Vestibulum euismod, ipsum sed luctus euismod, dui dui sagittis sapien, sed suscipit mauris arcu ac diam.\n Nam mauris lacus, venenatis sed bibendum sed, tincidunt interdum tortor.\n Mauris cursus imperdiet bibendum. Ut eget libero ut nisi dapibus posuere nec at neque. Suspendisse potenti. Proin vehicula in enim vel placerat. Etiam maximus vestibulum semper. Etiam commodo vitae turpis eget lobortis. Sed aliquet eleifend dolor, et maximus mauris tempor in. Cras porttitor feugiat dui, non molestie sapien maximus sed. Aenean aliquam viverra tortor. Curabitur ornare non risus ut hendrerit.\n",
-      "url": "https://github.com/navikt/data-catalog-test-viewer/blob/master/README.md" 
-    },
+    "read_me_content": "# Etiam diam ligula, ornare vitae quam non, fermentum tempor urna.\n Etiam vitae purus mollis, congue risus vitae, elementum ex. Curabitur ut enim eu neque luctus commodo. Vestibulum euismod, ipsum sed luctus euismod, dui dui sagittis sapien, sed suscipit mauris arcu ac diam.\n Nam mauris lacus, venenatis sed bibendum sed, tincidunt interdum tortor.\n Mauris cursus imperdiet bibendum. Ut eget libero ut nisi dapibus posuere nec at neque. Suspendisse potenti. Proin vehicula in enim vel placerat. Etiam maximus vestibulum semper. Etiam commodo vitae turpis eget lobortis. Sed aliquet eleifend dolor, et maximus mauris tempor in. Cras porttitor feugiat dui, non molestie sapien maximus sed. Aenean aliquam viverra tortor. Curabitur ornare non risus ut hendrerit.\n",
+    "read_me_url": "https://github.com/navikt/data-catalog-test-viewer/blob/master/README.md",
     "repo_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas massa id sapien facilisis sodales. Donec quis erat at sem semper vehicula. Nunc efficitur gravida leo, at eleifend lorem blandit commodo. Nunc vitae orci suscipit, varius tortor eu, interdum nulla. Cras id libero id tortor porttitor viverra. Duis a aliquet arcu. Morbi non dapibus ante. Morbi risus mauris, iaculis a massa non, dapibus ultricies dolor.",
     "commit_count": 123,
     "latest_commiters": [

@@ -7,7 +7,6 @@ import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
 
 import Heatmap from '../components/Heatmap'
 import RepoContributers from './RepoContributers'
-import { isTemplateSpan } from 'typescript'
 
 const ITEMS = [
   { item: 'slack', label: 'Slack', format: 'slackchannel' },
@@ -68,9 +67,9 @@ const Content = ({ item, memberOf }) => {
         </LabeledContent>
       )}
 
-      {item && item.properties && item.properties.read_me_content && item.properties.read_me_content.content &&(
+      {item && item.properties && item.properties.read_me_content &&(
         <LabeledContent description='Repo readme' list>
-          {item.properties.read_me_content.content.substring(0, 200)}... <Link href={item.properties.read_me_content.url}>les mer</Link>
+          {item.properties.read_me_content.substring(0, 200)}... <Link href={item.properties.read_me_url}>les mer</Link>
         </LabeledContent>
       )}
 
