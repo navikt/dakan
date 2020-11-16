@@ -7,14 +7,15 @@ import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
 
 import Heatmap from '../components/Heatmap'
 import RepoContributers from './RepoContributers'
+import { isTemplateSpan } from 'typescript'
 
 const ITEMS = [
   { item: 'slack', label: 'Slack', format: 'slackchannel' },
   { item: 'created', label: 'Opprettet', format: 'date' },
   { item: 'modified', label: 'Oppdatert', format: 'date' },
   { item: 'repo', label: 'Github repo', format: 'link' },
-/*   { item: 'repo_description', label: 'Github repo beskrivelse' },
-  { item: 'commit_count', label: 'Total commits' }, */
+  { item: 'repo_description', label: 'Github repo beskrivelse' },
+  { item: 'commit_count', label: 'Total commits' },
 
 ]
 
@@ -60,13 +61,20 @@ const Content = ({ item, memberOf }) => {
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
 
-{/* 
+
       {item && item.properties && item.properties.daily_commit_frequency && (
         <LabeledContent description='Commit historikk' list>
           <Heatmap data={item.properties.daily_commit_frequency} />
         </LabeledContent>
       )}
 
+      {item && item.properties && item.properties.read_me_content && item.properties.read_me_content.content &&(
+        <LabeledContent description='Repo readme' list>
+          {item.properties.read_me_content.content.substring(0, 200)}... <Link href={item.properties.read_me_content.url}>les mer</Link>
+        </LabeledContent>
+      )}
+
+{/* 
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
