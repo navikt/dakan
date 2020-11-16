@@ -25,10 +25,10 @@ jobs:
       run: yarn run setup
     - name: Build shared packages
       run: yarn run shared:build
-    - name: Run test
-      run: yarn term:test
-      env:
-        CI: false
+#    - name: Run test
+#      run: yarn term:test
+#      env:
+#        CI: false
     - name: Generate tag
       if: github.ref == 'refs/heads/master'
       run: |
