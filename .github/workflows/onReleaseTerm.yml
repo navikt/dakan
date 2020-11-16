@@ -101,3 +101,29 @@ jobs:
         CLUSTER: prod-sbs
         RESOURCE: packages/viewers/term/naisarator-sbs.yml
         VARS: packages/viewers/term/config-prod-sbs.json
+
+  deploy_prod-gcp: 
+    name: Build and deploy to prod-gcp
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        ref: refs/heads/master
+    - name: Download artifact 
+      uses: actions/download-artifact@v1
+      with: 
+        name: img_tag
+    - name: Setup image environment variable
+      run: |
+        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+        echo ${VALUE}
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
+        echo ${IMAGE}
+    - name: Deploy to nais prod-fss
+      uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-gcp
+        RESOURCE: packages/viewers/term/naisarator-gcp.yml
+        VARS: packages/viewers/term/config-prod-gcp-external.json
