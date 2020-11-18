@@ -69,7 +69,9 @@ const Content = ({ item, memberOf }) => {
 
       {item && item.properties && item.properties.read_me_content &&(
         <LabeledContent description='Repo readme' list>
-          {item.properties.read_me_content.substring(0, 200)}... <Link href={item.properties.read_me_url}>les mer</Link>
+          {
+            item.properties.read_me_content.length > 200 ? item.properties.read_me_content.substring(0, 200) : item.properties.read_me_content
+          }... <Link href={item.properties.read_me_url}>les mer</Link>
         </LabeledContent>
       )}
 
