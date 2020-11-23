@@ -19,7 +19,7 @@
     "react-helmet": "^6.0.0",
     "react-markdown": "^5.0.2",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^4.0.1",
     "styletron-engine-atomic": "^1.4.3",
     "styletron-react": "^5.2.6",
     "typescript": "^4.0.2"
