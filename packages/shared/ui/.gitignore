@@ -1,0 +1,11 @@
+**/.log
+**/.DS_Store
+**/.jest-*
+**/lib
+**/node_modules
+**/build
+storybook-static
+.npmrc
+
+package-lock.json
+yarn.lock

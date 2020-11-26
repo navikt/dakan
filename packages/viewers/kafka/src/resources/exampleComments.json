@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "label": "comment",
+    "properties": {
+      "author": "Lorem ipsum 1",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus molestie lorem, quis ultrices libero commodo vel. Cras vitae mauris porta erat congue rutrum. Integer nec facilisis mi, elementum fringilla tellus. Duis pretium lacinia rutrum. Phasellus porta eget nisi ut sagittis. Cras sollicitudin cursus urna, quis eleifend magna scelerisque sit amet. Integer mi neque, tristique euismod mi a, egestas posuere purus. Aenean interdum odio efficitur, vehicula nisl quis, pellentesque lectus. Donec lobortis accumsan sollicitudin.",
+      "date": "27.des.2014",
+      "time": "10:12"
+    }
+  },
+  {
+    "id": 2,
+    "label": "comment",
+    "properties": {
+      "author": "Lorem ipsum 2",
+      "text": "Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.",
+      "date": "17.sep.2013",
+      "time": "17:42"
+    }
+  },
+  {
+    "id": 3,
+    "label": "comment",
+    "properties": {
+      "author": "Lorem ipsum 3",
+      "text": "Aliquam risus nulla, rhoncus a metus quis, tempor tincidunt nibh. Donec feugiat hendrerit eleifend. Vestibulum ut ante ex. Aliquam risus augue, efficitur id faucibus a, sollicitudin sed nisi. Suspendisse luctus, nunc eget facilisis lobortis, magna purus tincidunt massa, porta sodales ante libero ac dolor. Mauris porta ante eu sem semper semper. Donec at neque in elit imperdiet consectetur sollicitudin quis orci.",
+      "date": "12.des.2012",
+      "time": "12:12"
+    }
+  },
+  {
+    "id": 4,
+    "label": "comment",
+    "properties": {
+      "author": "Lorem ipsum 4",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis eu leo ut egestas. In pharetra, libero nec pulvinar suscipit, leo metus sodales arcu, eu egestas mauris nibh nec magna. In vitae felis lacus. Sed eleifend ut metus id viverra. Sed sodales et quam nec luctus. Phasellus pharetra odio in rhoncus pretium. Cras vestibulum metus sed interdum efficitur. Nullam venenatis dui dapibus, feugiat ante et, hendrerit enim.",
+      "date": "01.jan.2011",
+      "time": "09:07"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-table-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.nais.preprod.local/tabell",
+  "ingress_nais_io": "https://data.dev-fss.nais.io/tabell",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
+}

@@ -1,0 +1,114 @@
+name: Office build, test, package and deploy
+
+on:
+  push:
+    paths:
+      - 'packages/viewers/office/**'
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*.*'
+
+env:
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-office-viewer
+  PUBLIC_URL: /office
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+  PACKAGE_PATH: packages/viewers/office
+
+jobs:
+  test_and_package:
+    name: Build, test and package
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: yarn run setup
+    - name: Build shared packages
+      run: yarn run shared:build
+    - name: Run test
+      run: yarn office:test
+      env:
+        CI: false
+    - name: Generate tag
+      if: github.ref == 'refs/heads/master'
+      run: |
+        # Generate docker image tag
+        DATE=$(date +%Y-%m-%d)
+        GIT_HASH=$(git rev-parse --short HEAD)
+        IMAGE_TAG=${DATE}--${GIT_HASH}
+        # write current tag to file
+        echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
+    - name: Upload img_tag
+      if: github.ref == 'refs/heads/master'
+      uses: actions/upload-artifact@v1
+      with:
+        name: img_tag
+        path: packages/viewers/office/docker_img_tag.txt
+    - name: Build
+      if: github.ref == 'refs/heads/master'
+      run: yarn office:build
+      env:
+        CI: false
+    - name: Build and Publish to Docker Image
+      if: github.ref == 'refs/heads/master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd ${PACKAGE_PATH}
+        docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
+        docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+        docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
+
+  deploy_dev-fss:
+    name: Build and deploy to dev-fss
+    needs: test_and_package
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: refs/heads/master
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: img_tag
+    - name: Setup image env
+      run: |
+        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+        echo ${VALUE}
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
+        echo ${IMAGE}
+    - name: Deploy to nais
+      uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-fss
+        RESOURCE: packages/viewers/office/naisarator-fss.yml
+        VARS: packages/viewers/office/config-dev-fss.json
+
+  # deploy_dev-sbs:
+  #   name: Build and deploy to dev-sbs
+  #   needs: test_and_package
+  #   if: github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       ref: refs/heads/master
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v1
+  #     with:
+  #       name: img_tag
+  #   - name: Setup image env
+  #     run: |
+  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+  #       echo ${VALUE}
+  #       echo ::set-env name=IMAGE::${VALUE}
+  #       echo ${IMAGE}
+  #   - name: Deploy to nais
+  #     uses: nais/deploy/actions/deploy@v1
+  #     env:
+  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+  #       CLUSTER: dev-sbs
+  #       RESOURCE: packages/viewers/office/naisarator-sbs.yml
+  #       VARS: packages/viewers/office/config-dev-sbs.json

@@ -1,0 +1,58 @@
+{
+  "name": "@dakan/naisteam",
+  "version": "0.0.3",
+  "private": true,
+  "dependencies": {
+    "@beam-australia/react-env": "^2.1.2",
+    "@dakan/hooks": "0.0.4",
+    "@dakan/metrics": "0.0.4",
+    "@dakan/ui": "0.0.4",
+    "@dakan/theme": "^0.0.4",
+    "axios": "^0.21.0",
+    "babel-polyfill": "^6.26.0",
+    "baseui": "^9.89.0",
+    "classnames": "^2.2.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.0.0",
+    "react-markdown": "^5.0.2",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^4.0.1",
+    "styletron-engine-atomic": "^1.4.3",
+    "styletron-react": "^5.2.6",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.24",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-helmet": "^6.1.0",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/styletron-engine-atomic": "^1.1.0",
+    "@types/styletron-react": "^5.0.2",
+    "@types/styletron-standard": "^2.0.0"
+  },
+  "scripts": {
+    "prestart": "react-env",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

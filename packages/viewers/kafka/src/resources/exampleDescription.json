@@ -1,0 +1,12 @@
+[
+  {
+    "id": 4,
+    "label": "kafka_description",
+    "properties": {
+      "author": "Lorem ipsum 4",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis eu leo ut egestas. In pharetra, libero nec pulvinar suscipit, leo metus sodales arcu, eu egestas mauris nibh nec magna. In vitae felis lacus. Sed eleifend ut metus id viverra. Sed sodales et quam nec luctus. Phasellus pharetra odio in rhoncus pretium. Cras vestibulum metus sed interdum efficitur. Nullam venenatis dui dapibus, feugiat ante et, hendrerit enim.",
+      "date": "01.jan.2011",
+      "time": "09:07"
+    }
+  }
+]

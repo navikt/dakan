@@ -1,0 +1,102 @@
+{
+    "_index": "dcat_v4",
+    "_type": "_doc",
+    "_id": "6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7",
+    "found": true,
+    "_source": {
+        "id": "1030a02e-42b3-49d4-93ce-ea06df4deefa",
+        "type": "productproductarea",
+        "suggest": "Applikasjoner (IT-område)",
+        "description": "IT-området løsninger innenfor NAVs kjernevirksomhet, hvor ansvaret fortsatt ligger i IT. \n\nVi jobbet mot at ansvaret for alle løsninger innenfor NAVs kjernevirksomhet (på sikt) skal ligge i produktområder.",
+        "title": "Applikasjoner (IT-område)",
+        "format": "Group",
+        "category": "Teamkatalogen",
+        "provenance": "Teamkatalogen",
+        "master": "NAV",
+        "purpose": [""],
+        "legalbasis": [],
+        "pii": ["Ingen"],
+        "issued": "2020-07-28T11:39:58.360631",
+        "modified": "2020-07-28T11:39:58.360648",
+        "created": "2020-07-28T11:39:58.360649",
+        "policy": [],
+        "distribution": "None",
+        "keywords": ["team, person, rolle, gruppe, område, teamkatalog"],
+        "theme": ["Teamkatalog"],
+        "accessRights": "public",
+        "publisher": {"name": "NAV"},
+        "spatial": "Norge",
+        "url": ["url"],
+        "haspart": [],
+        "content": {
+            "productproductareaId": "1030a02e-42b3-49d4-93ce-ea06df4deefa",
+            "name_productarea": "Applikasjoner (IT-område)",
+            "description_productarea": "IT-området løsninger innenfor NAVs kjernevirksomhet, hvor ansvaret fortsatt ligger i IT. \n\nVi jobbet mot at ansvaret for alle løsninger innenfor NAVs kjernevirksomhet (på sikt) skal ligge i produktområder.",
+            "members_productarea": [
+                {
+                    "navIdent": "KN9999",
+                    "description": "IT områdeleder",
+                    "roles": ["OTHER"],
+                    "resource": {
+                        "navIdent": "KN9999",
+                        "givenName": "Karin",
+                        "familyName": "Normann",
+                        "fullName": "Karin Normann",
+                        "email": "Karin.Normann@nav.no",
+                        "resourceType": "INTERNAL",
+                        "startDate": "2012-09-28",
+                        "endDate": "None",
+                        "stale": false
+                    }
+                }
+            ],
+            "teams": [
+                {
+                    "id_team": "6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7",
+                    "name_team": "Team Arena leverand\\u00f8r (Capgemini)",
+                    "description_team": "Arena forvaltes og videreutvikles av forvaltningsleverand\\u00f8r Capgemini\\n\\nTeam Arena er et forvaltningsteam. Dette er forvaltningsleverand\\u00f8r. Team Arena (kunde) finner du her: https:\\/\\/teamkatalog.nais.adeo.no\\/team\\/7bd20efe-966c-4631-891e-29a4732e0ff4 . Bestillinger til Arena leverand\\u00f8r skal g\\u00e5 igjennom Team Arena (kunde)."
+                },
+                {
+                    "id_team": "6a06c6df-f12c-4c96-a9f2-7a2ebfe20c51",
+                    "name_team": "Team Infotrygd",
+                    "description_team": "Team Infotrygd er et IT Team i IT Applikasjonsforvaltning, flere har arbeidet med Infotrygd fra oppstarten. \\nTeamet har ansvaret for \\u00e5 forvalte Infotrygd som best\\u00e5r av mange ytelser innenfor familieomr\\u00e5de som sykepenger, pleiepenger, barnetrygd, kontantst\\u00f8tte, enslig fors\\u00f8rger, grunn- og hjelpest\\u00f8nad mm.\\nTeamet utvikler og tilpasser systemet p\\u00e5 bestilling fra NAV Familie- og pensjonsytelser, NAV Arbeid og ytelser og Arbeids- og tjenesteavdelingen.  \\nInfotrygd er et av de eldste systemene i NAV som ble utviklet p\\u00e5 slutten av 70-tallet, og er et stormaskinbasert system. \\nInfotrygd er inne i sine aller siste leve\\u00e5r, og mange av ytelsene i Infotrygd blir skrevet i de nye vedtaksl\\u00f8sninger utf\\u00f8rt av P3. \\nInfotrygd-data vil bli tilgjengeliggjort for de nye konsumentene via replikeringsl\\u00f8sningen som Team Allosaurus har ansvaret for."
+                },
+                {
+                    "id_team": "7bd20efe-966c-4631-891e-29a4732e0ff4",
+                    "name_team": "Team Arena",
+                    "description_team": "Team Arena er et forvaltningsteam. V\\u00e5r leverand\\u00f8r finner du her: https:\\/\\/teamkatalog.nais.adeo.no\\/team\\/6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7\\n\\nBestillinger til v\\u00e5r leverand\\u00f8r skal g\\u00e5 gjennom teamleder.\\n\\nTeam Arena har ansvar for forvaltning, vedlikehold og videreutvikling av applikasjonen Arena. Arena er et saksbehandlerverkt\\u00f8y som gir st\\u00f8tte til oppf\\u00f8lgingsarbeidet. Ved hjelp av prosesser og arbeidstrinn f\\u00e5r du hjelp til systematisk oppf\\u00f8lging av brukere i NAV. Med brukere mener vi personer med og uten ytelser fra folketrygden, og arbeidsgivere.\\n\\nArena brukes ogs\\u00e5 til forvaltning av arbeidsrelaterte ytelser som dagpenger, arbeidsavklaringspenger, tiltakspenger og tilleggsst\\u00f8nader. I tillegg kan det ytes tilskudd til bedrifter som arrangerer arbeidsmarkedstiltak. \\n\\nArena har ca 16.000 saksbehandlere som \\u00e5rlig betjener over 1 million arbeidss\\u00f8kere, sykmeldte og arbeidsgivere og utbetaler mer enn 60 mrd i ytelser og arbeidsmarkedstiltak."
+                },
+                {
+                    "id_team": "6d604aae-9747-451b-8d42-87d3ec024c58",
+                    "name_team": "Team bidrag",
+                    "description_team": "Teamet har ansvar for barnebidrag som er den tjenesten i NAV som ivaretar barnets rettigheter og utdanning n\\u00e5r foreldrene ikke lenger bor sammen. NAV tilbyr foreldrene \\u00e5 fastsette og innkreve barnebidrag n\\u00e5r de ikke selv blir enige om dette. \\nNAV ivaretar ogs\\u00e5 det offentliges plikt til \\u00e5 fastsette farskap, og bist\\u00e5r partene ved fastsettelse og innkreving av ektefellebidrag. Bidragsl\\u00f8sningen i NAV h\\u00e5ndterer b\\u00e5de nasjonale og internasjonale saker. Team Bidrag har forvaltningsansvaret for f\\u00f8lgende applikasjoner:\\n\\nBisys\\nBisys-batch\\nBBM\\nBrevvalg\\nBidragskalkulator"
+                },
+                {
+                    "id_team": "7ec4b786-ddf7-4c56-ab2f-3c3edeb0d33f",
+                    "name_team": "Team Personoversikt",
+                    "description_team": "Ansvaret for Modia Personoversikt og Mininnboks"
+                },
+                {
+                    "id_team": "ebf29605-695e-433a-8791-e13091a325cb",
+                    "name_team": "Team meldeplikt",
+                    "description_team": "Team Meldeplikt er et nyetablert produktteam med ansvar for forvaltning, vedlikehold og videreutvikling av Meldeplikt-l\\u00f8sningen.\\n\\nVi jobber med \\u00e5 modernisere de eksisterende l\\u00f8sningene vi har for meldeplikt i NAV. \\n\\nTeam meldeplikt jobber blant annet med \\u00e5 l\\u00f8srive meldeplikt fra Arena og Amelding og tilrettelegge tjenestene for moderne krav til fleksibilitet og skredders\\u00f8m. Vi deler tiltakene i 3:\\n\\nkort sikt - tiltak som rydder vei f e.ks. fjerne papirmeldekort\\nmellomlang sikt - l\\u00f8srive funksjonalitet fra dagens Arena\\/Amelding\\/Print-skann og tilrettelegge for fremtidens l\\u00f8sning. For oss betyr det \\u00e5 g\\u00e5 over til ny teknologi som NAISERATOR, Vault, Gradle og Kotlin. Dette for at vi skal kunne v\\u00e6re endringsdyktige for \\u00e5 kunne levere hyppigere og raskere uten at det smerter v\\u00e5re brukere.\\nlang sikt - fremtidens l\\u00f8sning p\\u00e5 brukerens meldeplikt inn mot NAV."
+                },
+                {
+                    "id_team": "82ad0443-b915-4eb9-8952-d74215541f23",
+                    "name_team": "Team skjemadigitalisering",
+                    "description_team": "Team skjemadigitalisering skal utvikle en ny universelt utformet skjema-\\/s\\u00f8knadsl\\u00f8sning til erstatning for pdf-skjemaene, jf. UU2021. Ny s\\u00f8knadsl\\u00f8sning skal v\\u00e6re mulig \\u00e5 bruke uten p\\u00e5logging. Dagens verdikjeder for innsending av s\\u00f8knader tas for gitt.\\n\\nF\\u00f8lgende m\\u00e5l skal n\\u00e5s\\n- Universelt utformede skjemaer\\/s\\u00f8knader p\\u00e5 nav.no - UU20201\\n- Skjemabygger\\n- Tilrettelegging for at skjemaeiere\\/team selv kan bygge skjemaer\\n- Legge til rette for elektronisk innsending (JSON-melding e.l.)\\n- Legge til rette for enkel tilpasning n\\u00e5r verdikjeder endres\\n\\n**S\\u00f8knadsveiviseren**\\n- **Team skjemaforvaltning** har ansvaret for publisering av skjemaer og tekster\\n- Team skjemadigitalisering har forvaltningsansvaret for applikasjonen"
+                },
+                {
+                    "id_team": "d92b3a03-3bdd-4446-878e-b7d24eefc71e",
+                    "name_team": "Team s\\u00f8knad",
+                    "description_team": "xx"
+                },
+                {
+                    "id_team": "15dc8108-9742-471a-8661-b82656f6ee78",
+                    "name_team": "Team skjemaforvaltning",
+                    "description_team": "Team Skjemaforvaltning forvalter skjemaer i NAV, b\\u00e5de for intern bruk, personer, arbeidsgivere og samhandlere."
+                }
+            ]
+        }
+    }
+}

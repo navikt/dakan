@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-team-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/team",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/team",
+  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
+}

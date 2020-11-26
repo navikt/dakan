@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-person-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.adeo.no/person",
+  "ingress_nais_io": "https://data.prod-fss.nais.io/person",
+  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
+}

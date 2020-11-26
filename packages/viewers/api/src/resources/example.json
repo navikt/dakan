@@ -1,0 +1,44 @@
+{
+  "id": "API.Test",
+  "type": "api",
+  "suggest": "Test API",
+  "description": "Test api for elastic search",
+  "title": "Test API",
+  "format": "API",
+  "category": "API",
+  "provenance": "API",
+  "master": "NAV",
+  "purpose": [
+    ""
+  ],
+  "legalbasis": [],
+  "pii": [
+    "TestData"
+  ],
+  "issued": "2020-09-07T13:00:56.200878",
+  "modified": "2020-09-07T13:00:56.200879",
+  "created": "2020-09-07T13:00:56.200881",
+  "distribution": null,
+  "keywords": [
+    "api"
+  ],
+  "theme": [
+    "API"
+  ],
+  "accessRights": "public",
+  "publisher": {
+    "name": "NAV"
+  },
+  "spatial": "Norge",
+  "url": [
+    "url"
+  ],
+  "content": {
+    "name": "Test API",
+    "description": "Test api for elastic search",
+    "app": "test-api",
+    "swagger": "https://test/api/swagger/ui",
+    "type": "api",
+    "url": "https://test.no/api"
+  }
+}

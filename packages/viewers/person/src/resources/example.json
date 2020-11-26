@@ -1,0 +1,21 @@
+{
+    "id": "Person.T12345",
+    "label": "Person",
+    "type": "vertex",
+    "properties": {
+      "navident": "T12345",
+      "epost": "Test.Test.Test@test.test",
+      "fornavn": "Test Test",
+      "etternavn": "Test",
+      "ressurstype": "INTERN",
+      "startdato": "0000-00-00",
+      "sluttdato": null,
+      "avdeling": "0000 TEST AVDELING",
+      "tlf": ["12 23 23 23", "12 34 56 78", "87 65 43 21"],
+      "mobil": "12 34 56 78",
+      "trygdeident": "TEST12345",
+      "profilbilde": "",
+      "type": "Person",
+      "aad_id": "TEST_ADD_ID"
+    }
+  }

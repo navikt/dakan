@@ -1,0 +1,8 @@
+{
+  "application_name": "data-catalog-api-viewer",
+  "org_name": "navikt",
+  "ingress": "https://data.nais.preprod.local/apier",
+  "ingress_nais_io": "https://data.dev-fss.nais.io/apier",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss",
+  "config_map": "viewer-config"
+}
