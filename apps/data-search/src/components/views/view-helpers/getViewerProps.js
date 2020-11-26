@@ -104,7 +104,7 @@ export function getViewerProps(format) {
     }
   }
 
-  if (format === 'kafka topic' || format === 'kafka') {
+  if (format === 'kafka_topic' || format === 'kafka') {
     return {
       link: env('KAFKA_TOPIC_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagKafkaBackgroundColor,
@@ -112,7 +112,7 @@ export function getViewerProps(format) {
     }
   }
 
-  if (format === 'kafka aiven topic' || format === 'kafka topic aiven') {
+  if (format === 'kafka_aiven_topic' || format === 'kafka_topic_aiven') {
     return {
       link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer',
       backgroundColor: theme.colors.tagKafkaBackgroundColor,
