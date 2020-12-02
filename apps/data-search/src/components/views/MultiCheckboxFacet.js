@@ -21,14 +21,13 @@ const MultiCheckboxFacet = ({
   onSearch,
   searchPlaceholder
 }) => {
-  const selectAndLog = (value, label) => {
+  const selectAndLog = (value) => {
     onSelect(value)
     const eventProperty = {
       filter: value.toLowerCase().replace(' ', '_'),
       type: label.toLowerCase(),
-      page: 'datakatalog',
     }
-    amplitude.getInstance().logEvent('filter_used', eventProperty)
+    amplitude.getInstance().logEvent('filter-valg', eventProperty)
   }
   return (
     <Block
@@ -85,7 +84,7 @@ const MultiCheckboxFacet = ({
                   onChange={() => {
                     checked
                       ? onRemove(option.value)
-                      : selectAndLog(option.value, label)
+                      : selectAndLog(option.value)
                   }}
                 >
                   {getFilterValueDisplay(option.value)} (
