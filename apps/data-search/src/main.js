@@ -22,7 +22,7 @@ const localeOverrideNo = navLocaleOverride || {
 
 const title = env('TITLE') || 'Data'
 const link = env('SEARCH_APP') || '../'
-const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
+const amplitude_project_id = 'default'
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
@@ -45,7 +45,6 @@ class Main extends React.Component {
                   amplitude_project_id: amplitude_project_id,
                   amplitude_endpoint: amplitude_endpoint,
                   gt: gt,
-                  viewer: 'datakatalog',
                   page: 'main',
                   section: 'main',
                   showLoginButton: false,

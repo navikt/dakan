@@ -13,13 +13,10 @@ export const Metrics = ({
 }) => {
   const AmplitudeConfig = {
     apiEndpoint: amplitude_endpoint,
-    saveEvents: true,
+    saveEvents: false,
     includeUtm: true,
     includeReferrer: true,
-    trackingOptions: {
-      city: false,
-      ip_address: false,
-    },
+    platform: window.location.toString()
   }
 
   React.useEffect(() => {
