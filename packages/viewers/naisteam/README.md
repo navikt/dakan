@@ -1,2 +1,1 @@
 # Datakatalog naisteam viewer (Teamkatalogen)
-
