@@ -106,7 +106,7 @@ const Viewer = (props: any) => {
             {getHeader()}
             {node && node.properties && (
                 <React.Fragment>
-                    <Metrics viewer={'tabell'} page={node.id} section={''} />
+                    <Metrics page={node.id} section={''} />
                     <Block>
                         <Block display="flex" justifyContent="flex-end"></Block>
                         <Content

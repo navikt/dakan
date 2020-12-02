@@ -28,7 +28,7 @@ const Viewer = (props: any) => {
       {loadingNode && <LoadingSpinner />}
       {node && (
         <React.Fragment>
-          <Metrics viewer={'orgteam'} page={node.id} section={''} />
+          <Metrics page={node.id} section={''} />
           <Content
             {...props}
             id={props.match.params.id}

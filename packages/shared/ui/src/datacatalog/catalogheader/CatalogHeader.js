@@ -10,7 +10,6 @@ export const CatalogHeader = (props) => {
         gt={config.gt}
         amplitude_project_id={config.amplitude_project_id}
         amplitude_endpoint={config.amplitude_endpoint}
-        viewer={config.viewer}
         page={config.page}
         section={config.section}
       />

@@ -32,7 +32,7 @@ const Viewer = (props: any) => {
     <React.Fragment>
       {data && data.content && (
         <Block>
-          <Metrics viewer={'begrep'} page={data.content.term} section={''} />
+          <Metrics page={data.content.term} section={''} />
           <Content
             {...props}
             indexEntry={data.content}

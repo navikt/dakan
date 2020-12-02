@@ -53,7 +53,7 @@ const Viewer = (props: any) => {
       {getHeader()}
       {node && node.properties && (
         <Block>
-          <Metrics viewer={'kafkaaiven'} page={node.id} section={''} />
+          <Metrics page={node.id} section={''} />
           <Content
             data={node}
           />
