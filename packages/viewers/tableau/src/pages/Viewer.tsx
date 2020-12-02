@@ -129,7 +129,7 @@ const Viewer = (props: any) => {
         {getHeader()}
         {node && node.properties && (
           <React.Fragment>
-            <Metrics viewer={'tableau'} page={node.id} section={''} />
+            <Metrics page={node.id} section={''} />
             <Content
               data={node}
               viewList={viewList}

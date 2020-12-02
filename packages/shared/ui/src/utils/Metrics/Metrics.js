@@ -8,7 +8,6 @@ export const Metrics = ({
   gt,
   amplitude_project_id,
   amplitude_endpoint,
-  viewer,
   page,
   section,
 }) => {
@@ -25,21 +24,19 @@ export const Metrics = ({
 
   React.useEffect(() => {
     const eventProperty = {
-      viewer: viewer,
-      page: page,
+      sidetittel: page,
       section: section,
     }
     if (amplitude_project_id && amplitude_endpoint) {
       const amplitudeInstance = amplitude.getInstance()
       amplitudeInstance.init(amplitude_project_id, undefined, AmplitudeConfig)
-      amplitudeInstance.logEvent('page_visit', eventProperty)
+      amplitudeInstance.logEvent('sidevisning', eventProperty)
     }
-  }, [gt, amplitude_project_id, amplitude_endpoint, viewer, page, section])
+  }, [gt, amplitude_project_id, amplitude_endpoint, page, section])
 
   return (
     <React.Fragment>
-      {viewer &&
-        page &&
+      { page &&
         section &&
         gt &&
         amplitude_project_id &&

@@ -3,39 +3,34 @@ import amplitude from 'amplitude-js'
 import env from '@beam-australia/react-env'
 import { GoogleTagManager } from './GoogleTagManager'
 
-const amplitude_project_id = env('AMPLITUDE_PROJECT_ID')
+const amplitude_project_id = 'default'
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT')
 const gt = env('GTM_ID')
 
-export const Metrics = ({ viewer, page, section }) => {
+export const Metrics = ({ page, section }) => {
   const AmplitudeConfig = {
     apiEndpoint: amplitude_endpoint,
-    saveEvents: true,
+    saveEvents: false,
     includeUtm: true,
     includeReferrer: true,
-    trackingOptions: {
-      city: false,
-      ip_address: false,
-    },
+    platform: window.location.toString(),
   }
 
   React.useEffect(() => {
     const eventProperty = {
-      viewer: viewer,
-      page: page,
+      sidetittel: page,
       section: section,
     }
     if (amplitude_project_id && amplitude_endpoint) {
       const amplitudeInstance = amplitude.getInstance()
       amplitudeInstance.init(amplitude_project_id, undefined, AmplitudeConfig)
-      amplitudeInstance.logEvent('page_visit', eventProperty)
+      amplitudeInstance.logEvent('sidevisning', eventProperty)
     }
-  }, [gt, amplitude_project_id, amplitude_endpoint, viewer, page, section])
+  }, [gt, amplitude_project_id, amplitude_endpoint, page, section])
 
   return (
     <React.Fragment>
-      {viewer &&
-        page &&
+      { page &&
         section &&
         gt &&
         amplitude_project_id &&
