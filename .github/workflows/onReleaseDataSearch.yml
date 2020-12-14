@@ -61,3 +61,15 @@ jobs:
         CLUSTER: prod-sbs
         RESOURCE: apps/data-search/naiserator_sbs.yaml
         VARS: apps/data-search/config-prod-sbs.json
+
+  deploy-prod-gcp-external:
+    name: Deploy to prod-gcp (external)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-gcp
+        RESOURCE: apps/data-search/naiserator_gcp.yaml
+        VARS: apps/data-search/config-prod-gcp-external.json

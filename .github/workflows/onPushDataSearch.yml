@@ -65,3 +65,16 @@ jobs:
         CLUSTER: dev-sbs
         RESOURCE: apps/data-search/naiserator_sbs.yaml
         VARS: apps/data-search/config-dev-sbs.json
+
+  deploy-dev-gcp-external:
+    name: Deploy to dev-gcp
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-gcp
+        RESOURCE: apps/data-search/naiserator_gcp.yaml
+        VARS: apps/data-search/config-dev-gcp-external.json
