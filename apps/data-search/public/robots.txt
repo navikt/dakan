@@ -1,0 +1,1 @@
+Sitemap: http://data.nav.no/sitemap.xml
