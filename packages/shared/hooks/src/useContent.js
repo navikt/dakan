@@ -10,18 +10,30 @@ export function useContent(id) {
   const [error, setError] = useState(false)
 
   const getData = (response) => {
-    if (typeof response.data !== 'object')
+    if (typeof response.data.data !== 'object')
       throw Error(`Error fetching content: ${id}`)
-    return response.data
+    return response.data.data
+  }
+
+  const get_nodes_by_label = async (label, api) => {
+    const nodes = []
+    let page = 1
+    let has_next_page = true
+    while(has_next_page){
+      const response = await axios.get(`${api}/nodes/${label}?page=${page}`)
+      const data = await getData(response)
+      page+=1
+      has_next_page=response.data.has_next_page
+      nodes.push(...data)
+    }
+    setData(nodes)
   }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`${server}/nodes/${id}`)
-        const data = await getData(response)
-        setData(data)
+        get_nodes_by_label(id, server)
       } catch (e) {
         setError(true)
       }
