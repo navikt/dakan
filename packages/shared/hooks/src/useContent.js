@@ -15,7 +15,7 @@ export function useContent(id) {
     return response.data.data
   }
 
-  const get_nodes_by_label = (label, api) => {
+  const get_nodes_by_label = async (label, api) => {
     const nodes = []
     let page = 1
     let has_next_page = true
