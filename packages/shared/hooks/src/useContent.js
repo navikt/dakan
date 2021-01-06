@@ -20,8 +20,10 @@ export function useContent(id) {
     let page = 1
     let has_next_page = true
     while(has_next_page){
-      const response = await axios.get(`${api}/nodes/${label}`)
+      const response = await axios.get(`${api}/nodes/${label}?page=${page}`)
       const data = await getData(response)
+      page+=1
+      has_next_page=response.data.has_next_page
       nodes.push(...data)
     }
     setData(nodes)
