@@ -57,62 +57,63 @@ function SearchBoxView(props) {
       {...rest}
     >
       {(downshiftProps) => {
-        const { closeMenu, getInputProps, isOpen } = downshiftProps
+        const { closeMenu, getInputProps, isOpen, getLabelProps } = downshiftProps
         let autocompleteClass = isOpen === true ? ' autocomplete' : ''
         return (
-          <form 
-            role="search"
-            onSubmit={(e) => {
-              closeMenu()
-              onSubmit(e)
-            }}
-          >
-            <div
-              className={
-                appendClassName('sui-search-box', className) + autocompleteClass
-              }
+          <div {...getLabelProps()} aria-label="Søkeboks">
+            <form
+              onSubmit={(e) => {
+                closeMenu()
+                onSubmit(e)
+              }}
             >
-              <InputView
-                {...downshiftProps}
-                getInputProps={(additionalProps) => {
-                  const { className, ...rest } = additionalProps || {}
-                  return getInputProps({
-                    placeholder: 'Søk etter data, datasett, begreper...',
-                    ...inputProps,
-                    className: appendClassName('sui-search-box__text-input', [
-                      inputProps.className,
-                      className,
-                      focusedClass,
-                    ]),
-                    ...rest,
-                  })
-                }}
-                getButtonProps={(additionalProps) => {
-                  const { className, ...rest } = additionalProps || {}
-                  return {
-                    type: 'submit',
-                    value: 'Search',
-                    className: appendClassName(
-                      'button sui-search-box__submit',
-                      className,
-                    ),
-                    ...rest,
-                  }
-                }}
-                getAutocomplete={() => {
-                  if (
-                    useAutocomplete &&
-                    isOpen &&
-                    allAutocompletedItemsCount > 0
-                  ) {
-                    return <AutocompleteView {...props} {...downshiftProps} />
-                  } else {
-                    return null
-                  }
-                }}
-              />
-            </div>
-          </form>
+              <div
+                className={
+                  appendClassName('sui-search-box', className) + autocompleteClass
+                }
+              >
+                <InputView
+                  {...downshiftProps}
+                  getInputProps={(additionalProps) => {
+                    const { className, ...rest } = additionalProps || {}
+                    return getInputProps({
+                      placeholder: 'Søk etter data, datasett, begreper...',
+                      ...inputProps,
+                      className: appendClassName('sui-search-box__text-input', [
+                        inputProps.className,
+                        className,
+                        focusedClass,
+                      ]),
+                      ...rest,
+                    })
+                  }}
+                  getButtonProps={(additionalProps) => {
+                    const { className, ...rest } = additionalProps || {}
+                    return {
+                      type: 'submit',
+                      value: 'Search',
+                      className: appendClassName(
+                        'button sui-search-box__submit',
+                        className,
+                      ),
+                      ...rest,
+                    }
+                  }}
+                  getAutocomplete={() => {
+                    if (
+                      useAutocomplete &&
+                      isOpen &&
+                      allAutocompletedItemsCount > 0
+                    ) {
+                      return <AutocompleteView {...props} {...downshiftProps} />
+                    } else {
+                      return null
+                    }
+                  }}
+                />
+              </div>
+            </form>
+          </div>
         )
       }}
     </Downshift>
