@@ -60,7 +60,8 @@ function SearchBoxView(props) {
         const { closeMenu, getInputProps, isOpen } = downshiftProps
         let autocompleteClass = isOpen === true ? ' autocomplete' : ''
         return (
-          <form
+          <form 
+            role="search"
             onSubmit={(e) => {
               closeMenu()
               onSubmit(e)

@@ -17,7 +17,7 @@ import {
   ContactIcon,
   ContactHoverIcon,
 } from '../icons'
-import { logo, DataKatalogLogo } from './logo'
+import { DataKatalogLogo } from './logo'
 import { Button } from '../button'
 import { MenuIcon } from '../icons/MenuIcon'
 
@@ -32,7 +32,7 @@ const CustomLink = (props) => {
   const link = useCss({ textDecoration: 'none' })
   if (home_link) {
     return (
-      <Link href={home_link} className={link} aria-label="link">
+      <Link href={home_link} className={link} aria-label="Link til Hovedside">
         <Block
           font={props.font || 'font650'}
           color={props.color || 'colorPrimary'}
@@ -222,7 +222,10 @@ export const Header = (props) => {
           alignItems="stretch"
           justifyContent="space-between"
         >
+          <h1 aria-label="Datakatalogen">
           <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
+          </h1>
+          <nav role="navigation" aria-label="Mobil header meny">
           <Block marginTop="16px">
             <Button
               kind={KIND.minimal}
@@ -234,6 +237,7 @@ export const Header = (props) => {
               Meny
             </Button>
           </Block>
+          </nav>
         </Block>
       </React.Fragment>
     )
@@ -278,7 +282,8 @@ export const Header = (props) => {
   )
 
   return (
-    <React.Fragment>
+    <div role="banner">
+    <React.Fragment >
       <Block paddingBottom="scale100">
         <Block
           display={['none', 'none', 'flex']}
@@ -303,7 +308,10 @@ export const Header = (props) => {
             alignItems="stretch"
             justifyContent="space-between"
           >
+            <h1 aria-label="Datakatalogen">
             <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
+            </h1>
+            <nav role="navigation" aria-label="Header meny">
             <Block display="flex" justifyContent="flex-end" alignSelf="center">
               {getAboutButton()}
               {getContactButton()}
@@ -313,6 +321,7 @@ export const Header = (props) => {
                 )}
               </Block>
             </Block>
+            </nav>
           </Block>
         </Block>
         <Block
@@ -329,6 +338,7 @@ export const Header = (props) => {
         />
       </Block>
     </React.Fragment>
+    </div>
   )
 }
 
