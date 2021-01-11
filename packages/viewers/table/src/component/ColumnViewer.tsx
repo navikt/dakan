@@ -50,6 +50,21 @@ const ColumnViewer = (prop: any) => {
         });
     };
 
+    const isDataEmpty = (list: []) => {
+        const listLength = list.length
+        let numberOfEmptyData = 0
+        list.forEach((data) => {
+            if (data[1] === "Ingen data"){
+                numberOfEmptyData += 1 
+            }
+        })
+        if (listLength === numberOfEmptyData) return true 
+        else {
+            return false
+        }
+    }
+
+
     const getDataQuality = () => {
         let items = [
             ['Antall rader', GetValue(() => columnData.properties.standard_metrics.standard_rows)],
@@ -103,17 +118,17 @@ const ColumnViewer = (prop: any) => {
         return (
             <Block display={['block', 'flex']}>
                 <Block width={'100%'}>
-                    <Table columns={['Kvantil Metrikker']} data={quantileMetrics} />
+                    <Table columns={['Kvantil Metrikker', '']} data={quantileMetrics} />
                 </Block>
                 <Block width={'100%'}>
-                    <Table columns={['Deskriptive Metrikker']} data={decriptiveMetrics} />
+                    <Table columns={['Deskriptive Metrikker', '']} data={decriptiveMetrics} />
                 </Block>
             </Block>
         );
     };
 
     const getDataTypeMetrics = () => {
-        let dataTypeItems: any = null;
+        let dataTypeItems: any = [];
 
         if (columnData.properties.data_type.toLowerCase() === 'number') {
             return getNumberMetrics();
@@ -138,9 +153,13 @@ const ColumnViewer = (prop: any) => {
             ];
         }
 
+        if(isDataEmpty(dataTypeItems)){
+            dataTypeItems = []
+        }
+
         return (
             <Block>
-                {dataTypeItems && (
+                {dataTypeItems.length > 0  && (
                     <Table columns={[`${columnData.properties.data_type} Metrikker`, '']} data={dataTypeItems} />
                 )}
             </Block>
@@ -148,7 +167,7 @@ const ColumnViewer = (prop: any) => {
     };
 
     const getMetaData = () => {
-        let metaData: any[] = [];
+        let metaData: any = [];
         if (columnData.properties.sampling) {
             metaData = [
                 ['Dato kjørt', GetValue(() => columnData.properties.run_date)],
@@ -163,11 +182,16 @@ const ColumnViewer = (prop: any) => {
             ];
         }
 
+        if(isDataEmpty(metaData)){
+            metaData = []
+        }
+
         return <Block>{metaData && metaData.length > 0 && <Table columns={['', '']} data={metaData} />}</Block>;
     };
 
     const getCountTable = () => {
         const countTable = GetValue(() => columnData.properties.count_table, []);
+
         return (
             <Block>
                 {countTable && countTable.length >= 1 && <Table columns={['Verdi', 'Antall']} data={countTable} />}
