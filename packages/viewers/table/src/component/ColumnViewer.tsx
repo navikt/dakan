@@ -50,10 +50,10 @@ const ColumnViewer = (prop: any) => {
         });
     };
 
-    const isDataEmpty = (list: []) => {
+    const isDataEmpty = (list: any) => {
         const listLength = list.length
         let numberOfEmptyData = 0
-        list.forEach((data) => {
+        list.forEach((data: any) => {
             if (data[1] === "Ingen data"){
                 numberOfEmptyData += 1 
             }
@@ -92,7 +92,7 @@ const ColumnViewer = (prop: any) => {
     };
 
     const getNumberMetrics = () => {
-        const quantileMetrics = [
+        let quantileMetrics = [
             ['Minimumsverdi', GetValue(() => columnData.properties.number_metrics.num_min.toFixed(2))],
             ['5 prosentil', GetValue(() => columnData.properties.number_metrics.num_p5.toFixed(2))],
             ['25 prosentil', GetValue(() => columnData.properties.number_metrics.num_p25.toFixed(2))],
@@ -104,7 +104,11 @@ const ColumnViewer = (prop: any) => {
             ['Interkvartil intervall', GetValue(() => columnData.properties.number_metrics.num_iqr.toFixed(2))],
         ];
 
-        const decriptiveMetrics = [
+        if (isDataEmpty(quantileMetrics)){
+            quantileMetrics = []
+        }
+
+        let descriptiveMetrics = [
             ['Standardavvik', GetValue(() => columnData.properties.number_metrics.num_std.toFixed(2))],
             ['Variasjonskoeffisient', GetValue(() => columnData.properties.number_metrics.num_cov.toFixed(2))],
             ['Kurtose', GetValue(() => columnData.properties.number_metrics.num_kurtosis.toFixed(2))],
@@ -115,14 +119,18 @@ const ColumnViewer = (prop: any) => {
             ['Antall 0', GetValue(() => columnData.properties.number_metrics.num_zero)],
         ];
 
+        if (isDataEmpty(descriptiveMetrics)){
+            descriptiveMetrics = []
+        }
+
         return (
             <Block display={['block', 'flex']}>
-                <Block width={'100%'}>
+               {quantileMetrics.length > 0 && ( <Block width={'100%'}>
                     <Table columns={['Kvantil Metrikker', '']} data={quantileMetrics} />
-                </Block>
-                <Block width={'100%'}>
-                    <Table columns={['Deskriptive Metrikker', '']} data={decriptiveMetrics} />
-                </Block>
+                </Block>)}
+                {descriptiveMetrics.length > 0 && (<Block width={'100%'}>
+                    <Table columns={['Deskriptive Metrikker', '']} data={descriptiveMetrics} />
+                </Block>)}
             </Block>
         );
     };
