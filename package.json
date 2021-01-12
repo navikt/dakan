@@ -41,6 +41,7 @@
     "productarea:build": "cd packages/viewers/productarea && yarn run build",
     "productarea:test": "cd packages/viewers/productarea && yarn test",
     "search": "cd apps/data-search && yarn run start",
+    "msearch": "cd apps/msearch && yarn run start",
     "setup": "npx lerna bootstrap",
     "shared": "yarn run theme && yarn run ui && yarn run hooks && yarn run metrics",
     "shared:build": "yarn run theme:build && yarn run ui:build && yarn run hooks:build && yarn run metrics:build",
@@ -73,6 +74,5 @@
       "packages/**"
     ]
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

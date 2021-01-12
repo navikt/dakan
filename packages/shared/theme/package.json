@@ -1,39 +1,39 @@
 {
-    "name": "@dakan/theme",
-    "version": "0.0.4",
-    "main": "dist/index.js",
-    "files": [
-        "dist"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/navikt/dakan"
-    },
-    "scripts": {
-        "check-types": "tsc",
-        "build": "yarn rimraf dist && babel src -d dist",
-        "start": "yarn rimraf dist && babel -w src -d dist",
-        "format": "prettier --write \"./src/**/*.{js,json,md,yml,ts,tsx,jsx}\"",
-        "test": "yarn build && yarn lint && yarn coverage",
-        "publish:public": "yarn run build && npm publish --access=public"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.6.4",
-        "@babel/core": "^7.6.4",
-        "@babel/preset-env": "^7.6.3",
-        "@babel/preset-react": "^7.6.3",
-        "@babel/preset-typescript": "^7.7.7",
-        "babel-plugin-styled-components": "^1.10.6",
-        "prettier": "^2.0.5",
-        "typescript": "^4.0.2"
-    },
-    "dependencies": {
-        "baseui": "^9.89.0",
-        "polished": "^4.0.3",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
-        "styled-components": "^4.4.0",
-        "styletron-engine-atomic": "^1.4.4",
-        "styletron-react": "^5.2.6"
-    }
+  "name": "@dakan/theme",
+  "version": "0.0.4",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navikt/dakan"
+  },
+  "scripts": {
+    "check-types": "tsc",
+    "build": "yarn rimraf dist && babel src -d dist",
+    "start": "yarn rimraf dist && babel -w src -d dist",
+    "format": "prettier --write \"./src/**/*.{js,json,md,yml,ts,tsx,jsx}\"",
+    "test": "yarn build && yarn lint && yarn coverage",
+    "publish:public": "yarn run build && npm publish --access=public"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.12.10",
+    "@babel/core": "7.12.10",
+    "@babel/preset-env": "7.12.11",
+    "@babel/preset-react": "7.12.10",
+    "@babel/preset-typescript": "7.12.7",
+    "babel-plugin-styled-components": "^1.10.6",
+    "prettier": "^2.0.5",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "baseui": "9.107.0",
+    "polished": "^4.0.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^4.4.0",
+    "styletron-engine-atomic": "1.4.6",
+    "styletron-react": "5.2.7"
+  }
 }
