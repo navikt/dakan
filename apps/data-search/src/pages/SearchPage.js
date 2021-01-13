@@ -134,6 +134,7 @@ const Sort = () => (
 const Sidebar = (props) => {
   if (props.match.params.mode !== 'tab') {
     return (
+      <nav role="navigation" aria-label="Filter meny"> 
       <Block>
         <Block display={['none','none','flex', 'flex']} marginBottom="scale750">
           <Block marginRight="scale200">
@@ -144,6 +145,7 @@ const Sidebar = (props) => {
         <Block>{facets.map((f, index) => getFacet(f, index))}</Block>
         <Sort />
       </Block>
+      </nav>
     )
   }
 }
@@ -173,6 +175,7 @@ const Content = (props) => {
           <PagingInfo view={PagingInfoView} />
         </Block>
       </Block>
+      <nav role="navigation" aria-label="Søke resultat"> 
       <Block display={['block','block', 'none', ]}>
           <StatelessAccordion expanded={panelExpanded} onChange={(e) => setPanelExpanded(e.expanded)}>
             <Panel title="Filter" isExpanded={panelExpanded[0] === '0'}>
@@ -187,6 +190,7 @@ const Content = (props) => {
         view={PagingView} 
       />
       </Block>
+      </nav>
     </Block>
   )
 }
@@ -204,7 +208,7 @@ const ResultPage = (props) => {
 }
 
 const searchbox = () => (
-  <SearchBox
+  <SearchBox 
     autocompleteMinimumCharacters={1}
     autocompleteResults={{
       titleField: 'title',
@@ -242,7 +246,7 @@ const SearchPage = (props, state) => {
       >
         {({ wasSearched }) => (
           <ErrorBoundary>
-            {wasSearched && <ResultPage {...props} />}
+            {wasSearched && <main><ResultPage {...props} /></main>}
           </ErrorBoundary>
         )}
       </WithSearch>

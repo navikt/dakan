@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { ParagraphMedium } from 'baseui/typography'
 import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+import { renderDeclarativeRules } from 'styletron-standard'
 
 const ITEMS = [
   { item: 'slack', label: 'Slack', format: 'slackchannel' },
@@ -27,7 +28,7 @@ const Content = ({ item, id }) => {
   }
 
   return (
-    <React.Fragment>
+    <div role="main">
       {item && item.content && (
       <Block>
         <Layout
@@ -37,7 +38,7 @@ const Content = ({ item, id }) => {
           right={null}
         />
       </Block>)}
-    </React.Fragment>
+    </div>
   )
 }
 

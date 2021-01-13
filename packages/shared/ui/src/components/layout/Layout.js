@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { HeadingMedium, LabelMedium } from 'baseui/typography'
+import { HeadingMedium, LabelMedium, HeadingXLarge} from 'baseui/typography'
 import { useStyletron } from 'baseui'
 import { Footer } from '../footer'
 
@@ -33,10 +33,10 @@ export const Heading = (props) => {
   if (props && props.headingLabel && props.headingText) {
     return (
       <Block marginBottom="scale1200">
-        <HeadingMedium>
+        <HeadingXLarge>
           <LabelMedium>{props.headingLabel}</LabelMedium>
           {props.headingText}
-        </HeadingMedium>
+        </HeadingXLarge>
       </Block>
     )
   }
