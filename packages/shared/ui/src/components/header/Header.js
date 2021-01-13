@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { StyledLink as Link } from 'baseui/link'
 import { useStyletron } from 'baseui'
 import { Block } from 'baseui/block'
-import { Label2, LabelMedium } from 'baseui/typography'
+import { Label2, LabelMedium, HeadingXXLarge } from 'baseui/typography'
 import { StyledLink } from 'baseui/link'
 import { StatefulPopover } from 'baseui/popover'
 import { Button as BaseuiButton, KIND, SHAPE } from 'baseui/button'
@@ -32,14 +31,14 @@ const CustomLink = (props) => {
   const link = useCss({ textDecoration: 'none' })
   if (home_link) {
     return (
-      <Link href={home_link} className={link} aria-label="Link til Hovedside">
+      <StyledLink href={home_link} className={link} aria-label="Link til Hovedside">
         <Block
           font={props.font || 'font650'}
           color={props.color || 'colorPrimary'}
         >
           {props.children}
         </Block>
-      </Link>
+      </StyledLink>
     )
   }
   return (
@@ -57,7 +56,7 @@ const brandName = (props) => {
 }
 
 const NoStyleLink = (props) => (
-  <StyledLink style={{ textDecoration: 'none' }} href={props.href}>
+  <StyledLink alt={props.alt} aria-label={props.ariaLabel} style={{ textDecoration: 'none' }} href={props.href}>
     {props.children}
   </StyledLink>
 )
@@ -81,7 +80,9 @@ const UserLogin = (props) => {
               {props.clientUser.userId}
             </Label2>
             <Block display="flex" width="100%">
-              <StyledLink
+              <StyledLink 
+                aria-label="Logg ut knapp" 
+                alt="Logg ut"
                 href={`${graph_server}/logout?redirect_url=${window.location.href}`}
               >
                 Logg ut
@@ -97,7 +98,9 @@ const UserLogin = (props) => {
     )
   } else {
     return (
-      <StyledLink
+      <StyledLink 
+        aria-label="Logg inn knapp" 
+        alt="Logg inn"
         href={`${graph_server}/login?redirect_url=${window.location.href}`}
         style={{ textDecoration: 'none' }}
       >
@@ -125,7 +128,7 @@ const SideBar = (props) => {
                 </Label2>
               </Block>
               <Block>
-                <StyledLink
+                <StyledLink aria-label="Logg ut knapp" alt="Logg ut"
                   href={`${graph_server}/logout?redirect_url=${window.location.href}`}
                 >
                   Logg ut
@@ -247,7 +250,7 @@ export const Header = (props) => {
     return (
       <Block>
         {props && props.config && props.config.about && (
-          <NoStyleLink href={about_link}>
+          <NoStyleLink ariaLabel="Om Datakatalogen link" alt="Om Datakatalogen" href={about_link}>
             <Button
               kind={KIND.minimal}
               startEnhancer={
@@ -308,9 +311,9 @@ export const Header = (props) => {
             alignItems="stretch"
             justifyContent="space-between"
           >
-            <h1 aria-label="Datakatalogen">
+            <HeadingXXLarge alignSelf="center" alt="Om Datakatalogen link" aria-label="Datakatalogen">
             <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
-            </h1>
+            </HeadingXXLarge >
             <nav role="navigation" aria-label="Header meny">
             <Block display="flex" justifyContent="flex-end" alignSelf="center">
               {getAboutButton()}
