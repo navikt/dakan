@@ -34,8 +34,8 @@ export const Heading = (props) => {
     return (
       <Block marginBottom="scale1200">
         <HeadingXLarge>
-          {props.headingText}
           <LabelMedium>{props.headingLabel}</LabelMedium>
+          {props.headingText}
         </HeadingXLarge>
       </Block>
     )
