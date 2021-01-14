@@ -27,4 +27,5 @@
 **/lerna-debug.log*
 **/debug.log*
 **/.eslintcache
+.DS_Store
 
