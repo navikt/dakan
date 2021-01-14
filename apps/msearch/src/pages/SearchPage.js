@@ -19,8 +19,8 @@ const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
 const url = `${server}/${index}` 
 
-const SORTKEYS = [{'id':"issued", "key":"issued"},{"id":"title", "key":"title.keyword"}]
-const SORTDIRECTION = [{"id":"asc", "key": "asc"},{"id": "desc", "key": "desc"}]
+const SORTKEYS = [{'id':"issued", "label":"Dato"},{"id":"title.keyword", "label":"Tittel"}]
+const SORTDIRECTION = [{"id":"asc", "label": "Stigende"},{"id": "desc", "label": "Synkende"}]
 
 const SEARCHFIELDS = [
     'title^18',
@@ -84,12 +84,14 @@ function SearchPage(props) {
     const [sortQuery, setSortQuery] = useState([{ [sortKey]: { order: sortOrder } }]);
     
     useEffect(() => {
-        const selectedSortOrder = sortOrderOption[0]['key'] 
-        const selectedSortKey = sortKeyOption[0]['key']
+
+        if (sortOrderOption[0] && sortKeyOption[0] ) {
+        const selectedSortOrder = sortOrderOption[0]['id'] 
+        const selectedSortKey = sortKeyOption[0]['id']
         setSortOrder(selectedSortOrder)
         setSortKey(selectedSortKey)
-
         setSortQuery([{ [selectedSortKey]: { order: selectedSortOrder } }]);
+        }
       }, [sortKeyOption, sortOrderOption]);
 
     const onChange = (values) => {
@@ -152,20 +154,27 @@ function SearchPage(props) {
                         initialValue={initialValues.get('format')}
                     />
                 </Block>
-                <Block>
+                <Block marginTop='scale600'>
+                <Label>Sortering</Label>
+                <Block marginTop='scale400'>
                 <Select  onChange={({value}) => setSortKeyOption(value)} value={sortKeyOption}
                     options = {SORTKEYS}
-                    labelKey="id"
-                    valueKey="key"
+                    labelKey="label"
+                    valueKey="id"
+                    value={sortKeyOption}
+                    clearable={false}
                 >
                 </Select>
                 </Block>
-                <Block>
+                <Block marginTop='scale400'>
                 <Select onChange={({value}) => setSortOrderOption(value)} value={sortOrderOption}
                     options = {SORTDIRECTION}
-                    labelKey="id"
-                    valueKey="key">
+                    labelKey="label"
+                    value={sortOrderOption}
+                    valueKey="id"
+                          clearable={false}>
                 </Select>
+                </Block>
                 </Block>
             </Block>
         )
