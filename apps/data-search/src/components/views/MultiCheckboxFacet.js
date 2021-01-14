@@ -70,17 +70,16 @@ const MultiCheckboxFacet = ({
               return false
             })
             return (
-              <Block
+              <Block 
+                marginBottom="scale300"
                 key={`facet_group_${label}${getFilterValueDisplay(
                   option.value,
                 )}`}
               >
-                <Block
-                  marginBottom="scale300"
-                />
                 <Checkbox
                   id={`facet_${label}${getFilterValueDisplay(option.value)}`}
                   checked={checked}
+                  ariaLabel={getFilterValueDisplay(option.value)}
                   onChange={() => {
                     checked
                       ? onRemove(option.value)

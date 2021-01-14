@@ -6,14 +6,15 @@ import { merge } from '../../utils/merge'
 export const Select = (props) => {
   const [, theme] = useStyletron()
 
-  const { overrides, children, ...rest } = props
+  const { overrides, children, ariaLabel, ...rest } = props
   const mergedOverrides = merge(
     overrides || {},
     (theme && theme.selectOverrides) || {},
   )
 
+  const aria_label=ariaLabel || ""
   return (
-    <BaseSelect {...rest} overrides={mergedOverrides}>
+    <BaseSelect aria-label={aria_label} {...rest} overrides={mergedOverrides}>
       {children}
     </BaseSelect>
   )

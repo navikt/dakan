@@ -6,14 +6,15 @@ import { merge } from '../../utils/merge'
 export const Checkbox = (props) => {
   const [, theme] = useStyletron()
 
-  const { overrides, children, ...rest } = props
-  const mergedOverides = merge(
+  const { overrides, children, ariaLabel, ...rest } = props
+  const aria_label=ariaLabel || ""
+  const mergedOverrides = merge(
     overrides || {},
     (theme && theme.checkboxOverrides) || {},
   )
 
   return (
-    <BaseCheckbox {...rest} overrides={mergedOverides}>
+    <BaseCheckbox ariaLabel={aria_label} {...rest} overrides={mergedOverrides}>
       {children}
     </BaseCheckbox>
   )

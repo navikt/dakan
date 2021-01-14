@@ -21,6 +21,7 @@ export const BackLink = () => {
   return (
     <Block>
       <a
+        aria-label="Tilbake knapp"
         onClick={() => window.history.back()}
         style={{
           color: colors.linkText,

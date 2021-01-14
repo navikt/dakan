@@ -20,6 +20,7 @@ const Link = (props) => {
   return (
     <StyledLink
       {...props}
+      aria-label={props.ariaLabel}
       style={{
         textDecoration: 'none',
         color: '#3E3832',
@@ -61,7 +62,7 @@ export const Footer = ({ isInternal }) => {
           <StyledLogo />
         </Block>
         <Block marginLeft="scale500">
-          <Link href={getLink()}>{'Arbeids- og velferdsetaten'}</Link>
+          <Link ariaLabel="Link til Arbeids- og velferdsetaten" alt="Arbeids- og velferdsetaten" href={getLink()}>{'Arbeids- og velferdsetaten'}</Link>
         </Block>
       </Block>
     </Block>
