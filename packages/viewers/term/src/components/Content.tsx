@@ -113,7 +113,7 @@ const Content = (props: any) => {
     } else {
       return (
         indexEntry && (
-          <Block>
+          <div role="main">
             <LargeWidth headingLabel="Begrep" headingText={indexEntry.term}>
               <Block display={['block', 'block', 'flex']}>
                 <Block flex={'3'}>
@@ -146,7 +146,7 @@ const Content = (props: any) => {
                 </Block>
               </Block>
             </LargeWidth>
-          </Block>
+          </div>
         )
       )
     }
