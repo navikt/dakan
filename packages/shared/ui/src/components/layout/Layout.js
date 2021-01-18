@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { HeadingMedium, LabelMedium, HeadingXLarge} from 'baseui/typography'
+import { HeadingMedium, LabelMedium, HeadingXLarge } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 import { Footer } from '../footer'
 
@@ -32,12 +32,14 @@ export const ToolBar = (props) => {
 export const Heading = (props) => {
   if (props && props.headingLabel && props.headingText) {
     return (
+      <div role="complementary" aria-label={props.headingText}>
       <Block marginBottom="scale1200">
         <HeadingXLarge>
           <LabelMedium>{props.headingLabel}</LabelMedium>
           {props.headingText}
         </HeadingXLarge>
       </Block>
+      </div>
     )
   }
   return null
@@ -46,91 +48,99 @@ export const Heading = (props) => {
 export const FullWidth = (props) => {
   const [, theme] = useStyletron()
   return (
-    <Block
-      display="flex"
-      width="100%"
-      minHeight="100vh"
-      flexDirection="column"
-      maxWidth={theme.breakpoints.xlarge + 'px'}
-    >
-      <Block width="100%" marginLeft={MARGIN_LEFT} marginRight={MARGIN_RIGHT}>
-        <SingleColumn right={props.children} />
+    <React.Fragment>
+      <Block
+        display="flex"
+        width="100%"
+        minHeight="100vh"
+        flexDirection="column"
+        maxWidth={theme.breakpoints.xlarge + 'px'}
+      >
+        <Block width="100%" marginLeft={MARGIN_LEFT} marginRight={MARGIN_RIGHT}>
+          <SingleColumn right={props.children} />
+        </Block>
       </Block>
       <Footer />
-    </Block>
+    </React.Fragment>
   )
 }
 
 export const LargeWidth = (props) => {
   const [, theme] = useStyletron()
   return (
-    <Block
-      display="flex"
-      width="100%"
-      minHeight="100vh"
-      flexDirection="column"
-      paddingLeft={MARGIN_LEFT}
-      paddingRight={MARGIN_RIGHT}
-    >
-      <Block width="100%">
-        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
-        <Block display="flex" justifyContent="center" width="100%">
-          <Block
-            display="flex"
-            justifyContent="center"
-            width="100%"
-            maxWidth={theme.breakpoints.large + 'px'}
-          >
-            <Block flex="1">
-              <Heading {...props} />
+    <React.Fragment>
+      <Block
+        display="flex"
+        width="100%"
+        minHeight="100vh"
+        flexDirection="column"
+        paddingLeft={MARGIN_LEFT}
+        paddingRight={MARGIN_RIGHT}
+      >
+        <Block width="100%">
+          <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+          <Block display="flex" justifyContent="center" width="100%">
+            <Block
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              maxWidth={theme.breakpoints.large + 'px'}
+            >
+              <Block flex="1">
+                <Heading {...props} />
+              </Block>
+            </Block>
+          </Block>
+          <Block display="flex" justifyContent="center" width="100%">
+            <Block
+              flex="1"
+              width="100%"
+              maxWidth={theme.breakpoints.large + 'px'}
+            >
+              {props.children}
             </Block>
           </Block>
         </Block>
-        <Block display="flex" justifyContent="center" width="100%">
-          <Block
-            flex="1"
-            width="100%"
-            maxWidth={theme.breakpoints.large + 'px'}
-          >
-            {props.children}
-          </Block>
-        </Block>
+
       </Block>
       <Footer />
-    </Block>
+    </React.Fragment>
   )
 }
 
 export const MediumWidth = (props) => {
   const [, theme] = useStyletron()
   return (
-    <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
-      <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
-        <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
-        <Block display="flex" justifyContent="center" width="100%">
-          <Block
-            display="flex"
-            justifyContent="center"
-            width="100%"
-            maxWidth={theme.breakpoints.medium + 'px'}
-          >
-            <Block flex="1">
-              <Heading {...props} />
+    <React.Fragment>
+      <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
+        <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
+          <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
+          <Block display="flex" justifyContent="center" width="100%">
+            <Block
+              display="flex"
+              justifyContent="center"
+              width="100%"
+              maxWidth={theme.breakpoints.medium + 'px'}
+            >
+              <Block flex="1">
+                <Heading {...props} />
+              </Block>
+            </Block>
+          </Block>
+          <Block display="flex" justifyContent="center" width="100%">
+            <Block
+              flex="1"
+              width="100%"
+              maxWidth={theme.breakpoints.medium + 'px'}
+            >
+              {props.children}
             </Block>
           </Block>
         </Block>
-        <Block display="flex" justifyContent="center" width="100%">
-          <Block
-            flex="1"
-            width="100%"
-            maxWidth={theme.breakpoints.medium + 'px'}
-          >
-            {props.children}
-          </Block>
-        </Block>
+
       </Block>
       <Footer />
-    </Block>
+    </React.Fragment>
   )
 }
 
