@@ -18,6 +18,7 @@ const Content = ({ item, id }) => {
       properties: item.content
     }
     return (
+      <div role="main">
       <Block
         overrides={{
           Block: {
@@ -35,6 +36,7 @@ const Content = ({ item, id }) => {
         <ReactMarkdown source={item.content.description} />
         <ContentItems ITEMS={ITEMS} item={itemProperties} />
       </Block>
+      </div>
     )
   }
 
@@ -43,7 +45,7 @@ const Content = ({ item, id }) => {
   }
 
   return (
-    <div role="main">
+    <React.Fragment >
       {item && item.content && (
         <Block>
           <Layout
@@ -53,7 +55,7 @@ const Content = ({ item, id }) => {
             right={null}
           />
         </Block>)}
-    </div>
+    </React.Fragment>
   )
 }
 
