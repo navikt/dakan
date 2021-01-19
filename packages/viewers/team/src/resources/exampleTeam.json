@@ -1,0 +1,52 @@
+[
+  {
+    "id": "test",
+    "label": "Person",
+    "properties": {
+      "valid_from": "2021-01-19T08:50:25.630974",
+      "valid_to": "",
+      "valid": true,
+      "navident": "T109585",
+      "fornavn": "Test",
+      "etternavn": "Test",
+      "epost": "test@test.no",
+      "ressurstype": "INTERNAL",
+      "startdato": "2021-01-01",
+      "sluttdato": null,
+      "permisjon": false,
+      "aad_id": "test1234",
+      "avdeling": "Test",
+      "tlf": [
+        "00 00 00 00"
+      ],
+      "mobil": "000 00 000",
+      "trygdeident": "000000",
+      "type": "Person"
+    }
+  },
+  {
+    "id": "test",
+    "label": "Person",
+    "properties": {
+      "valid_from": "2021-01-19T08:50:25.630974",
+      "valid_to": "",
+      "valid": true,
+      "navident": "T109585",
+      "fornavn": "Test",
+      "etternavn": "Test",
+      "epost": "test@test.no",
+      "ressurstype": "INTERNAL",
+      "startdato": "2021-01-01",
+      "sluttdato": null,
+      "permisjon": false,
+      "aad_id": "test1234",
+      "avdeling": "Test",
+      "tlf": [
+        "00 00 00 00"
+      ],
+      "mobil": "000 00 000",
+      "trygdeident": "000000",
+      "type": "Person"
+    }
+  }
+]
