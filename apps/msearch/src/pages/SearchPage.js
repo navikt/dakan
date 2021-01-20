@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react'
-import { Panel, Layout, FilterIcon, Label } from '@dakan/ui'
+import { Panel, LayoutSearch, FilterIcon, Label } from '@dakan/ui'
 import { Block } from 'baseui/block'
 import { Accordion } from 'baseui/accordion'
 import { Select } from 'baseui/select'
-
-
 import Elasticsearch from '../components/Elasticsearch'
 import Results from '../widgets/Results'
 import Facet from '../widgets/Facet'
@@ -19,8 +17,10 @@ const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
 const url = `${server}/${index}` 
 
-const SORTKEYS = [{'id':"issued", "label":"Dato"},{"id":"title.keyword", "label":"Tittel"}]
-const SORTDIRECTION = [{"id":"asc", "label": "Stigende"},{"id": "desc", "label": "Synkende"}]
+const SORTKEYSOPTIONS = [{'id':"issued", "label":"Dato"},{"id":"title.keyword", "label":"Tittel"}]
+const SORTDIRECTIONOPTIONS = [{"id":"asc", "label": "Stigende"},{"id": "desc", "label": "Synkende"}]
+const VALUE_KEY = 'id'
+const VALUE_LABEL = 'label'
 
 const SEARCHFIELDS = [
     'title^18',
@@ -58,40 +58,37 @@ function SearchPage(props) {
         window.location.search.replace(/^\?/, '')
     )
 
-    function getSelectIndexPosition(elements, key) {
-        const pos = elements.findIndex(x => x.id === initialValues.get(key))
-        if (pos > -1) return [pos]
-        return [0]
+    function getSelectIndexPosition(options, key) {
+        const option = options.find(x => x.id === initialValues.get(key))
+        if (option) {
+            return [option]
+        }
+        return [options[0]]
     }
 
     const [queryString, setQueryString] = useState('')
     const [values, setValues] = useState({})
 
-    const [sortOrderOption, setSortOrderOption] = useState(
-        getSelectIndexPosition(SORTDIRECTION, 'sortOrder')
-    )
-    const [sortKeyOption, setSortKeyOption] = useState(
-        getSelectIndexPosition(SORTKEYS,'sortKey')
-    )
-
     const [sortOrder, setSortOrder] = useState(
-        initialValues.get('sortOrder') || 'title'
+        initialValues.get('sortOrder') || 'asc'
     )
     const [sortKey, setSortKey] = useState(
-        initialValues.get('sortKey') || 'asc'
+        initialValues.get('sortKey') || 'title.keyword'
+    )
+
+    const [sortOrderOption, setSortOrderOption] = useState(
+        getSelectIndexPosition(SORTDIRECTIONOPTIONS, 'sortOrder')
+    )
+    const [sortKeyOption, setSortKeyOption] = useState(
+        getSelectIndexPosition(SORTKEYSOPTIONS,'sortKey')
     )
 
     const [sortQuery, setSortQuery] = useState([{ [sortKey]: { order: sortOrder } }]);
     
     useEffect(() => {
-
-        if (sortOrderOption[0] && sortKeyOption[0] ) {
-        const selectedSortOrder = sortOrderOption[0]['id'] 
-        const selectedSortKey = sortKeyOption[0]['id']
-        setSortOrder(selectedSortOrder)
-        setSortKey(selectedSortKey)
-        setSortQuery([{ [selectedSortKey]: { order: selectedSortOrder } }]);
-        }
+        setSortOrder(sortOrderOption[0][VALUE_KEY])
+        setSortKey(sortKeyOption[0][VALUE_KEY])
+        setSortQuery([{ [sortKeyOption[0][VALUE_KEY]]: { order: sortOrderOption[0][VALUE_KEY] } }]);
       }, [sortKeyOption, sortOrderOption]);
 
     const onChange = (values) => {
@@ -105,35 +102,7 @@ function SearchPage(props) {
         } 
     }
 
-    const [fields, setFields] = useState(SEARCHFIELDS)
-
-    function customQuery(query) {
-        if (!query) {
-            return {
-                match_all: {},
-            }
-        }
-        return {
-            bool: {
-                should: [
-                    {
-                        multi_match: {
-                            query,
-                            type: 'phrase',
-                            fields: fields,
-                        },
-                    },
-                    {
-                        multi_match: {
-                            query,
-                            type: 'phrase_prefix',
-                            fields: fields,
-                        },
-                    },
-                ],
-            },
-        }
-    }
+    const fields = SEARCHFIELDS
 
     const LeftSidebar = (props) => {
         return (
@@ -158,9 +127,9 @@ function SearchPage(props) {
                 <Label>Sortering</Label>
                 <Block marginTop='scale400'>
                 <Select  onChange={({value}) => setSortKeyOption(value)} value={sortKeyOption}
-                    options = {SORTKEYS}
-                    labelKey="label"
-                    valueKey="id"
+                    options = {SORTKEYSOPTIONS}
+                    labelKey={VALUE_LABEL}
+                    valueKey={VALUE_KEY}
                     value={sortKeyOption}
                     clearable={false}
                 >
@@ -168,10 +137,10 @@ function SearchPage(props) {
                 </Block>
                 <Block marginTop='scale400'>
                 <Select onChange={({value}) => setSortOrderOption(value)} value={sortOrderOption}
-                    options = {SORTDIRECTION}
-                    labelKey="label"
+                    options = {SORTDIRECTIONOPTIONS}
+                    labelKey={VALUE_LABEL}
                     value={sortOrderOption}
-                    valueKey="id"
+                    valueKey={VALUE_KEY}
                           clearable={false}>
                 </Select>
                 </Block>
@@ -180,7 +149,7 @@ function SearchPage(props) {
         )
     }
 
-    const RightSidebar = (props) => {
+    const RightSidebar = () => {
         return (
             <Block role="contentinfo">
                 <Facet
@@ -220,7 +189,6 @@ function SearchPage(props) {
                         <Block role="search">
                             <SearchBox
                                 id="term"
-                                customQuery={customQuery}
                                 fields={fields}
                                 initialValue={initialValues.get('term')}
                             />
@@ -245,7 +213,6 @@ function SearchPage(props) {
                         id="result"
                         itemsPerPage="12"
                         initialPage={1}
-                        stats={(total) => <Label>{`Antall: ${total}`} </Label>}
                     />
                 </Block>
             </React.Fragment>
@@ -257,7 +224,7 @@ function SearchPage(props) {
             url={url}
             onChange={(values) => onChange(values)}
         >
-            <Layout
+            <LayoutSearch
                 left={LeftSidebar(props)}
                 right={Content(props)}
                 options={RightSidebar(props)}

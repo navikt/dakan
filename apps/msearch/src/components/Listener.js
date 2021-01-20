@@ -119,7 +119,7 @@ function Listener({ children, onChange }) {
                                 data: (result) => {
                                     // Merge aggs (if there is more than one for a facet),
                                     // then remove duplicate and add doc_count (sum),
-                                    // then sort and slice to get only 10 first.
+                                    // then sort and slice to get only size first.
                                     const map = new Map()
                                     fields
                                         .map(
@@ -149,13 +149,14 @@ function Listener({ children, onChange }) {
 
                         // Fetch the data.
                         async function fetchData() {
-                            // Only if there is a query to run.
                             if (msearchData.length) {
+                                dispatch({ type: 'isSearching', value: true })
                                 const result = await msearch(
                                     url,
                                     msearchData,
                                     headers
                                 )
+                                dispatch({ type: 'isSearching', value: false })
                                 result.responses.forEach((response, key) => {
                                     const widget = widgets.get(
                                         msearchData[key].id

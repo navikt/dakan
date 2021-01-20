@@ -6,9 +6,6 @@ import { KIND, SIZE } from 'baseui/button'
 import { KIND as TAGKIND } from 'baseui/tag'
 import { Card } from 'baseui/card'
 
-const backgroundColor = 'lightBlue'
-const borderColor = 'lightBlue'
-
 export const PanelFacetView = ({
     placeholder,
     showFilter,
@@ -25,7 +22,7 @@ export const PanelFacetView = ({
     title,
 }) => {
     const FacetCard = ({ data }) => {
-        if (!data) return null
+        if (!data || data.length < 1) return null
         return (
             <Card title={title}>
                 <Block>

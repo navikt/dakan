@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
+import { Label } from '@dakan/ui'
 import { Pagination } from 'baseui/pagination'
 import ActiveFilters from '../components/ActiveFilters'
 import { Block } from 'baseui/block'
@@ -17,7 +18,7 @@ function Results({
     id,
     sort,
 }) {
-    const [{ widgets }, dispatch] = useSharedContext()
+    const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [initialization, setInitialization] = useState(true)
     const [page, setPage] = useState(initialPage)
     const widget = widgets.get(id)
@@ -68,7 +69,11 @@ function Results({
     return (
         <Block>
             <Block marginTop="scale400" marginBottom="scale600" width="100%">
-                {stats && total.value ? stats(total.value) : 'Ingen '}
+                {isSearching ? (
+                    <Spinner size='20px' />
+                ) : 
+                <Label>{total.value ? `Antall treff: ${total.value}` : 'Ingen treff'}</Label>
+                }
             </Block>
             <ActiveFilters id="af" />
             <Block

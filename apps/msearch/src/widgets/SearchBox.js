@@ -4,10 +4,9 @@ import { Spinner } from 'baseui/spinner'
 import { Searchbox } from '@dakan/ui'
 
 function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
-    const [{ widgets }, dispatch] = useSharedContext()
+    const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [value, setValue] = useState(initialValue || '')
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
-    const [isSearching, setIsSearching] = useState(false)
     const intervalRef = useRef(null)
 
     useEffect(() => {
@@ -38,7 +37,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
             return customQuery(query)
         } else if (fields) {
             return query
-                ? { multi_match: { query, type: 'phrase', fields } }
+                ? { multi_match: { query,type: "most_fields",fields} }
                 : { match_all: {} }
         }
         return { match_all: {} }
@@ -72,14 +71,15 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
     useEffect(() => () => dispatch({ type: 'deleteWidget', key: id }), [])
 
     return (
+        <div>{isSearching}
             <Searchbox
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                //onChange={(e) => update(e.target.value)}
-                placeholder={placeholder || 'søk…'}
-                startEnhancer={isSearching ? Spinner : null}
+                placeholder={placeholder ||  'søk…'}
+                //startEnhancer={isSearching ? <Spinner/> : null}
                 clearable
             />
+        </div>
     )
 }
 

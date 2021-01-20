@@ -8,6 +8,7 @@ export default function ({ children, url, onChange, headers }) {
         listenerEffect: null,
         widgets: new Map(),
         headers,
+        isSearching: false
     }
 
     const reducer = (state, action) => {
@@ -31,6 +32,8 @@ export default function ({ children, url, onChange, headers }) {
                 return { ...state, widgets }
             case 'setListenerEffect':
                 return { ...state, listenerEffect: action.value }
+            case 'isSearching':
+                return { ...state, isSearching: action.value }
             default:
                 return state
         }
