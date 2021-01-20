@@ -1,0 +1,59 @@
+[
+  {
+    "id": "Test",
+    "label": "Team",
+    "properties": {
+      "type": "Team",
+      "name": "Team Test",
+      "description": "test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, ",
+      "slackChannel": "test",
+      "teamType": "test",
+      "naisTeams": [
+        "test"
+      ],
+      "tags": [],
+      "lastChanged": "2021-01-17T12:13:49.289659",
+      "valid_from": "2021-01-25T14:33:59.464913",
+      "valid_to": "",
+      "valid": true
+    }
+  },
+  {
+    "id": "Test",
+    "label": "Team",
+    "properties": {
+      "type": "Team",
+      "name": "Team Test",
+      "description": "test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, ",
+      "slackChannel": "test",
+      "teamType": "test",
+      "naisTeams": [
+        "test"
+      ],
+      "tags": [],
+      "lastChanged": "2021-01-17T12:13:49.289659",
+      "valid_from": "2021-01-25T14:33:59.464913",
+      "valid_to": "",
+      "valid": true
+    }
+  },
+  {
+    "id": "Test",
+    "label": "Team",
+    "properties": {
+      "type": "Team",
+      "name": "Team Test",
+      "description": "test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, test av beskrivelse, ",
+      "slackChannel": "test",
+      "teamType": "test",
+      "naisTeams": [
+        "test"
+      ],
+      "tags": [],
+      "lastChanged": "2021-01-17T12:13:49.289659",
+      "valid_from": "2021-01-25T14:33:59.464913",
+      "valid_to": "",
+      "valid": true
+    }
+  }
+]

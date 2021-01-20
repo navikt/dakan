@@ -138,6 +138,10 @@ export const Rating = (props) => {
               onChange={(e) => {
                 CheckIfAuthorized(() => upsertRate(e.value))
               }}
+              overrides={{Item:{props:(itemprops) => ({
+                ...itemprops,
+                title: `${itemprops.$index} star rating`
+              })}}}
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">

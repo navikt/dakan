@@ -79,17 +79,21 @@ const Content = (props: any): JSX.Element => {
           headingText={data.properties.object.metadata.name}
           left={
             <Block width="100%" >
+              <div role="main">
               <Head />
               {data.properties.object.spec && data.properties.object.spec.config && (
                 <Spec />
               )}
+              </div>
             </Block>
           }
           right={
             <Block width="100%" >
+              <div role="complementary">
               {data.properties.object.metadata.annotations && (
                 <Annotations />
               )}
+              </div>
             </Block>
           }
         />

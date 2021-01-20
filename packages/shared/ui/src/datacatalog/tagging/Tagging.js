@@ -76,7 +76,7 @@ const DataTags = (props) => {
     if (dataTags && dataTags.length > 0) {
       return dataTags.map((tag, index) => {
         return (
-          <React.Fragment>
+          <div role="listitem">
             {tag && tag.properties && !isEditMode && (
               <Block
                 key={'tag_' + index}
@@ -97,7 +97,7 @@ const DataTags = (props) => {
                 {getName(tag, tagLabel)}
               </Tag>
             )}
-          </React.Fragment>
+          </div>
         )
       })
     }
@@ -108,7 +108,7 @@ const DataTags = (props) => {
       return defaultTags.map((tag, index) => {
         if (tag !== '') {
           return (
-            <React.Fragment>
+            <div role="listitem">
               <Block
                 key={'defaultTag_' + index}
                 $style={{ ...theme.typography.font300 }}
@@ -116,7 +116,7 @@ const DataTags = (props) => {
               >
                 {tag}
               </Block>
-            </React.Fragment>
+            </div>
           )
         }
       })
@@ -125,7 +125,7 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-        {!dataTags && !defaultTags && <Block $style={{ ...theme.typography.font300 }}>Ingen data</Block>}
+        {!dataTags && !defaultTags && <Block role ="listitem" $style={{ ...theme.typography.font300 }}>Ingen data</Block>}
         {getDefaultTags()}
         {getTags()}
     </React.Fragment>
@@ -274,7 +274,7 @@ export const ElasticTagging = (props) => {
             }}
           />
         )}
-        <Block marginTop="scale600">
+        <Block role="list" marginTop="scale600">
           <DataTags
             defaultTags={defaultTags}
             dataTags={dataTags}
@@ -336,6 +336,7 @@ export const Tagging = (props) => {
       <Header header={header} clientUser={clientUser} tokenId={tokenId}>
         {tagOptions && getOptions()}
         <Block marginTop="scale600">
+          <div role="list">
           <DataTags
             defaultTags={defaultTags}
             dataTags={dataTags}
@@ -344,6 +345,7 @@ export const Tagging = (props) => {
             tagLabel={tagLabel}
             isEditMode={isEditMode}
           />
+          </div>
         </Block>
       </Header>
     </Block>

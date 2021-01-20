@@ -10,21 +10,21 @@ const ITEMS = [{ item: 'lastchanged', label: 'Oppdatert' }]
 
 const Content = ({ item, id }) => {
   const Head = () => (
-    <Block>
+    <div role="main">
       <ParagraphMedium>
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
-    </Block>
+    </div>
   )
 
   const getAffiliations = () => {
     if (item && item.id) {
       return (
-        <Block>
+        <div role="complementary">
           <Members id={item.id} />
           <OrgTeam id={item.id} />
-        </Block>
+        </div>
       )
     }
     return null

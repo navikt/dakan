@@ -16,20 +16,22 @@ const getLink = (row) => {
 
 const Content = ({ item, members }) => {
   const Head = () => (
-    <Block>
+    <div role="main">
       <ParagraphMedium>
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
-    </Block>
+    </div>
   )
 
   const Members = () => {
     if (members) {
       return (
         <Block width="100%" height="800px">
+          <div role="complementary">
           <LabelMedium>Medlemmer av teamet</LabelMedium>
           <PersonTable members={members} />
+          </div>
         </Block>
       )
     }
