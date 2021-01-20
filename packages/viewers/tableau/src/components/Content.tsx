@@ -97,22 +97,26 @@ const Content = (props: any): JSX.Element => {
           headingText={data.id}
           toolbar={
             <Block display="flex" flex="1" justifyContent="flex-end">
-              <Button
-                kind={KIND.secondary}
-                startEnhancer={<EditIcon />}
-                startEnhancerHover={<EditIcon fill="white" />}
-                onClick={() => {
-                  Cookies.set('TableauEditModeActivated', 'true', {
-                    expires: expiresIn5mins,
-                  })
-                  if (isEditMode === true) {
-                    Cookies.remove('TableauEditModeActivated')
-                  }
-                  CheckIfAuthorized(() => setIsEditMode(!isEditMode))
-                }}
-              >
-                Rediger innhold
+              <div role="form" aria-label="Rediger side innhold">
+                <Button
+                  role="switch"
+                  aria-checked={isEditMode}
+                  kind={KIND.secondary}
+                  startEnhancer={<EditIcon />}
+                  startEnhancerHover={<EditIcon fill="white" />}
+                  onClick={() => {
+                    Cookies.set('TableauEditModeActivated', 'true', {
+                      expires: expiresIn5mins,
+                    })
+                    if (isEditMode === true) {
+                      Cookies.remove('TableauEditModeActivated')
+                    }
+                    CheckIfAuthorized(() => setIsEditMode(!isEditMode))
+                  }}
+                >
+                  Rediger innhold
               </Button>
+              </div>
             </Block>
           }
           left={
@@ -182,20 +186,19 @@ const Content = (props: any): JSX.Element => {
               </Block>
             </div>
           }
-          right={
-            <div role="complementary">
-              {viewList && viewList.length > 0 && (
-                <Block>
-                  <TableauViewList
-                    viewList={viewList}
-                    tagOptions={tagOptions}
-                    clientUser={clientUser}
-                    isEditMode={isEditMode}
-                  />
-                </Block>
-              )}
+          right=
+          {viewList && viewList.length > 0 && (
+            <div role="navigation">
+              <div role="list">
+                <TableauViewList
+                  viewList={viewList}
+                  tagOptions={tagOptions}
+                  clientUser={clientUser}
+                  isEditMode={isEditMode}
+                />
+              </div>
             </div>
-          }
+          )}
         />
       )}
     </Block>
