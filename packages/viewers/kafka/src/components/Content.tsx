@@ -88,26 +88,30 @@ const Content = (props: any): JSX.Element => {
           headingText={data.properties.topic_name}
           toolbar={
             <Block display="flex" flex="1" justifyContent="flex-end">
-              <Button
-                kind={KIND.secondary}
-                startEnhancer={<EditIcon />}
-                startEnhancerHover={<EditIcon fill="white" />}
-                onClick={() => {
-                  Cookies.set('KafkaEditModeActivated', 'true', {
-                    expires: expiresIn5mins,
-                  })
-                  if (isEditMode === true) {
-                    Cookies.remove('KafkaEditModeActivated')
-                  }
-                  CheckIfAuthorized(() => setIsEditMode(!isEditMode))
-                }}
-              >
-                Rediger innhold
+              <div role="form" aria-label="Rediger side innhold">
+                <Button
+                  role="switch"
+                  aria-checked={isEditMode}
+                  kind={KIND.secondary}
+                  startEnhancer={<EditIcon />}
+                  startEnhancerHover={<EditIcon fill="white" />}
+                  onClick={() => {
+                    Cookies.set('KafkaEditModeActivated', 'true', {
+                      expires: expiresIn5mins,
+                    })
+                    if (isEditMode === true) {
+                      Cookies.remove('KafkaEditModeActivated')
+                    }
+                    CheckIfAuthorized(() => setIsEditMode(!isEditMode))
+                  }}
+                >
+                  Rediger innhold
               </Button>
+              </div>
             </Block>
           }
           left={
-            <Block>
+            <div role="main">
               <Block marginBottom="scale800" marginTop="-20px">
                 <Rating
                   ratings={props.ratings}
@@ -153,31 +157,36 @@ const Content = (props: any): JSX.Element => {
                 nodeLabel="kafka_comment"
                 isEditMode={isEditMode}
               />
-            </Block>
+            </div>
           }
           right={
-            <Block>
+            <div role="complementary">
               {fields && (
                 <React.Fragment>
                   <Block marginBottom="scale1200">
-                    <Searchbox
-                      placeholder="Søk i topic liste..."
-                      onChange={(event: any) => {
-                        setFilterText(event.target.value)
-                        setFilterFields(
-                          FilterFieldList(fields, event.target.value),
-                        )
-                      }}
-                    />
+                    <div role="search">
+                      <Searchbox
+                        aria-label="Søk i topic liste."
+                        placeholder="Søk i topic liste"
+                        onChange={(event: any) => {
+                          setFilterText(event.target.value)
+                          setFilterFields(
+                            FilterFieldList(fields, event.target.value),
+                          )
+                        }}
+                      />
+                    </div>
                   </Block>
-                  <TopicFields
-                    isEditMode={isEditMode}
-                    fieldsToView={filterText ? filterFields : fields}
-                    tagOptions={tagOptions}
-                  />
+                  <div role="list">
+                    <TopicFields
+                      isEditMode={isEditMode}
+                      fieldsToView={filterText ? filterFields : fields}
+                      tagOptions={tagOptions}
+                    />
+                  </div>
                 </React.Fragment>
               )}
-            </Block>
+            </div>
           }
         />
       )}
