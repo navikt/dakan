@@ -116,7 +116,7 @@ const Content = (props: any): JSX.Element => {
             </Block>
           }
           left={
-            <Block>
+            <div role="main">
               <Block marginBottom="scale800" marginTop="-20px">
                 <Rating
                   ratings={props.ratings}
@@ -180,10 +180,10 @@ const Content = (props: any): JSX.Element => {
                   isEditMode={isEditMode}
                 />
               </Block>
-            </Block>
+            </div>
           }
           right={
-            <Block>
+            <div role="complementary">
               {viewList && viewList.length > 0 && (
                 <Block>
                   <TableauViewList
@@ -194,7 +194,7 @@ const Content = (props: any): JSX.Element => {
                   />
                 </Block>
               )}
-            </Block>
+            </div>
           }
         />
       )}
