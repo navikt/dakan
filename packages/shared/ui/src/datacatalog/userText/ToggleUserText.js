@@ -3,7 +3,7 @@ import { Accordion } from 'baseui/accordion'
 import { Panel } from '../accordion/Panel'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
-import { H5, LabelLarge } from 'baseui/typography'
+import { H3, LabelLarge } from 'baseui/typography'
 import { useClientUser } from '@dakan/hooks'
 import { useStyletron } from 'baseui'
 import env from '@beam-australia/react-env'
@@ -337,9 +337,9 @@ export const ToggleUserText = (prop) => {
             clientUser={clientUser}
             server={graph_server}
           />
-          <H5>
+          <H3>
             <b>{CapitalizeString(title)}</b>
-          </H5>
+          </H3>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={'#F4F4F4'}>
               <Block
