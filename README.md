@@ -53,7 +53,7 @@ The motivation behind Dakan is to
 
 ## Architecture
 
-![Architecture](./docs/architecture.svg)
+![Architecture](./docs/svg/architecture.svg)
 
 Data sources (batch or streaming) are processed by jobs. Jobs can be coded in jupyter notebooks, python scripts or in your language of choice. The code for on-premises jobs is packaged from source files on github and executed on Kubernetes (NAIS). Scheduling of the jobs is defined in a yaml file in a IaC repo or in Airflow. On GCP jobs can also be defined in [Cloud Data Fusion](https://cloud.google.com/data-fusion) or [Dataflow](https://cloud.google.com/dataflow)
 
@@ -118,7 +118,7 @@ Data is stored in buckets, either S3 on prem (internal data) or Google Cloud Sto
 * [concepttordf](https://github.com/Informasjonsforvaltning/concepttordf) to map concept collections to the skos-ap-no specification.
 * [datacatalogtordf](https://github.com/Informasjonsforvaltning/datacatalogtordf) to map the collection to RDF.
 
-![Architecture](./docs/fdk.svg)
+![Architecture](./docs/svg/fdk.svg)
 
 [Open API/Swagger](https://data.nav.no/digdir-api/docs)
 
