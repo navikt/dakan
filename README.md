@@ -43,7 +43,7 @@ Slack: #data-catalog-intern
 The motivation behind Dakan is to
 
 * Enable dataproduct and datamesh thinking in NAV
-* Provide infrastructure for a shared in NAV
+* Provide infrastructure for a shared metadata graph in NAV
 * Allow presenting rich dataproducts directly in the the catalog UI
 
 ### Metadata graph
