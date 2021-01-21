@@ -123,6 +123,12 @@ const ColumnViewer = (prop: any) => {
             descriptiveMetrics = []
         }
 
+        if(descriptiveMetrics.length === 0 && quantileMetrics.length === 0) {
+            return (
+                <Block/>
+            )
+        }
+
         return (
             <Block display={['block', 'flex']}>
                {quantileMetrics.length > 0 && ( <Block width={'100%'}>

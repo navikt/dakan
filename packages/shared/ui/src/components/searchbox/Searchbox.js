@@ -19,7 +19,7 @@ export const Searchbox = (props) => {
   return (
     <Block display="flex">
       <Input {...props} />
-      <Button type="submit" startEnhancer={<SearchIcon fill="white" />}>
+      <Button role="button" aria-label="Søk knapp" type="submit" startEnhancer={<SearchIcon fill="white" />}>
         Søk
       </Button>
     </Block>

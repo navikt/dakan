@@ -113,14 +113,15 @@ const Content = (props: any) => {
     } else {
       return (
         indexEntry && (
-          <Block>
+         
             <LargeWidth headingLabel="Begrep" headingText={indexEntry.term}>
               <Block display={['block', 'block', 'flex']}>
-                <Block flex={'3'}>
+              
+                <Block flex={'3'}><div role="main">
                   {viewerVersion && viewerVersion === 'private' && (
                     <Paragraph2>{indexEntry.id}</Paragraph2>
-                  )}
-                  {getRightContent()}
+                  )} 
+                  {getRightContent()}</div>          
                 </Block>
                 <Block
                   flex={
@@ -129,7 +130,7 @@ const Content = (props: any) => {
                   marginLeft={['none', 'none', 'scale1000']}
                 >
                   {viewerVersion && viewerVersion === 'private' && (
-                    <Block>
+                    <div role="complementary">
                       <Block
                         display={['none', 'block']}
                         $style={{
@@ -141,12 +142,12 @@ const Content = (props: any) => {
                       <Block display={['block', 'none']}>
                         {getLeftContent()}
                       </Block>
-                    </Block>
+                    </div>
                   )}
                 </Block>
               </Block>
             </LargeWidth>
-          </Block>
+
         )
       )
     }

@@ -20,7 +20,7 @@ const TableauView = (props: any) => {
   }
 
   return (
-    <React.Fragment>
+    <div role="listitem">
       {view.properties && (
         <Block marginBottom="scale1200">
           <Block>
@@ -55,7 +55,7 @@ const TableauView = (props: any) => {
           </Block>
         </Block>
       )}
-    </React.Fragment>
+    </div>
   )
 }
 

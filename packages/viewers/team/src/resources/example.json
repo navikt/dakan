@@ -1,57 +1,18 @@
 {
-    "_index": "dcat_v4",
-    "_type": "_doc",
-    "_id": "6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7",
-    "found": true,
-    "_source": {
-        "id": "6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7",
-        "type": "team",
-        "suggest": "Team Arena leverandør (Capgemini)",
-        "description": "Arena forvaltes og videreutvikles av forvaltningsleverandør Capgemini\n\nTeam Arena er et forvaltningsteam. Dette er forvaltningsleverandør. Team Arena (kunde) finner du her: https://teamkatalog.nais.adeo.no/team/7bd20efe-966c-4631-891e-29a4732e0ff4 . Bestillinger til Arena leverandør skal gå igjennom Team Arena (kunde).. Applikasjoner (IT-område)",
-        "title": "Team Arena leverandør (Capgemini)",
-        "format": "Team",
-        "category": "Teamkatalogen",
-        "provenance": "Teamkatalogen",
-        "master": "NAV",
-        "purpose": [""],
-        "legalbasis": [],
-        "pii": ["Ingen"],
-        "issued": "2020-07-27T14:28:08.104967",
-        "modified": "2020-07-27T14:28:08.104972",
-        "created": "2020-07-27T14:28:08.104973",
-        "policy": [],
-        "distribution": "None",
-        "keywords": ["team, person, rolle, teamkatalog"],
-        "theme": ["Teamkatalog"],
-        "accessRights": "public",
-        "publisher": {"name": "NAV"},
-        "spatial": "Norge",
-        "url": ["url"],
-        "haspart": [],
-        "content": {
-            "id_team": "6d7bf087-71c8-4ff0-a162-0e7c64bdd8f7",
-            "name_team": "Team Arena leverandør (Capgemini)",
-            "description_team": "Arena forvaltes og videreutvikles av forvaltningsleverandør Capgemini\n\nTeam Arena er et forvaltningsteam. Dette er forvaltningsleverandør. Team Arena (kunde) finner du her: https://teamkatalog.nais.adeo.no/team/7bd20efe-966c-4631-891e-29a4732e0ff4 . Bestillinger til Arena leverandør skal gå igjennom Team Arena (kunde).",
-            "name_area": "Applikasjoner (IT-område)",
-            "description_area": "IT-området løsninger innenfor NAVs kjernevirksomhet, hvor ansvaret fortsatt ligger i IT. \n\nVi jobbet mot at ansvaret for alle løsninger innenfor NAVs kjernevirksomhet (på sikt) skal ligge i produktområder.",
-            "members_team": [
-                {
-                    "navIdent": "ON9999",
-                    "description": "None",
-                    "roles": ["DEVELOPER"],
-                    "resource": {
-                        "navIdent": "ON9999",
-                        "givenName": "Ola",
-                        "familyName": "Normann",
-                        "fullName": "Ola Normann",
-                        "email": "Ola.Normann@nav.no",
-                        "resourceType": "EXTERNAL",
-                        "startDate": "2006-06-23",
-                        "endDate": "None",
-                        "stale": false
-                    }
-                }
-            ]
-        }
+    "id": "Test",
+    "label": "Team",
+    "type": "vertex",
+    "properties": {
+        "valid_from": "2021-01-07T11:15:03.163809",
+        "valid_to": "",
+        "valid": true,
+        "type": "Team",
+        "name": "Team test",
+        "description": "Test beskrivelse, Test beskrivelse, Test beskrivelse, Test beskrivelse, Test beskrivelse, vTest beskrivelse, Test beskrivelse, Test beskrivelse, ",
+        "slackChannel": "test",
+        "teamType": "test",
+        "naisTeams": [],
+        "tags": [],
+        "lastChanged": "2021-01-07T10:31:55.958638"
     }
 }

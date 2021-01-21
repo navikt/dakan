@@ -21,22 +21,22 @@ const ITEMS = [
 
 const Content = ({ item, id }) => {
   const Head = () => (
-    <Block>
+    <div role="main">
       <ContentItems ITEMS={ITEMS} item={item} />
-    </Block>
+    </div>
   )
 
   const getAffiliations = () => {
     if (item && item.id) {
       return (
-        <Block>
+        <div role="complementary">
           <Block width="100%" marginBottom="scale1200">
             <OrgTeam id={item.id} />
           </Block>
           <Block width="100%" marginBottom="scale1200">
             <NaisTeam id={item.id} />
           </Block>
-        </Block>
+        </div>
       )
     }
     return null

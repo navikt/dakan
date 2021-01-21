@@ -3,7 +3,7 @@ import { Accordion } from 'baseui/accordion'
 import { Panel } from '../accordion/Panel'
 import { Block } from 'baseui/block'
 import { KIND } from 'baseui/button'
-import { H5, LabelLarge } from 'baseui/typography'
+import { H3, LabelLarge } from 'baseui/typography'
 import { useClientUser } from '@dakan/hooks'
 import { useStyletron } from 'baseui'
 import env from '@beam-australia/react-env'
@@ -337,15 +337,16 @@ export const ToggleUserText = (prop) => {
             clientUser={clientUser}
             server={graph_server}
           />
-          <H5>
+          <H3>
             <b>{CapitalizeString(title)}</b>
-          </H5>
+          </H3>
           {userTexts && userTexts.length > 0 && userTexts[0].properties ? (
             <Block padding="1em" backgroundColor={'#F4F4F4'}>
               <Block
+                tabindex="0"
                 $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}
               >
-                {getUserTexts()}
+                  {getUserTexts()}
               </Block>
               <Block paddingTop="scale400">
                 <Accordion
@@ -372,17 +373,17 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
             </Block>
           ) : (
-            <React.Fragment>
-              <Block
-                marginTop="scale400"
-                marginBottom="scale400"
-                $style={{ ...theme.typography.font300 }}
-              >
-                Ingen data
+              <React.Fragment>
+                <Block
+                  marginTop="scale400"
+                  marginBottom="scale400"
+                  $style={{ ...theme.typography.font300 }}
+                >
+                  Ingen data
               </Block>
-              {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
-            </React.Fragment>
-          )}
+                {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
+              </React.Fragment>
+            )}
         </Block>
       }
     </Block>

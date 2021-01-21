@@ -15,7 +15,7 @@ const TopicFields = (props: any): JSX.Element => {
   } else {
     return fieldsToView.map((field: any, index: number) => {
       return (
-        <React.Fragment key={'field_' + index}>
+        <div role="listitem" key={'field_' + index}>
           {fieldsToView && (
             <FieldViewer
               field={field}
@@ -24,7 +24,7 @@ const TopicFields = (props: any): JSX.Element => {
               isEditMode={isEditMode}
             />
           )}
-        </React.Fragment>
+        </div>
       )
     })
   }

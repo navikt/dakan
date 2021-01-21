@@ -24,7 +24,7 @@ jobs:
       - name: Build shared packages
         run: yarn run shared:build
       - name: Build
-        run: yarn team:build
+        run: yarn orgteam:build
         env:
           CI: false
       - name: Generate docker tag

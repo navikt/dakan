@@ -8,7 +8,7 @@ import {
 import { StyledLink as Link } from 'baseui/link'
 import { useStyletron } from 'baseui'
 import { Block } from 'baseui/block'
-import { Label1, Label2 } from 'baseui/typography'
+import { Label2 } from 'baseui/typography'
 
 const logo = (
   <svg
@@ -37,7 +37,7 @@ const logo = (
 )
 
 const CustomLink = (props) => {
-  const [useCss, theme] = useStyletron()
+  const [useCss, ] = useStyletron()
   const link = useCss({ textDecoration: 'none' })
   if (props.config && props.config.link) {
     return (
@@ -59,7 +59,7 @@ const CustomLink = (props) => {
 }
 
 const Brand = (props) => {
-  const [useCss, theme] = useStyletron()
+  const [useCss,] = useStyletron()
   const link = useCss({ textDecoration: 'none' })
   return (
     <NavigationList $align={ALIGN.left}>

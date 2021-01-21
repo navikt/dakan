@@ -3,7 +3,7 @@ import deepEqual from 'deep-equal'
 import amplitude from 'amplitude-js'
 import { Checkbox } from '@dakan/ui'
 import { Block } from 'baseui/block'
-import { LabelSmall, LabelMedium  } from 'baseui/typography'
+import { LabelMedium } from 'baseui/typography'
 import { Button, KIND } from 'baseui/button'
 
 import { getFilterValueDisplay } from './view-helpers'

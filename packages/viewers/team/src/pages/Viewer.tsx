@@ -6,6 +6,7 @@ import { LoadingSpinner } from '@dakan/ui'
 import Content from '../components/Content'
 
 import exampleJson from '../resources/example.json'
+import exampleTeam from '../resources/exampleTeam.json'
 
 const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
@@ -18,7 +19,7 @@ const Viewer = (props: any) => {
 
   if (props.match.params.id === 'test') {
     if (props.match.params.id === 'test') {
-      return <Content {...props} item={exampleJson._source.content} />
+      return <Content {...props} item={exampleJson} members={exampleTeam}/>
     }
   }
 
