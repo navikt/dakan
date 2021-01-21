@@ -54,7 +54,7 @@ const getTable = (list) => {
 
 const Content = ({ item, memberOf }) => {
   const Head = () => (
-    <Block>
+    <div role="main">
       <ParagraphMedium>
         {item && item.properties && item.properties.description}
       </ParagraphMedium>
@@ -80,15 +80,18 @@ const Content = ({ item, memberOf }) => {
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
 */}
-    </Block>
+    </div>
   )
 
   const Members = () => {
     if (item) {
       return (
+
         <Block width="100%" marginBottom="scale1200">
+          <div role="complementary">
           <LabelMedium>Tilhører team</LabelMedium>
           {getTable(memberOf)}
+          </div>
         </Block>
       )
     }

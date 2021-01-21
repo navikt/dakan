@@ -7,13 +7,15 @@ import { useNodeEdges } from '@dakan/hooks'
 import { LoadingSpinner, isEmpty } from '@dakan/ui'
 import { Label } from '@dakan/ui'
 
+import exampleTeam from '../resources/exampleTeam.json'
+
 const getLink = (row) => {
   return '../team/' + row.id
 }
 
 export const OrgTeam = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(id, 'hasTeam')
-
+  
   const columns: any[] = [
     <TableBuilderColumn id="name" header="Navn">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
@@ -26,7 +28,7 @@ export const OrgTeam = ({ id }: any) => {
   const getTable = (nodes) => {
     let rows: any = []
     if (nodes && Array.isArray(nodes)) {
-      nodes.map((node) => {
+      nodes.forEach((node) => {
         const row: any = {}
         row['id'] = node['id']
         const data: any = {
@@ -40,6 +42,18 @@ export const OrgTeam = ({ id }: any) => {
       return <TableBuilder data={rows}>{columns}</TableBuilder>
     }
     return false
+  }
+
+  if (id === 'test') {
+
+    return (
+      <React.Fragment>
+          <Block width="100%" marginBottom="scale1200">
+            <Label>Org. team (Teamkatalogen)</Label>
+            {getTable(exampleTeam)}
+          </Block>
+      </React.Fragment>
+    )
   }
 
   return (
