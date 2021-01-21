@@ -60,7 +60,7 @@ Data sources (batch or streaming) are processed by jobs. Jobs can be coded in ju
 ### Ingestion
 
 * [Jupyter notebooks](https://github.com/navikt/data-catalog-indexers)
-* [Scheduling - example DAGs](https://cloud.google.com/dataflow)
+* [Scheduling - open data DAGs](https://github.com/navikt/opendata-dags)
 
 ### Airflow
 
