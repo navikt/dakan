@@ -61,6 +61,7 @@ Data sources (batch or streaming) are processed by jobs. Jobs can be coded in ju
 
 * [Jupyter notebooks](https://github.com/navikt/data-catalog-indexers)
 * [Scheduling - open data DAGs](https://github.com/navikt/opendata-dags)
+* [Open data notebooks](https://github.com/navikt/opendata)
 
 ### Airflow
 
