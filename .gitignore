@@ -25,4 +25,6 @@
 **/yarn-error.log*
 **/lerna-error.log*
 **/lerna-debug.log*
-.eslintcache
+**/debug.log*
+**/.eslintcache
+.DS_Store

@@ -237,7 +237,7 @@ const ThreeCols = (props) => {
         width="100%"
         paddingLeft={PADDING_LEFT}
       >
-        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block
@@ -276,6 +276,87 @@ const ThreeCols = (props) => {
           )}
         </Block>
       </Block>
+    </React.Fragment>
+  )
+}
+
+const ThreeColsSearch = (props) => {
+  const [, theme] = useStyletron()
+  return (
+    <React.Fragment>
+      <Block
+        display="flex"
+        justifyContent="center"
+        width="100%"
+        paddingLeft={PADDING_LEFT}
+      >
+      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+      </Block>
+      <Block display="flex" justifyContent="center" width="100%">
+        <Block
+          display="flex"
+          justifyContent="flex-start"
+          width="100%"
+          maxWidth={theme.breakpoints.large + 'px'}
+        >
+          <Block flex="1" width="100%" paddingLeft={MARGIN_LEFT}>
+            <Heading {...props} />
+          </Block>
+        </Block>
+      </Block>
+
+      <Block display="flex" justifyContent="center" width="100%">
+        <Block
+          display="flex"
+          justifyContent="center"
+          width="100%"
+          maxWidth={theme.breakpoints.large + 'px'}
+        >
+          <Block
+            display={['none', 'block']}
+            width={LEFT_MENU_WIDTH}
+            paddingLeft={MARGIN_LEFT}
+          >
+            {props.left}
+          </Block>
+          <Block flex={'3'} width="100%" paddingLeft={MARGIN_LEFT}>
+            {props.right}
+          </Block>
+          {props.options && (
+            <Block flex={'2'} width="100%" paddingLeft={MARGIN_LEFT}>
+              {props.options}
+            </Block>
+          )}
+        </Block>
+      </Block>
+    </React.Fragment>
+  )
+}
+
+export const LayoutSearch = (props) => {
+  return (
+    <React.Fragment>
+      <Block
+        display="flex"
+        width="100%"
+        minHeight="100vh"
+        alignItems="flex-start"
+        flexDirection="column"
+        marginTop="scale800"
+      >
+        <Block width="100%" paddingRight={MARGIN_RIGHT}>
+          <Block display={['block', 'block', 'none', 'none']} width="100%">
+            <SingleColumn {...props}></SingleColumn>
+          </Block>
+          <Block display={['none', 'none', 'block', 'none']} width="100%">
+            <TwoCols {...props} />
+          </Block>
+          <Block display={['none', 'none', 'none', 'block']} width="100%">
+            <ThreeColsSearch {...props} />
+          </Block>
+        </Block>
+      </Block>
+      <Footer />
     </React.Fragment>
   )
 }
