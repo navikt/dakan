@@ -286,7 +286,6 @@ export const Header = (props) => {
 
   return (
     <div role="banner">
-    <React.Fragment >
       <Block paddingBottom="scale100">
         <Block
           display={['none', 'none', 'flex']}
@@ -314,8 +313,7 @@ export const Header = (props) => {
             <HeadingXXLarge alignSelf="center" alt="Om Datakatalogen link" aria-label="Datakatalogen">
             <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
             </HeadingXXLarge >
-            <nav role="navigation" aria-label="Header meny">
-            <Block display="flex" justifyContent="flex-end" alignSelf="center">
+            <Block  role="navigation" aria-label="Header meny" display="flex" justifyContent="flex-end" alignSelf="center">
               {getAboutButton()}
               {getContactButton()}
               <Block>
@@ -324,7 +322,6 @@ export const Header = (props) => {
                 )}
               </Block>
             </Block>
-            </nav>
           </Block>
         </Block>
         <Block
@@ -340,7 +337,7 @@ export const Header = (props) => {
           height="scale100"
         />
       </Block>
-    </React.Fragment>
+
     </div>
   )
 }

@@ -1,21 +1,21 @@
 {
     "_index": "dcat_v3",
     "_type": "_doc",
-    "_id": "Nais.arbeidsgiver",
+    "_id": "test.arbeidsgiver",
     "_version": 7,
     "found": true,
     "_source": {
-      "id": "Nais.arbeidsgiver",
-      "type": "nais_team",
-      "suggest": "arbeidsgiver Produktområde arbeidsgiver",
+      "id": "Test.arbeidsgiver",
+      "type": "Test_team",
+      "suggest": "Test Produktområde test",
       "description": "Produktområde arbeidsgiver",
       "title": "arbeidsgiver",
-      "format": "Nais team",
-      "category": "Nais",
-      "provenance": "Nais",
+      "format": "Test team",
+      "category": "Test",
+      "provenance": "Test",
       "master": "NAV",
       "purpose": [
-        "Nais"
+        "Test"
       ],
       "legalbasis": [],
       "pii": [
@@ -27,11 +27,11 @@
       "policy": [],
       "distribution": null,
       "keywords": [
-        "nais",
+        "Test",
         "team"
       ],
       "theme": [
-        "Nais team"
+        "Test team"
       ],
       "accessRights": "public",
       "publisher": {
@@ -43,13 +43,13 @@
       ],
       "haspart": [],
       "content": {
-        "id": "Nais.arbeidsgiver",
-        "label": "nais_team",
+        "id": "Test.arbeidsgiver",
+        "label": "Test_team",
         "properties": {
-          "type": "nais_team",
-          "name": "arbeidsgiver",
-          "slack": "arbeidsgiver-general",
-          "description": "Produktområde arbeidsgiver",
+          "type": "Test_team",
+          "name": "Test",
+          "slack": "test",
+          "description": "Produktområde test",
           "created": "2020-06-08T20:17:14.504Z",
           "modified": "2020-08-06T07:45:05.678Z",
           "group_id": "cb3545ec-63b2-495a-b4b8-c2c0acdebc40"

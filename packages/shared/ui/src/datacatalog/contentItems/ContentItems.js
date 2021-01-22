@@ -6,7 +6,8 @@ import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from '../../utils/GetValue/GetValue'
 
-const getLink = (url, value) => <StyledLink href={url}>{value}</StyledLink>
+const getLink = (url, value) => <StyledLink aria-label={`Link til ${value}`} href={url}>{value}</StyledLink>
+
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
@@ -43,8 +44,11 @@ export const ContentItems = ({ ITEMS, item }) => {
         }
 
         else if (entry.format && entry.format === 'link') {
+          if (entry.linkText) {
+            value = getLink(value, entry.linkText)
+          } else {
           value = getLink(value, value)
-        }
+        }}
 
         return (
           <FlexGridItem key={`item_${index}`}>

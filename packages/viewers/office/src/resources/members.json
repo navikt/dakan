@@ -1,1 +1,53 @@
-[{"id":"Nais.arbeidsgiver.altinn-rettigheter-proxy","label":"nais_app","properties":{"type":"nais_app","name":"altinn-rettigheter-proxy","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.arbeidsgiver-arbeidsforhold-api","label":"nais_app","properties":{"type":"nais_app","name":"arbeidsgiver-arbeidsforhold-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.arbeidsgiver-permittering","label":"nais_app","properties":{"type":"nais_app","name":"arbeidsgiver-permittering","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.bedriftsoversikt-og-ansatte","label":"nais_app","properties":{"type":"nais_app","name":"bedriftsoversikt-og-ansatte","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.ditt-nav-arbeidsgiver","label":"nais_app","properties":{"type":"nais_app","name":"ditt-nav-arbeidsgiver","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.ditt-nav-arbeidsgiver-api","label":"nais_app","properties":{"type":"nais_app","name":"ditt-nav-arbeidsgiver-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.finn-kandidat-api","label":"nais_app","properties":{"type":"nais_app","name":"finn-kandidat-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.klage-permittering-refusjon","label":"nais_app","properties":{"type":"nais_app","name":"klage-permittering-refusjon","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.klage-permittering-refusjon-api","label":"nais_app","properties":{"type":"nais_app","name":"klage-permittering-refusjon-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.kontakt-oss","label":"nais_app","properties":{"type":"nais_app","name":"kontakt-oss","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.kontakt-oss-api","label":"nais_app","properties":{"type":"nais_app","name":"kontakt-oss-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.kp-spenn","label":"nais_app","properties":{"type":"nais_app","name":"kp-spenn","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.permittering-refusjon","label":"nais_app","properties":{"type":"nais_app","name":"permittering-refusjon","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.permittering-refusjon-api","label":"nais_app","properties":{"type":"nais_app","name":"permittering-refusjon-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.permittering-refusjon-journalforing","label":"nais_app","properties":{"type":"nais_app","name":"permittering-refusjon-journalforing","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-api","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-kandidat","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-kandidat","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-kandidat-api","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-kandidat-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-kandidat-api-migrering","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-kandidat-api-migrering","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-kandidat-migreringstest","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-kandidat-migreringstest","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-sms","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-sms","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-statistikk-api","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-statistikk-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.rekrutteringsbistand-stilling","label":"nais_app","properties":{"type":"nais_app","name":"rekrutteringsbistand-stilling","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.sykefravarsstatistikk","label":"nais_app","properties":{"type":"nais_app","name":"sykefravarsstatistikk","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.sykefravarsstatistikk-api","label":"nais_app","properties":{"type":"nais_app","name":"sykefravarsstatistikk-api","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.tag-dokgen","label":"nais_app","properties":{"type":"nais_app","name":"tag-dokgen","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.veiviserarbeidsgiver","label":"nais_app","properties":{"type":"nais_app","name":"veiviserarbeidsgiver","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.registrer-tilretteleggingsbehov","label":"nais_app","properties":{"type":"nais_app","name":"registrer-tilretteleggingsbehov","team":"arbeidsgiver","cluster":"prod-fss","zone":"fss","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}},{"id":"Nais.arbeidsgiver.tilretteleggingsbehov-innsyn","label":"nais_app","properties":{"type":"nais_app","name":"tilretteleggingsbehov-innsyn","team":"arbeidsgiver","cluster":"prod-sbs","zone":"sbs","created":"2020-06-08T20:17:14.504Z","modified":"2020-08-06T07:45:05.678Z","kilde":""}}]
+[
+  {
+    "id": "Person.Test1",
+    "label": "Person",
+    "properties": {
+      "valid_from": "2021-01-22T08:50:45.154524",
+      "valid_to": "",
+      "valid": true,
+      "navident": "test",
+      "fornavn": "Test",
+      "etternavn": "1",
+      "epost": "test@test.com",
+      "ressurstype": "INTERNAL",
+      "startdato": "2009-02-26",
+      "sluttdato": null,
+      "permisjon": false,
+      "aad_id": "12345",
+      "avdeling": "Test",
+      "tlf": [
+        "12 34 56 78"
+      ],
+      "mobil": "111 22 333",
+      "trygdeident": "test123",
+      "type": "Person"
+    }
+  },
+  {
+    "id": "Person.Test2",
+    "label": "Person",
+    "properties": {
+      "valid_from": "2021-01-22T08:50:45.154524",
+      "valid_to": "",
+      "valid": true,
+      "navident": "test",
+      "fornavn": "Test",
+      "etternavn": "2",
+      "epost": "test@test.com",
+      "ressurstype": "INTERNAL",
+      "startdato": "2009-02-26",
+      "sluttdato": null,
+      "permisjon": false,
+      "aad_id": "12345",
+      "avdeling": "Test",
+      "tlf": [
+        "12 34 56 78"
+      ],
+      "mobil": "111 22 333",
+      "trygdeident": "test123",
+      "type": "Person"
+    }
+  }
+
+]
