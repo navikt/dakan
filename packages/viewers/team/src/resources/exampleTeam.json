@@ -1,6 +1,6 @@
 [
   {
-    "id": "test",
+    "id": "test 1 ",
     "label": "Person",
     "properties": {
       "valid_from": "2021-01-19T08:50:25.630974",
@@ -8,7 +8,7 @@
       "valid": true,
       "navident": "T109585",
       "fornavn": "Test",
-      "etternavn": "Test",
+      "etternavn": "1",
       "epost": "test@test.no",
       "ressurstype": "INTERNAL",
       "startdato": "2021-01-01",
@@ -25,7 +25,7 @@
     }
   },
   {
-    "id": "test",
+    "id": "test 2",
     "label": "Person",
     "properties": {
       "valid_from": "2021-01-19T08:50:25.630974",
@@ -33,7 +33,7 @@
       "valid": true,
       "navident": "T109585",
       "fornavn": "Test",
-      "etternavn": "Test",
+      "etternavn": "2",
       "epost": "test@test.no",
       "ressurstype": "INTERNAL",
       "startdato": "2021-01-01",
