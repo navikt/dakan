@@ -17,7 +17,7 @@ const Heatmap = (props) => {
   }
 
   return (
-      <Block aria-label="Github heatmap historikk" height="240px" width="100%">
+      <Block aria-label="Github commit historikk" height="240px" width="100%">
         <ResponsiveCalendar
           data={data}
           theme={nivoTheme}
