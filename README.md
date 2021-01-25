@@ -137,7 +137,7 @@ Theming for the frontend apps is defined in a JSON file. [NAV theme](https://nav
 
 ### Shared UI components 
 
-* [Demo (storybook)](https://navikt.github.io/dakan/story/themes-nav--samples)
+* [Demo (storybook)](https://navikt.github.io/dakan)
 * [Source (github)](https://github.com/navikt/dakan/tree/master/packages/shared/ui)
 
 ### Contact
