@@ -292,7 +292,7 @@ export const navTheme = (borderRadius = '0px') => {
       border: grayDark,
       borderFocus: primary,
       borderSelected: primary,
-
+      
       buttonPrimaryFill: nadaDypBla,
       buttonPrimaryText: white,
       buttonPrimaryHover: nadaLysBla,
@@ -330,6 +330,10 @@ export const navTheme = (borderRadius = '0px') => {
       tickMarkFillDisabled: grayLighter,
       tagPrimarySolidBackground: primary,
       white: white,
+
+      tagAccentOutlinedBackground: nadaDypBla,
+      tagAccentOutlinedFont: nadaDypBla,
+
       tagApiBackgroundColor: '#E0DAE7',
       tagApiBorderColor: '#826BA1',
       tagDatasetBackgroundColor: '#E0F5FB',
