@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@dakan/hooks": "0.0.4",
-    "@dakan/metrics": "0.0.4",
+    "@dakan/metrics": "0.0.5",
     "@dakan/theme": "^0.0.4",
     "@dakan/ui": "0.0.4",
     "axios": "^0.21.0",
