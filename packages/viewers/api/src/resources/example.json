@@ -1,26 +1,24 @@
 {
-  "id": "API.Test",
+  "id": "API.nav-aareg-v1-arbeidsforhold-otp",
   "type": "api",
-  "suggest": "Test API",
-  "description": "Test api for elastic search",
-  "title": "Test API",
+  "suggest": "AA-registeret - OTP API",
+  "description": "For \u00e5 kunne bruke tjenesten m\u00e5 scope i autentiseringen mot Maskinporten settes til nav:aareg/v1/arbeidsforhold/otp.\n\n Dokumentasjon om AA-registeret og bruk av APIer er tilgjengelig p\u00e5 https://navikt.github.io/aareg",
+  "title": "AA-registeret - OTP API",
   "format": "API",
   "category": "API",
-  "provenance": "API",
-  "master": "NAV",
+  "master": "NAV API PORTAL",
   "purpose": [
     ""
   ],
   "legalbasis": [],
-  "pii": [
-    "TestData"
-  ],
-  "issued": "2020-09-07T13:00:56.200878",
-  "modified": "2020-09-07T13:00:56.200879",
-  "created": "2020-09-07T13:00:56.200881",
+  "pii": [],
+  "issued": "2021-01-27T12:10:07.958153",
+  "modified": "2021-01-27T12:10:07.958158",
+  "created": "2021-01-27T12:10:07.958159",
+  "policy": [],
   "distribution": null,
   "keywords": [
-    "api"
+    "api, NAV, apikatalog"
   ],
   "theme": [
     "API"
@@ -33,12 +31,23 @@
   "url": [
     "url"
   ],
+  "haspart": [],
   "content": {
-    "name": "Test API",
-    "description": "Test api for elastic search",
-    "app": "test-api",
-    "swagger": "https://test/api/swagger/ui",
-    "type": "api",
-    "url": "https://test.no/api"
+    "displayName": "Test test API",
+    "apiRevision": "1",
+    "description": "Test test test test test `test:test/v1/test/test`.\n\n Dokumentasjon om test [GitHub](https://github.com)",
+    "subscriptionRequired": true,
+    "serviceUrl": "",
+    "path": "test/v1/testapi/api",
+    "protocols": [
+      "https", "http", "test"
+    ],
+    "authenticationSettings": null,
+    "subscriptionKeyParameterNames": null,
+    "isCurrent": false,
+    "apiVersion": "",
+    "name": "Test test API",
+    "clean_description": "Test test test test test `test:test/v1/test/test`.\n\n Dokumentasjon om test  https://github.com",
+    "api_dec": "https://www.github.com"
   }
 }
