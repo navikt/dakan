@@ -13,6 +13,15 @@ export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
     return items.map((entry, index) => {
       let value = GetValue(() => content.properties[entry.item], null)
+
+      if (typeof value === 'boolean') {
+        if (value) {
+          value = "True"
+        } else {
+          value = "False"
+        }
+      }
+
       if (value) {
         if (Array.isArray(value)) {
           value = value.map((item) => {
@@ -47,8 +56,9 @@ export const ContentItems = ({ ITEMS, item }) => {
           if (entry.linkText) {
             value = getLink(value, entry.linkText)
           } else {
-          value = getLink(value, value)
-        }}
+            value = getLink(value, value)
+          }
+        }
 
         return (
           <FlexGridItem key={`item_${index}`}>
