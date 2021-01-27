@@ -1,22 +1,26 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { ParagraphMedium } from 'baseui/typography'
-import { LayoutSplit as Layout, ContentItems } from '@dakan/ui'
+import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
 import { renderDeclarativeRules } from 'styletron-standard'
 import ReactMarkdown from 'react-markdown'
 import { useStyletron } from 'baseui'
 
 const ITEMS = [
-  { item: 'slack', label: 'Slack', format: 'slackchannel' },
-  { item: 'swagger', label: 'Url', format: 'link' },
+  { item: 'apiRevision', label: 'Api Revision' },
+  { item: 'subscriptionRequired', label: 'Subscription Required'},
+  { item: 'serviceUrl', label: 'Service Url'},
+  { item: 'path', label: 'Path'},
+  { item: 'protocols', label: 'Protocols'},
+  { item: 'authenticationSettings', label: 'Authentication Settings'},
+  { item: 'subscriptionKeyParameterNames', label: 'Subscription Key Parameter Names'},
+  { item: 'isCurrent', label: 'Is Current'},
+  { item: 'apiVersion', label: 'Api Version'},
 ]
 
 const Content = ({ item, id }) => {
   const [, theme] = useStyletron()
   const Head = () => {
-    const itemProperties = {
-      properties: item.content
-    }
     return (
       <div role="main">
       <Block
@@ -34,8 +38,24 @@ const Content = ({ item, id }) => {
         }}
       >
         <ReactMarkdown source={item.content.description} />
-        <ContentItems ITEMS={ITEMS} item={itemProperties} />
+        <LabeledContent description="Api description" list>
+          {item.content.api_dec}
+        </LabeledContent>
       </Block>
+      </div>
+    )
+  }
+
+  const RightContent = () => {
+    const itemProperties = {
+      properties: item.content
+    }
+
+    const test = true
+  
+    return (
+      <div role="complementary" >
+        <ContentItems ITEMS={ITEMS} item={itemProperties} />
       </div>
     )
   }
@@ -52,7 +72,7 @@ const Content = ({ item, id }) => {
             headingLabel="API"
             headingText={getHeadingText()}
             left={<Head />}
-            right={null}
+            right={<RightContent />}
           />
         </Block>)}
     </React.Fragment>
