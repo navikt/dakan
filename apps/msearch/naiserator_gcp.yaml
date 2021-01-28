@@ -1,0 +1,50 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: {{application_name}}
+  namespace: dataplattform
+  labels:
+    team: {{team}}
+spec:
+  image: {{image}}
+  port: 80
+  replicas:
+    min: 2
+    max: 2
+    cpuThresholdPercentage: 70
+  liveness:
+    path: /isAlive
+    timeout: 1
+    initialDelay: 5
+    periodSeconds: 5
+    failureThreshold: 30
+  readiness:
+    path: /isReady
+    timeout: 1
+    initialDelay: 5
+    periodSeconds: 5
+    failureThreshold: 30
+  ingresses:
+    - {{ingress_nais_io}}
+  leaderElection: false
+  vault:
+    enabled: true
+  prometheus:
+    enabled: true
+    path: /
+  istio:
+    enabled: false
+  resources:
+    limits:
+      cpu: 400m
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+  env:
+    - name: REACT_APP_TITLE
+      value: {{app_title}}
+    - name: REACT_APP_CONFIG
+      value: '{"facets": [{ "field": "format", "label": "Type" },{ "field": "theme", "label": "Tema" },{ "field": "provenance", "label": "Opprinnelse" }]}'
+  envFrom:
+    - configmap: {{configmap_name}}
