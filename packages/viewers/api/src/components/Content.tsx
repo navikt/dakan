@@ -39,9 +39,9 @@ const Content = ({ item, id }) => {
           }}
         >
           <ReactMarkdown source={item.content.description} />
-          <LabeledContent description="Api description" list>
+          {item.content.api_dec && (<LabeledContent description="Api description" list>
             <StyledLink aria-label="Link til Api beskrivelse" href={item.content.api_dec}>{item.content.api_dec}</StyledLink>
-          </LabeledContent>
+          </LabeledContent>)}
         </Block>
       </div>
     )
