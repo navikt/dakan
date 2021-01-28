@@ -28,7 +28,7 @@
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",
     "axios": "^0.21.0",
-    "baseui": "9.107.0",
+    "baseui": "^9.109.0",
     "js-cookie": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
