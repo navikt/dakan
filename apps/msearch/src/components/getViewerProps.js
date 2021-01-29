@@ -92,7 +92,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'kafka topic' || format === 'kafka') {
+    if (format === 'kafka_topic' || format === 'kafka') {
         return {
             link: env('KAFKA_TOPIC_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagKafkaBackgroundColor,
