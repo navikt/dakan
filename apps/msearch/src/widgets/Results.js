@@ -56,7 +56,7 @@ function Results({
     const defaultPagination = () => (
         <Pagination
             numPages={Math.min(
-                Math.ceil(total.value / itemsPerPage),
+                Math.ceil(total / itemsPerPage),
                 10000 / itemsPerPage
             )}
             currentPage={page}
@@ -99,10 +99,10 @@ function Results({
                     )
                 })}
                 <Block marginTop="scale400">
-                    {total.value > 1
+                    {total > 1
                         ? pagination
                             ? pagination(
-                                  total.value,
+                                  total,
                                   itemsPerPage,
                                   page,
                                   setPage

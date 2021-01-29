@@ -184,6 +184,7 @@ function SearchPage(props) {
 
     const Content = (props) => {
         const [panelExpanded, setPanelExpanded] = React.useState('')
+
         return (
             <React.Fragment>
                 <Block flex="1" role="main">
