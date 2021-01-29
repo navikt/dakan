@@ -11,6 +11,7 @@ import SearchPage from './pages/SearchPage'
 //import DummyViewer from './pages/DummyViewer'
 import PageNotFound from './pages/PageNotFound'
 //import DemoPage from './pages/DemoPage'
+import AboutPage from './pages/AboutPage'
 
 const localeOverrideNo = navLocaleOverride || {
     pagination: {
@@ -40,7 +41,7 @@ class Main extends React.Component {
                                     brand: title,
                                     nav: true,
                                     about: true,
-                                    aboutLink: 'https://data.nav.no/about',
+                                    aboutLink: '/about',
                                     link: link,
                                     amplitude_project_id: amplitude_project_id,
                                     amplitude_endpoint: amplitude_endpoint,
@@ -58,6 +59,7 @@ class Main extends React.Component {
                                     path="/list"
                                     component={PageNotFound}
                                 />
+                                <Route path="/about" component={AboutPage} />
                                 <Route
                                     exact
                                     path="/search/:mode"
