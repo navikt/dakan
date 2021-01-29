@@ -13,12 +13,18 @@ import qs from 'qs'
 
 import env from '@beam-australia/react-env'
 
+const baseconfig = env('CONFIG') || { facets: [], panels: [] }
+const facets = JSON.parse(baseconfig).facets
+const panels = JSON.parse(baseconfig).panels
+const filters = JSON.parse(baseconfig).filters
+const resultsPerPage = JSON.parse(baseconfig).resultsPerPage
+
 const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
-const url = `${server}/${index}` 
+const url = `${server}/${index}`
 
-const SORTKEYSOPTIONS = [{'id':"issued", "label":"Dato"},{"id":"title.keyword", "label":"Tittel"}]
-const SORTDIRECTIONOPTIONS = [{"id":"asc", "label": "Stigende"},{"id": "desc", "label": "Synkende"}]
+const SORTKEYSOPTIONS = [{ 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" }]
+const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" }, { "id": "desc", "label": "Synkende" }]
 const VALUE_KEY = 'id'
 const VALUE_LABEL = 'label'
 
@@ -80,29 +86,54 @@ function SearchPage(props) {
         getSelectIndexPosition(SORTDIRECTIONOPTIONS, 'sortOrder')
     )
     const [sortKeyOption, setSortKeyOption] = useState(
-        getSelectIndexPosition(SORTKEYSOPTIONS,'sortKey')
+        getSelectIndexPosition(SORTKEYSOPTIONS, 'sortKey')
     )
 
     const [sortQuery, setSortQuery] = useState([{ [sortKey]: { order: sortOrder } }]);
-    
+
     useEffect(() => {
         setSortOrder(sortOrderOption[0][VALUE_KEY])
         setSortKey(sortKeyOption[0][VALUE_KEY])
         setSortQuery([{ [sortKeyOption[0][VALUE_KEY]]: { order: sortOrderOption[0][VALUE_KEY] } }]);
-      }, [sortKeyOption, sortOrderOption]);
+    }, [sortKeyOption, sortOrderOption]);
 
     const onChange = (values) => {
         if (values.size) {
-            values.set("sortKey", sortKey) 
-            values.set("sortOrder",sortOrder ) 
+            values.set("sortKey", sortKey)
+            values.set("sortOrder", sortOrder)
         }
         const q = toUrlQueryString(values)
         if (q) {
             window.history.replaceState('x', 'y', `?${q}`)
-        } 
+        }
     }
 
     const fields = SEARCHFIELDS
+
+    const getLeftSidebarFacet = (facet, index) => (
+        <Block marginBottom="scale1200" key={index}>
+            <Label>{facet.label}</Label>
+            <Facet
+                id={facet.label}
+                fields={[`${facet.field}.keyword`]}
+                showFilter={false}
+                initialValue={initialValues.get(facet.field)}
+            />
+        </Block>
+    )
+
+    const getRightSidebarFacet = (facet, index) => (
+        <Block marginBottom="scale1200" key={index}>
+            <Facet
+                title={facet.label}
+                id={facet.label}
+                fields={[`${facet.field}.keyword`]}
+                showFilter={false}
+                type="panel"
+                initialValue={initialValues.get(facet.field)}
+            />
+        </Block>
+    )
 
     const LeftSidebar = (props) => {
         return (
@@ -115,35 +146,29 @@ function SearchPage(props) {
                 </Block>
 
                 <Block>
-                    <Label>Format</Label>
-                    <Facet
-                        id="format"
-                        fields={['format.keyword']}
-                        showFilter={false}
-                        initialValue={initialValues.get('format')}
-                    />
+                    {facets.map((f, index) => getLeftSidebarFacet(f, index))}
                 </Block>
                 <Block marginTop='scale600'>
-                <Label>Sortering</Label>
-                <Block marginTop='scale400'>
-                <Select  onChange={({value}) => setSortKeyOption(value)} value={sortKeyOption}
-                    options = {SORTKEYSOPTIONS}
-                    labelKey={VALUE_LABEL}
-                    valueKey={VALUE_KEY}
-                    value={sortKeyOption}
-                    clearable={false}
-                >
-                </Select>
-                </Block>
-                <Block marginTop='scale400'>
-                <Select onChange={({value}) => setSortOrderOption(value)} value={sortOrderOption}
-                    options = {SORTDIRECTIONOPTIONS}
-                    labelKey={VALUE_LABEL}
-                    value={sortOrderOption}
-                    valueKey={VALUE_KEY}
-                          clearable={false}>
-                </Select>
-                </Block>
+                    <Label>Sortering</Label>
+                    <Block marginTop='scale400'>
+                        <Select onChange={({ value }) => setSortKeyOption(value)}
+                            options={SORTKEYSOPTIONS}
+                            labelKey={VALUE_LABEL}
+                            valueKey={VALUE_KEY}
+                            value={sortKeyOption}
+                            clearable={false}
+                        >
+                        </Select>
+                    </Block>
+                    <Block marginTop='scale400'>
+                        <Select onChange={({ value }) => setSortOrderOption(value)}
+                            options={SORTDIRECTIONOPTIONS}
+                            labelKey={VALUE_LABEL}
+                            value={sortOrderOption}
+                            valueKey={VALUE_KEY}
+                            clearable={false}>
+                        </Select>
+                    </Block>
                 </Block>
             </Block>
         )
@@ -152,30 +177,7 @@ function SearchPage(props) {
     const RightSidebar = () => {
         return (
             <Block role="contentinfo">
-                <Facet
-                    title="Stikkord"
-                    id="keyword"
-                    fields={['keyword.keyword']}
-                    showFilter={false}
-                    type="panel"
-                    initialValue={initialValues.get('keyword')}
-                />
-                <Facet
-                    title="Forfatter"
-                    id="creator.name"
-                    fields={['creator.name.keyword']}
-                    showFilter={false}
-                    type="panel"
-                    initialValue={initialValues.get('creator.name')}
-                />
-                <Facet
-                    title="Opprinnelse"
-                    id="provenance"
-                    fields={['provenance.keyword']}
-                    showFilter={false}
-                    type="panel"
-                    initialValue={initialValues.get('provenance')}
-                />
+                {panels.map((p, index) => getRightSidebarFacet(p, index))}
             </Block>
         )
     }
