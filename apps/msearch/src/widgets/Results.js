@@ -72,7 +72,7 @@ function Results({
                 {isSearching ? (
                     <Spinner size='20px' />
                 ) : 
-                <Label>{total.value ? `Antall treff: ${total.value}` : 'Ingen treff'}</Label>
+                <Label>{total ? `Antall treff: ${total}` : 'Ingen treff'}</Label>
                 }
             </Block>
             <ActiveFilters id="af" />
