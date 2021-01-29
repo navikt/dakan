@@ -40,6 +40,14 @@ export function getViewerProps(format) {
         }
     }
 
+    if (format === 'apier') {
+        return {
+          link: env('API_VIEWER_URL') || '/viewer',
+          backgroundColor: theme.colors.tagApiBackgroundColor,
+          borderColor: theme.colors.tagApiBorderColor,
+        }
+    }
+
     if (format === 'begrep' || format === 'term') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer',
@@ -92,6 +100,14 @@ export function getViewerProps(format) {
         }
     }
 
+    if (format === 'kafka_aiven_topic' || format === 'kafka_topic_aiven') {
+        return {
+          link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer',
+          backgroundColor: theme.colors.tagKafkaBackgroundColor,
+          borderColor: theme.colors.tagKafkaBorderColor,
+        }
+    }
+
     if (format === 'opplysningstype' || format === 'informationtype') {
         return {
             link: env('INFORMATION_TYPE_VIEWER_URL') || '/viewer',
@@ -119,6 +135,38 @@ export function getViewerProps(format) {
     if (format === 'team') {
         return {
             link: env('TEAM_VIEWER_URL') || '/viewer',
+            backgroundColor: theme.colors.tagPurposeBackgroundColor,
+            borderColor: theme.colors.tagPurposeBorderColor,
+        }
+    }
+
+    if (format === 'nais_team' || format === 'naisteam') {
+        return {
+          link: env('NAISTEAM_VIEWER_URL') || '/viewer',
+          backgroundColor: theme.colors.tagPurposeBackgroundColor,
+          borderColor: theme.colors.tagPurposeBorderColor,
+        }
+      }
+    
+    if (format === 'nais_app' || format === 'naisapp') {
+        return {
+            link: env('NAISAPP_VIEWER_URL') || '/viewer',
+            backgroundColor: theme.colors.tagPurposeBackgroundColor,
+            borderColor: theme.colors.tagPurposeBorderColor,
+        }
+    }
+
+    if (format === 'office') {
+        return {
+          link: env('OFFICE_VIEWER_URL') || '/viewer',
+          backgroundColor: theme.colors.tagPurposeBackgroundColor,
+          borderColor: theme.colors.tagPurposeBorderColor,
+        }
+      }
+    
+    if (format === 'ad_department') {
+        return {
+            link: env('AD_DEPARTMENT_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
             borderColor: theme.colors.tagPurposeBorderColor,
         }
