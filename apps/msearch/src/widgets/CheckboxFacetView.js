@@ -4,6 +4,8 @@ import { Button } from 'baseui/button'
 import { Input } from 'baseui/input'
 import { Checkbox } from '@dakan/ui'
 import { getFilterValueDisplay } from '../components/utils'
+import { KIND } from 'baseui/button'
+
 
 export const CheckboxFacetView = ({
     placeholder,
@@ -34,18 +36,19 @@ export const CheckboxFacetView = ({
             {items
                 ? items(data, { handleChange, isChecked })
                 : data.map((item) => (
-                      <Checkbox
-                          role="checkbox"
-                          id={`checkboxfacet_${item.key}`}
-                          checked={isChecked(item)}
-                          title={item}
-                          onChange={(e) => handleChange(item, e.target.checked)}
-                      >
-                          {getFilterValueDisplay(item.key)} ({item.doc_count})
-                      </Checkbox>
-                  ))}
+                    <Checkbox
+                        role="checkbox"
+                        id={`checkboxfacet_${item.key}`}
+                        checked={isChecked(item)}
+                        title={item}
+                        onChange={(e) => handleChange(item, e.target.checked)}
+                    >
+                        {getFilterValueDisplay(item.key)} ({item.doc_count})
+                    </Checkbox>
+                ))}
             {data.length === size ? (
-                <Button onClick={() => setSize(size + (itemsPerBlock || 9))}>
+                <Button onClick={() => setSize(size + (itemsPerBlock || 9))} kind={KIND.minimal}
+                    aria-label="Vis flere">
                     {seeMore || 'vis flere'}
                 </Button>
             ) : null}
