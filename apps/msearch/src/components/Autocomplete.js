@@ -32,16 +32,11 @@ function getType(source) {
 }
 
 const tag = (type, link) => {
-  const backgroundColor = getViewerProps(type).backgroundColor
-  const borderColor = getViewerProps(type).borderColor
   const label = getLocal(type)
   return (
     <Tag
       closeable={false}
       kind={KIND.accent}
-      color="black"
-      backgroundColor={backgroundColor}
-      borderColor={borderColor}
     >
       {label}
     </Tag>
