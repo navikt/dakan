@@ -10,8 +10,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
     const intervalRef = useRef(null)
 
-    const widget = widgets.get(id)
-    console.log(widget)
+    const widget = searchTerm ? widgets.get('result') : null
     const data = widget && widget.result && widget.result.data ? widget.result.data : []
 
     useEffect(() => {
@@ -63,7 +62,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
             query: queryFromValue(v),
             value: v,
             configuration: null,
-            result: data ? { data } : null,
+            result: null,
         })
     }
 
