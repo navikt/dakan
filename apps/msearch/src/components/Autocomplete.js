@@ -4,8 +4,8 @@ import { StyledLink as Link } from 'baseui/link'
 import { Tag } from '@dakan/ui'
 import { KIND } from 'baseui/tag'
 
-import getViewerProps from './view-helpers/getViewerProps'
-import { getLocal } from './view-helpers/getLocal'
+import getViewerProps from './getViewerProps'
+import { getLocal } from './utils'
 
 function getValue(result, value) {
   if (!result[value] || !result[value]) return
@@ -48,7 +48,7 @@ const tag = (type, link) => {
   )
 }
 
-function Autocomplete({ autocompleteResults, autocompletedResults }) {
+const Autocomplete = ({ autocompleteResults, autocompletedResults }) => {
   const items = autocompletedResults.map((result) => {
     const titleSnippet = getTitleSnippet(result, autocompleteResults.titleField)
     const title = getTitle(result, autocompleteResults.titleField)
