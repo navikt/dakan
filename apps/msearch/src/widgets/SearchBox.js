@@ -2,12 +2,17 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
 import { Spinner } from 'baseui/spinner'
 import { Searchbox } from '@dakan/ui'
+import SearchBoxView from '../components/SearchBoxView'
 
 function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
     const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [value, setValue] = useState(initialValue || '')
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
     const intervalRef = useRef(null)
+
+    const widget = widgets.get(id)
+    const data =
+    widget && widget.result && widget.result.data ? widget.result.data : []
 
     useEffect(() => {
         if (searchTerm !== value) {
@@ -72,12 +77,11 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
 
     return (
         <div>{isSearching}
-            <Searchbox
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder={placeholder ||  'søk…'}
-                //startEnhancer={isSearching ? <Spinner/> : null}
-                clearable
+            <SearchBoxView
+                searchTerm={searchTerm}
+                placeholder={placeholder}
+                setSearchTerm={setSearchTerm}
+                results={data}
             />
         </div>
     )
