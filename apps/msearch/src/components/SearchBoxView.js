@@ -7,8 +7,6 @@ import { Block } from 'baseui/block'
 const SearchBoxView = (props) => {
   const { searchTerm, placeholder, setSearchTerm, results } = props
 
-  console.log(results)
-
   return (
     <React.Fragment>
       <Block width="100%" role="textbox" aria-label="tekstboks for søk">
