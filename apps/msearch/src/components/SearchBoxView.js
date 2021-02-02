@@ -2,11 +2,26 @@ import * as React from 'react'
 import Autocomplete from './Autocomplete'
 import Downshift from 'downshift'
 import SearchInput from './SearchInput'
+import { useSharedContext } from './SharedContextProvider'
+
 
 const SearchBoxView = (props) => {
-  const { searchTerm, placeholder, setSearchTerm, results } = props
+  const [{ widgets }] = useSharedContext()
+  const { searchTerm, placeholder, setSearchTerm } = props
+  const [results, setResults] = React.useState([])
 
-  console.log(searchTerm)
+  React.useEffect(() => {
+    if (searchTerm === '') {
+      setResults([])
+    }
+  }, [searchTerm])
+
+  const getResult = () => {
+    const widget = searchTerm ? widgets.get('result') : null
+    const data = widget && widget.result && widget.result.data ? widget.result.data : []
+    setResults(data)
+  }
+
   return (
     <Downshift
       inputValue={searchTerm}
@@ -28,7 +43,7 @@ const SearchBoxView = (props) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                closeMenu()
+                getResult()
               }}
             >
               <SearchInput
@@ -39,6 +54,14 @@ const SearchBoxView = (props) => {
                     placeholder: placeholder || 'søk…',
                     ...rest,
                   })
+                }}
+                getButtonProps={(additionalProps) => {
+                  const { ...rest } = additionalProps || {}
+                  return {
+                    type: 'submit',
+                    value: 'Search',
+                    ...rest,
+                  }
                 }}
                 getAutocomplete={() => {
                   if (

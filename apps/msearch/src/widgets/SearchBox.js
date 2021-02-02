@@ -10,9 +10,6 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
     const intervalRef = useRef(null)
 
-    const widget = searchTerm ? widgets.get('result') : null
-    const data = widget && widget.result && widget.result.data ? widget.result.data : []
-
     useEffect(() => {
         if (searchTerm !== value) {
             intervalRef.current = setTimeout(() => {
@@ -80,7 +77,6 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
                 searchTerm={searchTerm}
                 placeholder={placeholder}
                 setSearchTerm={setSearchTerm}
-                results={data}
             />
         </div>
     )
