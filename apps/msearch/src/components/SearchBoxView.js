@@ -26,7 +26,8 @@ const SearchBoxView = (props) => {
         return (
           <div {...getLabelProps()} aria-label="Søkeboks">
             <form
-              onSubmit={() => {
+              onSubmit={(e) => {
+                e.preventDefault()
                 closeMenu()
               }}
             >
