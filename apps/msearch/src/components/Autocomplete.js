@@ -7,26 +7,26 @@ import { KIND } from 'baseui/tag'
 import getViewerProps from './getViewerProps'
 import { getLocal } from './utils'
 
-function getValue(result, value) {
+const getValue = (result, value) => {
   if (!result[value] || !result[value]) return
   return result[value]
 }
 
-function getTitle(source) {
+const getTitle = (source) => {
   const title = source && source['_source'] && source['_source']['title']
   return title
 }
 
-function getTitleSnippet(source) {
+const getTitleSnippet = (source) => {
   const title = source && source['_source'] && source['_source']['title']
   return title
 }
 
-function getLink(type, url) {
+const getLink = (type, url) => {
   return `${getViewerProps(type)['link']}/${url}`
 }
 
-function getType(source) {
+const getType = (source) => {
   const type = source && source['_source'] && source['_source']['type']
   return type
 }
@@ -65,12 +65,12 @@ const Autocomplete = ({ autocompleteResults, autocompletedResults }) => {
       return (
         <Block
           display="flex"
-          width="100%"
           key={`autocomplete_result_${index}`}
           marginBottom="scale400"
           flexDirection='row'
           justifyContent='space-between'
           alignItems='center'
+          width="100%"
         >
           <Block overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
             <Link
@@ -89,9 +89,6 @@ const Autocomplete = ({ autocompleteResults, autocompletedResults }) => {
 
   return (
     <Block
-      left={0}
-      right={0}
-      top={'100%'}
       padding="scale300"
       position="absolute"
       overrides={{
