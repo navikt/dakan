@@ -1,36 +1,25 @@
 import * as React from 'react'
 import Autocomplete from './Autocomplete'
-import { Searchbox } from '@dakan/ui'
 import Downshift from 'downshift'
-import { Block } from 'baseui/block'
-
-const SearchInput = (props) => {
-  const { searchTerm, setSearchTerm, getAutocomplete, placeholder, ...rest } = props
-
-  return (
-    <React.Fragment>
-      <Block width="100%" role="textbox" aria-label="tekstboks for søk">
-        <Searchbox
-          {...rest}
-          inputValue={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder={placeholder || 'søk…'}
-          //startEnhancer={isSearching ? <Spinner/> : null}
-          clearable
-        />
-        {getAutocomplete()}
-      </Block>
-    </React.Fragment>
-  )
-}
+import SearchInput from './SearchInput'
 
 const SearchBoxView = (props) => {
-  const { className, searchTerm, placeholder, setSearchTerm, results, ...rest } = props
+  const { searchTerm, placeholder, setSearchTerm, results } = props
+
+  console.log(searchTerm)
   return (
     <Downshift
       inputValue={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      onInputValueChange={(newValue) => {
+        // To avoid over dispatching
+        if (searchTerm === newValue) return
+        setSearchTerm(newValue)
+      }}
+      // Because when a selection is made, we don't really want to change
+      // the inputValue. This is supposed to be a "controlled" value, and when
+      // this happens we lose control of it.
       itemToString={() => searchTerm}
-      {...rest}
     >
       {(downshiftProps) => {
         const { closeMenu, isOpen, getLabelProps, getInputProps } = downshiftProps
@@ -41,33 +30,38 @@ const SearchBoxView = (props) => {
                 closeMenu()
               }}
             >
-                <SearchInput
-                  {...downshiftProps}
-                  {...getInputProps()}
-                  placeholder={placeholder}
-                  inputValue={searchTerm}
-                  setSearchTerm={setSearchTerm}
-                 
-                  getAutocomplete={() => {
-                    if (
-                      searchTerm &&
-                      results.length > 0
-                    ) {
-                      return (
-                        <Autocomplete
-                          autocompletedResults={results}
-                          autocompleteResults={{
-                            titleField: 'title',
-                            urlField: '_id',
-                            sourceField: '_source',
-                            scoreField: '_score',
-                          }} />
-                      )
-                    } else {
-                      return null
-                    }
-                  }}
-                />
+              <SearchInput
+                {...downshiftProps}
+                getInputProps={(additionalProps) => {
+                  const { ...rest } = additionalProps || {}
+                  return getInputProps({
+                    placeholder: placeholder || 'søk…',
+                    ...rest,
+                  })
+                }}
+                getAutocomplete={() => {
+                  if (
+                    searchTerm &&
+                    isOpen &&
+                    results.length > 0
+                  ) {
+                    return (
+                      <Autocomplete
+                        autocompletedResults={results}
+                        autocompleteResults={{
+                          titleField: 'title',
+                          urlField: '_id',
+                          sourceField: '_source',
+                          scoreField: '_score',
+                        }}
+                        {...downshiftProps}
+                      />
+                    )
+                  } else {
+                    return null
+                  }
+                }}
+              />
             </form>
           </div>
         )
