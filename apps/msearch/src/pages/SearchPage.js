@@ -186,39 +186,37 @@ function SearchPage(props) {
         const [panelExpanded, setPanelExpanded] = React.useState('')
 
         return (
-            <React.Fragment>
-                <Block flex="1" role="main">
-                    <Block marginBottom="scale800">
-                        <Block role="search">
-                            <SearchBox
-                                id="term"
-                                fields={fields}
-                                initialValue={initialValues.get('term')}
-                            />
-                        </Block>
+            <Block flex="1" role="main">
+                <Block marginBottom="scale800">
+                    <Block role="search">
+                        <SearchBox
+                            id="term"
+                            fields={fields}
+                            initialValue={initialValues.get('term')}
+                        />
                     </Block>
-                    <Block display={['block', 'block', 'none']}>
-                        <Accordion
-                            onChange={(e) => setPanelExpanded(e.expanded[0])}
-                        >
-                            <Panel
-                                title="Filter"
-                                isExpanded={panelExpanded === '0'}
-                            >
-                                <Block marginBottom="scale800">
-                                    {LeftSidebar(props)}
-                                </Block>
-                            </Panel>
-                        </Accordion>
-                    </Block>
-                    <Results
-                        sort={sortQuery}
-                        id="result"
-                        itemsPerPage="12"
-                        initialPage={1}
-                    />
                 </Block>
-            </React.Fragment>
+                <Block display={['block', 'block', 'none']}>
+                    <Accordion
+                        onChange={(e) => setPanelExpanded(e.expanded[0])}
+                    >
+                        <Panel
+                            title="Filter"
+                            isExpanded={panelExpanded === '0'}
+                        >
+                            <Block marginBottom="scale800">
+                                {LeftSidebar(props)}
+                            </Block>
+                        </Panel>
+                    </Accordion>
+                </Block>
+                <Results
+                    sort={sortQuery}
+                    id="result"
+                    itemsPerPage="12"
+                    initialPage={1}
+                />
+            </Block>
         )
     }
 
