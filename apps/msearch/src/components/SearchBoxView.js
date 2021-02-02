@@ -25,11 +25,15 @@ const SearchBoxView = (props) => {
   return (
     <Downshift
       inputValue={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
+      onChange={(e) => {
+        setSearchTerm(e.target.value)
+        setResults([])
+      }}
       onInputValueChange={(newValue) => {
         // To avoid over dispatching
         if (searchTerm === newValue) return
         setSearchTerm(newValue)
+        setResults([])
       }}
       // Because when a selection is made, we don't really want to change
       // the inputValue. This is supposed to be a "controlled" value, and when
@@ -37,7 +41,7 @@ const SearchBoxView = (props) => {
       itemToString={() => searchTerm}
     >
       {(downshiftProps) => {
-        const { closeMenu, isOpen, getLabelProps, getInputProps } = downshiftProps
+        const { isOpen, getLabelProps, getInputProps } = downshiftProps
         return (
           <div {...getLabelProps()} aria-label="Søkeboks">
             <form
