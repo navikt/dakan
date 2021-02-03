@@ -25,7 +25,6 @@ const url = `${server}/${index}`
 
 const SORTKEYSOPTIONS = [{ 'id': "_score", "label": "Relevans" }, { 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" }]
 const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" }, { "id": "desc", "label": "Synkende" }]
-const SORTDATEDIRECTIONOPTIONS = [{ "id": "desc", "label": "Synkende" }, { "id": "asc", "label": "Stigende" }]
 const VALUE_KEY = 'id'
 const VALUE_LABEL = 'label'
 
@@ -100,7 +99,7 @@ function SearchPage(props) {
     }, [sortKeyOption, sortOrderOption]);
 
     useEffect(() => {
-        if (sortKeyOption[0]["label"] === "Dato" || sortKeyOption[0]["label"] === "Relevans") {
+        if (sortKeyOption[0]["label"] === "Relevans" || sortKeyOption[0]["label"] === "Dato") {
             setSortOrderOption([SORTDIRECTIONOPTIONS[1]])
         }else {
             setSortOrderOption([SORTDIRECTIONOPTIONS[0]])
