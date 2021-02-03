@@ -316,6 +316,7 @@ const ThreeColsSearch = (props) => {
             display={['none', 'block']}
             width={LEFT_MENU_WIDTH}
             paddingLeft={MARGIN_LEFT}
+            marginBottom="scale550"
           >
             {props.left}
           </Block>
