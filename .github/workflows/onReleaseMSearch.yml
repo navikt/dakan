@@ -22,7 +22,7 @@ jobs:
       - name: Build shared packages
         run: yarn run shared:build
       - name: Create app build
-        run: yarn datasearch:build
+        run: yarn msearch:build
         env:
           CI: false
       - name: Login to Github package registry
