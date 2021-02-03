@@ -42,6 +42,9 @@ const Content = ({ item, id }) => {
           {item.content.api_dec && (<LabeledContent description="Api description" list>
             <StyledLink aria-label="Link til Api beskrivelse" href={item.content.api_dec}>{item.content.api_dec}</StyledLink>
           </LabeledContent>)}
+          { item.master === "NAV API PORTAL" && (<LabeledContent description="Kilde" list>
+            <StyledLink aria-label="Kilde" href={item.url}>{item.url}</StyledLink>
+          </LabeledContent>)}
         </Block>
       </div>
     )
