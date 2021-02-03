@@ -64,6 +64,7 @@ jobs:
 
   deploy-prod-gcp-external:
     name: Deploy to prod-gcp (external)
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
