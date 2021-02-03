@@ -23,7 +23,7 @@ const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
 const url = `${server}/${index}`
 
-const SORTKEYSOPTIONS = [{ 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" }]
+const SORTKEYSOPTIONS = [{ 'id': "_score", "label": "Relevans" }, { 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" }]
 const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" }, { "id": "desc", "label": "Synkende" }]
 const VALUE_KEY = 'id'
 const VALUE_LABEL = 'label'
@@ -95,7 +95,16 @@ function SearchPage(props) {
         setSortOrder(sortOrderOption[0][VALUE_KEY])
         setSortKey(sortKeyOption[0][VALUE_KEY])
         setSortQuery([{ [sortKeyOption[0][VALUE_KEY]]: { order: sortOrderOption[0][VALUE_KEY] } }]);
+
     }, [sortKeyOption, sortOrderOption]);
+
+    useEffect(() => {
+        if (sortKeyOption[0]["label"] === "Relevans" || sortKeyOption[0]["label"] === "Dato") {
+            setSortOrderOption([SORTDIRECTIONOPTIONS[1]])
+        }else {
+            setSortOrderOption([SORTDIRECTIONOPTIONS[0]])
+        }
+    }, [sortKeyOption])
 
     const onChange = (values) => {
         if (values.size) {
@@ -136,6 +145,7 @@ function SearchPage(props) {
     )
 
     const LeftSidebar = (props) => {
+
         return (
             <Block role="navigation">
                 <Block display={['none', 'flex']} marginBottom="scale750">

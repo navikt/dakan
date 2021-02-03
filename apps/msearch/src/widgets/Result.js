@@ -89,7 +89,7 @@ const Result = ({ result, titleField, even }) => {
     const link = `${url}/${id}`
 
     return (
-        <Block backgroundColor={even ? 'white' : '#efefef' }>
+        <Block backgroundColor={even ? 'white' : '#efefef'}>
             <Block
                 paddingBottom="scale400"
                 paddingTop="scale400"
@@ -107,7 +107,11 @@ const Result = ({ result, titleField, even }) => {
                         </Block>
                     </Block>
                 )}
-                <Paragraph2 overflow={'wrap'}>{description}</Paragraph2>
+                <Paragraph2 overflow={'wrap'}>
+                    {description && (
+                        <span dangerouslySetInnerHTML={{ __html: description }} />
+                    )}
+                </Paragraph2>
                 <Block
                     width="100%"
                     display="flex"

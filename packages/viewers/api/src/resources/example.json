@@ -28,9 +28,7 @@
     "name": "NAV"
   },
   "spatial": "Norge",
-  "url": [
-    "url"
-  ],
+  "url": "https://www.github.com",
   "haspart": [],
   "content": {
     "displayName": "Test test API",
