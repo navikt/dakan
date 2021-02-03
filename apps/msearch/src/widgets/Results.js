@@ -24,9 +24,11 @@ function Results({
     const widget = widgets.get(id)
     const data =
         widget && widget.result && widget.result.data ? widget.result.data : []
-    const total =
+    const totalPages =
         widget && widget.result && widget.result.total ? widget.result.total : 0
     itemsPerPage = itemsPerPage || 10
+
+    const total = totalPages && totalPages.value ? totalPages.value : totalPages
 
     useEffect(() => {
         setPage(initialization ? initialPage : 1)

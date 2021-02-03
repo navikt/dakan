@@ -1,13 +1,9 @@
-name: Data Search build and deploy
+name: Data Search deploy to prod on release
 
 on:
   push:
-    paths:
-      - 'apps/msearch/**'
-    branches:
-      - master
-    tags-ignore:
-      - '*.*.*'
+    tags:
+      - 'msearch.*.*.*'
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-msearch:${{ github.sha }}
@@ -40,34 +36,8 @@ jobs:
       - name: Push docker image
         run: docker push ${IMAGE}
 
-  deploy-dev-fss:
-    name: Deploy to dev-fss
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-fss
-        RESOURCE: apps/msearch/naiserator_fss.yaml
-        VARS: apps/msearch/config-dev-fss.json
-
-  deploy-dev-sbs:
-    name: Deploy to dev-sbs
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-sbs
-        RESOURCE: apps/msearch/naiserator_sbs.yaml
-        VARS: apps/msearch/config-dev-sbs.json
-
-  deploy-dev-gcp-external:
-    name: Deploy to dev-gcp
+  deploy-prod-fss:
+    name: Deploy to prod-fss
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -75,6 +45,32 @@ jobs:
     - uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-gcp
+        CLUSTER: prod-fss
+        RESOURCE: apps/msearch/naiserator_fss.yaml
+        VARS: apps/msearch/config-prod-fss.json
+
+  deploy-prod-sbs:
+    name: Deploy to prod-sbs
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-sbs
+        RESOURCE: apps/msearch/naiserator_sbs.yaml
+        VARS: apps/msearch/config-prod-sbs.json
+
+  deploy-prod-gcp-external:
+    name: Deploy to prod-gcp (external)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-gcp
         RESOURCE: apps/msearch/naiserator_gcp.yaml
-        VARS: apps/msearch/config-dev-gcp-external.json
+        VARS: apps/msearch/config-prod-gcp-external.json
