@@ -316,7 +316,7 @@ const ThreeColsSearch = (props) => {
             display={['none', 'block']}
             width={LEFT_MENU_WIDTH}
             paddingLeft={MARGIN_LEFT}
-            marginBottom="scale550"
+            paddingBottom="scale550"
           >
             {props.left}
           </Block>
@@ -345,7 +345,7 @@ export const LayoutSearch = (props) => {
         flexDirection="column"
         marginTop="scale800"
       >
-        <Block width="100%" paddingRight={MARGIN_RIGHT}>
+        <Block width="100%">
           <Block display={['block', 'block', 'none', 'none']} width="100%">
             <SingleColumn {...props}></SingleColumn>
           </Block>
