@@ -100,7 +100,7 @@ function SearchPage(props) {
     }, [sortKeyOption, sortOrderOption]);
 
     useEffect(() => {
-        if (sortKeyOption[0]["label"] === "Dato") {
+        if (sortKeyOption[0]["label"] === "Dato" || sortKeyOption[0]["label"] === "Relevans") {
             setSortOrderOption([SORTDIRECTIONOPTIONS[1]])
         }else {
             setSortOrderOption([SORTDIRECTIONOPTIONS[0]])
