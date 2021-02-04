@@ -121,7 +121,6 @@ function SearchPage(props) {
 
     const getLeftSidebarFacet = (facet, index) => (
         <Block marginBottom="scale1200" key={index} aria-label={`Filtrer etter ${facet.label}`}>
-            <Label>{facet.label}</Label>
             <Facet
                 title={facet.label}
                 id={facet.label}

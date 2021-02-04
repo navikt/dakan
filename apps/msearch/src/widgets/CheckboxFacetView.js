@@ -2,10 +2,9 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Button } from 'baseui/button'
 import { Input } from 'baseui/input'
-import { Checkbox } from '@dakan/ui'
+import { Checkbox, Label } from '@dakan/ui'
 import { getFilterValueDisplay } from '../components/utils'
 import { KIND } from 'baseui/button'
-
 
 export const CheckboxFacetView = ({
     placeholder,
@@ -24,6 +23,7 @@ export const CheckboxFacetView = ({
 }) => {
     return (
         <Block>
+            <Label>{title}</Label>
             {showFilter ? (
                 <Input
                     value={filterValue}
