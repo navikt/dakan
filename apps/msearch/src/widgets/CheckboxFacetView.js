@@ -41,7 +41,8 @@ export const CheckboxFacetView = ({
                         role="checkbox"
                         id={`checkboxfacet_${item.key}`}
                         checked={isChecked(item)}
-                        title={item}
+                        title={getFilterValueDisplay(item.key)}
+                        ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
                         onChange={(e) => handleChange(item, e.target.checked)}
                     >
                         {getFilterValueDisplay(item.key)} ({item.doc_count})
