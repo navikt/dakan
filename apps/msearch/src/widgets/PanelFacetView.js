@@ -24,7 +24,7 @@ export const PanelFacetView = ({
     const FacetCard = ({ data }) => {
         if (!data || data.length < 1) return null
         return (
-            <Card title={title}>
+            <Card title={title} aria-label={`Filtrer etter ${title}`}>
                 <Block>
                     {data.map((item) =>
                         item.key ? (
@@ -59,6 +59,7 @@ export const PanelFacetView = ({
             {data && <FacetCard data={data} />}
             {data.length === size ? (
                 <Button
+                    aria-label={`Vis flere filter for ${title}`}
                     kind={KIND.minimal}
                     size={SIZE.compact}
                     onClick={() => setSize(size + (itemsPerBlock || 9))}

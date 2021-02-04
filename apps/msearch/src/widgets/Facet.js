@@ -104,6 +104,7 @@ function Facet({
                     setSize={setSize}
                     seeMore={seeMore}
                     itemsPerBlock={itemsPerBlock}
+                    title={title}
                 />
             )}
         </React.Fragment>

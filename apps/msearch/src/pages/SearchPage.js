@@ -120,9 +120,10 @@ function SearchPage(props) {
     const fields = SEARCHFIELDS
 
     const getLeftSidebarFacet = (facet, index) => (
-        <Block marginBottom="scale1200" key={index}>
+        <Block marginBottom="scale1200" key={index} aria-label={`Filtrer etter ${facet.label}`}>
             <Label>{facet.label}</Label>
             <Facet
+                title={facet.label}
                 id={facet.label}
                 fields={[`${facet.field}.keyword`]}
                 showFilter={false}
@@ -160,8 +161,9 @@ function SearchPage(props) {
                 </Block>
                 <Block marginTop='scale600'>
                     <Label>Sortering</Label>
-                    <Block marginTop='scale400'>
-                        <Select onChange={({ value }) => setSortKeyOption(value)}
+                    <Block marginTop='scale400' aria-label="Sortering av data">
+                        <Select 
+                            onChange={({ value }) => setSortKeyOption(value)}
                             options={SORTKEYSOPTIONS}
                             labelKey={VALUE_LABEL}
                             valueKey={VALUE_KEY}
@@ -170,8 +172,9 @@ function SearchPage(props) {
                         >
                         </Select>
                     </Block>
-                    <Block marginTop='scale400'>
-                        <Select onChange={({ value }) => setSortOrderOption(value)}
+                    <Block marginTop='scale400' aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]["label"]}`}>
+                        <Select 
+                            onChange={({ value }) => setSortOrderOption(value)}
                             options={SORTDIRECTIONOPTIONS}
                             labelKey={VALUE_LABEL}
                             value={sortOrderOption}
@@ -186,7 +189,7 @@ function SearchPage(props) {
 
     const RightSidebar = () => {
         return (
-            <Block role="contentinfo">
+            <Block role="complementary">
                 {panels.map((p, index) => getRightSidebarFacet(p, index))}
             </Block>
         )
@@ -198,7 +201,7 @@ function SearchPage(props) {
         return (
             <Block flex="1" role="main">
                 <Block marginBottom="scale800">
-                    <Block role="search">
+                    <Block role="search" aria-label="Søk etter data">
                         <SearchBox
                             id="term"
                             fields={fields}
