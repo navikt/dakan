@@ -49,4 +49,4 @@ spec:
   - name: REACT_APP_TITLE
     value: {{app_title}}
   - name: REACT_APP_CONFIG
-    value: '{"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"},{"field":"provenance","label":"Opprinnelse"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"}]}'
+    value: '{"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"},{"field":"provenance","label":"Opprinnelse"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"},{"field":"content.status","label":"Begrep Status"}]}'
