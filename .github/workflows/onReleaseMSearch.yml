@@ -49,19 +49,6 @@ jobs:
         RESOURCE: apps/msearch/naiserator_fss.yaml
         VARS: apps/msearch/config-prod-fss.json
 
-  deploy-prod-sbs:
-    name: Deploy to prod-sbs
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: prod-sbs
-        RESOURCE: apps/msearch/naiserator_sbs.yaml
-        VARS: apps/msearch/config-prod-sbs.json
-
   deploy-prod-gcp-external:
     name: Deploy to prod-gcp (external)
     needs: build
