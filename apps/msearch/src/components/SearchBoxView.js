@@ -7,12 +7,12 @@ import { useSharedContext } from './SharedContextProvider'
 
 const SearchBoxView = (props) => {
   const [{ widgets }] = useSharedContext()
-  const { searchTerm, placeholder, setSearchTerm, getResultsOnSearch, update } = props
+  const { searchTerm, placeholder, setSearchTerm, getResultsOnSearch } = props
   const [results, setResults] = React.useState([])
 
   React.useEffect(() => {
     if (searchTerm.length >= 3) {
-      const widget = searchTerm ? widgets.get('result').value === searchTerm : null
+      const widget = searchTerm ? widgets.get('result') : null
       const data = widget && widget.result && widget.result.data ? widget.result.data : []
       setResults(data)
     } else if (searchTerm.length < 3) {
