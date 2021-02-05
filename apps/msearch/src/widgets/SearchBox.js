@@ -31,10 +31,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
             intervalRef.current = setTimeout(() => {
                 update(searchTerm)
             }, 1000)
-        } else {
-            clearTimeout(intervalRef.current)
         }
-        return () => clearTimeout(intervalRef.current)
     }
 
     // If widget value was updated elsewhere (ex: from active filters deletion)
@@ -89,7 +86,6 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
                 placeholder={placeholder}
                 setSearchTerm={setSearchTerm}
                 getResultsOnSearch={getResultsOnSearch}
-                update={update}
             />
         </div>
     )
