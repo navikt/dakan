@@ -8,33 +8,23 @@ import { useSharedContext } from './SharedContextProvider'
 const SearchBoxView = (props) => {
   const [{ widgets }] = useSharedContext()
   const { searchTerm, placeholder, setSearchTerm } = props
-  const [results, setResults] = React.useState([])
 
-  React.useEffect(() => {
-    if (searchTerm === '') {
-      setResults([])
-    }
-  }, [searchTerm])
-
-  const getResult = () => {
     const widget = searchTerm ? widgets.get('result') : null
     const data = widget && widget.result && widget.result.data ? widget.result.data : []
-    setResults(data)
-  }
 
   return (
     <Downshift
       inputValue={searchTerm}
       onChange={(e) => {
         setSearchTerm(e.target.value)
-        setResults([])
       }}
+      
       onInputValueChange={(newValue) => {
         // To avoid over dispatching
         if (searchTerm === newValue) return
         setSearchTerm(newValue)
-        setResults([])
       }}
+
       // Because when a selection is made, we don't really want to change
       // the inputValue. This is supposed to be a "controlled" value, and when
       // this happens we lose control of it.
@@ -47,7 +37,6 @@ const SearchBoxView = (props) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                getResult()
               }}
             >
               <SearchInput
@@ -71,11 +60,11 @@ const SearchBoxView = (props) => {
                   if (
                     searchTerm &&
                     isOpen &&
-                    results.length > 0
+                    data.length > 0
                   ) {
                     return (
                       <Autocomplete
-                        autocompletedResults={results}
+                        autocompletedResults={data}
                         autocompleteResults={{
                           titleField: 'title',
                           urlField: '_id',
