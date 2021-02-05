@@ -1,20 +1,45 @@
 import * as React from 'react'
-import Autocomplete from './Autocomplete'
 import Downshift from 'downshift'
-import SearchInput from './SearchInput'
-import { useSharedContext } from './SharedContextProvider'
+import axios from 'axios'
+import env from '@beam-australia/react-env'
 
+import { useSharedContext } from '../components/SharedContextProvider'
+import Autocomplete from './Autocomplete'
+import SearchInput from './SearchInput'
+
+const server = env('ELASTIC_ENDPOINT') || ''
+const index = env('ELASTIC_INDEX') || ''
+const url = `${server}/${index}`
 
 const SearchBoxView = (props) => {
   const [{ widgets }] = useSharedContext()
-  const { searchTerm, placeholder, setSearchTerm, getResultsOnSearch } = props
+  const { searchTerm, placeholder, setSearchTerm, getResultsOnSearch, queryFromValue } = props
   const [results, setResults] = React.useState([])
+
+  const createQuery = () => {
+    const query = {
+      bool: {
+        must: [
+          queryFromValue(searchTerm),
+        ]
+      }
+    }
+
+    widgets.forEach((item, index) => {
+      if (index !== 'term' && index !== 'result') {
+        query.bool.must.push(item.query)
+      }
+    })
+
+    return query
+  }
 
   React.useEffect(() => {
     if (searchTerm.length >= 3) {
-      const widget = searchTerm ? widgets.get('result') : null
-      const data = widget && widget.result && widget.result.data ? widget.result.data : []
-      setResults(data)
+      axios.post(url, { query: createQuery() }).then((result) => {
+        setResults(result.data.hits.hits)
+      }
+      ).catch((e) => console.log(e))
     } else if (searchTerm.length < 3) {
       setResults([])
     }
@@ -39,7 +64,7 @@ const SearchBoxView = (props) => {
       itemToString={() => searchTerm}
     >
       {(downshiftProps) => {
-        const { closeMenu ,isOpen, getLabelProps, getInputProps } = downshiftProps
+        const { closeMenu, isOpen, getLabelProps, getInputProps } = downshiftProps
         return (
           <div {...getLabelProps()} aria-label="Søkeboks">
             <form
