@@ -84,6 +84,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
                 placeholder={placeholder}
                 setSearchTerm={setSearchTerm}
                 getResultsOnSearch={getResultsOnSearch}
+                queryFromValue={queryFromValue}
             />
         </div>
     )
