@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
-import { Spinner } from 'baseui/spinner'
-import { Searchbox } from '@dakan/ui'
 import SearchBoxView from '../components/SearchBoxView'
 
 function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
