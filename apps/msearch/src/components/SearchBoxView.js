@@ -8,9 +8,17 @@ import { useSharedContext } from './SharedContextProvider'
 const SearchBoxView = (props) => {
   const [{ widgets }] = useSharedContext()
   const { searchTerm, placeholder, setSearchTerm } = props
+  const [results, setResults] = React.useState([])
 
-    const widget = searchTerm ? widgets.get('result') : null
-    const data = widget && widget.result && widget.result.data ? widget.result.data : []
+  React.useEffect(() => {
+    if (searchTerm.length >= 3) {
+      const widget = searchTerm ? widgets.get('result') : null
+      const data = widget && widget.result && widget.result.data ? widget.result.data : []
+      setResults(data)
+    } else if ( searchTerm.length < 3) {
+      setResults([])
+    }
+  }, [searchTerm])
 
   return (
     <Downshift
@@ -18,7 +26,7 @@ const SearchBoxView = (props) => {
       onChange={(e) => {
         setSearchTerm(e.target.value)
       }}
-      
+
       onInputValueChange={(newValue) => {
         // To avoid over dispatching
         if (searchTerm === newValue) return
@@ -60,11 +68,11 @@ const SearchBoxView = (props) => {
                   if (
                     searchTerm &&
                     isOpen &&
-                    data.length > 0
+                    results.length > 0
                   ) {
                     return (
                       <Autocomplete
-                        autocompletedResults={data}
+                        autocompletedResults={results}
                         autocompleteResults={{
                           titleField: 'title',
                           urlField: '_id',
