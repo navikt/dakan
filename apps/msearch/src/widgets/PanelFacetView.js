@@ -6,6 +6,8 @@ import { KIND, SIZE } from 'baseui/button'
 import { KIND as TAGKIND } from 'baseui/tag'
 import { Card } from 'baseui/card'
 
+import { logFilterUseToAmplitude } from '../components/utils'
+
 export const PanelFacetView = ({
     placeholder,
     showFilter,
@@ -33,6 +35,7 @@ export const PanelFacetView = ({
                                 kind={TAGKIND.accent}
                                 onClick={(e) => {
                                     handleChange(item, item)
+                                    logFilterUseToAmplitude(item.key, title)
                                 }}
                             >
                                 {item.key}

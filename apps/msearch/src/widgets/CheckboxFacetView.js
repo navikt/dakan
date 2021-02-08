@@ -6,6 +6,8 @@ import { Checkbox, Label } from '@dakan/ui'
 import { getFilterValueDisplay } from '../components/utils'
 import { KIND } from 'baseui/button'
 
+import { logFilterUseToAmplitude } from '../components/utils'
+
 export const CheckboxFacetView = ({
     placeholder,
     showFilter,
@@ -43,7 +45,12 @@ export const CheckboxFacetView = ({
                         checked={isChecked(item)}
                         title={getFilterValueDisplay(item.key)}
                         ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
-                        onChange={(e) => handleChange(item, e.target.checked)}
+                        onChange={(e) => {
+                            handleChange(item, e.target.checked)
+                            if (e.target.checked) {
+                                logFilterUseToAmplitude(getFilterValueDisplay(item.key), title)
+                            }
+                        }}
                     >
                         {getFilterValueDisplay(item.key)} ({item.doc_count})
                     </Checkbox>
