@@ -133,8 +133,10 @@ export function toUrlQueryString(params) {
 }
 
 export function logFilterUseToAmplitude(value, label) {
+    const filterValue = value.toLowerCase().split(' ').join('_')
+    console.log(filterValue)
     const eventProperty = {
-      filter: value.toLowerCase().replace(' ', '_'),
+      filter: filterValue,
       type: label.toLowerCase(),
     }
     amplitude.getInstance().logEvent('filter-valg', eventProperty)
