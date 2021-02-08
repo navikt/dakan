@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
-import { Spinner } from 'baseui/spinner'
-import { Searchbox } from '@dakan/ui'
 import SearchBoxView from '../components/SearchBoxView'
 
 function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
@@ -11,7 +9,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
     const intervalRef = useRef(null)
 
     useEffect(() => {
-        if (searchTerm !== value) {
+        if (searchTerm === '') {
             intervalRef.current = setTimeout(() => {
                 update(searchTerm)
             }, 1000)
@@ -26,6 +24,14 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
         update(searchTerm)
     }, [])
 
+    const getResultsOnSearch = () => {
+        if (searchTerm !== value) {
+            intervalRef.current = setTimeout(() => {
+                update(searchTerm)
+            }, 1000)
+        }
+    }
+
     // If widget value was updated elsewhere (ex: from active filters deletion)
     // We have to update and dispatch the component.
     useEffect(() => {
@@ -38,7 +44,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
             return customQuery(query)
         } else if (fields) {
             return query
-                ? { multi_match: { query,type: "most_fields",fields} }
+                ? { multi_match: { query, type: "most_fields", fields } }
                 : { match_all: {} }
         }
         return { match_all: {} }
@@ -77,6 +83,8 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
                 searchTerm={searchTerm}
                 placeholder={placeholder}
                 setSearchTerm={setSearchTerm}
+                getResultsOnSearch={getResultsOnSearch}
+                queryFromValue={queryFromValue}
             />
         </div>
     )

@@ -28,7 +28,7 @@ function Results({
         widget && widget.result && widget.result.total ? widget.result.total : 0
     itemsPerPage = itemsPerPage || 10
 
-    const total = totalPages && totalPages.value ? totalPages.value : totalPages
+    const total = totalPages && (totalPages.value || totalPages.value === 0 )? totalPages.value : totalPages
 
     useEffect(() => {
         setPage(initialization ? initialPage : 1)
