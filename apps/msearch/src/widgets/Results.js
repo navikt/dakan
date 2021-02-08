@@ -17,10 +17,11 @@ function Results({
     items,
     id,
     sort,
+    page,
+    setPage
 }) {
     const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [initialization, setInitialization] = useState(true)
-    const [page, setPage] = useState(initialPage)
     const widget = widgets.get(id)
     const data =
         widget && widget.result && widget.result.data ? widget.result.data : []
@@ -34,6 +35,7 @@ function Results({
         setPage(initialization ? initialPage : 1)
         return () => setInitialization(false)
     }, [initialPage, initialization, total.value])
+
 
     // Update context with page (and itemsPerPage)
     useEffect(() => {

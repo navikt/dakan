@@ -60,6 +60,7 @@ function toUrlQueryString(params) {
 }
 
 function SearchPage(props) {
+    const [page, setPage] = useState(1)
     const initialValues = fromUrlQueryString(
         window.location.search.replace(/^\?/, '')
     )
@@ -127,6 +128,7 @@ function SearchPage(props) {
                 fields={[`${facet.field}.keyword`]}
                 showFilter={false}
                 initialValue={initialValues.get(facet.field)}
+                setPage={setPage}
             />
         </Block>
     )
@@ -140,6 +142,7 @@ function SearchPage(props) {
                 showFilter={false}
                 type="panel"
                 initialValue={initialValues.get(facet.field)}
+                setPage={setPage}
             />
         </Block>
     )
@@ -205,6 +208,7 @@ function SearchPage(props) {
                             id="term"
                             fields={fields}
                             initialValue={initialValues.get('term')}
+                            setPage={setPage}
                         />
                     </Block>
                 </Block>
@@ -227,6 +231,8 @@ function SearchPage(props) {
                     id="result"
                     itemsPerPage="12"
                     initialPage={1}
+                    page={page}
+                    setPage={setPage}
                 />
             </Block>
         )

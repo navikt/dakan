@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
 import SearchBoxView from '../components/SearchBoxView'
 
-function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
+function SearchBox({ customQuery, fields, id, initialValue, placeholder, setPage }) {
     const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [value, setValue] = useState(initialValue || '')
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
@@ -67,6 +67,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder }) {
             configuration: null,
             result: null,
         })
+        setPage(1)
     }
 
     // Checks if widget value is the same as actual value.

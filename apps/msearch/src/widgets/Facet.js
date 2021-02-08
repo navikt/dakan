@@ -16,6 +16,7 @@ function Facet({
     items,
     type,
     title,
+    setPage
 }) {
     const [{ widgets }, dispatch] = useSharedContext()
     // Current filter (search inside facet value).
@@ -43,6 +44,7 @@ function Facet({
             configuration: { size, filterValue, fields, filterValueModifier },
             result: data && total ? { data, total } : null,
         })
+        setPage(1)
     }, [size, filterValue, value])
 
     // If widget value was updated elsewhere (ex: from active filters deletion)
