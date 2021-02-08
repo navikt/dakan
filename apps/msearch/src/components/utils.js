@@ -1,5 +1,6 @@
 import fetch from 'unfetch'
 import qs from 'qs'
+import amplitude from 'amplitude-js'
 
 // Search with msearch to elasticsearch instance
 // Todo reject.
@@ -130,6 +131,14 @@ export function toUrlQueryString(params) {
         )
     )
 }
+
+export function logFilterUseToAmplitude(value, label) {
+    const eventProperty = {
+      filter: value.toLowerCase().replace(' ', '_'),
+      type: label.toLowerCase(),
+    }
+    amplitude.getInstance().logEvent('filter-valg', eventProperty)
+  }
 
 const resolved = Promise.resolve()
 
