@@ -53,19 +53,6 @@ jobs:
         RESOURCE: apps/data-search/naiserator_fss.yaml
         VARS: apps/data-search/config-dev-fss.json
 
-  deploy-dev-sbs:
-    name: Deploy to dev-sbs
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-sbs
-        RESOURCE: apps/data-search/naiserator_sbs.yaml
-        VARS: apps/data-search/config-dev-sbs.json
-
   deploy-dev-gcp-external:
     name: Deploy to dev-gcp
     needs: build
