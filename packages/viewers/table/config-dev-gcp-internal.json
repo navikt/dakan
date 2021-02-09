@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-table-viewer-internal",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/tabell",
+  "ingress": "https://data-intern.dev.nav.no/tabell",
+  "config_map": "viewer-config-dev-gcp-internal"
+}

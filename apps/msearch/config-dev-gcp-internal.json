@@ -1,0 +1,8 @@
+{
+  "application_name": "data-search-internal",
+  "team": "dataplattform",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io",
+  "ingress": "https://data-intern.dev.nav.no",
+  "app_title": "Åpne data dev",
+  "configmap_name": "data-search-config-dev-gcp-internal"
+}

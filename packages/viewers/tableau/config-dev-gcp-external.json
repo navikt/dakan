@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-tableau-viewer-external",
+  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/tableau",
+  "ingress": "https://data-ekstern.dev.nav.no/tableau",
+  "config_map": "viewer-config-dev-gcp-external"
+}

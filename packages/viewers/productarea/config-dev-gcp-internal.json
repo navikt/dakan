@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-productarea-viewer-internal",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/productarea",
+  "ingress": "https://data-intern.dev.nav.no/productarea",
+  "config_map": "viewer-config-dev-gcp-internal"
+}

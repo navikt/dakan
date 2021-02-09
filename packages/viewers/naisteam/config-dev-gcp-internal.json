@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-naisteam-viewer-internal",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/naisteam",
+  "ingress": "https://data-intern.dev.nav.no/naisteam",
+  "config_map": "viewer-config-dev-gcp-internal"
+}

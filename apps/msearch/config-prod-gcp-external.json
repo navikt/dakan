@@ -1,7 +1,8 @@
 {
   "application_name": "data-search-external",
   "team": "dataplattform",
-  "ingress_nais_io": "https://data.nav.no",
+  "ingress": "https://data.nav.no",
+  "ingress_nais_io": "https://data-ekstern.prod-gcp.nais.io",
   "app_title": "Åpne data",
   "configmap_name": "data-search-config-prod-gcp-external"
 }

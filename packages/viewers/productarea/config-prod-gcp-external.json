@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-productarea-viewer-external",
+  "ingress": "https://data.nav.no/productarea",
+  "ingress_nais_io": "https://data-ekstern.prod-gcp.nais.io/productarea",
+  "config_map": "viewer-config-prod-gcp-external"
+}

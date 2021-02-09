@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-team-viewer-external",
+  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/team",
+  "ingress": "https://data-ekstern.dev.nav.no/team",
+  "config_map": "viewer-config-dev-gcp-external"
+}

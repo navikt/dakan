@@ -25,6 +25,7 @@ spec:
     periodSeconds: 5
     failureThreshold: 30
   ingresses:
+    - {{ingress}}
     - {{ingress_nais_io}}
   leaderElection: false
   vault:

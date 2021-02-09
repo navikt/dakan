@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-kafka-aiven-viewer-external",
+  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/kafkaaiven",
+  "ingress": "https://data-ekstern.dev.nav.no/kafkaaiven",
+  "config_map": "viewer-config-dev-gcp-external"
+}

@@ -1,0 +1,7 @@
+{
+  "application_name": "data-catalog-term-viewer-internal",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/begrep",
+  "ingress": "https://data-intern.dev.nav.no/begrep",
+  "config_map": "viewer-config-dev-gcp-internal",
+  "viewer_version": "private"
+}

@@ -87,3 +87,57 @@ jobs:
         CLUSTER: dev-fss
         RESOURCE: packages/viewers/kafkaaiven/naiserator.yml
         VARS: packages/viewers/kafkaaiven/config-dev-fss.json
+
+  deploy_dev-gcp-external:
+    name: Build and deploy to dev-gcp external
+    needs: test_and_package
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: refs/heads/master
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: img_tag
+    - name: Setup image env
+      run: |
+        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+        echo ${VALUE}
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
+        echo ${IMAGE}
+    - name: Deploy to nais
+      uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-gcp
+        RESOURCE: packages/viewers/kafkaaiven/naisarator-gcp.yml
+        VARS: packages/viewers/kafkaaiven/config-dev-gcp-external.json
+
+  deploy_dev-gcp-internal:
+    name: Build and deploy to dev-gcp internal
+    needs: test_and_package
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: refs/heads/master
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: img_tag
+    - name: Setup image env
+      run: |
+        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+        echo ${VALUE}
+        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
+        echo ${IMAGE}
+    - name: Deploy to nais
+      uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-gcp
+        RESOURCE: packages/viewers/kafkaaiven/naisarator-gcp.yml
+        VARS: packages/viewers/kafkaaiven/config-dev-gcp-internal.json
