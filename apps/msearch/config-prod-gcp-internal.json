@@ -1,5 +1,5 @@
 {
-  "application_name": "data-search-external",
+  "application_name": "data-search-internal",
   "team": "dataplattform",
   "ingress": "https://data.intern.nav.no",
   "ingress_nais_io": "https://data-intern.prod-gcp.nais.io",
