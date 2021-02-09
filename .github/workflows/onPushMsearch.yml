@@ -63,7 +63,7 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-gcp
-        RESOURCE: apps/msearch/naiserator_gcp.yaml
+        RESOURCE: apps/msearch/naiserator_gcp_external.yaml
         VARS: apps/msearch/config-dev-gcp-external.json
 
   deploy-dev-gcp-internal:
@@ -76,5 +76,5 @@ jobs:
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-gcp
-        RESOURCE: apps/msearch/naiserator_gcp.yaml
+        RESOURCE: apps/msearch/naiserator_gcp_internal.yaml
         VARS: apps/msearch/config-dev-gcp-internal.json
