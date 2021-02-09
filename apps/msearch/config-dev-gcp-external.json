@@ -4,5 +4,6 @@
   "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io",
   "ingress": "https://data-ekstern.dev.nav.no",
   "app_title": "Åpne data dev",
-  "configmap_name": "data-search-config-dev-gcp-external"
+  "configmap_name": "data-search-config-dev-gcp-external",
+  "viewer_config": "{'facets':[{'field':'format','label':'Type'},{'field':'theme','label':'Tema'}],'panels':[{'field':'keyword','label':'Stikkord'},{'field':'creator.name','label':'Forfatter'},{'field':'provenance','label':'Opprinnelse'}]}"
 }
