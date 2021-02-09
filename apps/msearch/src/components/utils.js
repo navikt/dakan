@@ -134,7 +134,6 @@ export function toUrlQueryString(params) {
 
 export function logFilterUseToAmplitude(value, label) {
     const filterValue = value.toLowerCase().split(' ').join('_')
-    console.log(filterValue)
     const eventProperty = {
       filter: filterValue,
       type: label.toLowerCase(),
