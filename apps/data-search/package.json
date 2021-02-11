@@ -9,7 +9,7 @@
     "@dakan/theme": "^0.0.5",
     "@dakan/ui": "^0.0.5",
     "@elastic/react-search-ui": "1.5.0",
-    "@elastic/react-search-ui-views": "1.5.0",
+    "@elastic/react-search-ui-views": "1.5.1",
     "@elastic/search-ui": "1.5.0",
     "amplitude-js": "^7.1.0",
     "axios": "^0.21.0",
