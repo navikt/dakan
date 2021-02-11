@@ -45,10 +45,18 @@ export function getLocal(label) {
     if (label === 'godkjent_begrep') return 'Godkjent begrep'
     if (label === 'purpose') return 'Formål'
     if (label === 'pii-type') return 'Opplysningstype'
+    if (label === 'opplysningstype') return 'Opplysningstype'
     if (label === 'kafka') return 'Datastrøm'
     if (label === 'tabell') return 'Tabell'
     if (label === 'kafka topic') return 'Kafka'
+    if (label === 'kafka_aiven_topic' || label === 'kafka_topic_aiven') return 'Kafka Aiven'
     if (label === 'tableau') return 'Tableau'
+    if (label === 'person') return 'Person'
+    if (label === 'NaisApp') return 'Nais App'
+    if (label === 'NaisTeam') return 'Nais Team'
+    if (label === 'office') return 'Kontor'
+    if (label === 'ProductArea') return 'Produktområde'
+    if (label === 'team') return 'Team'
     if (label === 'keyword') return 'Stikkord'
     if (label === 'format') return 'Format'
     if (label === 'creator.name') return 'Forfatter'
@@ -135,11 +143,11 @@ export function toUrlQueryString(params) {
 export function logFilterUseToAmplitude(value, label) {
     const filterValue = value.toLowerCase().split(' ').join('_')
     const eventProperty = {
-      filter: filterValue,
-      type: label.toLowerCase(),
+        filter: filterValue,
+        type: label.toLowerCase(),
     }
     amplitude.getInstance().logEvent('filter-valg', eventProperty)
-  }
+}
 
 const resolved = Promise.resolve()
 
