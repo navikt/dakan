@@ -23,8 +23,6 @@ export const CheckboxFacetView = ({
     itemsPerBlock,
     title
 }) => {
-
-    console.log(data.length + ' vs ' + size)
     return (
         <Block>
             <Label>{title}</Label>
