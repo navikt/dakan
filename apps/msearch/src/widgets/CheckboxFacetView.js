@@ -23,6 +23,8 @@ export const CheckboxFacetView = ({
     itemsPerBlock,
     title
 }) => {
+
+    console.log(data.length + ' vs ' + size)
     return (
         <Block>
             <Label>{title}</Label>
@@ -36,9 +38,7 @@ export const CheckboxFacetView = ({
                     }}
                 />
             ) : null}
-            {items
-                ? items(data, { handleChange, isChecked })
-                : data.map((item) => (
+            {data.map((item) => (
                     <Checkbox
                         role="checkbox"
                         id={`checkboxfacet_${item.key}`}
@@ -55,12 +55,13 @@ export const CheckboxFacetView = ({
                         {getFilterValueDisplay(item.key)} ({item.doc_count})
                     </Checkbox>
                 ))}
-            {data.length === size ? (
-                <Button onClick={() => setSize(size + (itemsPerBlock || 9))} kind={KIND.minimal}
-                    aria-label={`Vis flere filter for ${title}`}>
+                <Button
+                    onClick={() => setSize(size + (itemsPerBlock || 9))}
+                    kind={KIND.minimal}
+                    aria-label={`Vis flere filter for ${title}`}
+                >
                     {seeMore || 'vis flere'}
                 </Button>
-            ) : null}
         </Block>
     )
 }
