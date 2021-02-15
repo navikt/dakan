@@ -59,32 +59,32 @@ jobs:
         docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
         docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
 
-  deploy_dev-fss:
-    name: Build and deploy to dev-fss
-    needs: test_and_package
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: refs/heads/master
-    - name: Download artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: img_tag
-    - name: Setup image env
-      run: |
-        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-        echo ${VALUE}
-        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
-        echo ${IMAGE}
-    - name: Deploy to nais
-      uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-fss
-        RESOURCE: packages/viewers/naisapp/naisarator-fss.yml
-        VARS: packages/viewers/naisapp/config-dev-fss.json
+  # deploy_dev-fss:
+  #   name: Build and deploy to dev-fss
+  #   needs: test_and_package
+  #   if: github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       ref: refs/heads/master
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v1
+  #     with:
+  #       name: img_tag
+  #   - name: Setup image env
+  #     run: |
+  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
+  #       echo ${VALUE}
+  #       echo "IMAGE=${VALUE}" >> $GITHUB_ENV
+  #       echo ${IMAGE}
+  #   - name: Deploy to nais
+  #     uses: nais/deploy/actions/deploy@v1
+  #     env:
+  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+  #       CLUSTER: dev-fss
+  #       RESOURCE: packages/viewers/naisapp/naisarator-fss.yml
+  #       VARS: packages/viewers/naisapp/config-dev-fss.json
 
   deploy_dev-gcp-internal:
     name: Build and deploy to dev-gcp internal
