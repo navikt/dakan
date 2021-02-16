@@ -5,8 +5,8 @@ import { Heading, HeadingLevel } from "baseui/heading";
 
 const PageNotFound = () => {
   return (
-    <Block>
-      <Block display="flex" justifyContent="center">
+    <Block role="main">
+      <Block display="flex" justifyContent="center" >
         <HeadingLevel>
           <Heading>Denne siden eksisterer ikke.</Heading>
         </HeadingLevel>
