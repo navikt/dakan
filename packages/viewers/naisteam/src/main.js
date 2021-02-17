@@ -25,7 +25,7 @@ export default function App() {
         <Route exact path="/naisteam/:id" component={Viewer} />
         <Route
           component={() => (
-            <Block display="flex" justifyContent="center">
+            <Block display="flex" justifyContent="center" role="main">
               Viewer id parameter missing. Format https://url/id
             </Block>
           )}

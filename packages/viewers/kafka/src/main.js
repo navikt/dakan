@@ -21,7 +21,7 @@ export default function App() {
         />
         <Route
           component={() => (
-            <Block display="flex" justifyContent="center">
+            <Block display="flex" justifyContent="center" role="main">
               Kafka viewer id parameter missing. Format {link}/kafka/id
             </Block>
           )}

@@ -24,7 +24,7 @@ export default function App() {
         <Route
           component={() => (
             <Block>
-              <Block display="flex" justifyContent="center">
+              <Block display="flex" justifyContent="center" role="main">
                 Viewer id parameter missing. Format https://url/id
               </Block>
             </Block>

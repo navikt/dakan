@@ -50,8 +50,8 @@ const Content = (props: any) => {
                 source={indexEntry[entry.item].replace('(www', '(//www')}
               />
             ) : (
-              <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>
-            )}
+                <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>
+              )}
           </LabeledContent>
         </Block>
       )
@@ -104,49 +104,53 @@ const Content = (props: any) => {
   const getContent = () => {
     if (indexEntry && indexEntry.status !== 'Godkjent begrep') {
       return (
-        <Block display="flex" justifyContent="center">
-          <HeadingLevel>
-            <Heading>Begrepet '{indexEntry.term}' er under arbeid.</Heading>
-          </HeadingLevel>
-        </Block>
+        <div role="main">
+          <Block display="flex" justifyContent="center">
+            <HeadingLevel>
+              <Heading>Begrepet '{indexEntry.term}' er under arbeid.</Heading>
+            </HeadingLevel>
+          </Block>
+        </div>
       )
     } else {
       return (
         indexEntry && (
-         
-            <LargeWidth headingLabel="Begrep" headingText={indexEntry.term}>
-              <Block display={['block', 'block', 'flex']}>
-              
-                <Block flex={'3'}><div role="main">
+
+          <LargeWidth headingLabel="Begrep" headingText={indexEntry.term}>
+            <Block display={['block', 'block', 'flex']}>
+
+              <Block flex={'3'}>
+                <div role="main">
                   {viewerVersion && viewerVersion === 'private' && (
                     <Paragraph2>{indexEntry.id}</Paragraph2>
-                  )} 
-                  {getRightContent()}</div>          
-                </Block>
-                <Block
-                  flex={
-                    viewerVersion && viewerVersion === 'private' ? '1' : '0'
-                  }
-                  marginLeft={['none', 'none', 'scale1000']}
-                >
-                  {viewerVersion && viewerVersion === 'private' && (
-                    <div role="complementary">
-                      <Block
-                        display={['none', 'block']}
-                        $style={{
-                          borderLeft: `2px solid ${theme.colors.primary}`,
-                        }}
-                      >
-                        <Block marginLeft="scale200">{getLeftContent()}</Block>
-                      </Block>
-                      <Block display={['block', 'none']}>
-                        {getLeftContent()}
-                      </Block>
-                    </div>
                   )}
-                </Block>
+                  {getRightContent()}
+                </div>
               </Block>
-            </LargeWidth>
+              <Block
+                flex={
+                  viewerVersion && viewerVersion === 'private' ? '1' : '0'
+                }
+                marginLeft={['none', 'none', 'scale1000']}
+              >
+                {viewerVersion && viewerVersion === 'private' && (
+                  <div role="complementary">
+                    <Block
+                      display={['none', 'block']}
+                      $style={{
+                        borderLeft: `2px solid ${theme.colors.primary}`,
+                      }}
+                    >
+                      <Block marginLeft="scale200">{getLeftContent()}</Block>
+                    </Block>
+                    <Block display={['block', 'none']}>
+                      {getLeftContent()}
+                    </Block>
+                  </div>
+                )}
+              </Block>
+            </Block>
+          </LargeWidth>
 
         )
       )
