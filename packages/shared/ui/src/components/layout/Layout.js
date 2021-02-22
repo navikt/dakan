@@ -5,8 +5,9 @@ import { useStyletron } from 'baseui'
 import { Footer } from '../footer'
 
 const MARGIN_LEFT = '16px'
+const MARGIN_RIGHT = '16px'
 const PADDING_LEFT = '16px'
-const MARGIN_RIGHT = '20px'
+const PADDING_RIGHT = '16px'
 const LEFT_MENU_WIDTH = '320px'
 
 export const ToolBar = (props) => {
@@ -167,11 +168,11 @@ export const SingleColumn = (props) => {
         </Block>
       </Block>
 
-      <Block
+      <Block 
         display="flex"
         justifyContent="center"
-        width="100%"
         paddingLeft={PADDING_LEFT}
+        paddingRight={PADDING_RIGHT}
       >
         <Block width="100%">{props.right}</Block>
       </Block>
