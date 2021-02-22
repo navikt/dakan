@@ -1,4 +1,4 @@
-Sitemap: https://data.nav.no/sitemap.xml
 User-agent: *
+Sitemap: https://data.nav.no/sitemap.xml
 Disallow:
 
