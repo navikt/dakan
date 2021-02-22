@@ -102,7 +102,7 @@ function SearchPage(props) {
     useEffect(() => {
         if (sortKeyOption[0]["label"] === "Relevans" || sortKeyOption[0]["label"] === "Dato") {
             setSortOrderOption([SORTDIRECTIONOPTIONS[1]])
-        }else {
+        } else {
             setSortOrderOption([SORTDIRECTIONOPTIONS[0]])
         }
     }, [sortKeyOption])
@@ -120,18 +120,28 @@ function SearchPage(props) {
 
     const fields = SEARCHFIELDS
 
-    const getLeftSidebarFacet = (facet, index) => (
-        <Block marginBottom="scale1200" key={index} aria-label={`Filtrer etter ${facet.label}`}>
-            <Facet
-                title={facet.label}
-                id={facet.label}
-                fields={[`${facet.field}.keyword`]}
-                showFilter={false}
-                initialValue={initialValues.get(facet.field)}
-                setPage={setPage}
-            />
-        </Block>
-    )
+    const getLeftSidebarFacet = (facet, index) => {
+
+        let itemsPerBlock = 20
+
+        if (facet.label === 'Type') {
+            itemsPerBlock = 18
+        }
+
+        return (
+            <Block marginBottom="scale1200" key={index} aria-label={`Filtrer etter ${facet.label}`}>
+                <Facet
+                    title={facet.label}
+                    id={facet.label}
+                    fields={[`${facet.field}.keyword`]}
+                    showFilter={false}
+                    initialValue={initialValues.get(facet.field)}
+                    setPage={setPage}
+                    itemsPerBlock={itemsPerBlock}
+                />
+            </Block>
+        )
+    }
 
     const getRightSidebarFacet = (facet, index) => (
         <Block marginBottom="scale1200" key={index}>
@@ -157,14 +167,10 @@ function SearchPage(props) {
                     </Block>
                     <Label>Filter</Label>
                 </Block>
-
-                <Block>
-                    {facets.map((f, index) => getLeftSidebarFacet(f, index))}
-                </Block>
                 <Block marginTop='scale600'>
                     <Label>Sortering</Label>
                     <Block marginTop='scale400' aria-label="Sortering av data">
-                        <Select 
+                        <Select
                             onChange={({ value }) => setSortKeyOption(value)}
                             options={SORTKEYSOPTIONS}
                             labelKey={VALUE_LABEL}
@@ -175,7 +181,7 @@ function SearchPage(props) {
                         </Select>
                     </Block>
                     <Block marginTop='scale400' aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]["label"]}`}>
-                        <Select 
+                        <Select
                             onChange={({ value }) => setSortOrderOption(value)}
                             options={SORTDIRECTIONOPTIONS}
                             labelKey={VALUE_LABEL}
@@ -184,6 +190,9 @@ function SearchPage(props) {
                             clearable={false}>
                         </Select>
                     </Block>
+                </Block>
+                <Block marginTop='scale1200'>
+                    {facets.map((f, index) => getLeftSidebarFacet(f, index))}
                 </Block>
             </Block>
         )

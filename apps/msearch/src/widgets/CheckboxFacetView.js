@@ -53,13 +53,13 @@ export const CheckboxFacetView = ({
                         {getFilterValueDisplay(item.key)} ({item.doc_count})
                     </Checkbox>
                 ))}
-                <Button
+                {data.length === size ? <Button
                     onClick={() => setSize(size + (itemsPerBlock || 9))}
                     kind={KIND.minimal}
                     aria-label={`Vis flere filter for ${title}`}
                 >
                     {seeMore || 'vis flere'}
-                </Button>
+                </Button> : null}
         </Block>
     )
 }
