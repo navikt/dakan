@@ -167,6 +167,9 @@ function SearchPage(props) {
                     </Block>
                     <Label>Filter</Label>
                 </Block>
+                <Block>
+                    {facets.map((f, index) => getLeftSidebarFacet(f, index))}
+                </Block>
                 <Block marginTop='scale600'>
                     <Label>Sortering</Label>
                     <Block marginTop='scale400' aria-label="Sortering av data">
@@ -190,9 +193,6 @@ function SearchPage(props) {
                             clearable={false}>
                         </Select>
                     </Block>
-                </Block>
-                <Block marginTop='scale1200'>
-                    {facets.map((f, index) => getLeftSidebarFacet(f, index))}
                 </Block>
             </Block>
         )
