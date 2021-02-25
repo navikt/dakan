@@ -18,11 +18,11 @@
     "publish:public": "yarn run build && npm publish --access=public"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.17",
-    "@babel/core": "7.12.17",
-    "@babel/preset-env": "7.12.17",
+    "@babel/cli": "7.13.0",
+    "@babel/core": "7.13.1",
+    "@babel/preset-env": "7.13.5",
     "@babel/preset-react": "7.12.13",
-    "@babel/preset-typescript": "7.12.17",
+    "@babel/preset-typescript": "7.13.0",
     "prettier": "^2.0.5"
   },
   "dependencies": {
