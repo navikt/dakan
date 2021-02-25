@@ -16,8 +16,7 @@ const Content = (props: any) => {
   const getDate = () => {
     if (!indexEntry.oppdatert) return null
     else {
-      const options = { year: "numeric", month: "long", day: "numeric" }
-      return new Date(indexEntry.oppdatert).toLocaleDateString([], options)
+      return new Date(indexEntry.oppdatert).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
     }
   }
 
