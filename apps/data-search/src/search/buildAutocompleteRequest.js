@@ -1,5 +1,5 @@
 export default function buildAutocompleteRequest(searchTerm) {
-  console.log('Autocomplete: ', searchTerm)
+  // console.log('Autocomplete: ', searchTerm)
   const body = {
     size: 9,
     query: {

@@ -10,8 +10,7 @@ const markdownOpenDataURL = env('MARKDOWN_OPEN_DATA_URL')
 const markdownTermURL = env('MARKDOWN_TERM_URL')
 
 const AboutPage = (props) => {
-  // eslint-disable-next-line no-unused-vars
-  const [css, theme] = useStyletron()
+  const [, theme] = useStyletron()
   const [markdownOpenDataText] = useMarkdown(markdownOpenDataURL, theme)
   const [markdownTermText] = useMarkdown(markdownTermURL, theme)
 

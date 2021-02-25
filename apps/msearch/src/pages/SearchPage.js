@@ -16,8 +16,8 @@ import env from '@beam-australia/react-env'
 const baseconfig = env('CONFIG') || { facets: [], panels: [] }
 const facets = JSON.parse(baseconfig).facets
 const panels = JSON.parse(baseconfig).panels
-const filters = JSON.parse(baseconfig).filters
-const resultsPerPage = JSON.parse(baseconfig).resultsPerPage
+// const filters = JSON.parse(baseconfig).filters
+// const resultsPerPage = JSON.parse(baseconfig).resultsPerPage
 
 const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
@@ -73,8 +73,8 @@ function SearchPage(props) {
         return [options[0]]
     }
 
-    const [queryString, setQueryString] = useState('')
-    const [values, setValues] = useState({})
+    // const [queryString, setQueryString] = useState('')
+    // const [values, setValues] = useState({})
 
     const [sortOrder, setSortOrder] = useState(
         initialValues.get('sortOrder') || 'asc'
@@ -157,7 +157,7 @@ function SearchPage(props) {
         </Block>
     )
 
-    const LeftSidebar = (props) => {
+    const LeftSidebar = () => {
 
         return (
             <Block role="navigation">
@@ -230,7 +230,7 @@ function SearchPage(props) {
                             isExpanded={panelExpanded === '0'}
                         >
                             <Block marginBottom="scale800">
-                                {LeftSidebar(props)}
+                                {LeftSidebar()}
                             </Block>
                         </Panel>
                     </Accordion>
@@ -253,9 +253,9 @@ function SearchPage(props) {
             onChange={(values) => onChange(values)}
         >
             <LayoutSearch
-                left={LeftSidebar(props)}
+                left={LeftSidebar()}
                 right={Content(props)}
-                options={RightSidebar(props)}
+                options={RightSidebar()}
             />
         </Elasticsearch>
     )
