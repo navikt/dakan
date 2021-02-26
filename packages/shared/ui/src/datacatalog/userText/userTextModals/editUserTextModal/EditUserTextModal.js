@@ -1,6 +1,6 @@
 import * as React from 'react'
 import axios from 'axios'
-import { Modal, ModalHeader, ModalBody, ModalFooter, SIZE } from 'baseui/modal'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'baseui/modal'
 import { Textarea } from 'baseui/textarea'
 import Cookies from 'js-cookie'
 import { Block } from 'baseui/block'
@@ -38,9 +38,9 @@ export const EditSingleUserTextModal = (props) => {
       ? [...userTextCopy[0].properties.author]
       : [userTextCopy[0].properties.author]
 
-    userTextAuthor.filter((author) => author === clientUser.userId).length > 0
-      ? userTextAuthor
-      : userTextAuthor.push(clientUser.userId)
+    if (userTextAuthor.filter((author) => author === clientUser.userId).length <= 0) {
+      userTextAuthor.push(clientUser.userId)
+    }
 
     const newUserText = {
       id: userTextCopy[0].id,

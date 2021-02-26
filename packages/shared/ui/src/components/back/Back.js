@@ -2,8 +2,6 @@ import * as React from 'react'
 import { KIND } from 'baseui/button'
 import { Block } from 'baseui/block'
 import { ArrowLeft } from 'baseui/icon'
-import { StyledLink as Link } from 'baseui/link'
-import { LabelSmall } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 
 import { Button } from '../button/Button'
@@ -16,7 +14,7 @@ export const BackButton = () => (
 )
 
 export const BackLink = () => {
-  const [css, theme] = useStyletron()
+  const [, theme] = useStyletron()
   const { colors, typography, animation } = theme
   return (
     <Block>

@@ -24,8 +24,8 @@ export const ContentItems = ({ ITEMS, item }) => {
 
       if (value) {
         if (Array.isArray(value)) {
-          value = value.map((item) => {
-            return <Block>{item}</Block>
+          value = value.map((valueItem) => {
+            return <Block>{valueItem}</Block>
           })
         }
 

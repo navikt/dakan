@@ -3,7 +3,7 @@ import { StatefulButtonGroup, MODE } from 'baseui/button-group'
 
 import { Button } from '../../components/button/Button'
 
-export const Like_DislikeRating = (props) => {
+export const Like_DislikeRating = () => {
   const [likeActive, setLikeActive] = React.useState(false)
   const [dislikeActive, setDislikeActive] = React.useState(false)
 

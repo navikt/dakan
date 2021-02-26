@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { HeadingMedium, LabelMedium, HeadingXLarge } from 'baseui/typography'
+import { LabelMedium, HeadingXLarge } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 import { Footer } from '../footer'
 
@@ -146,7 +146,6 @@ export const MediumWidth = (props) => {
 }
 
 export const SingleColumn = (props) => {
-  const [, theme] = useStyletron()
   return (
     <React.Fragment>
       <Block

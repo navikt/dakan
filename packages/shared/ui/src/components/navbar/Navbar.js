@@ -5,13 +5,9 @@ import { Button } from '../button'
 import { StyledLink } from 'baseui/link'
 import { Layer } from 'baseui/layer'
 import {
-  ChevronDown,
-  Delete,
   Overflow as UserIcon,
-  Upload as Icon,
 } from 'baseui/icon'
-import { Unstable_AppNavBar as AppNavBar, POSITION } from 'baseui/app-nav-bar'
-import { Block } from 'baseui/block'
+import { Unstable_AppNavBar as AppNavBar } from 'baseui/app-nav-bar'
 import { InfoIcon, ContactIcon } from '../icons'
 import { DataKatalogLogo } from '../header/logo'
 
@@ -35,9 +31,9 @@ const getIcon = (icon) => {
   return null
 }
 
-const getOnClick = (link) => {
-  return () => {}
-}
+// const getOnClick = (link) => {
+//   return () => {}
+// }
 
 const renderItem = (item) => {
   return (
@@ -78,20 +74,20 @@ const isActive = (arr, item, activeItem) => {
   return active
 }
 
-const userName = () => {
-  if (props.tokenId && props.clientUser) return props.clientUser
-}
+// const userName = () => {
+//   if (props.tokenId && props.clientUser) return props.clientUser
+// }
 
 export const Navbar = (props) => {
-  const [css, theme] = useStyletron()
+  const [theme] = useStyletron()
   const [user, setUser] = React.useState({ nav: [] })
-  const containerStyles = css({
-    boxSizing: 'border-box',
-    width: '100vw',
-    position: 'fixed',
-    top: '0',
-    left: '0',
-  })
+  // const containerStyles = css({
+  //   boxSizing: 'border-box',
+  //   width: '100vw',
+  //   position: 'fixed',
+  //   top: '0',
+  //   left: '0',
+  // })
 
   React.useEffect(() => {
     if (props.tokenId && props.clientUser) {

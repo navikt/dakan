@@ -6,14 +6,10 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import env from '@beam-australia/react-env'
 import { LabelMedium } from 'baseui/typography'
-import { KIND } from 'baseui/button'
-import { StyledLink } from 'baseui/link'
 
 import { Tag } from '../../components/tag/Tag'
 import GetValue from '../../utils/GetValue/GetValue'
 import CheckIfAuthorized from '../../utils/CheckIfAuthorized/CheckIfAuthorized'
-import Button from '../../components/button/Button'
-import { AddIcon } from '../../components/icons/AddIcon'
 import { useStyletron } from 'baseui'
 
 const graph_server = env('GRAPH_SERVER')
@@ -133,7 +129,7 @@ const DataTags = (props) => {
 }
 
 const Header = (props) => {
-  const { header, clientUser, tokenId } = props
+  const { header } = props
 
   return (
     <React.Fragment>
@@ -243,8 +239,8 @@ export const ElasticTagging = (props) => {
         )
         .then((res) => {
           if (res.data && res.data['hits'] && res.data['hits']['hits']) {
-            const options = transformData(res.data['hits']['hits'])
-            setOptions(options)
+            const searchOptions = transformData(res.data['hits']['hits'])
+            setOptions(searchOptions)
           }
           setIsLoading(false)
         })

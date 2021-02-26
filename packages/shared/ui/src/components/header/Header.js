@@ -48,12 +48,12 @@ const CustomLink = (props) => {
   )
 }
 
-const brandName = (props) => {
-  if (props.config && props.config.brand) {
-    return props.config.brand
-  }
-  return 'Åpne data'
-}
+// const brandName = (props) => {
+//   if (props.config && props.config.brand) {
+//     return props.config.brand
+//   }
+//   return 'Åpne data'
+// }
 
 const NoStyleLink = (props) => (
   <StyledLink alt={props.alt} aria-label={props.ariaLabel} style={{ textDecoration: 'none' }} href={props.href}>
@@ -196,15 +196,10 @@ const SideBar = (props) => {
 }
 
 export const Header = (props) => {
-  const [css, theme] = useStyletron()
+  const [, theme] = useStyletron()
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false)
   const clientUser = useClientUser()
-  const link = css({ textDecoration: 'none' })
-  let showHeaderLineImage = true
-  if (props && props.config && props.config.showHeaderLineImage === false) {
-    showHeaderLineImage = false
-  }
-
+ 
   const getMobileView = () => {
     return (
       <React.Fragment>

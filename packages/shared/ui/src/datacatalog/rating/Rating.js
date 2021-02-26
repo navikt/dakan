@@ -71,7 +71,6 @@ export const Rating = (props) => {
 
   const upsertRate = (rateValue) => {
     const tokenId = Cookies.get('ClientToken')
-    const clientUser = Cookies.get('ClientUser')
     const newRatings = ratings && Array.isArray(ratings) ? [...ratings] : []
     const newRating = {
       id: `${dataId}.${nodeLabel}_${clientUser.userId}`,

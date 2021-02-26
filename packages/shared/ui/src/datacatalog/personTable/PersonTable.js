@@ -39,7 +39,7 @@ export const PersonTable = ({ members }) => {
     </TableBuilderColumn>,
   ]
 
-  const getTable = (members) => {
+  const getTable = () => {
     let rows = []
     if (members && Array.isArray(members)) {
       members.map((member) => {
@@ -63,7 +63,7 @@ export const PersonTable = ({ members }) => {
       return null
     }
   }
-  return getTable(members)
+  return getTable()
 }
 
 export default PersonTable
