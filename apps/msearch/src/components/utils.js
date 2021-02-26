@@ -81,14 +81,14 @@ export function search(url, searchData, headers = {}) {
             },
             ...headers,
         }
-        console.log('headers', headers)
+        // console.log('headers', headers)
         const body = JSON.stringify(searchData.query)
-        console.log('body', JSON.stringify(body))
+        // console.log('body', JSON.stringify(body))
         const rawResponse = await fetch(url, { method: 'POST', headers, body })
         // TODO error handling
-        console.log('raw', rawResponse)
+        // console.log('raw', rawResponse)
         const response = await rawResponse.json()
-        console.log('response', response)
+        // console.log('response', response)
         resolve(response)
     })
 }

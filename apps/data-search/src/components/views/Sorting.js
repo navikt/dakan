@@ -74,7 +74,7 @@ export const Sorting = ({
     const current = value ? options.findIndex((option) => option.value === value): 0
 
     const onClick = (e,selected) => {
-      console.log(selected)
+      // console.log(selected)
       const sortOption = findSortOption(sortOptions, options[selected].value)
       setSort(sortOption.value, sortOption.direction)
     }

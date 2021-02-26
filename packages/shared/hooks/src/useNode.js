@@ -18,7 +18,7 @@ export function useNode(id) {
 
   useEffect(() => {
     const url = `${server}/node/${id}`
-    console.log('get node: ', url)
+    // console.log('get node: ', url)
     const fetchData = async () => {
       setLoading(true)
       try {
