@@ -14,9 +14,9 @@ const DummyViewer = props => {
 
   const handleAxiosError = error => {
     if (error.response) {
-      // console.log(error.response.data)
-      // console.log(error.response.status)
-      // console.log(error.response.headers)
+      console.log(error.response.data)
+      console.log(error.response.status)
+      console.log(error.response.headers)
     } else {
       setError(error.message)
     }
