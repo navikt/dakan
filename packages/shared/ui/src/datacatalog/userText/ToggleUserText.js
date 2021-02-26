@@ -126,7 +126,7 @@ export const SingleUserText = (prop) => {
     )
   }
 
-  const getContent = (isEditMode) => {
+  const getContent = () => {
     if (userText && userText.length > 0) {
       return (
         <Block padding="1em" backgroundColor={'#F4F4F4'}>
@@ -189,7 +189,7 @@ export const SingleUserText = (prop) => {
           <LabelLarge>
             <b>{CapitalizeString(title)}</b>
           </LabelLarge>
-          {getContent(isEditMode)}
+          {getContent()}
         </Block>
       }
     </Block>

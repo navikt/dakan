@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ThemeProvider, navTheme } from '@dakan/theme'
 
-import PersonTable, { ContentItems } from './PersonTable'
+import PersonTable from './PersonTable'
 
 export default {
   title: 'Components/PersonTable',

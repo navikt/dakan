@@ -7,7 +7,6 @@ import { KIND } from 'baseui/button'
 import { useStyletron } from 'baseui'
 
 import { ModalButton } from '../../../../components/button/Button'
-import { GetValue } from '../../../../utils/GetValue/GetValue'
 
 export const DeleteUserTextModal = (props) => {
   const {

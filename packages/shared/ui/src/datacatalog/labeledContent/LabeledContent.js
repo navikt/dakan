@@ -1,7 +1,6 @@
 import React from 'react'
 import { Block } from 'baseui/block'
 import { Label } from '../../components/label'
-import { LabelMedium } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 
 const FlexFormatVersion = (props) => {

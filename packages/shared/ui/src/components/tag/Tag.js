@@ -1,12 +1,12 @@
 import React from 'react'
 import { Tag as BaseTag } from 'baseui/tag'
-import { useStyletron, createTheme } from 'baseui'
+import { useStyletron } from 'baseui'
 import { merge } from '../../utils/merge'
 
 export const Tag = (props) => {
   const [, theme] = useStyletron()
 
-  const { overrides, children, ...rest } = props
+  const { overrides, children } = props
 
   let themeOverrides = merge(overrides || {}, theme.tagOverrides || {})
 

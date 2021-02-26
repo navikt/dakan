@@ -16,7 +16,6 @@ const StyledLogo = () => {
 }
 
 const Link = (props) => {
-  const [, theme] = useStyletron()
   return (
     <StyledLink
       {...props}
@@ -34,8 +33,7 @@ const getLink = () => {
   return 'https://data.nav.no/'
 }
 
-export const Footer = ({ isInternal }) => {
-  const [, theme] = useStyletron()
+export const Footer = () => {
   return (
     <div role="contentinfo">
       <Block
