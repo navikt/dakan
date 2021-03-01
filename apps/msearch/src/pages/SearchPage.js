@@ -13,7 +13,7 @@ import qs from 'qs'
 
 import env from '@beam-australia/react-env'
 
-const baseconfig = env('CONFIG') || { facets: [], panels: [] }
+const baseconfig = env('CONFIG') || '{ "facets": [{"field": " ", "label": " " }], "panels": [{"field": " ", "label": " " }] }'
 console.log(baseconfig)
 const facets = JSON.parse(baseconfig).facets
 const panels = JSON.parse(baseconfig).panels

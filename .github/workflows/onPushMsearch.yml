@@ -40,18 +40,18 @@ jobs:
       - name: Push docker image
         run: docker push ${IMAGE}
 
-  # deploy-dev-fss:
-  #   name: Deploy to dev-fss
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: nais/deploy/actions/deploy@v1
-  #     env:
-  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #       CLUSTER: dev-fss
-  #       RESOURCE: apps/msearch/naiserator_fss.yaml
-  #       VARS: apps/msearch/config-dev-fss.json
+  deploy-dev-fss:
+    name: Deploy to dev-fss
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-fss
+        RESOURCE: apps/msearch/naiserator_fss.yaml
+        VARS: apps/msearch/config-dev-fss.json
 
   deploy-dev-gcp-external:
     name: Deploy to dev-gcp external
