@@ -22,6 +22,7 @@ const localeOverrideNo = navLocaleOverride || {
 }
 
 const title = env('TITLE') || 'Data'
+console.log(title)
 const link = env('SEARCH_APP') || '../'
 const amplitude_project_id = env('AMPLITUDE_PROJECT_ID') || ''
 const amplitude_endpoint = env('AMPLITUDE_ENDPOINT') || ''
