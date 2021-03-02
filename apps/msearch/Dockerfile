@@ -3,7 +3,7 @@ FROM nginx:1.16.0-alpine
 # needed to run env variables setup
 RUN apk add --no-cache nodejs yarn
 # add env variable setup script
-RUN yarn global add @beam-australia/react-env
+RUN yarn global add @beam-australia/react-env@2.1.2
 ADD docker-entrypoint.sh /var/entrypoint.sh
 RUN chmod +x /var/entrypoint.sh
 
