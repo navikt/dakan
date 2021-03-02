@@ -20,13 +20,13 @@
   "devDependencies": {
     "@babel/cli": "7.13.0",
     "@babel/core": "7.13.8",
-    "@babel/preset-env": "7.13.8",
+    "@babel/preset-env": "7.13.9",
     "@babel/preset-react": "7.12.13",
     "@babel/preset-typescript": "7.13.0",
     "prettier": "^2.0.5"
   },
   "dependencies": {
-    "@beam-australia/react-env": "^2.1.2",
+    "@beam-australia/react-env": "^3.0.3",
     "axios": "^0.21.0",
     "baseui": "^9.109.0",
     "js-cookie": "^2.2.1",
