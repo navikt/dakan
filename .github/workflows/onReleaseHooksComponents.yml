@@ -23,7 +23,7 @@ jobs:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
-        run: yarn run setup
+        run: yarn run hooks:install
       - name: Build shared packages
         run: yarn run hooks:build
       - name: Publish to npm
