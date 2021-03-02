@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.1.0",
+  "version": "0.0.7",
   "private": true,
   "dependencies": {
     "@data-catalog/theme": "^0.0.23",

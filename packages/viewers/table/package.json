@@ -1,6 +1,6 @@
 {
   "name": "@dakan/table",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^2.1.2",

@@ -2,7 +2,7 @@
   "lerna": "3.22.1",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.0.3",
+  "version": "0.0.7",
   "testPathIgnorePatterns": [
     "**/**/build",
     "/node_modules/"
