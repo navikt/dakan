@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: yarn run setup
       - name: Build shared packages
-        run: yarn run shared:build
+        run: yarn run theme:build
       - name: Publish to npm
         run: |
           cd ${PACKAGE_PATH}
