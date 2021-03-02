@@ -16,6 +16,7 @@
     "format": "yarn run format_packages",
     "hooks": "cd packages/shared/hooks && yarn run start",
     "hooks:build": "cd packages/shared/hooks && yarn run build",
+    "hooks:install": "cd packages/shared/hooks && yarn install",
     "kafka": "cd packages/viewers/kafka && yarn run start",
     "kafka:build": "cd packages/viewers/kafka && yarn run build",
     "kafka:test": "cd packages/viewers/kafka && yarn test",
@@ -24,6 +25,7 @@
     "kafkaaiven:test": "cd packages/viewers/kafkaaiven && yarn test",
     "metrics": "cd packages/shared/metrics && yarn run start",
     "metrics:build": "cd packages/shared/metrics && yarn run build",
+    "metrics:install": "cd packages/shared/metrics && yarn install",
     "naisapp": "cd packages/viewers/naisapp && yarn run start",
     "naisapp:build": "cd packages/viewers/naisapp && yarn run build",
     "naisapp:test": "cd packages/viewers/naisapp && yarn run test",
@@ -66,6 +68,7 @@
     "term:test": "cd packages/viewers/term && yarn run test",
     "theme": "cd packages/shared/theme && yarn run start",
     "theme:build": "cd packages/shared/theme && yarn run build",
+    "theme:install": "cd packages/shared/theme && yarn install",
     "ui": "cd packages/shared/ui && yarn run start",
     "ui:build": "cd packages/shared/ui && yarn run build"
   },
