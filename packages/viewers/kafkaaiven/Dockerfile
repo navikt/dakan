@@ -7,7 +7,7 @@ ENV PUBLIC_URL ${PUBLIC_URL}
 # needed to run env variables setup
 RUN apk add --no-cache nodejs yarn
 # add env variable setup script
-RUN yarn global add @beam-australia/react-env
+RUN yarn global add @beam-australia/react-env@2.1.2
 # setup env variables js file
 ADD entrypoint.sh /var/entrypoint.sh
 
