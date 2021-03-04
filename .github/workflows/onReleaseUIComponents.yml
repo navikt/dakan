@@ -14,18 +14,23 @@ env:
 jobs:
   Publish_To_NPM_Workflow:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
+
     steps:
       - uses: actions/checkout@v2
         with:
           ref: refs/heads/master
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: yarn run setup
-      - name: Build ui package
-        run: yarn run ui:build
+      - name: Build shared packages
+        run: yarn run shared:build
       - name: Publish to npm
         run: |
           cd ${PACKAGE_PATH}
