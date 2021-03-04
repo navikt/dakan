@@ -24,8 +24,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: yarn run setup
-      - name: Build shared packages
-        run: yarn run shared:build
+      - name: Build ui package
+        run: yarn run ui:build
       - name: Publish to npm
         run: |
           cd ${PACKAGE_PATH}
