@@ -29,7 +29,7 @@ function Results({
         widget && widget.result && widget.result.total ? widget.result.total : 0
     itemsPerPage = itemsPerPage || 10
 
-    const total = totalPages && (totalPages.value || totalPages.value === 0 )? totalPages.value : totalPages
+    const total = totalPages && (totalPages.value || totalPages.value === 0) ? totalPages.value : totalPages
 
     useEffect(() => {
         setPage(initialization ? initialPage : 1)
@@ -67,6 +67,12 @@ function Results({
             onPageChange={({ nextPage }) => {
                 setPage(Math.min(Math.max(nextPage, 1)))
             }}
+            overrides={
+                {
+                    NextButton: { props: { "aria-label": "Knapp til neste side" } },
+                    PrevButton: { props: { "aria-label": "Knapp til forrige side" } }
+                }
+            }
         />
     )
 
@@ -75,8 +81,8 @@ function Results({
             <Block marginTop="scale400" marginBottom="scale600" width="100%">
                 {isSearching ? (
                     <Spinner size='20px' />
-                ) : 
-                <Label>{total ? `Antall treff: ${total}` : 'Ingen treff'}</Label>
+                ) :
+                    <Label>{total ? `Antall treff: ${total}` : 'Ingen treff'}</Label>
                 }
             </Block>
             <ActiveFilters id="af" />
@@ -106,11 +112,11 @@ function Results({
                     {total > 1
                         ? pagination
                             ? pagination(
-                                  total,
-                                  itemsPerPage,
-                                  page,
-                                  setPage
-                              )
+                                total,
+                                itemsPerPage,
+                                page,
+                                setPage
+                            )
                             : defaultPagination()
                         : null}
                 </Block>
