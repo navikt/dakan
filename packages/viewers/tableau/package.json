@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@beam-australia/react-env": "^3.0.8",
-    "@dakan/hooks": "^0.0.8",
+    "@dakan/hooks": "^0.0.9",
     "@dakan/metrics": "^0.0.8",
     "@dakan/theme": "^0.0.8",
     "@dakan/ui": "^0.0.11",
