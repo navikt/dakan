@@ -56,6 +56,6 @@ echo ${PUBLIC_URL}
 
 react-env --dest ./usr/share/nginx/html${PUBLIC_URL}
 
-cat ./usr/share/nginx/html${PUBLIC_URL}/env.js
+cat ./usr/share/nginx/html${PUBLIC_URL}/__ENV.js
 
 exec "$@"
