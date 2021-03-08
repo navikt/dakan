@@ -6,7 +6,7 @@
     "@beam-australia/react-env": "^3.0.8",
     "@dakan/hooks": "^0.0.8",
     "@dakan/theme": "^0.0.8",
-    "@dakan/ui": "^0.0.11",
+    "@dakan/ui": "^0.0.12",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
