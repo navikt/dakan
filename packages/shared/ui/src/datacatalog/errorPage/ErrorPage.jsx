@@ -10,7 +10,7 @@ const ErrorPage = (props) => {
   const { header, layout, errorMessage } = props
 
   let content = (
-    <Block marginTop="scale1600">
+    <Block marginTop="scale1600" role="main">
       <Block display="flex" justifyContent="center">
         <HeadingLevel>
           <Heading>Beklager, noe gikk galt.</Heading>
