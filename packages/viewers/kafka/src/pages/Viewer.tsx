@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Metrics } from '@dakan/metrics'
-import { Header, LoadingSpinner } from '@dakan/ui'
+import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui'
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import Content from '../components/Content'
@@ -118,7 +118,8 @@ const Viewer = (props: any) => {
   }
 
   if (errorLoadingNode && !Object.keys(node).length) {
-    return <TopicNotFound error={errorMessage} />
+    console.log(errorMessage)
+    return <ErrorPage layout header errorMessage={JSON.parse(errorMessage).message} />
   }
 
   return (
