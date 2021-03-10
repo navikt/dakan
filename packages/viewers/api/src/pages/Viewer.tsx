@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metrics } from '@dakan/metrics'
 import { useElasticSearch } from '@dakan/hooks'
-import { LoadingSpinner } from '@dakan/ui'
+import { LoadingSpinner, ErrorPage } from '@dakan/ui'
 
 import Content from '../components/Content'
 
@@ -16,9 +16,12 @@ const Viewer = (props: any) => {
     return <Content {...props} item={exampleJson} />
   }
 
+  if (errorLoadingNode && !Object.keys(node).length) {
+    <ErrorPage layout errorMessage={"Status 204: No content found"}/>
+  }
+
   return (
     <React.Fragment>
-      {errorLoadingNode }
       {loadingNode && <LoadingSpinner />}
       {node && (
         <React.Fragment>
