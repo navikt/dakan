@@ -6,7 +6,7 @@ import { ParagraphLarge } from 'baseui/typography';
 import { Header } from '../../components/header'
 import { FullWidth } from '../../components/layout'
 
-const ErrorPage = (props) => {
+export const ErrorPage = (props) => {
   const { header, layout, errorMessage } = props
 
   let content = (
