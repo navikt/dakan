@@ -1,5 +1,6 @@
 export * from './accordion'
 export * from './catalogheader'
+export * from './errorPage'
 export * from './labeledContent'
 export * from './like-dislike'
 export * from './loadingSpinner'
