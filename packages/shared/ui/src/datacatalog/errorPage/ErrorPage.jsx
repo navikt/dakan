@@ -7,39 +7,35 @@ import { Header } from '../../components/header'
 import { FullWidth } from '../../components/layout'
 
 const ErrorPage = (props) => {
-  const { layout, errorMessage } = props
+  const { header, layout, errorMessage } = props
+
+  let content = (
+    <Block marginTop="scale1600">
+      <Block display="flex" justifyContent="center">
+        <HeadingLevel>
+          <Heading>Beklager, noe gikk galt.</Heading>
+        </HeadingLevel>
+      </Block>
+      <Block display="flex" justifyContent="center">
+        <ParagraphLarge>Feilmelding: {errorMessage}</ParagraphLarge>
+      </Block>
+    </Block>
+  )
 
   if (layout) {
-    return (
+    content = (
+      <FullWidth>
+        {content}
+      </FullWidth>
+    )
+  } if (header) {
+    content = (
       <React.Fragment>
         <Header />
-        <FullWidth>
-          <Block marginTop="scale1600">
-            <Block display="flex" justifyContent="center">
-              <HeadingLevel>
-                <Heading>Beklager, noe gikk galt.</Heading>
-              </HeadingLevel>
-            </Block>
-            <Block display="flex" justifyContent="center">
-              <ParagraphLarge>Feilmelding: {errorMessage}</ParagraphLarge>
-            </Block>
-          </Block>
-        </FullWidth>
+        {content}
       </React.Fragment>
     )
-  } else {
-    return (
-      <Block marginTop="scale1600">
-        <Block display="flex" justifyContent="center">
-          <HeadingLevel>
-            <Heading>Beklager, noe gikk galt.</Heading>
-          </HeadingLevel>
-        </Block>
-        <Block display="flex" justifyContent="center">
-          <ParagraphLarge>Feilmelding: {errorMessage}</ParagraphLarge>
-        </Block>
-      </Block>
-    )
   }
+  return content
 }
 export default ErrorPage

@@ -10,7 +10,15 @@ export default {
   },
 }
 
-export const Error_page_with_layout = () => {
+export const Error_page_full_layout = () => {
+  return (
+    <ThemeProvider theme={navTheme()}>
+      <ErrorPage header layout errorMessage="Test" />
+    </ThemeProvider>
+  )
+}
+
+export const Error_page_without_header = () => {
   return (
     <ThemeProvider theme={navTheme()}>
       <ErrorPage layout errorMessage="Test" />
@@ -19,6 +27,14 @@ export const Error_page_with_layout = () => {
 }
 
 export const Error_page_without_layout = () => {
+  return (
+    <ThemeProvider theme={navTheme()}>
+      <ErrorPage header errorMessage="Test" />
+    </ThemeProvider>
+  )
+}
+
+export const Error_page = () => {
   return (
     <ThemeProvider theme={navTheme()}>
       <ErrorPage errorMessage="Test" />
