@@ -8,7 +8,7 @@ import Content from '../components/Content'
 import exampleJson from '../resources/example.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode ] = useElasticSearch(
+  const [node, loadingNode, errorLoadingNode] = useElasticSearch(
     props.match.params.id,
   )
 
@@ -17,7 +17,9 @@ const Viewer = (props: any) => {
   }
 
   if (errorLoadingNode && !node) {
-    <ErrorPage layout errorMessage={"Status 204: No content found"}/>
+    return (
+      <ErrorPage layout errorMessage={"Status 204 - No content found"} />
+    )
   }
 
   return (
