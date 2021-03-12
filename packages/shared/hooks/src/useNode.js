@@ -31,6 +31,7 @@ export function useNode(id) {
       } catch (e) {
         console.log("error triggered")
         console.log(e)
+        console.log(JSON.stringify(e))
         setError(true)
         setErrorMessage(JSON.stringify(e))
       }
