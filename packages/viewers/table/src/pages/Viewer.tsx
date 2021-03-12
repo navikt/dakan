@@ -2,7 +2,7 @@
 import React from 'react';
 import env from '@beam-australia/react-env';
 import {Block} from 'baseui/block';
-import {Header, LoadingSpinner} from '@dakan/ui';
+import {Header, LoadingSpinner, ErrorPage} from '@dakan/ui';
 import {Metrics} from '@dakan/metrics';
 import {useNode, useNodeEdges, useContent} from '@dakan/hooks';
 
@@ -12,7 +12,6 @@ import exampleColumnJson from '../resources/exampleColumn.json';
 import exampleTags from '../resources/exampleTags.json';
 import exampleComments from '../resources/exampleComments.json';
 import exampleDescription from '../resources/exampleDescription.json';
-import TableNotFound from '../component/TableNotFound';
 
 const title = env('TITLE') || 'Data';
 
@@ -98,8 +97,8 @@ const Viewer = (props: any) => {
     }
 
     if (errorLoadingNode && !Object.keys(node).length) {
-        return <TableNotFound error={errorMessage} />;
-    }
+        return <ErrorPage header layout errorMessage={errorMessage} />
+      }
 
     return (
         <React.Fragment>

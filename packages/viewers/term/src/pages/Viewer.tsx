@@ -23,7 +23,6 @@ const Viewer = (props: any) => {
     )
   }
 
-  console.log(error)
   if (error) {
     return <ErrorMessage />
   }

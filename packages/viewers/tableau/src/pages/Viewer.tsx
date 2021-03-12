@@ -2,12 +2,11 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import env from '@beam-australia/react-env'
 import { Metrics } from '@dakan/metrics'
-import { Header, LoadingSpinner } from '@dakan/ui'
+import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui'
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import exampleJson from '../resources/example.json'
 import exampleTableauViewsJson from '../resources/exampleTableuViews.json'
-import ErrorViewer from '../components/ErrorViewer'
 import Content from '../components/Content'
 import exampleComments from '../resources/exampleComments.json'
 import exampleTags from '../resources/exampleTags.json'
@@ -120,7 +119,7 @@ const Viewer = (props: any) => {
   }
 
   if (errorLoadingNode && !Object.keys(node).length) {
-    return <ErrorViewer error={errorMessage} />
+    return <ErrorPage header layout errorMessage={errorMessage} />
   }
 
   return (

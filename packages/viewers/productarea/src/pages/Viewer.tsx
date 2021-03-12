@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metrics } from '@dakan/metrics'
 import { useNode } from '@dakan/hooks'
-import { LoadingSpinner } from '@dakan/ui'
+import { LoadingSpinner, ErrorPage } from '@dakan/ui'
 
 import Content from '../components/Content'
 
@@ -16,9 +16,12 @@ const Viewer = (props: any) => {
     return <Content {...props} item={exampleJson} />
   }
 
+  if (errorLoadingNode && !Object.keys(node).length) {
+    return <ErrorPage layout errorMessage={errorMessage} />
+  }
+
   return (
     <React.Fragment>
-      {errorLoadingNode && errorMessage}
       {loadingNode && <LoadingSpinner />}
       {node && (
         <React.Fragment>
