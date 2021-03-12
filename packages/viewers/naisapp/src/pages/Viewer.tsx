@@ -30,6 +30,7 @@ const Viewer = (props: any) => {
   }
 
   if (errorLoadingNode && !Object.keys(node).length) {
+    console.log(errorMessage)
     return <ErrorPage layout errorMessage={errorMessage} />
   }
 
