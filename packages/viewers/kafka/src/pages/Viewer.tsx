@@ -5,7 +5,6 @@ import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui'
 import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
 
 import Content from '../components/Content'
-import TopicNotFound from '../components/TopicNotFound'
 
 import exampleKafkaJson from '../resources/exampleKafka.json'
 import exampleTopicFieldJson from '../resources/exampleTopicField.json'
@@ -118,8 +117,7 @@ const Viewer = (props: any) => {
   }
 
   if (errorLoadingNode && !Object.keys(node).length) {
-    console.log(errorMessage)
-    return <ErrorPage layout header errorMessage={JSON.parse(errorMessage).message} />
+    return <ErrorPage layout header errorMessage={errorMessage} />
   }
 
   return (
