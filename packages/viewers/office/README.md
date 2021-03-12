@@ -1,3 +1,1 @@
 # Datakatalog office viewer (Teamkatalogen)
-
-
