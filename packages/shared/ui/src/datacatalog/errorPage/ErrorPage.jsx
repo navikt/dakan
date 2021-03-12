@@ -13,9 +13,9 @@ export const ErrorPage = (props) => {
 
   try {
       const jsonError = JSON.parse(errorMessage)
-      message = jsonError.message ? jsonError.message : jsonError
+      message = jsonError.message ? jsonError.message : JSON.stringify(jsonError)
   } catch {
-    message = errorMessage
+    message = errorMessage.message ? errorMessage.message : JSON.stringify(errorMessage)
   }
 
   let content = (
