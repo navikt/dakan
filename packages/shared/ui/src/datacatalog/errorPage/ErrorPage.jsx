@@ -9,6 +9,15 @@ import { FullWidth } from '../../components/layout'
 export const ErrorPage = (props) => {
   const { header, layout, errorMessage } = props
 
+  let message = ""
+
+  try {
+      const jsonError = JSON.parse(errorMessage)
+      message = jsonError.message ? jsonError.message : jsonError
+  } catch {
+    message = errorMessage
+  }
+
   let content = (
     <Block marginTop="scale1600" role="main">
       <Block display="flex" justifyContent="center">
@@ -17,7 +26,7 @@ export const ErrorPage = (props) => {
         </HeadingLevel>
       </Block>
       <Block display="flex" justifyContent="center">
-        <ParagraphLarge>Feilmelding: {errorMessage}</ParagraphLarge>
+        <ParagraphLarge>Feilmelding: {message}</ParagraphLarge>
       </Block>
     </Block>
   )
