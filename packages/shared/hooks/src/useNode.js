@@ -12,7 +12,7 @@ export function useNode(id) {
 
   const getData = (response) => {
     if (response.data && typeof response.data !== 'object')
-      throw new Error({'Error fetching node'})
+      throw new Error('Error fetching node')
     if (response.data && typeof response.data === 'object' && !Object.keys(response.data).length) {
       throw new Error('Status 204 - No content found')
     }
