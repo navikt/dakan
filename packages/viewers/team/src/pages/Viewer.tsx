@@ -19,12 +19,12 @@ const Viewer = (props: any) => {
 
   if (props.match.params.id === 'test') {
     if (props.match.params.id === 'test') {
-      return <Content {...props} item={exampleJson} members={exampleTeam}/>
+      return <Content {...props} item={exampleJson} members={exampleTeam} />
     }
   }
 
-  if (errorLoadingNode && !Object.keys(node).length) {
-    return <ErrorPage layout errorMessage={errorMessage} />
+  if ((errorLoadingNode && !Object.keys(node).length) || !Object.keys(node).length) {
+    return <ErrorPage header layout errorMessage={errorMessage ? errorMessage : "Status 204 - No content found"} />
   }
 
   return (

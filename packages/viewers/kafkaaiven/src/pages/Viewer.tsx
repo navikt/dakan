@@ -44,8 +44,8 @@ const Viewer = (props: any) => {
     )
   }
 
-  if (errorLoadingNode && !Object.keys(node).length) {
-    return <ErrorPage layout header errorMessage={errorMessage} />
+  if ((errorLoadingNode && !Object.keys(node).length) || !Object.keys(node).length) {
+    return <ErrorPage header layout errorMessage={errorMessage ? errorMessage : "Status 204 - No content found"} />
   }
 
   return (
