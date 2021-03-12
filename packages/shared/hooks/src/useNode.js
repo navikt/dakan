@@ -29,11 +29,8 @@ export function useNode(id) {
         const data = await getData(response)
         setNode(data)
       } catch (e) {
-        console.log("error triggered")
-        console.log(e)
-        console.log(JSON.stringify(e))
         setError(true)
-        setErrorMessage(JSON.stringify(e))
+        setErrorMessage(e)
       }
       setLoading(false)
     }
