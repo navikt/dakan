@@ -10,7 +10,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "amplitude-js": "^7.4.1",
+    "amplitude-js": "^8.0.0",
     "axios": "^0.21.1",
     "baseui": "^9.109.0",
     "downshift": "^6.1.0",
