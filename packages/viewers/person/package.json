@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "private": true,
   "dependencies": {
-    "@dakan/hooks": "^0.0.9",
+    "@dakan/hooks": "^0.0.10",
     "@dakan/metrics": "^0.0.9",
     "@dakan/theme": "^0.0.8",
     "@dakan/ui": "^0.0.12",
