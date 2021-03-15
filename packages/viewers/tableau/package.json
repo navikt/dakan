@@ -7,7 +7,7 @@
     "@dakan/hooks": "^0.0.9",
     "@dakan/metrics": "^0.0.9",
     "@dakan/theme": "^0.0.8",
-    "@dakan/ui": "^0.0.12",
+    "@dakan/ui": "^0.0.13",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^11.0.0",
     "@testing-library/user-event": "^12.0.6",
