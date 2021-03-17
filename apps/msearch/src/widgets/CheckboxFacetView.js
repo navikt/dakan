@@ -23,9 +23,12 @@ export const CheckboxFacetView = ({
     itemsPerBlock,
     title
 }) => {
+    const labelRef = React.useRef(null)
     return (
         <Block>
-            <Label>{title}</Label>
+            <div ref={labelRef}>
+                <Label>{title}</Label>
+            </div>
             {showFilter ? (
                 <Input
                     value={filterValue}
@@ -37,29 +40,30 @@ export const CheckboxFacetView = ({
                 />
             ) : null}
             {data.map((item) => (
-                    <Checkbox
-                        role="checkbox"
-                        id={`checkboxfacet_${item.key}`}
-                        checked={isChecked(item)}
-                        title={getFilterValueDisplay(item.key)}
-                        ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
-                        onChange={(e) => {
-                            handleChange(item, e.target.checked)
-                            if (e.target.checked) {
-                                logFilterUseToAmplitude(getFilterValueDisplay(item.key), title)
-                            }
-                        }}
-                    >
-                        {getFilterValueDisplay(item.key)} ({item.doc_count})
-                    </Checkbox>
-                ))}
-                {data.length === size ? <Button
-                    onClick={() => setSize(size + (itemsPerBlock || 9))}
-                    kind={KIND.minimal}
-                    aria-label={`Vis flere filter for ${title}`}
+                <Checkbox
+                    role="checkbox"
+                    id={`checkboxfacet_${item.key}`}
+                    checked={isChecked(item)}
+                    title={getFilterValueDisplay(item.key)}
+                    ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
+                    onChange={(e) => {
+                        handleChange(item, e.target.checked)
+                        if (e.target.checked) {
+                            logFilterUseToAmplitude(getFilterValueDisplay(item.key), title)
+                        }
+                        labelRef.current.scrollIntoView()
+                    }}
                 >
-                    {seeMore || 'vis flere'}
-                </Button> : null}
+                    {getFilterValueDisplay(item.key)} ({item.doc_count})
+                </Checkbox>
+            ))}
+            {data.length === size ? <Button
+                onClick={() => setSize(size + (itemsPerBlock || 9))}
+                kind={KIND.minimal}
+                aria-label={`Vis flere filter for ${title}`}
+            >
+                {seeMore || 'vis flere'}
+            </Button> : null}
         </Block>
     )
 }
