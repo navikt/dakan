@@ -23,42 +23,42 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: yarn run setup
-    - name: Build shared packages
-      run: yarn run shared:build
-    - name: Run test
-      run: yarn kafka:test
-      env:
-        CI: true
-    - name: Generate tag
-      if: github.ref == 'refs/heads/master'
-      run: |
-        # Generate docker image tag
-        DATE=$(date +%Y-%m-%d)
-        GIT_HASH=$(git rev-parse --short HEAD)
-        IMAGE_TAG=${DATE}--${GIT_HASH}
-        # write current tag to file
-        echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
-    - name: Upload img_tag
-      if: github.ref == 'refs/heads/master'
-      uses: actions/upload-artifact@v1
-      with:
-        name: img_tag
-        path: packages/viewers/kafka/docker_img_tag.txt
-    - name: Build
-      if: github.ref == 'refs/heads/master'
-      run: yarn kafka:build
-      env:
-        CI: false
-    - name: Build and Publish to Docker Image
-      if: github.ref == 'refs/heads/master'
-      env:
-        CI: true
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        cd ${PACKAGE_PATH}
-        docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
-        docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-        docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
+    # - name: Build shared packages
+    #   run: yarn run shared:build
+    # - name: Run test
+    #   run: yarn kafka:test
+    #   env:
+    #     CI: true
+    # - name: Generate tag
+    #   if: github.ref == 'refs/heads/master'
+    #   run: |
+    #     # Generate docker image tag
+    #     DATE=$(date +%Y-%m-%d)
+    #     GIT_HASH=$(git rev-parse --short HEAD)
+    #     IMAGE_TAG=${DATE}--${GIT_HASH}
+    #     # write current tag to file
+    #     echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
+    # - name: Upload img_tag
+    #   if: github.ref == 'refs/heads/master'
+    #   uses: actions/upload-artifact@v1
+    #   with:
+    #     name: img_tag
+    #     path: packages/viewers/kafka/docker_img_tag.txt
+    # - name: Build
+    #   if: github.ref == 'refs/heads/master'
+    #   run: yarn kafka:build
+    #   env:
+    #     CI: false
+    # - name: Build and Publish to Docker Image
+    #   if: github.ref == 'refs/heads/master'
+    #   env:
+    #     CI: true
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   run: |
+    #     cd ${PACKAGE_PATH}
+    #     docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
+    #     docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+    #     docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
 
   # deploy:
   #   name: Build and deploy to dev

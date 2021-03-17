@@ -62,15 +62,15 @@ jobs:
         RESOURCE: apps/msearch/naiserator_gcp_external.yaml
         VARS: apps/msearch/config-prod-gcp-external.json
 
-  deploy-prod-gcp-internal:
-    name: Deploy to prod-gcp (internal)
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: prod-gcp
-        RESOURCE: apps/msearch/naiserator_gcp_internal.yaml
-        VARS: apps/msearch/config-prod-gcp-internal.json
+  # deploy-prod-gcp-internal:
+  #   name: Deploy to prod-gcp (internal)
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - uses: nais/deploy/actions/deploy@v1
+  #     env:
+  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+  #       CLUSTER: prod-gcp
+  #       RESOURCE: apps/msearch/naiserator_gcp_internal.yaml
+  #       VARS: apps/msearch/config-prod-gcp-internal.json
