@@ -35,4 +35,3 @@ Begrepskatalogen er tilgjengelig som et view i datakatalogen.
 ## Kontaktinformasjon
 
 Ta kontakt med #datakatalog-intern på Slack
-

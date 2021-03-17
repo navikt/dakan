@@ -1,2 +1,1 @@
 # Datakatalog naisapp viewer (Teamkatalogen)
-

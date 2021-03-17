@@ -24,7 +24,7 @@ spec:
   readiness:
     path: /begrep/isReady
     timeout: 1
-    initialDelay: 5	
+    initialDelay: 5
     periodSeconds: 5
     failureThreshold: 30
   leaderElection: false
