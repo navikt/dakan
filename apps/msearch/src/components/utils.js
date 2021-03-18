@@ -42,6 +42,7 @@ export function getLocal(label) {
     if (label === 'datapackage') return 'Datapakke'
     if (label === 'api' || label === 'API') return 'API'
     if (label === 'begrep') return 'Begrep'
+    if (label === 'egg') return 'Egg'
     if (label === 'godkjent_begrep') return 'Godkjent begrep'
     if (label === 'purpose') return 'Formål'
     if (label === 'pii-type') return 'Opplysningstype'

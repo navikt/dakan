@@ -56,6 +56,14 @@ export function getViewerProps(format) {
         }
     }
 
+    if (format === 'egg' || format === 'egg') {
+        return {
+            link: env('PARQUET_VIEWER_URL') || '/viewer',
+            backgroundColor: theme.colors.tagTermBackgroundColor,
+            borderColor: theme.colors.tagTermBorderColor,
+        }
+    }
+
     if (format === 'godkjent_begrep' || format === 'approved_term') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer',
