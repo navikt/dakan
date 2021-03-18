@@ -1,2 +1,1 @@
 # Datakatalog parquet viewer
-
