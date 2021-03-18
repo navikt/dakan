@@ -1,0 +1,23 @@
+{
+  "id": "f55023cf-4acc-48a2-9a98-a04e4c0aea70",
+  "title": "Deploys til prod",
+  "description": "Alle deploys av applikasjoner til prod siden 2009",
+  "type": "egg",
+  "uri": "gs://deployments-vera/2021-03-16-deploys-vera.parquet",
+  "format": "egg",
+  "accessRights": "internal",
+  "pii": "false",
+  "keyword": [],
+  "theme": "",
+  "temporal": {
+    "from": "2021",
+    "to": "2021"
+  },
+  "language": "NO",
+  "creator": {},
+  "publisher": {
+    "name": "NAV"
+  },
+  "license": {},
+  "rights": "Copyright 2021, NAV"
+}
