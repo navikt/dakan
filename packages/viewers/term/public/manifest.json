@@ -1,6 +1,6 @@
 {
-  "short_name": "term profiler",
-  "name": "term profiler",
+  "short_name": "term viewer",
+  "name": "term viewer",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,6 +1,6 @@
 {
-  "short_name": "oracle database profiler",
-  "name": "oracle database profiler",
+  "short_name": "table viewer",
+  "name": "table viewer",
   "icons": [
     {
       "src": "favicon.ico",
