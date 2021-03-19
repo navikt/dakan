@@ -16,8 +16,10 @@ const Viewer = (props: any) => {
     return <Content {...props} id={exampleJson.id} item={exampleJson} />
   }
 
-  if ((errorLoadingNode && !Object.keys(node).length) || !Object.keys(node).length) {
-    return <ErrorPage layout errorMessage={"Status 204 - No content found"} />
+  if (errorLoadingNode && !node) {
+    return (
+      <ErrorPage layout errorMessage={"Status 204 - No content found"} />
+    )
   }
 
   return (
