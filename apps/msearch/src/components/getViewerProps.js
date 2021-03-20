@@ -18,8 +18,6 @@ export function getViewerProps(format) {
 
     format = format.toLowerCase().trim()
 
-    //console.log(format)
-
     if (
         format === 'datapackage' ||
         format === 'datapakke' ||
@@ -56,7 +54,8 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'egg' || format === 'egg') {
+    if (format === 'parquet' || format === 'egg') {
+        const link =  env('PARQUET_VIEWER_URL') || '/viewer'
         return {
             link: env('PARQUET_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTermBackgroundColor,
