@@ -9,7 +9,6 @@ const FlexFormatVersion = (props) => {
     <Block
       marginBottom="scale800"
       display={['block', 'flex']}
-      flexDirection="row"
       justifyContent="center"
     >
       <Block
