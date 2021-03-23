@@ -26,6 +26,7 @@ const Content = (props: any) => {
       { item: 'definisjon', label: 'Definisjon' },
       { item: 'begrepsforklaring', label: 'Begrepsforklaring' },
       { item: 'eksempel', label: 'Eksempel' },
+      { item: 'forhold_til_kilde', label: 'Forhold til kilde' },
       { item: 'kilde', label: 'Kilde' },
       { item: 'relasjoner', label: 'Relasjoner til andre begreper' },
     ]

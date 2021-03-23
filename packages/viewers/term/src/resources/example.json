@@ -58,6 +58,7 @@
             "oppdatert": "2020-05-05T12:37:57.000+0200",
             "begrepseier": "Testavdelingen - Seksjon for testing",
             "kilde": "Test. Side test;\r\n\"Test test test?\". Test. Hentet fra test. dato 9999 fra http://no.nous-utile.info/article/hva-er-et-sammensatt-dokument. fra https://ec.europa.eu/isa2/sites/isa/files/eif_brochure_final.pdf fra [https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/]  fra www.klarsprak.no",
+            "forhold_til_kilde": "test definert",
             "komponenter": [
                 {
                     "self": "https://jira.adeo.no/rest/api/2/component/21970",
