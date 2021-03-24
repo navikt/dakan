@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-bigquery-viewer-external",
+  "ingress": "https://data.nav.no/bigquery",
+  "ingress_nais_io": "https://data-ekstern.prod-gcp.nais.io/bigquery",
+  "config_map": "viewer-config-prod-gcp-external"
+}

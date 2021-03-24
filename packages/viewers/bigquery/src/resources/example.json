@@ -1,0 +1,23 @@
+{
+  "id": "f55023cf-4acc-48a2-9a98-a04e4c0aea71",
+  "title": "Styrk dimensjon fra SSB",
+  "description": "Styrk dimensjon fra SSB",
+  "type": "bigquery",
+  "uri": "https://console.cloud.google.com/datacatalog/projects/dataplattform-dev-9da3/locations/europe-north1/entryGroups/@bigquery/entries/cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI?authuser=1&folder=&organizationId=&project=dataplattform-dev-9da3",
+  "format": "bigquery_table",
+  "accessRights": "internal",
+  "pii": "false",
+  "keyword": [],
+  "theme": "",
+  "temporal": {
+    "from": "2021",
+    "to": "2021"
+  },
+  "language": "NO",
+  "creator": {},
+  "publisher": {
+    "name": "NAV"
+  },
+  "license": {},
+  "rights": "Copyright 2021, NAV"
+}

@@ -3,25 +3,25 @@ import { navTheme } from '@dakan/theme'
 
 const theme = navTheme()
 
-export function getViewerProps(format) {
-    if (!format) {
+export function getViewerProps(type) {
+    if (!type) {
         return { link: '/viewer', backgroundColor: '#FFA733' }
     }
 
-    if (Array.isArray(format)) {
-        format = format[0]
+    if (Array.isArray(type)) {
+        type = type[0]
     }
 
-    if (typeof format != 'string') {
+    if (typeof type != 'string') {
         return { link: '/viewer', backgroundColor: '#FFA733' }
     }
 
-    format = format.toLowerCase().trim()
+    type = type.toLowerCase().trim()
 
     if (
-        format === 'datapackage' ||
-        format === 'datapakke' ||
-        format === 'datasett'
+        type === 'datapackage' ||
+        type === 'datapakke' ||
+        type === 'datasett'
     ) {
         return {
             link: env('DATAPACKAGE_VIEWER_URL') || '/viewer',
@@ -30,7 +30,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'api') {
+    if (type === 'api') {
         return {
             link: env('API_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagApiBackgroundColor,
@@ -38,7 +38,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'apier') {
+    if (type === 'apier') {
         return {
           link: env('API_VIEWER_URL') || '/viewer',
           backgroundColor: theme.colors.tagApiBackgroundColor,
@@ -46,7 +46,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'begrep' || format === 'term') {
+    if (type === 'begrep' || type === 'term') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTermBackgroundColor,
@@ -54,7 +54,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'parquet' || format === 'egg') {
+    if (type === 'parquet' || type === 'egg') {
         const link =  env('PARQUET_VIEWER_URL') || '/viewer'
         return {
             link: env('PARQUET_VIEWER_URL') || '/viewer',
@@ -63,7 +63,16 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'godkjent_begrep' || format === 'approved_term') {
+    if (type === 'bigquery') {
+        const link =  env('BIGQUERY_VIEWER_URL') || '/viewer'
+        return {
+            link: env('BIGQUERY_VIEWER_URL') || '/viewer',
+            backgroundColor: theme.colors.tagTermBackgroundColor,
+            borderColor: theme.colors.tagTermBorderColor,
+        }
+    }
+
+    if (type === 'godkjent_begrep' || type === 'approved_term') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTermBackgroundColor,
@@ -72,9 +81,9 @@ export function getViewerProps(format) {
     }
 
     if (
-        format === 'table' ||
-        format === 'tabell' ||
-        format === 'database_tabell'
+        type === 'table' ||
+        type === 'tabell' ||
+        type === 'database_tabell'
     ) {
         return {
             link: env('TABLE_VIEWER_URL') || '/viewer',
@@ -83,7 +92,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'tableau') {
+    if (type === 'tableau') {
         return {
             link: env('TABLEAU_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTableauBackgroundColor,
@@ -91,7 +100,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format.includes('pii_type')) {
+    if (type.includes('pii_type')) {
         return {
             link: env('PIITYPE_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagInformationtypeBackgroundColor,
@@ -99,7 +108,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'kafka_topic' || format === 'kafka') {
+    if (type === 'kafka_topic' || type === 'kafka') {
         return {
             link: env('KAFKA_TOPIC_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagKafkaBackgroundColor,
@@ -107,7 +116,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'kafka_aiven_topic' || format === 'kafka_topic_aiven') {
+    if (type === 'kafka_aiven_topic' || type === 'kafka_topic_aiven') {
         return {
           link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer',
           backgroundColor: theme.colors.tagKafkaBackgroundColor,
@@ -115,7 +124,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'opplysningstype' || format === 'informationtype') {
+    if (type === 'opplysningstype' || type === 'informationtype') {
         return {
             link: env('INFORMATION_TYPE_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagInformationtypeBackgroundColor,
@@ -123,7 +132,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'purpose' || format === 'formål') {
+    if (type === 'purpose' || type === 'formål') {
         return {
             link: env('PURPOSE_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -131,7 +140,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'person') {
+    if (type === 'person') {
         return {
             link: env('PERSON_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -139,7 +148,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'team') {
+    if (type === 'team') {
         return {
             link: env('TEAM_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -147,7 +156,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'nais_team' || format === 'naisteam') {
+    if (type === 'nais_team' || type === 'naisteam') {
         return {
           link: env('NAISTEAM_VIEWER_URL') || '/viewer',
           backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -155,7 +164,7 @@ export function getViewerProps(format) {
         }
       }
     
-    if (format === 'nais_app' || format === 'naisapp') {
+    if (type === 'nais_app' || type === 'naisapp') {
         return {
             link: env('NAISAPP_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -163,7 +172,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'office') {
+    if (type === 'office') {
         return {
           link: env('OFFICE_VIEWER_URL') || '/viewer',
           backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -171,7 +180,7 @@ export function getViewerProps(format) {
         }
       }
     
-    if (format === 'ad_department') {
+    if (type === 'ad_department') {
         return {
             link: env('AD_DEPARTMENT_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,
@@ -179,7 +188,7 @@ export function getViewerProps(format) {
         }
     }
 
-    if (format === 'produktområde' || format === 'productarea') {
+    if (type === 'produktområde' || type === 'productarea') {
         return {
             link: env('PRODUCTAREA_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagPurposeBackgroundColor,

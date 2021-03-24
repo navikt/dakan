@@ -1,0 +1,6 @@
+{
+  "application_name": "data-catalog-bigquery-viewer-internal",
+  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/bigquery",
+  "ingress": "https://data-intern.dev.nav.no/bigquery",
+  "config_map": "viewer-config-dev-gcp-internal"
+}
