@@ -15,6 +15,11 @@ const Content = ({ item, id }) => {
         <ReactMarkdown source={item.description} />
         </LabeledContent>
       }
+      {item.format && 
+        <LabeledContent description="Type" list>
+        {item.format}
+        </LabeledContent>
+      }
       {item.pii && 
         <LabeledContent description="Personopplysninger" list>
         {item.pii === 'false' ? "Ingen" : "Ja"}
@@ -63,7 +68,7 @@ const Content = ({ item, id }) => {
       }
       {item && item.uri && 
         <LabeledContent description="Datasett" list>
-          <StyledLink aria-label="Link til datasett" href={item.uri}>{item.uri}</StyledLink>
+          <StyledLink aria-label="Link til datasett" href={item.uri}>BigQuery</StyledLink>
         </LabeledContent>
       }
     </div>
