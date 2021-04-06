@@ -10,7 +10,7 @@ Slack: #data-catalog-intern
 
 [Internal](https://data.adeo.no)
 
-[Test/Preprod (VDI) ](https://data.nais.preprod.local)
+[Test/Preprod](https://data.dev-fss.nais.io/)
 
 
 ## What is a data catalog / (meta)data hub?
