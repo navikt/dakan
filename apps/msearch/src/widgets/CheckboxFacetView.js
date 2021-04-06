@@ -9,6 +9,7 @@ import { KIND } from 'baseui/button'
 import { logFilterUseToAmplitude } from '../components/utils'
 
 export const CheckboxFacetView = ({
+    id,
     placeholder,
     showFilter,
     setFilterValue,
@@ -31,6 +32,7 @@ export const CheckboxFacetView = ({
             </div>
             {showFilter ? (
                 <Input
+                    key={`input_${id}`}
                     value={filterValue}
                     placeholder={placeholder || 'filter…'}
                     type="text"
@@ -42,7 +44,7 @@ export const CheckboxFacetView = ({
             {data.map((item) => (
                 <Checkbox
                     role="checkbox"
-                    id={`checkboxfacet_${item.key}`}
+                    key={`checkboxfacet_${id}_${item.key}`}
                     checked={isChecked(item)}
                     title={getFilterValueDisplay(item.key)}
                     ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
@@ -58,6 +60,7 @@ export const CheckboxFacetView = ({
                 </Checkbox>
             ))}
             {data.length === size ? <Button
+                key={`button_${id}`}
                 onClick={() => setSize(size + (itemsPerBlock || 9))}
                 kind={KIND.minimal}
                 aria-label={`Vis flere filter for ${title}`}

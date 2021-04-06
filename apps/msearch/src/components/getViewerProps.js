@@ -55,7 +55,6 @@ export function getViewerProps(type) {
     }
 
     if (type === 'parquet' || type === 'egg') {
-        const link =  env('PARQUET_VIEWER_URL') || '/viewer'
         return {
             link: env('PARQUET_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTermBackgroundColor,
@@ -64,7 +63,6 @@ export function getViewerProps(type) {
     }
 
     if (type === 'bigquery') {
-        const link =  env('BIGQUERY_VIEWER_URL') || '/viewer'
         return {
             link: env('BIGQUERY_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagTermBackgroundColor,

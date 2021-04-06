@@ -80,7 +80,7 @@ function Results({
         <Block>
             <Block marginTop="scale400" marginBottom="scale600" width="100%">
                 {isSearching ? (
-                    <Spinner size='20px' />
+                    <Spinner size='40px' />
                 ) :
                     <Label>{total ? `Antall treff: ${total}` : 'Ingen treff'}</Label>
                 }

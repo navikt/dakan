@@ -44,6 +44,7 @@ export function getLocal(label) {
     if (label === 'begrep') return 'Begrep'
     if (label === 'egg') return 'Parquet'
     if (label === 'parquet') return 'Parquet'
+    if (label === 'bigquery') return 'BigQuery'
     if (label === 'godkjent_begrep') return 'Godkjent begrep'
     if (label === 'purpose') return 'Formål'
     if (label === 'pii-type') return 'Opplysningstype'
@@ -65,13 +66,6 @@ export function getLocal(label) {
     if (label === 'provenance') return 'Opprinnelse'
 
     return label
-}
-
-export function logEvent(event, value, label) {
-    const eventProperty = {
-        filter: value.toLowerCase().replace(' ', '_'),
-        type: label.toLowerCase(),
-    }
 }
 
 export function search(url, searchData, headers = {}) {

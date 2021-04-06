@@ -16,25 +16,26 @@ const SearchBoxView = (props) => {
   const { searchTerm, placeholder, setSearchTerm, getResultsOnSearch, queryFromValue } = props
   const [results, setResults] = React.useState([])
 
-  const createQuery = () => {
-    const query = {
-      bool: {
-        must: [
-          queryFromValue(searchTerm),
-        ]
-      }
-    }
-
-    widgets.forEach((item, index) => {
-      if (index !== 'term' && index !== 'result') {
-        query.bool.must.push(item.query)
-      }
-    })
-
-    return query
-  }
 
   React.useEffect(() => {
+    const createQuery = () => {
+      const query = {
+        bool: {
+          must: [
+            queryFromValue(searchTerm),
+          ]
+        }
+      }
+  
+      widgets.forEach((item, index) => {
+        if (index !== 'term' && index !== 'result') {
+          query.bool.must.push(item.query)
+        }
+      })
+  
+      return query
+    }
+
     if (searchTerm.length >= 3) {
       axios.post(url, { query: createQuery() }).then((result) => {
         setResults(result.data.hits.hits)
@@ -43,7 +44,7 @@ const SearchBoxView = (props) => {
     } else if (searchTerm.length < 3) {
       setResults([])
     }
-  }, [searchTerm])
+  }, [searchTerm,queryFromValue,widgets])
 
   return (
     <Downshift

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { Panel, LayoutSearch, FilterIcon, Label } from '@dakan/ui'
 import { Block } from 'baseui/block'
 import { Accordion } from 'baseui/accordion'
-import { Select } from 'baseui/select'
+import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
+import { Select, SIZE } from 'baseui/select'
 import Elasticsearch from '../components/Elasticsearch'
 import Results from '../widgets/Results'
 import Facet from '../widgets/Facet'
@@ -23,8 +24,8 @@ const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
 const url = `${server}/${index}`
 
-const SORTKEYSOPTIONS = [{ 'id': "_score", "label": "Relevans" }, { 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" }]
-const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" }, { "id": "desc", "label": "Synkende" }]
+const SORTKEYSOPTIONS = [{ 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" },{ 'id': "_score", "label": "Relevans" }]
+const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" },{ "id": "desc", "label": "Synkende" }]
 const VALUE_KEY = 'id'
 const VALUE_LABEL = 'label'
 
@@ -72,9 +73,6 @@ function SearchPage(props) {
         }
         return [options[0]]
     }
-
-    // const [queryString, setQueryString] = useState('')
-    // const [values, setValues] = useState({})
 
     const [sortOrder, setSortOrder] = useState(
         initialValues.get('sortOrder') || 'asc'
@@ -170,30 +168,6 @@ function SearchPage(props) {
                 <Block>
                     {facets.map((f, index) => getLeftSidebarFacet(f, index))}
                 </Block>
-                <Block marginTop='scale600'>
-                    <Label>Sortering</Label>
-                    <Block marginTop='scale400' aria-label="Sortering av data">
-                        <Select
-                            onChange={({ value }) => setSortKeyOption(value)}
-                            options={SORTKEYSOPTIONS}
-                            labelKey={VALUE_LABEL}
-                            valueKey={VALUE_KEY}
-                            value={sortKeyOption}
-                            clearable={false}
-                        >
-                        </Select>
-                    </Block>
-                    <Block marginTop='scale400' aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]["label"]}`}>
-                        <Select
-                            onChange={({ value }) => setSortOrderOption(value)}
-                            options={SORTDIRECTIONOPTIONS}
-                            labelKey={VALUE_LABEL}
-                            value={sortOrderOption}
-                            valueKey={VALUE_KEY}
-                            clearable={false}>
-                        </Select>
-                    </Block>
-                </Block>
             </Block>
         )
     }
@@ -235,6 +209,43 @@ function SearchPage(props) {
                         </Panel>
                     </Accordion>
                 </Block>
+                <Block marginTop='scale600'>
+                    <Label>Sortering</Label>
+                    <FlexGrid
+                        flexGridColumnCount={2}
+                        flexGridColumnGap="scale400"
+                        flexGridRowGap="scale800"
+                    >
+                    <FlexGridItem>
+                    <Block marginTop='scale400' aria-label="Sortering av data">
+                        <Select
+                            size={SIZE.mini}
+                            onChange={({ value }) => setSortKeyOption(value)}
+                            options={SORTKEYSOPTIONS}
+                            labelKey={VALUE_LABEL}
+                            valueKey={VALUE_KEY}
+                            value={sortKeyOption}
+                            clearable={false}
+                        >
+                        </Select>
+                    </Block>
+                    </FlexGridItem>
+                    <FlexGridItem>  
+                    <Block marginTop='scale400' aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]["label"]}`}>
+                        <Select
+                            size={SIZE.mini}
+                            onChange={({ value }) => setSortOrderOption(value)}
+                            options={SORTDIRECTIONOPTIONS}
+                            labelKey={VALUE_LABEL}
+                            value={sortOrderOption}
+                            valueKey={VALUE_KEY}
+                            clearable={false}>
+                        </Select>
+                    </Block>
+                    </FlexGridItem>
+                    </FlexGrid>
+                </Block>
+                <Block marginTop='scale800' aria-label="Søkeresultater">
                 <Results
                     sort={sortQuery}
                     id="result"
@@ -243,6 +254,7 @@ function SearchPage(props) {
                     page={page}
                     setPage={setPage}
                 />
+                </Block>
             </Block>
         )
     }

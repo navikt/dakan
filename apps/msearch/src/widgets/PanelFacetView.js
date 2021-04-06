@@ -9,6 +9,7 @@ import { Card } from 'baseui/card'
 import { logFilterUseToAmplitude } from '../components/utils'
 
 export const PanelFacetView = ({
+    id,
     placeholder,
     showFilter,
     setFilterValue,
@@ -31,6 +32,7 @@ export const PanelFacetView = ({
                     {data.map((item) =>
                         item.key ? (
                             <Tag
+                                key={`checkboxfacet_${id}_${item.key}`}
                                 closeable={false}
                                 kind={TAGKIND.accent}
                                 onClick={(e) => {
