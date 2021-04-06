@@ -68,7 +68,7 @@ const Content = ({ item, id }) => {
       }
       {item && item.uri && 
         <LabeledContent description="Datasett" list>
-          <StyledLink aria-label="Link til datasett" href={item.uri}>BigQuery</StyledLink>
+          <StyledLink aria-label="Link til datasett" href={item.uri}>Google Data Catalog</StyledLink>
         </LabeledContent>
       }
     </div>
