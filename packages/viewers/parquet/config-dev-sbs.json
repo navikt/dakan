@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-parquet-viewer",
-  "org_name": "navikt",
-  "ingress": "https://dataverk-q.nav.no/parquet",
-  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/parquet",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
-}

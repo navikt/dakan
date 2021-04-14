@@ -1,0 +1,51 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: dakan-viewer-{{ VIEWER }}
+  namespace: {{ NAMESPACE }}
+  labels:
+    team: dataplattform
+spec:
+  ingresses:
+    - https://data.adeo.no/{{ VIEWER }}
+    - https://data.prod-fss.nais.io/{{ VIEWER }}
+  image: {{ IMAGE }}
+  port: 80
+  replicas:
+      min: 2
+      max: 2
+      cpuThresholdPercentage: 70
+  liveness:
+    path: /{{ VIEWER }}/isAlive
+    timeout: 1
+    initialDelay: 5
+    periodSeconds: 5
+    failureThreshold: 30
+  readiness:
+    path: /{{ VIEWER }}/isReady
+    timeout: 1
+    initialDelay: 5
+    periodSeconds: 5
+    failureThreshold: 30
+  vault:
+    enabled: true
+    paths:
+      - kvPath: secret/dataplattform/datakatalog/prod_fss
+        mountPath: /var/run/secrets/nais.io/common
+  prometheus:
+    enabled: true
+    path: /{{ VIEWER }}
+  resources:
+    limits:
+      cpu: 400m
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+  env:
+    REACT_APP_AMPLITUDE_PROJECT_ID=default
+    REACT_APP_AMPLITUDE_ENDPOINT=amplitude.nav.no/collect-auto
+    REACT_APP_HOME_URL=https://data.adeo.no/
+    REACT_APP_ABOUT_URL=https://data.adeo.no/about
+    REACT_APP_GRAPH_SERVER=https://data.adeo.no/cosmosdb
+    REACT_APP_ES_SERVER=https://data.adeo.no/api/dcat
