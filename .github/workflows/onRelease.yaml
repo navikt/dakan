@@ -1,0 +1,40 @@
+name: Parquet deploy to prod on release
+
+on:
+  push:
+    tags:
+      - 'parquet-*.*.*'
+
+env:
+  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn run setup
+      - run: yarn run shared:build
+      - run: yarn parquet:build
+        env:
+          CI: false
+      - run: |
+          echo "VIEWER=$(echo $GITHUB_REF | cut -d \"-\" -f1)" >> $GITHUB_ENV
+          echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY-viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV # ghcr.io/navikt/dakan-viewer:parquet-date-sha
+      - env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd "package/viewers/$VIEWER"
+          docker build --tag $IMAGE --build-arg PUBLIC_URL=/$VIEWER --build-arg VIEWER=$VIEWER -f ../docker/Dockerfile .
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker push $IMAGE
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-fss
+          RESOURCE: packages/viewers/${{ VIEWER }}/.nais.yaml
+          VARS: "packages/viewers/${{ VIEWER }}/.nais/prod.yaml"
