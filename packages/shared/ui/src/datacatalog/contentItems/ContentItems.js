@@ -6,8 +6,11 @@ import { LabeledContent } from '../../datacatalog/labeledContent'
 import { format } from 'date-fns'
 import GetValue from '../../utils/GetValue/GetValue'
 
-const getLink = (url, value) => <StyledLink aria-label={`Link til ${value}`} href={url}>{value}</StyledLink>
-
+const getLink = (url, value) => (
+  <StyledLink aria-label={`Link til ${value}`} href={url}>
+    {value}
+  </StyledLink>
+)
 
 export const ContentItems = ({ ITEMS, item }) => {
   const getItems = (items, content) => {
@@ -16,9 +19,9 @@ export const ContentItems = ({ ITEMS, item }) => {
 
       if (typeof value === 'boolean') {
         if (value) {
-          value = "True"
+          value = 'True'
         } else {
-          value = "False"
+          value = 'False'
         }
       }
 
@@ -27,32 +30,22 @@ export const ContentItems = ({ ITEMS, item }) => {
           value = value.map((valueItem) => {
             return <Block>{valueItem}</Block>
           })
-        }
-
-        else if (entry.format && entry.format === 'date') {
+        } else if (entry.format && entry.format === 'date') {
           const date = new Date(value)
           if (typeof date.getMonth === 'function') {
             value = format(date, 'yyyy-MM-dd')
           }
-        }
-
-        else if (entry.format && entry.format === 'slackchannel') {
+        } else if (entry.format && entry.format === 'slackchannel') {
           value = value.replace('#', '')
           const link = `https://nav-it.slack.com/archives/${value}`
           value = getLink(link, value)
-        }
-
-        else if (entry.format && entry.format === 'ad_group') {
+        } else if (entry.format && entry.format === 'ad_group') {
           const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupDetailsMenuBlade/Members/groupId/${value}`
           value = getLink(link, 'Azure AD')
-        }
-
-        else if (entry.format && entry.format === 'ad_profile') {
+        } else if (entry.format && entry.format === 'ad_profile') {
           const link = `https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserDetailsMenuBlade/Profile/userId/${value}`
           value = getLink(link, 'Azure AD')
-        }
-
-        else if (entry.format && entry.format === 'link') {
+        } else if (entry.format && entry.format === 'link') {
           if (entry.linkText) {
             value = getLink(value, entry.linkText)
           } else {

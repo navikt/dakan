@@ -38,7 +38,10 @@ export const EditSingleUserTextModal = (props) => {
       ? [...userTextCopy[0].properties.author]
       : [userTextCopy[0].properties.author]
 
-    if (userTextAuthor.filter((author) => author === clientUser.userId).length <= 0) {
+    if (
+      userTextAuthor.filter((author) => author === clientUser.userId).length <=
+      0
+    ) {
       userTextAuthor.push(clientUser.userId)
     }
 

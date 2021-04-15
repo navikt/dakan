@@ -14,7 +14,10 @@ const ITEMS = [
   { item: 'path', label: 'Path' },
   { item: 'protocols', label: 'Protocols' },
   { item: 'authenticationSettings', label: 'Authentication Settings' },
-  { item: 'subscriptionKeyParameterNames', label: 'Subscription Key Parameter Names' },
+  {
+    item: 'subscriptionKeyParameterNames',
+    label: 'Subscription Key Parameter Names',
+  },
   { item: 'isCurrent', label: 'Is Current' },
   { item: 'apiVersion', label: 'Api Version' },
 ]
@@ -39,12 +42,23 @@ const Content = ({ item, id }) => {
           }}
         >
           <ReactMarkdown source={item.content.description} />
-          {item.content.api_dec && (<LabeledContent description="Api description" list>
-            <StyledLink aria-label="Link til Api beskrivelse" href={item.content.api_dec}>{item.content.api_dec}</StyledLink>
-          </LabeledContent>)}
-          { item.master === "NAV API PORTAL" && (<LabeledContent description="Kilde" list>
-            <StyledLink aria-label="Kilde" href={item.url}>{item.url}</StyledLink>
-          </LabeledContent>)}
+          {item.content.api_dec && (
+            <LabeledContent description="Api description" list>
+              <StyledLink
+                aria-label="Link til Api beskrivelse"
+                href={item.content.api_dec}
+              >
+                {item.content.api_dec}
+              </StyledLink>
+            </LabeledContent>
+          )}
+          {item.master === 'NAV API PORTAL' && (
+            <LabeledContent description="Kilde" list>
+              <StyledLink aria-label="Kilde" href={item.url}>
+                {item.url}
+              </StyledLink>
+            </LabeledContent>
+          )}
         </Block>
       </div>
     )
@@ -52,10 +66,10 @@ const Content = ({ item, id }) => {
 
   const RightContent = () => {
     const itemProperties = {
-      properties: item.content
+      properties: item.content,
     }
     return (
-      <div role="complementary" >
+      <div role="complementary">
         <ContentItems ITEMS={ITEMS} item={itemProperties} />
       </div>
     )
@@ -66,7 +80,7 @@ const Content = ({ item, id }) => {
   }
 
   return (
-    <React.Fragment >
+    <React.Fragment>
       {item && item.content && (
         <Block>
           <Layout
@@ -75,7 +89,8 @@ const Content = ({ item, id }) => {
             left={<Head />}
             right={<RightContent />}
           />
-        </Block>)}
+        </Block>
+      )}
     </React.Fragment>
   )
 }

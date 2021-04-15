@@ -53,7 +53,14 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-  const { defaultTags, dataTags, setDataTags, dataId, tagLabel, isEditMode } = props
+  const {
+    defaultTags,
+    dataTags,
+    setDataTags,
+    dataId,
+    tagLabel,
+    isEditMode,
+  } = props
   const [, theme] = useStyletron()
 
   const deleteTag = (index, tagId) => {
@@ -121,9 +128,13 @@ const DataTags = (props) => {
 
   return (
     <React.Fragment>
-        {!dataTags && !defaultTags && <Block role ="listitem" $style={{ ...theme.typography.font300 }}>Ingen data</Block>}
-        {getDefaultTags()}
-        {getTags()}
+      {!dataTags && !defaultTags && (
+        <Block role="listitem" $style={{ ...theme.typography.font300 }}>
+          Ingen data
+        </Block>
+      )}
+      {getDefaultTags()}
+      {getTags()}
     </React.Fragment>
   )
 }
@@ -333,14 +344,14 @@ export const Tagging = (props) => {
         {tagOptions && getOptions()}
         <Block marginTop="scale600">
           <div role="list">
-          <DataTags
-            defaultTags={defaultTags}
-            dataTags={dataTags}
-            setDataTags={setDataTags}
-            dataId={dataId}
-            tagLabel={tagLabel}
-            isEditMode={isEditMode}
-          />
+            <DataTags
+              defaultTags={defaultTags}
+              dataTags={dataTags}
+              setDataTags={setDataTags}
+              dataId={dataId}
+              tagLabel={tagLabel}
+              isEditMode={isEditMode}
+            />
           </div>
         </Block>
       </Header>

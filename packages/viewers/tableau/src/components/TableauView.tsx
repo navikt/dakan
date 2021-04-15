@@ -31,7 +31,10 @@ const TableauView = (props: any) => {
                 </LabelLarge>
               </StyledLink>
             </Block>
-            <StyledLink title={GetValue(() => view.properties.view_name)} href={GetValue(() => view.properties.contentUrl)}>
+            <StyledLink
+              title={GetValue(() => view.properties.view_name)}
+              href={GetValue(() => view.properties.contentUrl)}
+            >
               <img
                 src={GetValue(() => view.properties.preview)}
                 alt={`Graf til ${GetValue(() => view.properties.view_name)}`}

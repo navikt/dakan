@@ -292,7 +292,7 @@ export const navTheme = (borderRadius = '0px') => {
       border: grayDark,
       borderFocus: primary,
       borderSelected: primary,
-      
+
       buttonPrimaryFill: nadaDypBla,
       buttonPrimaryText: white,
       buttonPrimaryHover: nadaLysBla,

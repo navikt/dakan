@@ -23,6 +23,7 @@ export const PanelFacetView = ({
     seeMore,
     itemsPerBlock,
     title,
+    allowedList,
 }) => {
     const FacetCard = ({ data }) => {
         if (!data || data.length < 1) return null

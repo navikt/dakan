@@ -34,12 +34,12 @@ export const Heading = (props) => {
   if (props && props.headingLabel && props.headingText) {
     return (
       <div role="complementary" aria-label={props.headingText}>
-      <Block marginBottom="scale1200">
-        <HeadingXLarge>
-          <LabelMedium>{props.headingLabel}</LabelMedium>
-          {props.headingText}
-        </HeadingXLarge>
-      </Block>
+        <Block marginBottom="scale1200">
+          <HeadingXLarge>
+            <LabelMedium>{props.headingLabel}</LabelMedium>
+            {props.headingText}
+          </HeadingXLarge>
+        </Block>
       </div>
     )
   }
@@ -102,7 +102,6 @@ export const LargeWidth = (props) => {
             </Block>
           </Block>
         </Block>
-
       </Block>
       <Footer />
     </React.Fragment>
@@ -113,8 +112,17 @@ export const MediumWidth = (props) => {
   const [, theme] = useStyletron()
   return (
     <React.Fragment>
-      <Block display="flex" width="100%" minHeight="100vh" flexDirection="column">
-        <Block width="100%" paddingLeft={MARGIN_LEFT} paddingRight={MARGIN_RIGHT}>
+      <Block
+        display="flex"
+        width="100%"
+        minHeight="100vh"
+        flexDirection="column"
+      >
+        <Block
+          width="100%"
+          paddingLeft={MARGIN_LEFT}
+          paddingRight={MARGIN_RIGHT}
+        >
           <ToolBar {...props} breakpointWidth={theme.breakpoints.medium} />
           <Block display="flex" justifyContent="center" width="100%">
             <Block
@@ -138,7 +146,6 @@ export const MediumWidth = (props) => {
             </Block>
           </Block>
         </Block>
-
       </Block>
       <Footer />
     </React.Fragment>
@@ -167,7 +174,7 @@ export const SingleColumn = (props) => {
         </Block>
       </Block>
 
-      <Block 
+      <Block
         display="flex"
         justifyContent="center"
         paddingLeft={PADDING_LEFT}
@@ -237,7 +244,7 @@ const ThreeCols = (props) => {
         width="100%"
         paddingLeft={PADDING_LEFT}
       >
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block
@@ -290,7 +297,7 @@ const ThreeColsSearch = (props) => {
         width="100%"
         paddingLeft={PADDING_LEFT}
       >
-      <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
+        <ToolBar {...props} breakpointWidth={theme.breakpoints.large} />
       </Block>
       <Block display="flex" justifyContent="center" width="100%">
         <Block

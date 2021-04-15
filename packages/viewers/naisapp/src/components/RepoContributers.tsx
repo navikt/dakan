@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Table } from "baseui/table";
+import * as React from 'react'
+import { Table } from 'baseui/table'
 import { LabeledContent } from '@dakan/ui'
 
 const RepoContributers = (props: any) => {
@@ -14,10 +14,9 @@ const RepoContributers = (props: any) => {
   return (
     <React.Fragment>
       <LabeledContent description="Bidragsytere" list>
-        <Table columns={["Navn", "Siste commit dato"]} data={rows} />
+        <Table columns={['Navn', 'Siste commit dato']} data={rows} />
       </LabeledContent>
     </React.Fragment>
   )
-
 }
 export default RepoContributers

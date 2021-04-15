@@ -16,7 +16,11 @@ const Content = (props: any) => {
   const getDate = () => {
     if (!indexEntry.oppdatert) return null
     else {
-      return new Date(indexEntry.oppdatert).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+      return new Date(indexEntry.oppdatert).toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
     }
   }
 
@@ -50,8 +54,8 @@ const Content = (props: any) => {
                 source={indexEntry[entry.item].replace('(www', '(//www')}
               />
             ) : (
-                <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>
-              )}
+              <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>
+            )}
           </LabeledContent>
         </Block>
       )
@@ -115,10 +119,8 @@ const Content = (props: any) => {
     } else {
       return (
         indexEntry && (
-
           <LargeWidth headingLabel="Begrep" headingText={indexEntry.term}>
             <Block display={['block', 'block', 'flex']}>
-
               <Block flex={'3'}>
                 <div role="main">
                   {viewerVersion && viewerVersion === 'private' && (
@@ -128,9 +130,7 @@ const Content = (props: any) => {
                 </div>
               </Block>
               <Block
-                flex={
-                  viewerVersion && viewerVersion === 'private' ? '1' : '0'
-                }
+                flex={viewerVersion && viewerVersion === 'private' ? '1' : '0'}
                 marginLeft={['none', 'none', 'scale1000']}
               >
                 {viewerVersion && viewerVersion === 'private' && (
@@ -151,7 +151,6 @@ const Content = (props: any) => {
               </Block>
             </Block>
           </LargeWidth>
-
         )
       )
     }

@@ -1,9 +1,7 @@
 import React from 'react'
 import { Input } from '../input'
 import { Block } from 'baseui/block'
-import {
-  SearchIcon,
-} from '../icons/SearchIcon'
+import { SearchIcon } from '../icons/SearchIcon'
 
 import { Button } from '../button/Button'
 
@@ -16,7 +14,12 @@ export const Searchbox = (props) => {
   return (
     <Block display="flex">
       <Input {...props} />
-      <Button role="button" aria-label="Søk knapp" type="submit" startEnhancer={<SearchIcon fill="white" />}>
+      <Button
+        role="button"
+        aria-label="Søk knapp"
+        type="submit"
+        startEnhancer={<SearchIcon fill="white" />}
+      >
         Søk
       </Button>
     </Block>

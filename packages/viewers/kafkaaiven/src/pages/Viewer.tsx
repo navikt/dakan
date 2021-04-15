@@ -4,11 +4,8 @@ import { Metrics } from '@dakan/metrics'
 import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui'
 import { useNode } from '@dakan/hooks'
 
-
 import Content from '../components/Content'
 import exampleJson from '../resources/example.json'
-
-
 
 const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
@@ -28,10 +25,7 @@ const Viewer = (props: any) => {
     return (
       <Block>
         {getHeader()}
-        <Content
-          {...props}
-          data={exampleJson}
-        />
+        <Content {...props} data={exampleJson} />
       </Block>
     )
   }
@@ -44,8 +38,19 @@ const Viewer = (props: any) => {
     )
   }
 
-  if ((errorLoadingNode && !Object.keys(node).length) || !Object.keys(node).length) {
-    return <ErrorPage header layout errorMessage={errorMessage ? errorMessage : "Status 204 - No content found"} />
+  if (
+    (errorLoadingNode && !Object.keys(node).length) ||
+    !Object.keys(node).length
+  ) {
+    return (
+      <ErrorPage
+        header
+        layout
+        errorMessage={
+          errorMessage ? errorMessage : 'Status 204 - No content found'
+        }
+      />
+    )
   }
 
   return (
@@ -54,9 +59,7 @@ const Viewer = (props: any) => {
       {node && node.properties && (
         <Block>
           <Metrics page={node.id} section={''} />
-          <Content
-            data={node}
-          />
+          <Content data={node} />
         </Block>
       )}
     </React.Fragment>

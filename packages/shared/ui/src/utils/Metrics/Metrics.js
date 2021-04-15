@@ -16,7 +16,7 @@ export const Metrics = ({
     saveEvents: false,
     includeUtm: true,
     includeReferrer: true,
-    platform: window.location.toString()
+    platform: window.location.toString(),
   }
 
   React.useEffect(() => {
@@ -33,11 +33,9 @@ export const Metrics = ({
 
   return (
     <React.Fragment>
-      { page &&
-        section &&
-        gt &&
-        amplitude_project_id &&
-        amplitude_endpoint && <GoogleTagManager gtmId={gt} />}
+      {page && section && gt && amplitude_project_id && amplitude_endpoint && (
+        <GoogleTagManager gtmId={gt} />
+      )}
     </React.Fragment>
   )
 }

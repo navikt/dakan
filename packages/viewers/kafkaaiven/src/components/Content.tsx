@@ -32,13 +32,12 @@ const ANNOTATION_ITEMS = [
   { item: 'dcat.data.nav.no/title', label: 'Title' },
 ]
 
-
 const Content = (props: any): JSX.Element => {
   const { data } = props
 
   const Head = () => {
     const item = {
-      properties: data.properties.object.metadata
+      properties: data.properties.object.metadata,
     }
 
     return (
@@ -55,49 +54,47 @@ const Content = (props: any): JSX.Element => {
 
   const Spec = () => {
     const item = {
-      properties: data.properties.object.spec.config
+      properties: data.properties.object.spec.config,
     }
-    return (
-      <ContentItems ITEMS={SPEC_ITEMS} item={item} />
-    )
+    return <ContentItems ITEMS={SPEC_ITEMS} item={item} />
   }
 
   const Annotations = () => {
     const item = {
-      properties: data.properties.object.metadata.annotations
+      properties: data.properties.object.metadata.annotations,
     }
-    return (
-      <ContentItems ITEMS={ANNOTATION_ITEMS} item={item} />
-    )
+    return <ContentItems ITEMS={ANNOTATION_ITEMS} item={item} />
   }
 
   return (
     <Block>
-      {data && data.properties && data.properties.object && data.properties.object.metadata && (
-        <Layout
-          headingLabel="Kafka Aiven topic"
-          headingText={data.properties.object.metadata.name}
-          left={
-            <Block width="100%" >
-              <div role="main">
-              <Head />
-              {data.properties.object.spec && data.properties.object.spec.config && (
-                <Spec />
-              )}
-              </div>
-            </Block>
-          }
-          right={
-            <Block width="100%" >
-              <div role="complementary">
-              {data.properties.object.metadata.annotations && (
-                <Annotations />
-              )}
-              </div>
-            </Block>
-          }
-        />
-      )}
+      {data &&
+        data.properties &&
+        data.properties.object &&
+        data.properties.object.metadata && (
+          <Layout
+            headingLabel="Kafka Aiven topic"
+            headingText={data.properties.object.metadata.name}
+            left={
+              <Block width="100%">
+                <div role="main">
+                  <Head />
+                  {data.properties.object.spec &&
+                    data.properties.object.spec.config && <Spec />}
+                </div>
+              </Block>
+            }
+            right={
+              <Block width="100%">
+                <div role="complementary">
+                  {data.properties.object.metadata.annotations && (
+                    <Annotations />
+                  )}
+                </div>
+              </Block>
+            }
+          />
+        )}
     </Block>
   )
 }

@@ -15,7 +15,7 @@ const getLink = (row) => {
 
 export const OrgTeam = ({ id }: any) => {
   const [nodes, loadingNodes, errorLoadingNodes] = useNodeEdges(id, 'hasTeam')
-  
+
   const columns: any[] = [
     <TableBuilderColumn id="name" header="Navn">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
@@ -45,13 +45,12 @@ export const OrgTeam = ({ id }: any) => {
   }
 
   if (id === 'test') {
-
     return (
       <React.Fragment>
-          <Block width="100%" marginBottom="scale1200">
-            <Label>Org. team (Teamkatalogen)</Label>
-            {getTable(exampleTeam)}
-          </Block>
+        <Block width="100%" marginBottom="scale1200">
+          <Label>Org. team (Teamkatalogen)</Label>
+          {getTable(exampleTeam)}
+        </Block>
       </React.Fragment>
     )
   }

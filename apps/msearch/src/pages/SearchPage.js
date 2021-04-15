@@ -24,8 +24,15 @@ const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')
 const url = `${server}/${index}`
 
-const SORTKEYSOPTIONS = [{ 'id': "issued", "label": "Dato" }, { "id": "title.keyword", "label": "Tittel" },{ 'id': "_score", "label": "Relevans" }]
-const SORTDIRECTIONOPTIONS = [{ "id": "asc", "label": "Stigende" },{ "id": "desc", "label": "Synkende" }]
+const SORTKEYSOPTIONS = [
+    { id: 'issued', label: 'Dato' },
+    { id: 'title.keyword', label: 'Tittel' },
+    { id: '_score', label: 'Relevans' },
+]
+const SORTDIRECTIONOPTIONS = [
+    { id: 'asc', label: 'Stigende' },
+    { id: 'desc', label: 'Synkende' },
+]
 const VALUE_KEY = 'id'
 const VALUE_LABEL = 'label'
 
@@ -67,7 +74,7 @@ function SearchPage(props) {
     )
 
     function getSelectIndexPosition(options, key) {
-        const option = options.find(x => x.id === initialValues.get(key))
+        const option = options.find((x) => x.id === initialValues.get(key))
         if (option) {
             return [option]
         }
@@ -88,17 +95,27 @@ function SearchPage(props) {
         getSelectIndexPosition(SORTKEYSOPTIONS, 'sortKey')
     )
 
-    const [sortQuery, setSortQuery] = useState([{ [sortKey]: { order: sortOrder } }]);
+    const [sortQuery, setSortQuery] = useState([
+        { [sortKey]: { order: sortOrder } },
+    ])
 
     useEffect(() => {
         setSortOrder(sortOrderOption[0][VALUE_KEY])
         setSortKey(sortKeyOption[0][VALUE_KEY])
-        setSortQuery([{ [sortKeyOption[0][VALUE_KEY]]: { order: sortOrderOption[0][VALUE_KEY] } }]);
-
-    }, [sortKeyOption, sortOrderOption]);
+        setSortQuery([
+            {
+                [sortKeyOption[0][VALUE_KEY]]: {
+                    order: sortOrderOption[0][VALUE_KEY],
+                },
+            },
+        ])
+    }, [sortKeyOption, sortOrderOption])
 
     useEffect(() => {
-        if (sortKeyOption[0]["label"] === "Relevans" || sortKeyOption[0]["label"] === "Dato") {
+        if (
+            sortKeyOption[0]['label'] === 'Relevans' ||
+            sortKeyOption[0]['label'] === 'Dato'
+        ) {
             setSortOrderOption([SORTDIRECTIONOPTIONS[1]])
         } else {
             setSortOrderOption([SORTDIRECTIONOPTIONS[0]])
@@ -107,8 +124,8 @@ function SearchPage(props) {
 
     const onChange = (values) => {
         if (values.size) {
-            values.set("sortKey", sortKey)
-            values.set("sortOrder", sortOrder)
+            values.set('sortKey', sortKey)
+            values.set('sortOrder', sortOrder)
         }
         const q = toUrlQueryString(values)
         if (q) {
@@ -119,24 +136,124 @@ function SearchPage(props) {
     const fields = SEARCHFIELDS
 
     const getLeftSidebarFacet = (facet, index) => {
-
         let itemsPerBlock = 20
 
         if (facet.label === 'Type') {
             itemsPerBlock = 18
+            // TODO: innfør kategorisering & env
+            const data_facet_filter = [
+                'parquet',
+                'egg',
+                'tabell',
+                'bigquery',
+                'kafka-aiven-topic',
+                'kafka-topic',
+                'kafka',
+                'kafka-aiven',
+                'API',
+            ]
+            const dataviz_facet_filter = [
+                'datapackage',
+                'tableau',
+            ]
+            const misch_facet_filter = [
+                'begrep',
+                'Nais applikasjon',
+                'Nais team',
+                'Team',
+                'Person',
+                'Produktområde',
+            ]
+            return (
+                <Block marginBottom="scale1200" key="type_facet">
+                    <Block  key={`facet_data_label_${index}`}>
+                        <Block
+                            display={['none', 'flex']}
+                            marginBottom="scale750"
+                        >
+                            <Block marginRight="scale200">
+                                <FilterIcon size="24" fill="#3E3832" />
+                            </Block>
+                            <Label>Type innhold</Label>
+                        </Block>
+                    </Block>
+                    <Block
+                        marginBottom="scale800"
+                        key={`facet_data_${index}`}
+                        aria-label={`Filtrer etter ${facet.label}`}
+                    >
+                        <Facet
+                            title={'Data'}
+                            id={facet.label}
+                            fields={[`${facet.field}.keyword`]}
+                            showFilter={false}
+                            initialValue={initialValues.get(facet.field)}
+                            setPage={setPage}
+                            itemsPerBlock={itemsPerBlock}
+                            type="filtered"
+                            filter={data_facet_filter}
+                        />
+                    </Block>
+                    <Block
+                        marginBottom="scale800"
+                        key={`facet_dataviz_${index}`}
+                        aria-label={`Filtrer etter ${facet.label}`}
+                    >
+                        <Facet
+                            title={'Innsikt'}
+                            id={facet.label}
+                            fields={[`${facet.field}.keyword`]}
+                            showFilter={false}
+                            initialValue={initialValues.get(facet.field)}
+                            setPage={setPage}
+                            itemsPerBlock={itemsPerBlock}
+                            type="filtered"
+                            filter={dataviz_facet_filter}
+                        />
+                    </Block>
+                    <Block
+                        marginBottom="scale1200"
+                        key={`facet_misch_${index}`}
+                        aria-label={`Filtrer etter ${facet.label}`}
+                    >
+                        <Facet
+                            title={'Andre'}
+                            id={facet.label}
+                            fields={[`${facet.field}.keyword`]}
+                            showFilter={false}
+                            initialValue={initialValues.get(facet.field)}
+                            setPage={setPage}
+                            itemsPerBlock={itemsPerBlock}
+                            type="filtered"
+                            filter={misch_facet_filter}
+                        />
+                    </Block>
+                </Block>
+            )
         }
 
         return (
-            <Block marginBottom="scale1200" key={index} aria-label={`Filtrer etter ${facet.label}`}>
-                <Facet
-                    title={facet.label}
-                    id={facet.label}
-                    fields={[`${facet.field}.keyword`]}
-                    showFilter={false}
-                    initialValue={initialValues.get(facet.field)}
-                    setPage={setPage}
-                    itemsPerBlock={itemsPerBlock}
-                />
+            <Block key={`facet_block_${facet.label}_${index}`}>
+                <Block display={['none', 'flex']} marginBottom="scale750">
+                    <Block marginRight="scale200">
+                        <FilterIcon size="24" fill="#3E3832" />
+                    </Block>
+                    <Label>Tema</Label>
+                </Block>
+                <Block
+                    marginBottom="scale1200"
+                    key={`facet_${facet.label}_${index}`}
+                    aria-label={`Filtrer etter ${facet.label}`}
+                >
+                    <Facet
+                        id={facet.label}
+                        fields={[`${facet.field}.keyword`]}
+                        showFilter={false}
+                        initialValue={initialValues.get(facet.field)}
+                        setPage={setPage}
+                        itemsPerBlock={itemsPerBlock}
+                    />
+                </Block>
             </Block>
         )
     }
@@ -156,15 +273,8 @@ function SearchPage(props) {
     )
 
     const LeftSidebar = () => {
-
         return (
             <Block role="navigation">
-                <Block display={['none', 'flex']} marginBottom="scale750">
-                    <Block marginRight="scale200">
-                        <FilterIcon size="24" fill="#3E3832" />
-                    </Block>
-                    <Label>Filter</Label>
-                </Block>
                 <Block>
                     {facets.map((f, index) => getLeftSidebarFacet(f, index))}
                 </Block>
@@ -209,61 +319,67 @@ function SearchPage(props) {
                         </Panel>
                     </Accordion>
                 </Block>
-                <Block marginTop='scale600'>
+                <Block marginTop="scale600">
                     <Label>Sortering</Label>
                     <FlexGrid
                         flexGridColumnCount={2}
                         flexGridColumnGap="scale400"
                         flexGridRowGap="scale800"
                     >
-                    <FlexGridItem>
-                    <Block marginTop='scale400' aria-label="Sortering av data">
-                        <Select
-                            size={SIZE.mini}
-                            onChange={({ value }) => setSortKeyOption(value)}
-                            options={SORTKEYSOPTIONS}
-                            labelKey={VALUE_LABEL}
-                            valueKey={VALUE_KEY}
-                            value={sortKeyOption}
-                            clearable={false}
-                        >
-                        </Select>
-                    </Block>
-                    </FlexGridItem>
-                    <FlexGridItem>  
-                    <Block marginTop='scale400' aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]["label"]}`}>
-                        <Select
-                            size={SIZE.mini}
-                            onChange={({ value }) => setSortOrderOption(value)}
-                            options={SORTDIRECTIONOPTIONS}
-                            labelKey={VALUE_LABEL}
-                            value={sortOrderOption}
-                            valueKey={VALUE_KEY}
-                            clearable={false}>
-                        </Select>
-                    </Block>
-                    </FlexGridItem>
+                        <FlexGridItem>
+                            <Block
+                                marginTop="scale400"
+                                aria-label="Sortering av data"
+                            >
+                                <Select
+                                    size={SIZE.mini}
+                                    onChange={({ value }) =>
+                                        setSortKeyOption(value)
+                                    }
+                                    options={SORTKEYSOPTIONS}
+                                    labelKey={VALUE_LABEL}
+                                    valueKey={VALUE_KEY}
+                                    value={sortKeyOption}
+                                    clearable={false}
+                                ></Select>
+                            </Block>
+                        </FlexGridItem>
+                        <FlexGridItem>
+                            <Block
+                                marginTop="scale400"
+                                aria-label={`Sorteringsrekkefølge for ${sortKeyOption[0]['label']}`}
+                            >
+                                <Select
+                                    size={SIZE.mini}
+                                    onChange={({ value }) =>
+                                        setSortOrderOption(value)
+                                    }
+                                    options={SORTDIRECTIONOPTIONS}
+                                    labelKey={VALUE_LABEL}
+                                    value={sortOrderOption}
+                                    valueKey={VALUE_KEY}
+                                    clearable={false}
+                                ></Select>
+                            </Block>
+                        </FlexGridItem>
                     </FlexGrid>
                 </Block>
-                <Block marginTop='scale800' aria-label="Søkeresultater">
-                <Results
-                    sort={sortQuery}
-                    id="result"
-                    itemsPerPage="12"
-                    initialPage={1}
-                    page={page}
-                    setPage={setPage}
-                />
+                <Block marginTop="scale800" aria-label="Søkeresultater">
+                    <Results
+                        sort={sortQuery}
+                        id="result"
+                        itemsPerPage="12"
+                        initialPage={1}
+                        page={page}
+                        setPage={setPage}
+                    />
                 </Block>
             </Block>
         )
     }
 
     return (
-        <Elasticsearch
-            url={url}
-            onChange={(values) => onChange(values)}
-        >
+        <Elasticsearch url={url} onChange={(values) => onChange(values)}>
             <LayoutSearch
                 left={LeftSidebar()}
                 right={Content(props)}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { Heading, HeadingLevel } from 'baseui/heading';
-import { ParagraphLarge } from 'baseui/typography';
+import { Heading, HeadingLevel } from 'baseui/heading'
+import { ParagraphLarge } from 'baseui/typography'
 
 import { Header } from '../../components/header'
 import { FullWidth } from '../../components/layout'
@@ -9,13 +9,15 @@ import { FullWidth } from '../../components/layout'
 export const ErrorPage = (props) => {
   const { header, layout, errorMessage } = props
 
-  let message = ""
+  let message = ''
 
   try {
-      const jsonError = JSON.parse(errorMessage)
-      message = jsonError.message ? jsonError.message : JSON.stringify(jsonError)
+    const jsonError = JSON.parse(errorMessage)
+    message = jsonError.message ? jsonError.message : JSON.stringify(jsonError)
   } catch {
-    message = errorMessage.message ? errorMessage.message : JSON.stringify(errorMessage)
+    message = errorMessage.message
+      ? errorMessage.message
+      : JSON.stringify(errorMessage)
   }
 
   let content = (
@@ -32,12 +34,9 @@ export const ErrorPage = (props) => {
   )
 
   if (layout) {
-    content = (
-      <FullWidth>
-        {content}
-      </FullWidth>
-    )
-  } if (header) {
+    content = <FullWidth>{content}</FullWidth>
+  }
+  if (header) {
     content = (
       <React.Fragment>
         <Header />

@@ -15,7 +15,6 @@ const ITEMS = [
   { item: 'repo', label: 'Github repo', format: 'link' },
   { item: 'repo_description', label: 'Github repo beskrivelse' },
   { item: 'commit_count', label: 'Total commits' },
-
 ]
 
 const getLink = (row) => {
@@ -44,7 +43,11 @@ const getTable = (list) => {
     <TableBuilderColumn key="table_name" id="name" header="Team">
       {(row) => <Link href={getLink(row)}>{row.data.name}</Link>}
     </TableBuilderColumn>,
-    <TableBuilderColumn key="table_description" id="description" header="Beskrivelse">
+    <TableBuilderColumn
+      key="table_description"
+      id="description"
+      header="Beskrivelse"
+    >
       {(row) => row.data.description}
     </TableBuilderColumn>,
   ]
@@ -60,22 +63,22 @@ const Content = ({ item, memberOf }) => {
       </ParagraphMedium>
       <ContentItems ITEMS={ITEMS} item={item} />
 
-
       {item && item.properties && item.properties.daily_commit_frequency && (
-        <LabeledContent description='Commit historikk' list>
+        <LabeledContent description="Commit historikk" list>
           <Heatmap data={item.properties.daily_commit_frequency} />
         </LabeledContent>
       )}
 
-      {item && item.properties && item.properties.read_me_content &&(
-        <LabeledContent description='Repo readme' list>
-          {
-            item.properties.read_me_content.length > 200 ? item.properties.read_me_content.substring(0, 200) : item.properties.read_me_content
-          }... <Link href={item.properties.read_me_url}>les mer</Link>
+      {item && item.properties && item.properties.read_me_content && (
+        <LabeledContent description="Repo readme" list>
+          {item.properties.read_me_content.length > 200
+            ? item.properties.read_me_content.substring(0, 200)
+            : item.properties.read_me_content}
+          ... <Link href={item.properties.read_me_url}>les mer</Link>
         </LabeledContent>
       )}
 
-{/* 
+      {/* 
       {item && item.properties && item.properties.latest_commiters && (
         <RepoContributers tableData={item.properties.latest_commiters} />
       )}
@@ -86,11 +89,10 @@ const Content = ({ item, memberOf }) => {
   const Members = () => {
     if (item) {
       return (
-
         <Block width="100%" marginBottom="scale1200">
           <div role="complementary">
-          <LabelMedium>Tilhører team</LabelMedium>
-          {getTable(memberOf)}
+            <LabelMedium>Tilhører team</LabelMedium>
+            {getTable(memberOf)}
           </div>
         </Block>
       )

@@ -106,7 +106,7 @@ const Content = (props: any): JSX.Element => {
                   }}
                 >
                   Rediger innhold
-              </Button>
+                </Button>
               </div>
             </Block>
           }

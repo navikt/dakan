@@ -64,14 +64,14 @@ const Content = ({ item, members }) => {
       return (
         <Block width="100%" marginBottom="scale1200">
           <div role="complementary">
-          <Block marginBottom="scale1200">
-            <LabelMedium>Applikasjoner</LabelMedium>
-            {members && typeof members == 'object' && getTable()}
-          </Block>
-          <Block width="100%" marginBottom="scale1200">
-            <LabelMedium>Personer</LabelMedium>
-            <Members id={item.id} />
-          </Block>
+            <Block marginBottom="scale1200">
+              <LabelMedium>Applikasjoner</LabelMedium>
+              {members && typeof members == 'object' && getTable()}
+            </Block>
+            <Block width="100%" marginBottom="scale1200">
+              <LabelMedium>Personer</LabelMedium>
+              <Members id={item.id} />
+            </Block>
           </div>
         </Block>
       )

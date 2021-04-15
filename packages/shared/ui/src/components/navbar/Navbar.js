@@ -4,9 +4,7 @@ import { KIND } from 'baseui/button'
 import { Button } from '../button'
 import { StyledLink } from 'baseui/link'
 import { Layer } from 'baseui/layer'
-import {
-  Overflow as UserIcon,
-} from 'baseui/icon'
+import { Overflow as UserIcon } from 'baseui/icon'
 import { Unstable_AppNavBar as AppNavBar } from 'baseui/app-nav-bar'
 import { InfoIcon, ContactIcon } from '../icons'
 import { DataKatalogLogo } from '../header/logo'

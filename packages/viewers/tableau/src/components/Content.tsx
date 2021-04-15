@@ -115,7 +115,7 @@ const Content = (props: any): JSX.Element => {
                   }}
                 >
                   Rediger innhold
-              </Button>
+                </Button>
               </div>
             </Block>
           }
@@ -186,19 +186,21 @@ const Content = (props: any): JSX.Element => {
               </Block>
             </div>
           }
-          right=
-          {viewList && viewList.length > 0 && (
-            <div role="navigation">
-              <div role="list">
-                <TableauViewList
-                  viewList={viewList}
-                  tagOptions={tagOptions}
-                  clientUser={clientUser}
-                  isEditMode={isEditMode}
-                />
+          right={
+            viewList &&
+            viewList.length > 0 && (
+              <div role="navigation">
+                <div role="list">
+                  <TableauViewList
+                    viewList={viewList}
+                    tagOptions={tagOptions}
+                    clientUser={clientUser}
+                    isEditMode={isEditMode}
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )
+          }
         />
       )}
     </Block>

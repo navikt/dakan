@@ -31,7 +31,11 @@ const CustomLink = (props) => {
   const link = useCss({ textDecoration: 'none' })
   if (home_link) {
     return (
-      <StyledLink href={home_link} className={link} aria-label="Link til Hovedside">
+      <StyledLink
+        href={home_link}
+        className={link}
+        aria-label="Link til Hovedside"
+      >
         <Block
           font={props.font || 'font650'}
           color={props.color || 'colorPrimary'}
@@ -56,7 +60,12 @@ const CustomLink = (props) => {
 // }
 
 const NoStyleLink = (props) => (
-  <StyledLink alt={props.alt} aria-label={props.ariaLabel} style={{ textDecoration: 'none' }} href={props.href}>
+  <StyledLink
+    alt={props.alt}
+    aria-label={props.ariaLabel}
+    style={{ textDecoration: 'none' }}
+    href={props.href}
+  >
     {props.children}
   </StyledLink>
 )
@@ -80,8 +89,8 @@ const UserLogin = (props) => {
               {props.clientUser.userId}
             </Label2>
             <Block display="flex" width="100%">
-              <StyledLink 
-                aria-label="Logg ut knapp" 
+              <StyledLink
+                aria-label="Logg ut knapp"
                 alt="Logg ut"
                 href={`${graph_server}/logout?redirect_url=${window.location.href}`}
               >
@@ -98,8 +107,8 @@ const UserLogin = (props) => {
     )
   } else {
     return (
-      <StyledLink 
-        aria-label="Logg inn knapp" 
+      <StyledLink
+        aria-label="Logg inn knapp"
         alt="Logg inn"
         href={`${graph_server}/login?redirect_url=${window.location.href}`}
         style={{ textDecoration: 'none' }}
@@ -128,7 +137,9 @@ const SideBar = (props) => {
                 </Label2>
               </Block>
               <Block>
-                <StyledLink aria-label="Logg ut knapp" alt="Logg ut"
+                <StyledLink
+                  aria-label="Logg ut knapp"
+                  alt="Logg ut"
                   href={`${graph_server}/logout?redirect_url=${window.location.href}`}
                 >
                   Logg ut
@@ -199,7 +210,7 @@ export const Header = (props) => {
   const [, theme] = useStyletron()
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false)
   const clientUser = useClientUser()
- 
+
   const getMobileView = () => {
     return (
       <React.Fragment>
@@ -221,20 +232,20 @@ export const Header = (props) => {
           justifyContent="space-between"
         >
           <h1 aria-label="Datakatalogen">
-          <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
+            <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
           </h1>
           <nav role="navigation" aria-label="Mobil header meny">
-          <Block marginTop="16px">
-            <Button
-              kind={KIND.minimal}
-              onClick={() => {
-                setIsSideBarOpen(true)
-              }}
-              startEnhancer={<MenuIcon size={iconSize} />}
-            >
-              Meny
-            </Button>
-          </Block>
+            <Block marginTop="16px">
+              <Button
+                kind={KIND.minimal}
+                onClick={() => {
+                  setIsSideBarOpen(true)
+                }}
+                startEnhancer={<MenuIcon size={iconSize} />}
+              >
+                Meny
+              </Button>
+            </Block>
           </nav>
         </Block>
       </React.Fragment>
@@ -245,7 +256,11 @@ export const Header = (props) => {
     return (
       <Block>
         {props && props.config && props.config.about && (
-          <NoStyleLink ariaLabel="Om Datakatalogen link" alt="Om Datakatalogen" href={about_link}>
+          <NoStyleLink
+            ariaLabel="Om Datakatalogen link"
+            alt="Om Datakatalogen"
+            href={about_link}
+          >
             <Button
               kind={KIND.minimal}
               startEnhancer={
@@ -305,10 +320,20 @@ export const Header = (props) => {
             alignItems="stretch"
             justifyContent="space-between"
           >
-            <HeadingXXLarge alignSelf="center" alt="Om Datakatalogen link" aria-label="Datakatalogen">
-            <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
-            </HeadingXXLarge >
-            <Block  role="navigation" aria-label="Header meny" display="flex" justifyContent="flex-end" alignSelf="center">
+            <HeadingXXLarge
+              alignSelf="center"
+              alt="Om Datakatalogen link"
+              aria-label="Datakatalogen"
+            >
+              <Brand {...props} setIsSideBarOpen={setIsSideBarOpen} />
+            </HeadingXXLarge>
+            <Block
+              role="navigation"
+              aria-label="Header meny"
+              display="flex"
+              justifyContent="flex-end"
+              alignSelf="center"
+            >
               {getAboutButton()}
               {getContactButton()}
               <Block>
@@ -332,7 +357,6 @@ export const Header = (props) => {
           height="scale100"
         />
       </Block>
-
     </div>
   )
 }

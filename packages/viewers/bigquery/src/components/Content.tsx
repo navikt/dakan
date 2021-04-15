@@ -5,21 +5,19 @@ import Metadata from './Metadata'
 import AuditLogs from './AuditLogs'
 import Schema from './Schema'
 
-
 const Content = ({ item, id }) => {
   if (!item) return null
 
   const Right = () => {
     return (
       <Block>
-        <Schema id={1}  />
-        <Block marginTop='scale1200'>
-        <AuditLogs id={1} />
+        <Schema id={1} />
+        <Block marginTop="scale1200">
+          <AuditLogs id={1} />
         </Block>
-    </Block>
+      </Block>
     )
   }
-
 
   return (
     <React.Fragment>
@@ -28,7 +26,7 @@ const Content = ({ item, id }) => {
           headingLabel="BigQuery"
           headingText={item.title}
           left={<Metadata item={item} />}
-          right={<Right/>}
+          right={<Right />}
         />
       </Block>
     </React.Fragment>

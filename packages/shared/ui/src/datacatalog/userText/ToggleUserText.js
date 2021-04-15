@@ -346,7 +346,7 @@ export const ToggleUserText = (prop) => {
                 tabindex="0"
                 $style={{ maxHeight: textScreenSize, overflowY: 'scroll' }}
               >
-                  {getUserTexts()}
+                {getUserTexts()}
               </Block>
               <Block paddingTop="scale400">
                 <Accordion
@@ -373,17 +373,17 @@ export const ToggleUserText = (prop) => {
               {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
             </Block>
           ) : (
-              <React.Fragment>
-                <Block
-                  marginTop="scale400"
-                  marginBottom="scale400"
-                  $style={{ ...theme.typography.font300 }}
-                >
-                  Ingen data
+            <React.Fragment>
+              <Block
+                marginTop="scale400"
+                marginBottom="scale400"
+                $style={{ ...theme.typography.font300 }}
+              >
+                Ingen data
               </Block>
-                {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
-              </React.Fragment>
-            )}
+              {getAddTextButton(setIsAddTextModalOpen, title, isEditMode)}
+            </React.Fragment>
+          )}
         </Block>
       }
     </Block>

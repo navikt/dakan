@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import env from '@beam-australia/react-env';
-import { Block } from 'baseui/block';
-import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui';
-import { Metrics } from '@dakan/metrics';
-import { useNode, useNodeEdges, useContent } from '@dakan/hooks';
+import {Block} from 'baseui/block';
+import {Header, LoadingSpinner, ErrorPage} from '@dakan/ui';
+import {Metrics} from '@dakan/metrics';
+import {useNode, useNodeEdges, useContent} from '@dakan/hooks';
 
 import Content from '../component/Content';
 import exampleJson from '../resources/example.json';
@@ -97,7 +97,7 @@ const Viewer = (props: any) => {
     }
 
     if ((errorLoadingNode && !Object.keys(node).length) || !Object.keys(node).length) {
-        return <ErrorPage header layout errorMessage={errorMessage ? errorMessage : "Status 204 - No content found"} />
+        return <ErrorPage header layout errorMessage={errorMessage ? errorMessage : 'Status 204 - No content found'} />;
     }
 
     return (

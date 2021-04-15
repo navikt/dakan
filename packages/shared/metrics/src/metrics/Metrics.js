@@ -30,11 +30,9 @@ export const Metrics = ({ page, section }) => {
 
   return (
     <React.Fragment>
-      { page &&
-        section &&
-        gt &&
-        amplitude_project_id &&
-        amplitude_endpoint && <GoogleTagManager gtmId={gt} />}
+      {page && section && gt && amplitude_project_id && amplitude_endpoint && (
+        <GoogleTagManager gtmId={gt} />
+      )}
     </React.Fragment>
   )
 }

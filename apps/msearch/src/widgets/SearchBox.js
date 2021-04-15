@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSharedContext } from '../components/SharedContextProvider'
 import SearchBoxView from '../components/SearchBoxView'
 
-function SearchBox({ customQuery, fields, id, initialValue, placeholder, setPage }) {
+function SearchBox({
+    customQuery,
+    fields,
+    id,
+    initialValue,
+    placeholder,
+    setPage,
+}) {
     const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [value, setValue] = useState(initialValue || '')
     const [searchTerm, setSearchTerm] = useState(initialValue || '')
@@ -44,7 +51,7 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder, setPage
             return customQuery(query)
         } else if (fields) {
             return query
-                ? { multi_match: { query, type: "most_fields", fields } }
+                ? { multi_match: { query, type: 'most_fields', fields } }
                 : { match_all: {} }
         }
         return { match_all: {} }
@@ -79,7 +86,8 @@ function SearchBox({ customQuery, fields, id, initialValue, placeholder, setPage
     useEffect(() => () => dispatch({ type: 'deleteWidget', key: id }), [])
 
     return (
-        <div>{isSearching}
+        <div>
+            {isSearching}
             <SearchBoxView
                 searchTerm={searchTerm}
                 placeholder={placeholder}

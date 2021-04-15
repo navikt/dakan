@@ -109,7 +109,9 @@ const Result = ({ result, titleField, even }) => {
                 )}
                 <Paragraph2 overflow={'wrap'}>
                     {description && (
-                        <span dangerouslySetInnerHTML={{ __html: description }} />
+                        <span
+                            dangerouslySetInnerHTML={{ __html: description }}
+                        />
                     )}
                 </Paragraph2>
                 <Block

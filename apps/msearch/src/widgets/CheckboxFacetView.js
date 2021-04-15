@@ -22,7 +22,7 @@ export const CheckboxFacetView = ({
     setSize,
     seeMore,
     itemsPerBlock,
-    title
+    title,
 }) => {
     const labelRef = React.useRef(null)
     return (
@@ -47,11 +47,16 @@ export const CheckboxFacetView = ({
                     key={`checkboxfacet_${id}_${item.key}`}
                     checked={isChecked(item)}
                     title={getFilterValueDisplay(item.key)}
-                    ariaLabel={`Filtrer etter ${getFilterValueDisplay(item.key)}`}
+                    ariaLabel={`Filtrer etter ${getFilterValueDisplay(
+                        item.key
+                    )}`}
                     onChange={(e) => {
                         handleChange(item, e.target.checked)
                         if (e.target.checked) {
-                            logFilterUseToAmplitude(getFilterValueDisplay(item.key), title)
+                            logFilterUseToAmplitude(
+                                getFilterValueDisplay(item.key),
+                                title
+                            )
                         }
                         labelRef.current.scrollIntoView()
                     }}
@@ -59,14 +64,16 @@ export const CheckboxFacetView = ({
                     {getFilterValueDisplay(item.key)} ({item.doc_count})
                 </Checkbox>
             ))}
-            {data.length === size ? <Button
-                key={`button_${id}`}
-                onClick={() => setSize(size + (itemsPerBlock || 9))}
-                kind={KIND.minimal}
-                aria-label={`Vis flere filter for ${title}`}
-            >
-                {seeMore || 'vis flere'}
-            </Button> : null}
+            {data.length === size ? (
+                <Button
+                    key={`button_${id}`}
+                    onClick={() => setSize(size + (itemsPerBlock || 9))}
+                    kind={KIND.minimal}
+                    aria-label={`Vis flere filter for ${title}`}
+                >
+                    {seeMore || 'vis flere'}
+                </Button>
+            ) : null}
         </Block>
     )
 }

@@ -3,6 +3,7 @@ import { toTermQueries } from '../components/utils'
 import { useSharedContext } from '../components/SharedContextProvider'
 import { CheckboxFacetView } from './CheckboxFacetView'
 import { PanelFacetView } from './PanelFacetView'
+import { StyledAvatar } from 'baseui/avatar'
 
 function Facet({
     fields,
@@ -16,7 +17,8 @@ function Facet({
     items,
     type,
     title,
-    setPage
+    setPage,
+    filter,
 }) {
     const [{ widgets }, dispatch] = useSharedContext()
     // Current filter (search inside facet value).
@@ -27,7 +29,7 @@ function Facet({
     const [value, setValue] = useState(initialValue || [])
     // Data from internal queries (Elasticsearch queries are performed via Listener)
     const { result } = widgets.get(id) || {}
-    const data = (result && result.data) || []
+    let data = (result && result.data) || []
     const total = (result && result.total) || 0
 
     // Update widgets properties on state change.
@@ -72,6 +74,15 @@ function Facet({
     // Is current item checked?
     function isChecked(item) {
         return value.includes(item.key)
+    }
+
+    if (filter && Array.isArray(filter)) {
+        let filteredData = data.filter((dp) => {
+            if (filter && filter.includes(dp.key)) {
+                return dp
+            }
+        })
+        data = filteredData
     }
 
     return (

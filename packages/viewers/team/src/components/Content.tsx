@@ -29,8 +29,8 @@ const Content = ({ item, members }) => {
       return (
         <Block width="100%" height="800px">
           <div role="complementary">
-          <LabelMedium>Medlemmer av teamet</LabelMedium>
-          <PersonTable members={members} />
+            <LabelMedium>Medlemmer av teamet</LabelMedium>
+            <PersonTable members={members} />
           </div>
         </Block>
       )

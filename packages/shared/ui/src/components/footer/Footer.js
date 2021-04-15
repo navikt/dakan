@@ -20,7 +20,7 @@ const Link = (props) => {
     <StyledLink
       {...props}
       style={{
-        backgroundColor:'#DEF3FF',
+        backgroundColor: '#DEF3FF',
         textDecoration: 'none',
         color: '#3E3832',
       }}

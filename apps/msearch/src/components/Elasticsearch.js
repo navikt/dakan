@@ -22,8 +22,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
-
-
 import React from 'react'
 import { SharedContextProvider } from './SharedContextProvider'
 import Listener from './Listener'
@@ -34,7 +32,7 @@ export default function ({ children, url, onChange, headers }) {
         listenerEffect: null,
         widgets: new Map(),
         headers,
-        isSearching: false
+        isSearching: false,
     }
 
     const reducer = (state, action) => {

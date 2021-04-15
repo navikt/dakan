@@ -5,10 +5,8 @@ import { Spinner } from 'baseui/spinner'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
-
-
 const Content = ({ id }) => {
-  const [data, loading, error]  = useGoogleCatalogMetadata('lookup')
+  const [data, loading, error] = useGoogleCatalogMetadata('lookup')
 
   const Schema = () => {
     if (data && data[0] && data[0]['schema'] && data[0]['schema']['columns']) {
@@ -16,30 +14,23 @@ const Content = ({ id }) => {
       if (!Array.isArray(columns)) {
         return null
       }
-      let content : any[] = []
-      const cols = columns.map((col,index) => {
-        content.push([col.column,col.description,col.type])
+      let content: any[] = []
+      const cols = columns.map((col, index) => {
+        content.push([col.column, col.description, col.type])
       })
-      return (
-      <Table
-        columns={["Navn", "Beskrivelse", "Type"]}
-        data={content}
-      />
-      )
+      return <Table columns={['Navn', 'Beskrivelse', 'Type']} data={content} />
     }
     return null
   }
 
   return (
     <React.Fragment>
-    <Block>
+      <Block>
         <Label>Skjema</Label>
-        {error ? error : null} 
-        {loading ?  <Spinner size='40px' /> : 
-          <Schema />
-        }
+        {error ? error : null}
+        {loading ? <Spinner size="40px" /> : <Schema />}
       </Block>
     </React.Fragment>
   )
-  }
+}
 export default Content

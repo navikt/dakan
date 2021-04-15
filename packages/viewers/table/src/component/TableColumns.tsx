@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Block } from 'baseui/block';
-import { LabelLarge } from 'baseui/typography';
+import {Block} from 'baseui/block';
+import {LabelLarge} from 'baseui/typography';
 
 import ColumnViewer from './ColumnViewer';
 
 const TableColumns = (props: any): JSX.Element => {
-    const { columnsToView, tagOptions, isEditMode } = props;
+    const {columnsToView, tagOptions, isEditMode} = props;
 
     if (!columnsToView.length) {
         return (

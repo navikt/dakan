@@ -18,7 +18,7 @@ function Results({
     id,
     sort,
     page,
-    setPage
+    setPage,
 }) {
     const [{ widgets, isSearching }, dispatch] = useSharedContext()
     const [initialization, setInitialization] = useState(true)
@@ -29,13 +29,15 @@ function Results({
         widget && widget.result && widget.result.total ? widget.result.total : 0
     itemsPerPage = itemsPerPage || 10
 
-    const total = totalPages && (totalPages.value || totalPages.value === 0) ? totalPages.value : totalPages
+    const total =
+        totalPages && (totalPages.value || totalPages.value === 0)
+            ? totalPages.value
+            : totalPages
 
     useEffect(() => {
         setPage(initialization ? initialPage : 1)
         return () => setInitialization(false)
     }, [initialPage, initialization, total.value])
-
 
     // Update context with page (and itemsPerPage)
     useEffect(() => {
@@ -67,12 +69,12 @@ function Results({
             onPageChange={({ nextPage }) => {
                 setPage(Math.min(Math.max(nextPage, 1)))
             }}
-            overrides={
-                {
-                    NextButton: { props: { "aria-label": "Knapp til neste side" } },
-                    PrevButton: { props: { "aria-label": "Knapp til forrige side" } }
-                }
-            }
+            overrides={{
+                NextButton: { props: { 'aria-label': 'Knapp til neste side' } },
+                PrevButton: {
+                    props: { 'aria-label': 'Knapp til forrige side' },
+                },
+            }}
         />
     )
 
@@ -80,10 +82,12 @@ function Results({
         <Block>
             <Block marginTop="scale400" marginBottom="scale600" width="100%">
                 {isSearching ? (
-                    <Spinner size='40px' />
-                ) :
-                    <Label>{total ? `Antall treff: ${total}` : 'Ingen treff'}</Label>
-                }
+                    <Spinner size="40px" />
+                ) : (
+                    <Label>
+                        {total ? `Antall treff: ${total}` : 'Ingen treff'}
+                    </Label>
+                )}
             </Block>
             <ActiveFilters id="af" />
             <Block
@@ -111,12 +115,7 @@ function Results({
                 <Block marginTop="scale400">
                     {total > 1
                         ? pagination
-                            ? pagination(
-                                total,
-                                itemsPerPage,
-                                page,
-                                setPage
-                            )
+                            ? pagination(total, itemsPerPage, page, setPage)
                             : defaultPagination()
                         : null}
                 </Block>

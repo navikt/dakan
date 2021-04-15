@@ -29,14 +29,14 @@ const ColumnViewer = (prop: any) => {
         ];
 
         return items.map((entry: any, index: number) => {
-            let value = GetValue(() => columnData.properties[entry.item])
-            if (entry.label === 'Personopplysninger'){
-                if(value === 0) {
-                    value = 'False'
+            let value = GetValue(() => columnData.properties[entry.item]);
+            if (entry.label === 'Personopplysninger') {
+                if (value === 0) {
+                    value = 'False';
                 } else if (value === 1) {
-                    value = 'True'
+                    value = 'True';
                 } else {
-                    value = 'Ikke vurdert'
+                    value = 'Ikke vurdert';
                 }
             }
 
@@ -51,19 +51,18 @@ const ColumnViewer = (prop: any) => {
     };
 
     const isDataEmpty = (list: any) => {
-        const listLength = list.length
-        let numberOfEmptyData = 0
+        const listLength = list.length;
+        let numberOfEmptyData = 0;
         list.forEach((data: any) => {
-            if (data[1] === "Ingen data"){
-                numberOfEmptyData += 1 
+            if (data[1] === 'Ingen data') {
+                numberOfEmptyData += 1;
             }
-        })
-        if (listLength === numberOfEmptyData) return true 
+        });
+        if (listLength === numberOfEmptyData) return true;
         else {
-            return false
+            return false;
         }
-    }
-
+    };
 
     const getDataQuality = () => {
         let items = [
@@ -104,8 +103,8 @@ const ColumnViewer = (prop: any) => {
             ['Interkvartil intervall', GetValue(() => columnData.properties.number_metrics.num_iqr.toFixed(2))],
         ];
 
-        if (isDataEmpty(quantileMetrics)){
-            quantileMetrics = []
+        if (isDataEmpty(quantileMetrics)) {
+            quantileMetrics = [];
         }
 
         let descriptiveMetrics = [
@@ -119,24 +118,26 @@ const ColumnViewer = (prop: any) => {
             ['Antall 0', GetValue(() => columnData.properties.number_metrics.num_zero)],
         ];
 
-        if (isDataEmpty(descriptiveMetrics)){
-            descriptiveMetrics = []
+        if (isDataEmpty(descriptiveMetrics)) {
+            descriptiveMetrics = [];
         }
 
-        if(descriptiveMetrics.length === 0 && quantileMetrics.length === 0) {
-            return (
-                <Block/>
-            )
+        if (descriptiveMetrics.length === 0 && quantileMetrics.length === 0) {
+            return <Block />;
         }
 
         return (
             <Block display={['block', 'flex']}>
-               {quantileMetrics.length > 0 && ( <Block width={'100%'}>
-                    <Table columns={['Kvantil Metrikker', '']} data={quantileMetrics} />
-                </Block>)}
-                {descriptiveMetrics.length > 0 && (<Block width={'100%'}>
-                    <Table columns={['Deskriptive Metrikker', '']} data={descriptiveMetrics} />
-                </Block>)}
+                {quantileMetrics.length > 0 && (
+                    <Block width={'100%'}>
+                        <Table columns={['Kvantil Metrikker', '']} data={quantileMetrics} />
+                    </Block>
+                )}
+                {descriptiveMetrics.length > 0 && (
+                    <Block width={'100%'}>
+                        <Table columns={['Deskriptive Metrikker', '']} data={descriptiveMetrics} />
+                    </Block>
+                )}
             </Block>
         );
     };
@@ -167,13 +168,13 @@ const ColumnViewer = (prop: any) => {
             ];
         }
 
-        if(isDataEmpty(dataTypeItems)){
-            dataTypeItems = []
+        if (isDataEmpty(dataTypeItems)) {
+            dataTypeItems = [];
         }
 
         return (
             <Block>
-                {dataTypeItems.length > 0  && (
+                {dataTypeItems.length > 0 && (
                     <Table columns={[`${columnData.properties.data_type} Metrikker`, '']} data={dataTypeItems} />
                 )}
             </Block>
@@ -196,8 +197,8 @@ const ColumnViewer = (prop: any) => {
             ];
         }
 
-        if(isDataEmpty(metaData)){
-            metaData = []
+        if (isDataEmpty(metaData)) {
+            metaData = [];
         }
 
         return <Block>{metaData && metaData.length > 0 && <Table columns={['', '']} data={metaData} />}</Block>;

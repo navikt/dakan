@@ -14,7 +14,7 @@ const ITEMS = [
   { item: 'resourcetype', label: 'Ansatt' },
   { item: 'startdato', label: 'Startdato' },
   { item: 'sluttdato', label: 'Sluttdato' },
-  { item: 'testNumber', label: 'number'}
+  { item: 'testNumber', label: 'number' },
 ]
 
 const item = {

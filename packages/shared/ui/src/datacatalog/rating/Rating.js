@@ -50,8 +50,7 @@ export const Rating = (props) => {
   const updateRatings = (newRatings, newRating, rateValue) => {
     newRatings
       .filter(
-        (rating) =>
-          rating.properties.author === newRating.properties.author,
+        (rating) => rating.properties.author === newRating.properties.author,
       )
       .map((rate) => {
         setUserFound(true)
@@ -137,10 +136,14 @@ export const Rating = (props) => {
               onChange={(e) => {
                 CheckIfAuthorized(() => upsertRate(e.value))
               }}
-              overrides={{Item:{props:(itemprops) => ({
-                ...itemprops,
-                title: `${itemprops.$index} star rating`
-              })}}}
+              overrides={{
+                Item: {
+                  props: (itemprops) => ({
+                    ...itemprops,
+                    title: `${itemprops.$index} star rating`,
+                  }),
+                },
+              }}
             />
           </Block>
           <Block display="flex" flexDirection="column" justifyContent="center">
@@ -158,8 +161,8 @@ export const Rating = (props) => {
           </Block>
         </React.Fragment>
       ) : (
-          <Spinner size={22} />
-        )}
+        <Spinner size={22} />
+      )}
     </Block>
   )
 }
