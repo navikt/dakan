@@ -146,10 +146,7 @@ function SearchPage(props) {
                 'egg',
                 'tabell',
                 'bigquery',
-                'kafka-aiven-topic',
-                'kafka-topic',
                 'kafka',
-                'kafka-aiven',
                 'API',
             ]
             const dataviz_facet_filter = [
