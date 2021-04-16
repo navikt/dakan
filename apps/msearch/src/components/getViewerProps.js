@@ -104,14 +104,6 @@ export function getViewerProps(type) {
 
     if (type === 'kafka_topic' || type === 'kafka') {
         return {
-            link: env('KAFKA_TOPIC_VIEWER_URL') || '/viewer',
-            backgroundColor: theme.colors.tagKafkaBackgroundColor,
-            borderColor: theme.colors.tagKafkaBorderColor,
-        }
-    }
-
-    if (type === 'kafka_aiven_topic' || type === 'kafka_topic_aiven' || type === 'kafka_aiven') {
-        return {
             link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer',
             backgroundColor: theme.colors.tagKafkaBackgroundColor,
             borderColor: theme.colors.tagKafkaBorderColor,
