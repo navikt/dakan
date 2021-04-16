@@ -51,7 +51,7 @@ export function getLocal(label) {
     if (label === 'opplysningstype') return 'Opplysningstype'
     if (label === 'kafka') return 'Datastrøm'
     if (label === 'tabell') return 'Tabell'
-    if (label === 'kafka topic') return 'Kafka'
+    if (label === 'kafka_topic') return 'Kafka'
     if (label === 'kafka_aiven_topic' || label === 'kafka_topic_aiven')
         return 'Kafka Aiven'
     if (label === 'tableau') return 'Tableau'
