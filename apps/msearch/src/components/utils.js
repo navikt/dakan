@@ -50,7 +50,7 @@ export function getLocal(label) {
     if (label === 'pii-type') return 'Opplysningstype'
     if (label === 'opplysningstype') return 'Opplysningstype'
     if (label === 'kafka') return 'Datastrøm'
-    if (label === 'tabell') return 'Tabell'
+    if (label === 'tabell') return 'Oracle/PG'
     if (label === 'kafka topic') return 'Kafka'
     if (label === 'kafka_aiven_topic' || label === 'kafka_topic_aiven')
         return 'Kafka Aiven'

@@ -145,6 +145,8 @@ function SearchPage(props) {
                 'parquet',
                 'egg',
                 'tabell',
+                'oracle',
+                'postgres',
                 'bigquery',
                 'kafka-aiven-topic',
                 'kafka-topic',
