@@ -146,7 +146,7 @@ function SearchPage(props) {
                 'egg',
                 'tabell',
                 'bigquery',
-                'kafka',
+                'kafka_topic',
                 'API',
             ]
             const dataviz_facet_filter = [
