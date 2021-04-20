@@ -48,7 +48,7 @@ export function getViewerProps(type) {
         }
     }
 
-    if (type === 'begrep' || 'godkjent_begrep' || type === 'approved_term') {
+    if (type === 'begrep' || type === 'godkjent_begrep') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer'
         }
@@ -73,12 +73,6 @@ export function getViewerProps(type) {
     }
 
     if (type === 'kafka_topic' || type === 'kafka') {
-        return {
-            link: env('KAFKA_TOPIC_VIEWER_URL') || '/viewer'
-        }
-    }
-
-    if (type === 'kafka_aiven_topic' || type === 'kafka_topic_aiven' || type === 'kafka_aiven') {
         return {
             link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer'
         }

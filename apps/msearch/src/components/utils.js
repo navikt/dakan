@@ -51,9 +51,7 @@ export function getLocal(label) {
     if (label === 'opplysningstype') return 'Opplysningstype'
     if (label === 'kafka') return 'Datastrøm'
     if (label === 'tabell') return 'Oracle/PG'
-    if (label === 'kafka topic') return 'Kafka'
-    if (label === 'kafka_aiven_topic' || label === 'kafka_topic_aiven')
-        return 'Kafka Aiven'
+    if (label === 'kafka_topic') return 'Kafka'
     if (label === 'tableau') return 'Tableau'
     if (label === 'person') return 'Person'
     if (label === 'NaisApp') return 'Nais App'
