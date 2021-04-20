@@ -148,10 +148,7 @@ function SearchPage(props) {
                 'oracle',
                 'postgres',
                 'bigquery',
-                'kafka-aiven-topic',
-                'kafka-topic',
-                'kafka',
-                'kafka-aiven',
+                'kafka_topic',
                 'API',
             ]
             const dataviz_facet_filter = [
