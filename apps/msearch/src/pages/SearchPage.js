@@ -157,6 +157,7 @@ function SearchPage(props) {
             ]
             const misch_facet_filter = [
                 'begrep',
+                'godkjent_begrep',
                 'Nais applikasjon',
                 'Nais team',
                 'Team',

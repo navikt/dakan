@@ -48,7 +48,7 @@ export function getViewerProps(type) {
         }
     }
 
-    if (type === 'godkjent_begrep' || type === 'approved_term') {
+    if (type === 'begrep' || 'godkjent_begrep' || type === 'approved_term') {
         return {
             link: env('TERM_VIEWER_URL') || '/viewer'
         }
