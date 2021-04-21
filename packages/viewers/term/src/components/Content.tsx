@@ -106,12 +106,20 @@ const Content = (props: any) => {
   }
 
   const getContent = () => {
+
+    const termStatus = [
+      'Revisjon', 'Høring', 'Manuell behandling'
+    ]
+
+    const statusText =  termStatus.includes(indexEntry.status) ? 'er under' :  'har status'
+
     if (indexEntry && indexEntry.status !== 'Godkjent begrep') {
       return (
         <div role="main">
           <Block display="flex" justifyContent="center">
             <HeadingLevel>
-              <Heading>Begrepet '{indexEntry.term}' er under arbeid.</Heading>
+              
+              <Heading>Begrepet '{indexEntry.term}' {statusText} {indexEntry.status.toLowerCase()}.</Heading>
             </HeadingLevel>
           </Block>
         </div>
