@@ -1,0 +1,17 @@
+on:
+  push:
+    paths:
+      - packages/nais/react-config/**
+
+jobs:
+  react-config:
+    strategy:
+      matrix:
+        cluster: ['dev-fss', 'dev-sbs', 'prod-fss', 'prod-sbs']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: ${{ matrix.cluster }}
+          RESOURCE: "packages/nais/react-config/${{ matrix.cluster }}.yaml"
