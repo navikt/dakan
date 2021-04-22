@@ -1,0 +1,36 @@
+name: 'Deploy'
+inputs:
+  viewer:
+    required: true
+  cluster:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: yarn run setup
+    - run: yarn run shared:build
+      env:
+        CI: false
+    - run: |
+        echo "ENV=$(echo ${{ inputs.cluster }} | cut -d \"-\" -f1)" >> $GITHUB_ENV
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:${{ inputs.viewer }}-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "PUBLIC_URL=/${{ inputs.viewer }}" >> $GITHUB_ENV
+    - run: yarn $VIEWER:test
+    - run: yarn $VIEWER:build
+      env:
+        CI: false
+    - run: |
+        cd "package/viewers/${{ inputs.viewer }}"
+        docker build --tag $IMAGE --build-arg NGINX_VIEWER=${{ inputs.viewer }} -f ../docker/Dockerfile .
+    - uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - run: docker push $IMAGE
+    - uses: nais/deploy/actions/deploy@v1
+      env:
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: ${{ inputs.cluster }}
+        RESOURCE: packages/nais/nais.yaml
+        VARS: "packages/viewers/${{ inputs.viewer }}/.nais/${{ ENV }}.yaml"
