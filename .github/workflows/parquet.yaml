@@ -1,9 +1,10 @@
 on:
   push:
     paths:
+      - .github/workflows/parquet.yaml
       - packages/viewers/parquet/**
     tags:
-      - 'parquet-*.*.*'
+      - 'parquet-*'
 
 env:
   VIEWER: parquet
@@ -12,14 +13,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - if: !startsWith(github.ref, 'refs/tags/$VIEWER-')
-      uses: ./.github/actions/deploy
-      with:
-        cluster: dev-fss
-        viewer: ${{ $VIEWER }}
-    - if: startsWith(github.ref, 'refs/tags/$VIEWER-')
-      uses: ./.github/actions/deploy
-      with:
-        cluster: prod-fss
-        viewer: ${{ $VIEWER }}
+      - uses: actions/checkout@v2
+      - if: "!startsWith(github.ref, 'refs/tags/$VIEWER-')"
+        uses: ./.github/actions/deploy
+        with:
+          cluster: dev-fss
+          viewer: ${{ $VIEWER }}
+      - if: "startsWith(github.ref, 'refs/tags/$VIEWER-')"
+        uses: ./.github/actions/deploy
+        with:
+          cluster: prod-fss
+          viewer: ${{ $VIEWER }}
