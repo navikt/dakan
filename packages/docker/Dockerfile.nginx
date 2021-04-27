@@ -1,0 +1,9 @@
+FROM nginx:1.19-alpine
+
+RUN apk add --no-cache nodejs yarn && \
+        yarn global add @beam-australia/react-env@3.0.8
+
+ADD 20-envsubst-on-templates.sh /docker-entrypoint.d/
+ADD 50-run-script.sh /docker-entrypoint.d/
+
+COPY nginx.conf /etc/nginx/templates/default.conf.template

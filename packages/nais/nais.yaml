@@ -1,38 +1,36 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: {{application_name}}
+  name: dakan-viewer-{{ VIEWER }}
   namespace: dataplattform
   labels:
     team: dataplattform
 spec:
   ingresses:
-    - {{ingress}}
-    - {{ingress_nais_io}}
-  image: {{image}}
+  {{#each ingresses as |url|}}
+    - {{url}}
+  {{/each}}
+  image: {{ IMAGE }}
   port: 80
   replicas:
       min: 2
       max: 2
       cpuThresholdPercentage: 70
   liveness:
-    path: /parquet/isAlive
+    path: /{{ VIEWER }}/isAlive
     timeout: 1
     initialDelay: 5
     periodSeconds: 5
     failureThreshold: 30
   readiness:
-    path: /parquet/isReady
+    path: /{{ VIEWER }}/isReady
     timeout: 1
     initialDelay: 5
     periodSeconds: 5
     failureThreshold: 30
-  leaderElection: false
   prometheus:
     enabled: true
-    path: /parquet
-  istio:
-    enabled: false
+    path: /{{ VIEWER }}
   resources:
     limits:
       cpu: 400m
@@ -40,6 +38,5 @@ spec:
     requests:
       cpu: 50m
       memory: 128Mi
-  envFrom: 
-    - configmap: {{config_map}}
-    
+  envFrom:
+    - configmap: dakan-baseconfig

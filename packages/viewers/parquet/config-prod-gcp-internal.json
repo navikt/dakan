@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-parquet-viewer-internal",
-  "ingress": "https://data.intern.nav.no/parquet",
-  "ingress_nais_io": "https://data-intern.prod-gcp.nais.io/parquet",
-  "config_map": "viewer-config-prod-gcp-internal"
-}
