@@ -13,7 +13,6 @@
 
 # misc
 **/.vscode
-.DS_Store
 **/public/env.js
 **/public/__ENV.js
 **/.env.local
