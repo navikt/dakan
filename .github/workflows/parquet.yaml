@@ -4,8 +4,6 @@ on:
     paths:
       - packages/viewers/parquet/**
       - .github/workflows/parquet.yaml
-    tags:
-      - 'parquet-*'
 
 env:
   VIEWER: parquet
