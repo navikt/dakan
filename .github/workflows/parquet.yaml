@@ -2,8 +2,8 @@ name: Deploy av Parquet
 on:
   push:
     paths:
-      - packages/viewers/parquet/**
       - .github/workflows/parquet.yaml
+      - packages/viewers/parquet/**
 
 env:
   VIEWER: parquet
