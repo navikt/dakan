@@ -1,8 +1,8 @@
 on:
   push:
     paths:
-      - .github/workflows/parquet.yaml
       - packages/viewers/parquet/**
+      - .github/workflows/parquet.yaml
     tags:
       - 'parquet-*'
 
