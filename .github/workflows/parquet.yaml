@@ -13,13 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - if: "!startsWith(github.ref, 'refs/tags/$VIEWER-')"
-        uses: ./.github/actions/deploy
+      - uses: ./.github/actions/deploy
         with:
           cluster: dev-fss
-          viewer: ${{ env.VIEWER }}
-      - if: "startsWith(github.ref, 'refs/tags/$VIEWER-')"
-        uses: ./.github/actions/deploy
-        with:
-          cluster: prod-fss
           viewer: ${{ env.VIEWER }}
