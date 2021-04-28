@@ -11,7 +11,7 @@ env:
   PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
 jobs:
-  test_and_package:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
