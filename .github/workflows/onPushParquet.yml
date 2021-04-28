@@ -1,4 +1,4 @@
-name: Parquet test, package, and deploy
+name: Parquet deploy to dev
 
 on:
   push:
