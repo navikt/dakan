@@ -19,12 +19,12 @@ jobs:
     - run: yarn run setup
     - run: yarn run shared:build
     - run: yarn $VIEWER:build
-    - name: Generate Docker image:tag
-      run: |
-        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       env:
         CI: false
         PUBLIC_URL: "/${{ env.VIEWER }}"
+    - name: Generate Docker image:tag
+      run: |
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - run: |
         cd "packages/viewers/$VIEWER"
         docker build --tag $IMAGE --build-arg NGINX_VIEWER=$VIEWER -f ../../docker/Dockerfile .
