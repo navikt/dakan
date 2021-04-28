@@ -47,3 +47,4 @@ jobs:
         CLUSTER: dev-fss
         RESOURCE: packages/nais/nais.yaml
         VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev.yaml
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
