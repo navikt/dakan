@@ -28,6 +28,7 @@ jobs:
       run: yarn $VIEWER:build
       env:
         CI: false
+        PUBLIC_URL: "/${{ env.VIEWER }}"
     - if: github.ref == 'refs/heads/master'
       run: |
         cd "packages/viewers/$VIEWER"
