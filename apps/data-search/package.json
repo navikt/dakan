@@ -59,7 +59,7 @@
   "devDependencies": {
     "@axe-core/react": "^4.1.0",
     "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.23",
+    "@types/node": "^15.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styletron-engine-atomic": "^1.1.0",
