@@ -23,7 +23,7 @@ jobs:
     - name: Generate Docker image:tag
       if: github.ref == 'refs/heads/master'
       run: |
-        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY-viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - if: github.ref == 'refs/heads/master'
       run: yarn $VIEWER:build
       env:
