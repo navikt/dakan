@@ -57,7 +57,7 @@ Testing is done same as build, just use `test` instead (`yarn test`).
 
 ### Contact
 
-Slack: #data-catalog-intern
+Slack: [#dig-dakan](https://nav-it.slack.com/archives/CQ9SV9DNE)
 
 ## UI & design
 
