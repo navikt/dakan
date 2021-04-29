@@ -50,7 +50,7 @@ jobs:
         CLUSTER: dev-fss
         RESOURCE: packages/nais/nais.yaml
         VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev-intern.yaml
-        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }},TERN=-intern
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
     - if: github.ref == 'refs/heads/master'
       uses: nais/deploy/actions/deploy@v1
       env:
