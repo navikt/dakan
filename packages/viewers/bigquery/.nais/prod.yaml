@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/bigquery
+  - https://data.prod-fss.nais.io/bigquery
+  - https://data.intern.nav.no/bigquery
