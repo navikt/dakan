@@ -2,6 +2,8 @@ name: BigQuery deploy to dev
 
 on:
   push:
+    branches:
+      - **
     paths:
       - .github/workflows/onPushBigQuery.yml
       - packages/viewers/bigquery/**
