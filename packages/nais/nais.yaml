@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: dakan-viewer-{{ VIEWER }}
+  name: dakan-viewer-{{ VIEWER }}{{ TERN }}
   namespace: dataplattform
   labels:
     team: dataplattform
@@ -39,4 +39,4 @@ spec:
       cpu: 50m
       memory: 128Mi
   envFrom:
-    - configmap: dakan-config
+    - configmap: dakan-config{{ TERN }}

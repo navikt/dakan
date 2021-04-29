@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-api-viewer-external",
-  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/apier",
-  "ingress": "https://data-ekstern.dev.nav.no/apier",
-  "config_map": "viewer-config-dev-gcp-external"
-}

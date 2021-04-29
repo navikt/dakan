@@ -1,0 +1,3 @@
+ingresses:
+  - https://data.nav.no/apier
+  - https://data-ekstern.prod-gcp.nais.io/apier
