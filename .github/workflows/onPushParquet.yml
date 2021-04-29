@@ -3,7 +3,7 @@ name: Parquet deploy to dev
 on:
   push:
     branches:
-      - **
+      - '**'
     paths:
       - .github/workflows/onPushParquet.yml
       - packages/viewers/parquet/**
