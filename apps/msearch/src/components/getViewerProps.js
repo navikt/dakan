@@ -74,7 +74,7 @@ export function getViewerProps(type) {
 
     if (type === 'kafka_topic' || type === 'kafka') {
         return {
-            link: env('KAFKA_AIVEN_TOPIC_VIEWER_URL') || '/viewer'
+            link: env('KAFKA_VIEWER_URL') || '/viewer'
         }
     }
 
