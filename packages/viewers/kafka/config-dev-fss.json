@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-kafka-topic-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.nais.preprod.local/kafka",
-  "ingress_nais_io": "https://data.dev-fss.nais.io/kafka",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
-}

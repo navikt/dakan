@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-kafka-topic-viewer-internal",
-  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/kafka",
-  "ingress": "https://data-intern.dev.nav.no/kafka",
-  "config_map": "viewer-config-dev-gcp-internal"
-}

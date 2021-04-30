@@ -1,2 +1,0 @@
-# Viewer for kafka topics
-
