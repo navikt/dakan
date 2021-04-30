@@ -1,4 +1,4 @@
-name: Bigquery deploy to prod
+name: BigQuery deploy to prod
 
 on:
   push:
