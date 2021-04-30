@@ -47,4 +47,4 @@ jobs:
         CLUSTER: prod-gcp
         RESOURCE: packages/nais/nais.yaml
         VARS: packages/viewers/${{ env.VIEWER }}/.nais/prod-ekstern.yaml
-        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }},TERN=ekstern
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }},TERN=-ekstern
