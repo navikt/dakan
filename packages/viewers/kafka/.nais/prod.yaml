@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/kafka
+  - https://data.prod-fss.nais.io/kafka
+  - https://data.intern.nav.no/kafka

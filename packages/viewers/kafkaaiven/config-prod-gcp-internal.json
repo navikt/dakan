@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-kafka-aiven-viewer-internal",
-  "ingress": "https://data.intern.nav.no/kafkaaiven",
-  "ingress_nais_io": "https://data-intern.prod-gcp.nais.io/kafkaaiven",
-  "config_map": "viewer-config-prod-gcp-internal"
-}
