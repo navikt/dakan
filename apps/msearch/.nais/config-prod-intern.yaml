@@ -1,4 +1,3 @@
-postfix: -intern
 ingresses:
   - https://data.intern.nav.no
   - https://data-intern.prod-gcp.nais.io
