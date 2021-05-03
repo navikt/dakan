@@ -1,0 +1,5 @@
+postfix: -ekstern
+ingresses:
+  - https://data-ekstern.dev-gcp.nais.io
+  - https://data-ekstern.dev.nav.no
+REACT_APP_CONFIG: '{"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"}]}'

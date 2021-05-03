@@ -1,2 +1,3 @@
-# Frontend app for search
+# Dakan MSearch
 
+> Frontend app for søk

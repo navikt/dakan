@@ -1,9 +1,0 @@
-{
-  "application_name": "data-search-external",
-  "team": "dataplattform",
-  "ingress": "https://data.nav.no",
-  "ingress_nais_io": "https://data-ekstern.prod-gcp.nais.io",
-  "app_title": "Åpne data",
-  "configmap_name": "data-search-config-prod-gcp-external",
-  "viewer_config": "{'facets':[{'field':'format','label':'Type'},{'field':'theme','label':'Tema'}],'panels':[{'field':'keyword','label':'Stikkord'},{'field':'creator.name','label':'Forfatter'},{'field':'provenance','label':'Opprinnelse'}]}"
-}

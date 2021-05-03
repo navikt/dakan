@@ -1,9 +1,0 @@
-{
-  "application_name": "data-search",
-  "team": "dataplattform",
-  "ingress": "https://data.adeo.no",
-  "ingress_nais_io": "https://data.prod-fss.nais.io",
-  "app_title": "Datakatalogen",
-  "kv_path": "secret/dataplattform/datakatalog/prod_fss",
-  "app_config": {"resultsPerPage":30,"filters":[{"field":"type","values":"datapackage"}], "facets": [{ "field": "format", "label": "Type" },{ "field": "theme", "label": "Tema" },{ "field": "provenance", "label": "Opprinnelse" },{ "field": "content.status", "label": "Begrep Status" }]}
-}
