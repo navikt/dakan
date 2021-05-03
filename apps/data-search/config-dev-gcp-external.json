@@ -1,7 +1,0 @@
-{
-  "application_name": "data-search-external",
-  "team": "dataplattform",
-  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io",
-  "app_title": "Åpne data dev",
-  "configmap_name": "data-search-config-dev-gcp-external"
-}

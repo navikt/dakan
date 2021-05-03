@@ -1,5 +1,0 @@
-export { default as Result } from './Result'
-export { default as Suggestion } from './Suggestion'
-export { default as FieldValue } from './FieldValue'
-export { default as FacetValue } from './FacetValue'
-export { default as FilterValue } from './FilterValue'
