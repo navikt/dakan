@@ -1,7 +1,8 @@
-FROM nginx:1.19.0-alpine
+FROM nginx:1.19-alpine
+LABEL org.opencontainers.image.source https://github.com/navikt/dakan
 
-RUN apk add --no-cache nodejs yarn
-RUN yarn global add @beam-australia/react-env@3.0.8
+RUN apk add --no-cache nodejs yarn && \
+        yarn global add @beam-australia/react-env@3.0.8
 ADD docker-entrypoint.sh /var/entrypoint.sh
 RUN chmod +x /var/entrypoint.sh
 
