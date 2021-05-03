@@ -1,76 +1,46 @@
-name: Data Search deploy to prod on release
+name: Parquet deploy to prod
 
 on:
   push:
     tags:
-      - 'msearch.*.*.*'
+      - 'msearch-*'
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-msearch:${{ github.sha }}
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: apps/msearch
 
 jobs:
-  build:
-    name: Build, test and package
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Install dependencies
-        run: yarn run setup
-      - name: Build shared packages
-        run: yarn run shared:build
-      - name: Create app build
-        run: yarn msearch:build
-        env:
-          CI: false
-      - name: Login to Github package registry
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-      - name: Build docker image
-        run: |
-          cd ${PACKAGE_PATH}
-          docker build -t ${IMAGE} .
-      - name: Push docker image
-        run: docker push ${IMAGE}
-
-  deploy-prod-fss:
-    name: Deploy to prod-fss
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        ref: refs/heads/master
+    - run: yarn run setup
+    - run: yarn run shared:build
+    - run: yarn msearch:build
+      env:
+        CI: false
+    - name: Generate Docker image:tag
+      run: |
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/msearch:$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    - run: |
+        cd apps/msearch
+        docker build --tag $IMAGE .
+    - uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - run: docker push $IMAGE
     - uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: apps/msearch/naiserator_fss.yaml
-        VARS: apps/msearch/config-prod-fss.json
-
-  deploy-prod-gcp-external:
-    name: Deploy to prod-gcp (external)
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
+        RESOURCE: apps/msearch/.nais/nais.yaml
+        VARS: apps/msearch/.nais/config-prod-intern.yaml
     - uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-gcp
-        RESOURCE: apps/msearch/naiserator_gcp_external.yaml
-        VARS: apps/msearch/config-prod-gcp-external.json
-
-  # deploy-prod-gcp-internal:
-  #   name: Deploy to prod-gcp (internal)
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - uses: nais/deploy/actions/deploy@v1
-  #     env:
-  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #       CLUSTER: prod-gcp
-  #       RESOURCE: apps/msearch/naiserator_gcp_internal.yaml
-  #       VARS: apps/msearch/config-prod-gcp-internal.json
+        RESOURCE: apps/msearch/.nais/nais.yaml
+        VARS: apps/msearch/.nais/config-prod-ekstern.yaml
