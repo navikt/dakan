@@ -41,6 +41,6 @@ spec:
     - name: REACT_APP_TITLE
       value: "Åpne data"
     - name: REACT_APP_CONFIG
-      value: {{ REACT_APP_CONFIG }}
+      value: "{{ REACT_APP_CONFIG }}"
   envFrom:
     - configmap: dakan-msearch-config{{ postfix }}
