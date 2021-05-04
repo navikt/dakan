@@ -1,6 +1,6 @@
 {
-  "short_name": "kafka aiven topic viewer",
-  "name": "kafka aiven topic viewer",
+  "short_name": "kafka topic viewer",
+  "name": "kafka topic viewer",
   "icons": [
     {
       "src": "favicon.ico",

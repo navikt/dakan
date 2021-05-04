@@ -1,1 +1,1 @@
-# Viewer for kafka aiven topics
+# Viewer for Kafka topics

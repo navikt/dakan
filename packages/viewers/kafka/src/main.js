@@ -12,7 +12,7 @@ export default function App() {
   return (
     <ThemeProvider theme={navTheme()}>
       <Switch>
-        <Route exact path="/kafkaaiven/:id" component={Viewer} />
+        <Route exact path="/kafka/:id" component={Viewer} />
         <Header
           config={{
             nav: true,
@@ -22,8 +22,8 @@ export default function App() {
         <Route
           component={() => (
             <Block display="flex" justifyContent="center" role="main">
-              Kafka Aiven viewer id parameter missing. Format {link}
-              /kafkaaiven/id
+              Kafka viewer id parameter missing. Format {link}
+              /kafka/id
             </Block>
           )}
         />

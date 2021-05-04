@@ -1,6 +1,6 @@
 {
-  "id": "kafka.aiven_topic.test",
-  "label": "kafka_aiven_topic",
+  "id": "kafka.topic.test",
+  "label": "kafka_topic",
   "type": "vertex",
   "properties": {
     "object": {
@@ -64,6 +64,6 @@
       }
     },
     "cluster": "test-cluster",
-    "type": "kafka_aiven_topic"
+    "type": "kafka_topic"
   }
 }
