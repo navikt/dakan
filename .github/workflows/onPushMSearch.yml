@@ -44,4 +44,4 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: apps/msearch/.nais/nais.yaml
-          VARS: apps/msearch/config-dev-ekstern.yaml
+          VARS: apps/msearch/.nais/config-dev-ekstern.yaml

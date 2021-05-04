@@ -1,4 +1,4 @@
-name: Parquet deploy to prod
+name: MSearch deploy to prod
 
 on:
   push:
