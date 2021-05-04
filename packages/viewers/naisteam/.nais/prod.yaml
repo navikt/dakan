@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/naisteam
+  - https://data.prod-fss.nais.io/naisteam
+  - https://data.intern.nav.no/naisteam

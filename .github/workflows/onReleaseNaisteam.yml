@@ -1,103 +1,43 @@
-name: Nais Team deploy to prod on release
+name: Naisteam deploy to prod
 
 on:
   push:
     tags:
-      - 'naisteam.*.*.*'
+      - 'naisteam-*'
 
-env: 
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-naisteam-viewer
-  PUBLIC_URL: /naisteam
+env:
+  VIEWER: naisteam
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/naisteam
 
 jobs:
-  package:      
-    name: Build and package
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-        with:
-          ref: refs/heads/master
-      - name: Install dependencies
-        run: yarn run setup
-      - name: Build shared packages
-        run: yarn run shared:build
-      - name: Build
-        run: yarn naisteam:build
-        env:
-          CI: false
-      - name: Generate docker tag
-        run: |
-          # Generate docker image tag
-          DATE=$(date +%Y-%m-%d)
-          GIT_HASH=$(git rev-parse --short HEAD)
-          IMAGE_TAG=${DATE}----${GIT_HASH}
-          # write current tag to file
-          echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
-      - name: Upload img_tag
-        uses: actions/upload-artifact@v1
-        with: 
-          name: img_tag
-          path: packages/viewers/naisteam/docker_img_tag.txt
-      - name: Build and Publish to Docker Image
-        env:
-          CI: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd ${PACKAGE_PATH}
-          docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
-          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
-
-  deploy_prod-fss: 
-    name: Build and deploy to prod
-    needs: package
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-      with: 
+    - uses: actions/checkout@v2
+      with:
         ref: refs/heads/master
-    - name: Download artifact 
-      uses: actions/download-artifact@v1
-      with: 
-        name: img_tag
-    - name: Setup image environment variable
+    - run: yarn run setup
+    - run: yarn run shared:build
+    - run: yarn $VIEWER:build
+      env:
+        CI: false
+        PUBLIC_URL: "/${{ env.VIEWER }}"
+    - name: Generate Docker image:tag
       run: |
-        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-        echo ${VALUE}
-        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
-        echo ${IMAGE}
-    - name: Deploy to nais prod-fss
-      uses: nais/deploy/actions/deploy@v1
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    - run: |
+        cd "packages/viewers/$VIEWER"
+        docker build --tag $IMAGE --build-arg NGINX_VIEWER=$VIEWER -f ../../docker/Dockerfile .
+    - uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - run: docker push $IMAGE
+    - uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
-        RESOURCE: packages/viewers/naisteam/naisarator-fss.yml
-        VARS: packages/viewers/naisteam/config-prod-fss.json
-
-  # deploy_prod-gcp-internal:
-  #   name: Build and deploy to prod-gcp internal
-  #   needs: package
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #     with:
-  #       ref: refs/heads/master
-  #   - name: Download artifact
-  #     uses: actions/download-artifact@v1
-  #     with:
-  #       name: img_tag
-  #   - name: Setup image env
-  #     run: |
-  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-  #       echo ${VALUE}
-  #       echo "IMAGE=${VALUE}" >> $GITHUB_ENV
-  #       echo ${IMAGE}
-  #   - name: Deploy to nais
-  #     uses: nais/deploy/actions/deploy@v1
-  #     env:
-  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #       CLUSTER: prod-gcp
-  #       RESOURCE: packages/viewers/naisteam/naisarator-gcp.yml
-  #       VARS: packages/viewers/naisteam/config-prod-gcp-internal.json
+        RESOURCE: packages/nais/nais.yaml
+        VARS: packages/viewers/${{ env.VIEWER }}/.nais/prod.yaml
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}

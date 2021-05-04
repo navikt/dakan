@@ -1,141 +1,53 @@
-name: Nais Team build, test, package and deploy
+name: Naisteam deploy to dev
 
 on:
   push:
-    paths:
-      - 'packages/viewers/naisteam/**'
     branches:
       - '**'
-    tags-ignore:
-      - '*.*.*'
+    paths:
+      - .github/workflows/onPushNaisteam.yml
+      - packages/viewers/naisteam/**
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/dakan-naisteam-viewer
-  PUBLIC_URL: /naisteam
-  PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
-  PACKAGE_PATH: packages/viewers/naisteam
+  VIEWER: naisteam
+  PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
 jobs:
-  test_and_package:
-    name: Build, test and package
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: yarn run setup
-    - name: Build shared packages
-      run: yarn run shared:build
-    - name: Run test
-      run: yarn naisteam:test
+    - run: yarn run setup
+    - run: yarn run shared:build
+    - run: yarn $VIEWER:test
       env:
         CI: false
-    - name: Generate tag
+    - name: Generate Docker image:tag
       if: github.ref == 'refs/heads/master'
       run: |
-        # Generate docker image tag
-        DATE=$(date +%Y-%m-%d)
-        GIT_HASH=$(git rev-parse --short HEAD)
-        IMAGE_TAG=${DATE}--${GIT_HASH}
-        # write current tag to file
-        echo $IMAGE_TAG > ${PACKAGE_PATH}/docker_img_tag.txt
-    - name: Upload img_tag
-      if: github.ref == 'refs/heads/master'
-      uses: actions/upload-artifact@v1
-      with:
-        name: img_tag
-        path: packages/viewers/naisteam/docker_img_tag.txt
-    - name: Build
-      if: github.ref == 'refs/heads/master'
-      run: yarn naisteam:build
+        echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/viewer:$VIEWER-$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    - if: github.ref == 'refs/heads/master'
+      run: yarn $VIEWER:build
       env:
         CI: false
-    - name: Build and Publish to Docker Image
-      if: github.ref == 'refs/heads/master'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLIC_URL: "/${{ env.VIEWER }}"
+    - if: github.ref == 'refs/heads/master'
       run: |
-        cd ${PACKAGE_PATH}
-        docker build --tag ${DOCKER_IMAGE}:$(cat docker_img_tag.txt) --build-arg PUBLIC_URL=${PUBLIC_URL} .
-        docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-        docker push ${DOCKER_IMAGE}:$(cat docker_img_tag.txt)
-
-  deploy_dev-fss:
-    name: Build and deploy to dev-fss
-    needs: test_and_package
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+        cd "packages/viewers/$VIEWER"
+        docker build --tag $IMAGE --build-arg NGINX_VIEWER=$VIEWER -f ../../docker/Dockerfile .
+    - if: github.ref == 'refs/heads/master'
+      uses: docker/login-action@v1
       with:
-        ref: refs/heads/master
-    - name: Download artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: img_tag
-    - name: Setup image env
-      run: |
-        VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-        echo ${VALUE}
-        echo "IMAGE=${VALUE}" >> $GITHUB_ENV
-        echo ${IMAGE}
-    - name: Deploy to nais
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - if: github.ref == 'refs/heads/master'
+      run: docker push $IMAGE
+    - if: github.ref == 'refs/heads/master'
       uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
-        RESOURCE: packages/viewers/naisteam/naisarator-fss.yml
-        VARS: packages/viewers/naisteam/config-dev-fss.json
-
-  # deploy_dev-sbs:
-  #   name: Build and deploy to dev-sbs
-  #   needs: test_and_package
-  #   if: github.ref == 'refs/heads/master'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #     with:
-  #       ref: refs/heads/master
-  #   - name: Download artifact
-  #     uses: actions/download-artifact@v1
-  #     with:
-  #       name: img_tag
-  #   - name: Setup image env
-  #     run: |
-  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-  #       echo ${VALUE}
-  #       echo ::set-env name=IMAGE::${VALUE}
-  #       echo ${IMAGE}
-  #   - name: Deploy to nais
-  #     uses: nais/deploy/actions/deploy@v1
-  #     env:
-  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #       CLUSTER: dev-sbs
-  #       RESOURCE: packages/viewers/naisteam/naisarator-sbs.yml
-  #       VARS: packages/viewers/naisteam/config-dev-sbs.json
-
-  # deploy_dev-gcp-internal:
-  #   name: Build and deploy to dev-gcp internal
-  #   needs: test_and_package
-  #   if: github.ref == 'refs/heads/master'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #     with:
-  #       ref: refs/heads/master
-  #   - name: Download artifact
-  #     uses: actions/download-artifact@v1
-  #     with:
-  #       name: img_tag
-  #   - name: Setup image env
-  #     run: |
-  #       VALUE=${DOCKER_IMAGE}:$(cat img_tag/docker_img_tag.txt)
-  #       echo ${VALUE}
-  #       echo "IMAGE=${VALUE}" >> $GITHUB_ENV
-  #       echo ${IMAGE}
-  #   - name: Deploy to nais
-  #     uses: nais/deploy/actions/deploy@v1
-  #     env:
-  #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #       CLUSTER: dev-gcp
-  #       RESOURCE: packages/viewers/naisteam/naisarator-gcp.yml
-  #       VARS: packages/viewers/naisteam/config-dev-gcp-internal.json
+        RESOURCE: packages/nais/nais.yaml
+        VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev.yaml
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}

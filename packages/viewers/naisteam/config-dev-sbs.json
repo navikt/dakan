@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-naisteam-viewer",
-  "org_name": "navikt",
-  "ingress": "https://dataverk-q.nav.no/naisteam",
-  "ingress_nais_io": "https://dataverk.dev-sbs.nais.io/naisteam",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_sbs"
-}
