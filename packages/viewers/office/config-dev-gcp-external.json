@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-office-viewer-external",
-  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/office",
-  "ingress": "https://data-ekstern.dev.nav.no/office",
-  "config_map": "viewer-config-dev-gcp-external"
-}

@@ -1,0 +1,5 @@
+ingresses:
+  - https://data.nais.preprod.local/office
+  "ingress_nais_io": "https://data.dev-fss.nais.io/office",
+  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
+}

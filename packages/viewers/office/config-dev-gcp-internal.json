@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-office-viewer-internal",
-  "ingress_nais_io": "https://data-intern.dev-gcp.nais.io/office",
-  "ingress": "https://data-intern.dev.nav.no/office",
-  "config_map": "viewer-config-dev-gcp-internal"
-}
