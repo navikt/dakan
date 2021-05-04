@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-naisapp-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.adeo.no/naisapp",
-  "ingress_nais_io": "https://data.prod-fss.nais.io/naisapp",
-  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
-}
