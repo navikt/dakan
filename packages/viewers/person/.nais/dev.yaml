@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.nais.preprod.local/person
+  - https://data.dev-fss.nais.io/person
+  - https://data.dev.intern.nav.no/person

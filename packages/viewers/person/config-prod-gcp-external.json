@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-person-viewer-external",
-  "ingress": "https://data.nav.no/person",
-  "ingress_nais_io": "https://data-ekstern.prod-gcp.nais.io/person",
-  "config_map": "viewer-config-prod-gcp-external"
-}
