@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/tabell
+  - https://data.prod-fss.nais.io/tabell
+  - https://data.intern.nav.no/tabell

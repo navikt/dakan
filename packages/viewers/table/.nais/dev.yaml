@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.nais.preprod.local/tabell
+  - https://data.dev-fss.nais.io/tabell
+  - https://data.dev.intern.nav.no/tabell

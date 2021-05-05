@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-table-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.adeo.no/tabell",
-  "ingress_nais_io": "https://data.prod-fss.nais.io/tabell",
-  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
-}
