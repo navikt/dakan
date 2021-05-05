@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.nais.preprod.local/system
+  - https://data.dev-fss.nais.io/system
+  - https://data.dev.intern.nav.no/system

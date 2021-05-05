@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/system
+  - https://data.prod-fss.nais.io/system
+  - https://data.intern.nav.no/system
