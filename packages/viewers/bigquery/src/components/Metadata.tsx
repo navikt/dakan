@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { LayoutSplit as Layout, LabeledContent } from '@dakan/ui'
+import { LabeledContent } from '@dakan/ui'
 import ReactMarkdown from 'react-markdown'
 import { StyledLink } from 'baseui/link'
 

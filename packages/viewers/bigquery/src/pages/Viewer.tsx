@@ -26,7 +26,7 @@ const Viewer = (props: any) => {
       {node && (
         <React.Fragment>
           <Metrics page={node.id} section={''} />
-          <Content {...props} id={props.match.params.id} item={node} />
+          <Content {...props} id={props.match.params.id} dataset_id={'styrk'} item={node} />
         </React.Fragment>
       )}
     </React.Fragment>
