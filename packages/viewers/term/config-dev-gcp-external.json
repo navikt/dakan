@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-term-viewer-external",
-  "ingress_nais_io": "https://data-ekstern.dev-gcp.nais.io/begrep",
-  "ingress": "https://data-ekstern.dev.nav.no/begrep",
-  "config_map": "viewer-config-dev-gcp-external",
-  "viewer_version": "public"
-}

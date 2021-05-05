@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/begrep
+  - https://data.prod-fss.nais.io/begrep
+  - https://data.intern.nav.no/begrep
