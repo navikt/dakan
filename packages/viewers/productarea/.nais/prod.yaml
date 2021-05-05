@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.adeo.no/productarea
+  - https://data.prod-fss.nais.io/productarea
+  - https://data.dev.intern.nav.no/productarea

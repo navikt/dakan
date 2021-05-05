@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-productarea-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.nav.no/productarea",
-  "ingress_nais_io": "https://data.prod-sbs.nais.io/productarea",
-  "kv_path": "secret/dataplattform/datakatalog/prod_sbs"
-}
