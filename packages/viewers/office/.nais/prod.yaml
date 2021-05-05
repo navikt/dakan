@@ -1,7 +1,4 @@
-{
-  "application_name": "data-catalog-office-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.adeo.no/office",
-  "ingress_nais_io": "https://data.prod-fss.nais.io/office",
-  "kv_path": "secret/dataplattform/datakatalog/prod_fss"
-}
+ingresses:
+  - https://data.adeo.no/office
+  - https://data.prod-fss.nais.io/office
+  - https://data.intern.nav.no/office
