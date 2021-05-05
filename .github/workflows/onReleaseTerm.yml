@@ -1,12 +1,12 @@
-name: Parquet deploy to prod
+name: Term deploy to prod
 
 on:
   push:
     tags:
-      - 'parquet-*'
+      - 'term-*'
 
 env:
-  VIEWER: parquet
+  VIEWER: term
   PACKAGE_TOKEN: ${{secrets.PACKAGE_TOKEN}}
 
 jobs:

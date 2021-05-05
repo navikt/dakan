@@ -1,15 +1,15 @@
-name: Parquet deploy to dev
+name: Term deploy to dev
 
 on:
   push:
     branches:
       - '**'
     paths:
-      - .github/workflows/onPushParquet.yml
-      - packages/viewers/parquet/**
+      - .github/workflows/onPushTerm.yml
+      - packages/viewers/term/**
 
 env:
-  VIEWER: parquet
+  VIEWER: term
   PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
 jobs:
