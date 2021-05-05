@@ -1,0 +1,4 @@
+ingresses:
+  - https://data.nais.preprod.local/team
+  - https://data.dev-fss.nais.io/team
+  - https://data.dev.intern.nav.no/team

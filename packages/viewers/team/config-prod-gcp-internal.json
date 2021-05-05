@@ -1,6 +1,0 @@
-{
-  "application_name": "data-catalog-team-viewer-internal",
-  "ingress": "https://data.intern.nav.no/team",
-  "ingress_nais_io": "https://data-intern.prod-gcp.nais.io/team",
-  "config_map": "viewer-config-prod-gcp-internal"
-}

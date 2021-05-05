@@ -1,7 +1,0 @@
-{
-  "application_name": "data-catalog-team-viewer",
-  "org_name": "navikt",
-  "ingress": "https://data.nais.preprod.local/team",
-  "ingress_nais_io": "https://data.dev-fss.nais.io/team",
-  "kv_path": "secret/dataplattform/datakatalog/preprod_fss"
-}
