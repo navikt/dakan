@@ -11,13 +11,12 @@ const Content = ({ id }) => {
   const Schema = () => {
     if (Array.isArray(data)) {
       let content: any[] = []
-      const cols = data.map((col, index) => {
-        const table = col.resourceName.split('/').pop()
-        content.push([table, col.principalEmail, col.date.value, col.count])
+      data.map((col, index) => {
+        content.push([col.date.value, col.count])
       })
       return (
         <Table
-          columns={['Tabell', 'Bruker', 'Dato', 'Antall']}
+          columns={['Dato', 'Antall']}
           data={content}
         />
       )
@@ -28,7 +27,7 @@ const Content = ({ id }) => {
   return (
     <React.Fragment>
       <Block>
-        <Label>Brukere</Label>
+        <Label>Antall oppslag</Label>
         {error ? error : null}
         {loading ? <Spinner size="40px" /> : <Schema />}
       </Block>
