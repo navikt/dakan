@@ -5,13 +5,13 @@ import { Spinner } from 'baseui/spinner'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
-const Content = ({ id }) => {
-  const [data, loading, error] = useBigQueryAuditlogs('audit')
+const Content = ({ dataset_id }) => {
+  const [data, loading, error] = useBigQueryAuditlogs(dataset_id)
 
   const Schema = () => {
     if (Array.isArray(data)) {
       let content: any[] = []
-      data.map((col, index) => {
+      data.forEach(col => {
         content.push([col.date.value, col.count])
       })
       return (

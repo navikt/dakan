@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import { LayoutSplit as Layout, LabeledContent } from '@dakan/ui'
+import { LayoutSplit as Layout } from '@dakan/ui'
 import Metadata from './Metadata'
 import AuditLogs from './AuditLogs'
 import Schema from './Schema'
 
-const Content = ({ item, id }) => {
+const Content = ({ item, id, dataset_id }) => {
   if (!item) return null
 
   const Right = () => {
@@ -13,7 +13,7 @@ const Content = ({ item, id }) => {
       <Block>
         <Schema id={1} />
         <Block marginTop="scale1200">
-          <AuditLogs id={1} />
+          <AuditLogs dataset_id={dataset_id} />
         </Block>
       </Block>
     )
