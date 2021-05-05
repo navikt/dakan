@@ -49,5 +49,5 @@ jobs:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
         RESOURCE: packages/nais/nais.yaml
-        VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev-intern.yaml
+        VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev.yaml
         VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
