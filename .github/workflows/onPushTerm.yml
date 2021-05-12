@@ -9,7 +9,7 @@ on:
       - packages/viewers/term/**
 
 env:
-  VIEWER: term
+  VIEWER: begrep
   PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
 jobs:
