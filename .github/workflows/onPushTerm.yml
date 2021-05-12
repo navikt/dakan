@@ -19,9 +19,9 @@ jobs:
     - uses: actions/checkout@v2
     - run: yarn run setup
     - run: yarn run shared:build
-    - run: yarn $VIEWER:test
-      env:
-        CI: false
+    #- run: yarn $VIEWER:test
+    #  env:
+    #    CI: false
     - name: Generate Docker image:tag
       if: github.ref == 'refs/heads/master'
       run: |
