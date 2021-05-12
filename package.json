@@ -6,9 +6,9 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "api": "cd packages/viewers/api && yarn run start",
-    "api:build": "cd packages/viewers/api && yarn run build",
-    "api:test": "cd packages/viewers/api && yarn test",
+    "apier": "cd packages/viewers/apier && yarn run start",
+    "apier:build": "cd packages/viewers/apier && yarn run build",
+    "apier:test": "cd packages/viewers/apier && yarn test",
     "bigquery": "cd packages/viewers/bigquery && yarn run start",
     "bigquery:test": "cd packages/viewers/bigquery && yarn test",
     "bigquery:build": "cd packages/viewers/bigquery && yarn run build",
