@@ -2,7 +2,7 @@ version: 2
 registries:
   npm-registry-npm-pkg-github-com-deetly-plotly-view:
     type: npm-registry
-    url: https://npm.pkg.github.com/@deetly/plotly-view
+    url: "${{secrets.PACKAGE_URL}}"
     token: "${{secrets.PACKAGE_TOKEN}}"
 
 updates:
@@ -15,6 +15,13 @@ updates:
 
   - package-ecosystem: npm
     directory: "/apps/data-search"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    registries: "*"
+
+    - package-ecosystem: npm
+    directory: "/apps/msearch"
     schedule:
       interval: daily
     open-pull-requests-limit: 10
