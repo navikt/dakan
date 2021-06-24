@@ -2,7 +2,7 @@ version: 2
 registries:
   npm-registry-npm-pkg-github-com-deetly-plotly-view:
     type: npm-registry
-    url: https://npm.pkg.github.com/@deetly
+    url: https://npm.pkg.github.com
     token: "${{secrets.PACKAGE_TOKEN}}"
 
 updates:
