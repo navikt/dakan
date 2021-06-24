@@ -44,9 +44,36 @@ The API is based on two utility libraries developed by [Digitaliseringsdirektora
 
 You need a NPM token (called `PACKAGE_TOKEN`) to download the dependencies needed to build the viewers.
 
+Add the `PACKAGE_TOKEN` to the .npmrc file located in the root folder.
+
+To run separate applications locally use these commands:
+
+```
+yarn install
+yarn run setup
+yarn shared:build
+```
+
+To run msearch locally you need create a .env.local file with these values:
+```
+REACT_APP_ELASTIC_ENDPOINT=https://data.nav.no/api
+REACT_APP_ELASTIC_INDEX=dcat
+REACT_APP_TITLE=Åpne data
+REACT_APP_CONFIG={"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"},{"field":"content.status","label":"Begrep Status"}]}
+REACT_APP_MARKDOWN_OPEN_DATA_URL=https://raw.githubusercontent.com/navikt/data-catalog-markdown/master/about-open-data.md
+REACT_APP_MARKDOWN_TERM_URL=https://raw.githubusercontent.com/navikt/data-catalog-markdown/master/about-term-catalog.md
+REACT_APP_GTM_ID=GTM-T8PMK84
+REACT_APP_AMPLITUDE_PROJECT_ID=default
+REACT_APP_AMPLITUDE_ENDPOINT=/collect-auto
+```
+
+Scripts are located in the package.json in the root folder.
+
+### Building the application
+
 `PUBLIC_URL` is used to specify the base URL when building the viewer.
 
-Remeber to build the shared dependencies before building a viewer (only needed to be done once).
+Remember to build the shared dependencies before building a viewer (only needed to be done once).
 ```
 yarn shared:build
 ```
