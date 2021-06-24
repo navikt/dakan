@@ -174,7 +174,10 @@ export const panelOverrides = {
 export const tagOverrides = {
   Root: {
     style: {
-      borderRadius: '20px',
+      borderBottomLeftRadius: '20px',
+      borderBottomRightRadius: '20px',
+      borderTopLeftRadius: '20px',
+      borderTopRightRadius: '20px'
     },
   },
 }
