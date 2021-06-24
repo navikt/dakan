@@ -10,169 +10,131 @@ updates:
     directory: "/"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/apps/data-search"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/shared/hooks"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/shared/metrics"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/shared/theme"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/shared/ui"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/kafka"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/naisapp"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/naisteam"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/person"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/productarea"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/tabell"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/tableau"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/team"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/begrep"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/office"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/apier"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
 
   - package-ecosystem: npm
     directory: "/packages/viewers/bigquery"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
     
   - package-ecosystem: npm
     directory: "/packages/viewers/parquet"
     schedule:
       interval: daily
-      time: "04:00"
     open-pull-requests-limit: 10
-    registries:
-    - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    registries: "*"
