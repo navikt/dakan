@@ -58,7 +58,6 @@ To run msearch locally you need create a .env.local file with these values:
 ```
 REACT_APP_ELASTIC_ENDPOINT=https://data.nav.no/api
 REACT_APP_ELASTIC_INDEX=dcat
-REACT_APP_DATAPACKAGE_VIEWER_URL=https://datapakke-viewer.nav.no
 REACT_APP_TITLE=Åpne data
 REACT_APP_CONFIG={"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"},{"field":"content.status","label":"Begrep Status"}]}
 REACT_APP_MARKDOWN_OPEN_DATA_URL=https://raw.githubusercontent.com/navikt/data-catalog-markdown/master/about-open-data.md
