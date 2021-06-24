@@ -1,0 +1,906 @@
+version: 2
+registries:
+  npm-registry-npm-pkg-github-com-navikt-data-catalog-components:
+    type: npm-registry
+    url: https://npm.pkg.github.com/@navikt/data-catalog-components
+    token: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_NAVIKT_DATA_CATALOG_COMPONENTS_TOKEN}}"
+  npm-registry-npm-pkg-github-com-deetly-plotly-view:
+    type: npm-registry
+    url: https://npm.pkg.github.com/@deetly/plotly-view
+    token: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_DEETLY_PLOTLY_VIEW_TOKEN}}"
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@testing-library/user-event"
+    versions:
+    - 13.0.0
+    - 13.0.1
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  - dependency-name: lerna
+    versions:
+    - 4.0.0
+  - dependency-name: react-scripts
+    versions:
+    - 4.0.2
+    - 4.0.3
+  - dependency-name: styletron-react
+    versions:
+    - 6.0.0
+  - dependency-name: styletron-engine-atomic
+    versions:
+    - 1.4.7
+  - dependency-name: "@elastic/react-search-ui-views"
+    versions:
+    - 1.5.1
+  - dependency-name: "@elastic/search-ui"
+    versions:
+    - 1.5.1
+  - dependency-name: "@elastic/react-search-ui"
+    versions:
+    - 1.5.1
+  - dependency-name: web-vitals
+    versions:
+    - 1.1.0
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/apps/data-search"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.2
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  - dependency-name: "@elastic/react-search-ui"
+    versions:
+    - 1.5.1
+  - dependency-name: "@elastic/react-search-ui-views"
+    versions:
+    - 1.5.1
+  - dependency-name: "@elastic/search-ui"
+    versions:
+    - 1.5.1
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/shared/hooks"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.1
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.14
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.12.13
+    - 7.13.13
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.5
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@babel/preset-typescript"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/shared/metrics"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.1
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.14
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.12.13
+    - 7.13.13
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.5
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.2
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@babel/preset-typescript"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/shared/theme"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.1
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.14
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.12.13
+    - 7.13.13
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.5
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: styled-components
+    versions:
+    - 5.2.1
+  - dependency-name: "@babel/preset-typescript"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+  - dependency-name: styletron-engine-atomic
+    versions:
+    - 1.4.7
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/shared/ui"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.1
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.14
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.13.13
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+    - 7.13.5
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.7
+  - dependency-name: styled-components
+    versions:
+    - 5.2.1
+  - dependency-name: "@babel/preset-typescript"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.0
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/kafka"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/naisapp"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/naisteam"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/person"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/productarea"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/table"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@deetly/plotly-view"
+    versions:
+    - 0.0.86
+    - 0.0.87
+    - 0.0.91
+    - 0.1.0
+    - 0.1.1
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/tableau"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: "@testing-library/user-event"
+    versions:
+    - 13.0.0
+    - 13.0.1
+  - dependency-name: amplitude-js
+    versions:
+    - 8.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  - dependency-name: react-scripts
+    versions:
+    - 4.0.2
+    - 4.0.3
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/team"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/term"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.2
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+- package-ecosystem: npm
+  directory: "/packages/viewers/office"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: react-markdown
+    versions:
+    - 6.0.0
+  - dependency-name: "@dakan/hooks"
+    versions:
+    - 0.0.10
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/ui"
+    versions:
+    - 0.0.10
+    - 0.0.11
+    - 0.0.12
+    - 0.0.13
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@dakan/metrics"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+    - 0.0.9
+  - dependency-name: "@beam-australia/react-env"
+    versions:
+    - 3.0.0
+    - 3.0.2
+    - 3.0.3
+    - 3.0.4
+    - 3.0.5
+    - 3.0.8
+  - dependency-name: "@dakan/theme"
+    versions:
+    - 0.0.6
+    - 0.0.7
+    - 0.0.8
+  registries:
+  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
+  - npm-registry-npm-pkg-github-com-deetly-plotly-view
