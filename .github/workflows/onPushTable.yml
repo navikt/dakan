@@ -6,7 +6,7 @@ on:
       - '**'
     paths:
       - .github/workflows/onPushTable.yml
-      - packages/viewers/table/**
+      - packages/viewers/tabell/**
 
 env:
   VIEWER: tabell
