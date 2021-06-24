@@ -20,7 +20,7 @@ updates:
     open-pull-requests-limit: 10
     registries: "*"
 
-    - package-ecosystem: npm
+  - package-ecosystem: npm
     directory: "/apps/msearch"
     schedule:
       interval: daily
