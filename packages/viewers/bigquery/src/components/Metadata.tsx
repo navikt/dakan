@@ -11,7 +11,7 @@ const Metadata = ({ item }) => {
       <div role="main">
         {item.description && (
           <LabeledContent description="Beskrivelse" list>
-            <ReactMarkdown source={item.description} />
+            <ReactMarkdown children={item.description} />
           </LabeledContent>
         )}
         {item.format && (

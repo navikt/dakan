@@ -51,7 +51,7 @@ const Content = (props: any) => {
           <LabeledContent arialabel="label" description={entry.label}>
             {indexEntry[entry.item] ? (
               <ReactMarkdown
-                source={indexEntry[entry.item].replace('(www', '(//www')}
+                children={indexEntry[entry.item].replace('(www', '(//www')}
               />
             ) : (
               <React.Fragment>{`Ingen ${entry.label.toLowerCase()} funnet.`}</React.Fragment>

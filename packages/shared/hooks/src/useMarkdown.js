@@ -25,7 +25,7 @@ export const useMarkdown = (markdownUrl, theme) => {
               },
             }}
           >
-            <ReactMarkdown source={responseData} />
+            <ReactMarkdown children={responseData} />
           </Block>
         )
         setMarkdownText(markdownBlock)

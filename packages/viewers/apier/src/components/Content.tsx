@@ -41,7 +41,7 @@ const Content = ({ item, id }) => {
             },
           }}
         >
-          <ReactMarkdown source={item.content.description} />
+          <ReactMarkdown children={item.content.description} />
           {item.content.api_dec && (
             <LabeledContent description="Api description" list>
               <StyledLink
