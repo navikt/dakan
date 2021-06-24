@@ -16,7 +16,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -26,7 +25,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -36,7 +34,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -46,7 +43,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -56,7 +52,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -66,7 +61,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -76,7 +70,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -86,7 +79,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -96,7 +88,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -106,7 +97,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -116,7 +106,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -126,7 +115,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -136,7 +124,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -146,7 +133,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -156,7 +142,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -166,7 +151,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -176,7 +160,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -186,7 +169,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
@@ -196,7 +178,6 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
   registries:
   - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
   - npm-registry-npm-pkg-github-com-deetly-plotly-view
