@@ -7,6 +7,7 @@ import Content from '../components/Content'
 
 import exampleJson from '../resources/example.json'
 import exampleTeam from '../resources/exampleTeam.json'
+import { Block } from 'baseui/block'
 
 const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
@@ -21,6 +22,14 @@ const Viewer = (props: any) => {
     if (props.match.params.id === 'test') {
       return <Content {...props} item={exampleJson} members={exampleTeam} />
     }
+  }
+
+  if (loadingNode) {
+    return (
+      <Block display="flex" justifyContent="center">
+        <LoadingSpinner size={96} />
+      </Block>
+    );
   }
 
   if (
@@ -39,7 +48,6 @@ const Viewer = (props: any) => {
 
   return (
     <React.Fragment>
-      {loadingNode && <LoadingSpinner />}
       {node && (
         <React.Fragment>
           <Metrics page={node.id} section={''} />
