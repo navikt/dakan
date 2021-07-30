@@ -73,7 +73,7 @@ const getFirst = (input: string) => {
 // TODO : multilevel
 const getChildChart = (data: any, res: any): void => {
   const nodes: object[] = []
-  if (typeof data === 'object') {
+  if (data && typeof data === 'object') {
     for (const key in data) {
       if (getFirst(key) === 'source') {
         res['name'] = getLast(key)

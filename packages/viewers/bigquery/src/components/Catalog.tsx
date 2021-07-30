@@ -8,7 +8,7 @@ import { useCatalog } from '../hooks/useCatalog'
 const Catalog = ({ url, dataset_id }) => {
   const [data, loading, error] = useCatalog(url, dataset_id)
 
-  if (!data) {
+  if (!data || !data['nodes']) {
     return null
   }
 
@@ -18,21 +18,21 @@ const Catalog = ({ url, dataset_id }) => {
   const node = data['nodes']['model.ereg_dbt.' + dataset_name]
 
   let num_bytes = ''
-  if (node['stats']['has_stats']['value']) {
+  if (node && node['stats']['has_stats']['value']) {
     //num_bytes += node['stats']['num_bytes']['description']
     //num_bytes += ` (${node['stats']['num_bytes']['label']})`
     num_bytes += `Størrelse i bytes: ${node['stats']['num_bytes']['value']}`
   }
 
   let num_rows = ''
-  if (node['stats']['has_stats']['value']) {
+  if (node && node['stats']['has_stats']['value']) {
     //num_rows += node['stats']['num_rows']['description']
     //num_rows += ` (${node['stats']['num_rows']['label']})`
     num_rows += `Antall rader: ${node['stats']['num_rows']['value']}`
   }
 
   const Schema = () => {
-    if (node['columns']) {
+    if (node && node['columns']) {
       const columns = node['columns']
       if (typeof columns !== 'object') {
         return null
