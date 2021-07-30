@@ -22,7 +22,7 @@ const Viewer = (props: any) => {
       <Block display="flex" justifyContent="center">
         <LoadingSpinner size={96} />
       </Block>
-    );
+    )
   }
 
   if (

@@ -13,7 +13,8 @@ export function useGoogleDatacalogMetadata(id) {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const result = await axios.get(`${server}/${id}`)
+        const url = `${server}/lookup/${id}`
+        const result = await axios.get(url)
         setData(result.data)
       } catch (e) {
         setError(true)

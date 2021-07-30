@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import env from '@beam-australia/react-env'
 import axios from 'axios'
 
-const server = env('ES_SERVER')
+const server =
+  env('ES_SERVER') || env('ELASTIC_ENDPOINT') + '/' + env('ELASTIC_INDEX')
 
 export function useElasticSearch(id) {
   const [data, setData] = useState()

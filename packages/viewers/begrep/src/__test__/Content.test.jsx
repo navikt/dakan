@@ -15,7 +15,7 @@ describe('Test for Content component', () => {
   let wrapperInternal
   let wrapperExternal
   let testContent
-  
+
   // waiting for enzyme update
   // beforeAll(() => {
   //   testContent = exampleJson._source.content

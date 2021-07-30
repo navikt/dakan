@@ -5,8 +5,8 @@ import { Spinner } from 'baseui/spinner'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
-const Content = ({ id }) => {
-  const [data, loading, error] = useGoogleCatalogMetadata('lookup')
+const Content = ({ dataset_id: id }) => {
+  const [data, loading, error] = useGoogleCatalogMetadata(id)
 
   const Schema = () => {
     if (data && data[0] && data[0]['schema'] && data[0]['schema']['columns']) {

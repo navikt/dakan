@@ -18,25 +18,16 @@ const Viewer = (props: any) => {
   const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(
     props.match.params.id,
   )
-  const [
-    ratings,
-    loadingRatings,
-    errorLoadingRatings,
-    setRatings,
-  ] = useNodeEdges(props.match.params.id, 'hasTableauRating')
+  const [ratings, loadingRatings, errorLoadingRatings, setRatings] =
+    useNodeEdges(props.match.params.id, 'hasTableauRating')
   const [viewList, loadingViewList, errorLoadingViewList] = useNodeEdges(
     props.match.params.id,
     'hasMember',
   )
-  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] = useContent(
-    'opplysningstype',
-  )
-  const [
-    comments,
-    loadingCommnets,
-    errorLoadingComments,
-    setComments,
-  ] = useNodeEdges(props.match.params.id, 'hasTableauComment')
+  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] =
+    useContent('opplysningstype')
+  const [comments, loadingCommnets, errorLoadingComments, setComments] =
+    useNodeEdges(props.match.params.id, 'hasTableauComment')
 
   const [
     description,
@@ -45,19 +36,11 @@ const Viewer = (props: any) => {
     setDescription,
   ] = useNodeEdges(props.match.params.id, 'hasTableauDescription')
 
-  const [
-    personTags,
-    loadingPersonTags,
-    errorLoadingPersonTags,
-    setPersonTags,
-  ] = useNodeEdges(props.match.params.id, 'hasTableauPersonTag')
+  const [personTags, loadingPersonTags, errorLoadingPersonTags, setPersonTags] =
+    useNodeEdges(props.match.params.id, 'hasTableauPersonTag')
 
-  const [
-    teamTags,
-    loadingTeamTags,
-    errorLoadingTeamTags,
-    setTeamTags,
-  ] = useNodeEdges(props.match.params.id, 'hasTableauTeamTag')
+  const [teamTags, loadingTeamTags, errorLoadingTeamTags, setTeamTags] =
+    useNodeEdges(props.match.params.id, 'hasTableauTeamTag')
 
   const getHeader = () => (
     <Header

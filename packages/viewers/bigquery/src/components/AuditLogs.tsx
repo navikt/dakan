@@ -1,25 +1,33 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
-import useBigQueryAuditlogs from '../hooks/useBigQueryAuditlogs'
+import useBigQueryAuditLogs from '../hooks/useBigQueryAuditLogs'
+import useBigQueryAccessLogs from '../hooks/useBigQueryAccessLogs'
 import { Spinner } from 'baseui/spinner'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
 const Content = ({ dataset_id }) => {
-  const [data, loading, error] = useBigQueryAuditlogs(dataset_id)
+  const [counts, countsLoading, countsError] = useBigQueryAuditLogs(dataset_id)
+  const [users, usersLoading, usersError] = useBigQueryAccessLogs(dataset_id)
 
-  const Schema = () => {
-    if (Array.isArray(data)) {
+  const Counts = () => {
+    if (Array.isArray(counts)) {
       let content: any[] = []
-      data.forEach(col => {
+      counts.forEach((col) => {
         content.push([col.date.value, col.count])
       })
-      return (
-        <Table
-          columns={['Dato', 'Antall']}
-          data={content}
-        />
-      )
+      return <Table columns={['Dato', 'Antall']} data={content} />
+    }
+    return null
+  }
+
+  const Users = () => {
+    if (Array.isArray(users)) {
+      let content: any[] = []
+      users.forEach((col) => {
+        content.push([col.date.value, col.principalEmail])
+      })
+      return <Table columns={['Dato', 'Bruker']} data={content} />
     }
     return null
   }
@@ -28,8 +36,13 @@ const Content = ({ dataset_id }) => {
     <React.Fragment>
       <Block>
         <Label>Antall oppslag</Label>
-        {error ? error : null}
-        {loading ? <Spinner size="40px" /> : <Schema />}
+        {countsError ? countsError : null}
+        {countsLoading ? <Spinner size="40px" /> : <Counts />}
+        <Block marginTop="scale800">
+          <Label>Brukere</Label>
+          {usersError ? usersError : null}
+          {usersLoading ? <Spinner size="40px" /> : <Users />}
+        </Block>
       </Block>
     </React.Fragment>
   )

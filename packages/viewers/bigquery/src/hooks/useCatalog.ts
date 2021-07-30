@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
-import env from '@beam-australia/react-env'
 import axios from 'axios'
 
-const server = env('BQ_API')
-
-export function useBigQueryAuditLogs(dataset_id) {
+export function useCatalog(url, dataset_id) {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -13,7 +10,7 @@ export function useBigQueryAuditLogs(dataset_id) {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const result = await axios.get(`${server}/usage/${dataset_id}`)
+        const result = await axios.get(url)
         setData(result.data)
       } catch (e) {
         setError(true)
@@ -21,9 +18,9 @@ export function useBigQueryAuditLogs(dataset_id) {
       setLoading(false)
     }
     fetchData()
-  }, [dataset_id])
+  }, [url])
 
   return [data, loading, error]
 }
 
-export default useBigQueryAuditLogs
+export default useCatalog

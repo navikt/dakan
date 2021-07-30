@@ -14,11 +14,11 @@ import qs from 'qs'
 
 import env from '@beam-australia/react-env'
 
-const baseconfig = env('CONFIG') || { facets: [], panels: [] }
+const baseconfig = (env && env('CONFIG')) || '{ "facets": [], "panels": [] }'
 const facets = JSON.parse(baseconfig).facets
 const panels = JSON.parse(baseconfig).panels
-// const filters = JSON.parse(baseconfig).filters
-// const resultsPerPage = JSON.parse(baseconfig).resultsPerPage
+//const filters = JSON.parse(baseconfig).filters
+//const resultsPerPage = JSON.parse(baseconfig).resultsPerPage
 
 const server = env('ELASTIC_ENDPOINT')
 const index = env('ELASTIC_INDEX')

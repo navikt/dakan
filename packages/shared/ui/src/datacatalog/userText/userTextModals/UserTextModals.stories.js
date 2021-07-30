@@ -39,8 +39,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 1',
-      text:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus molestie lorem, quis ultrices libero commodo vel. Cras vitae mauris porta erat congue rutrum. Integer nec facilisis mi, elementum fringilla tellus. Duis pretium lacinia rutrum. Phasellus porta eget nisi ut sagittis. Cras sollicitudin cursus urna, quis eleifend magna scelerisque sit amet. Integer mi neque, tristique euismod mi a, egestas posuere purus. Aenean interdum odio efficitur, vehicula nisl quis, pellentesque lectus. Donec lobortis accumsan sollicitudin.',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus molestie lorem, quis ultrices libero commodo vel. Cras vitae mauris porta erat congue rutrum. Integer nec facilisis mi, elementum fringilla tellus. Duis pretium lacinia rutrum. Phasellus porta eget nisi ut sagittis. Cras sollicitudin cursus urna, quis eleifend magna scelerisque sit amet. Integer mi neque, tristique euismod mi a, egestas posuere purus. Aenean interdum odio efficitur, vehicula nisl quis, pellentesque lectus. Donec lobortis accumsan sollicitudin.',
       date: '27.des.2014',
       time: '10:12',
     },
@@ -50,8 +49,7 @@ const commentList = [
     label: 'comment',
     properties: {
       author: 'Lorem ipsum 2',
-      text:
-        'Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.',
+      text: 'Nulla molestie vitae nisi vel sollicitudin. Aliquam placerat, mi vel mattis facilisis, est nibh volutpat purus, eu porta nisi nisl vitae ligula. Phasellus pellentesque mauris neque, in rhoncus velit vestibulum et. Mauris ac condimentum nunc, ut rhoncus sapien. Praesent bibendum risus et pulvinar feugiat. Donec interdum leo metus, aliquet viverra quam fermentum ac. Suspendisse eu imperdiet mi. Praesent lobortis mauris lorem, a convallis risus aliquet ac. Nunc faucibus, metus quis viverra blandit, tortor metus aliquam ante, at consequat ligula leo sagittis erat. Mauris vulputate placerat odio. Sed euismod elit ligula, sed dictum nisi tempus ac.',
       date: '17.sep.2013',
       time: '17:42',
     },
@@ -89,9 +87,8 @@ export const edit_comment_modal = () => {
   const [comments, setComments] = React.useState(commentList)
   const [singleUserText, setSingleUserText] = React.useState([commentList[1]])
   const [isEditCommentOpen, setIsEditCommentOpen] = React.useState(false)
-  const [isEditSingleCommentOpen, setIsEditSingleCommentOpen] = React.useState(
-    false,
-  )
+  const [isEditSingleCommentOpen, setIsEditSingleCommentOpen] =
+    React.useState(false)
   const [user, setUser] = React.useState(clientUser)
 
   return (

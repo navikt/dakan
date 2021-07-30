@@ -53,14 +53,8 @@ const addTag = (value, dataTags, setDataTags, dataId, edgeLabel) => {
 }
 
 const DataTags = (props) => {
-  const {
-    defaultTags,
-    dataTags,
-    setDataTags,
-    dataId,
-    tagLabel,
-    isEditMode,
-  } = props
+  const { defaultTags, dataTags, setDataTags, dataId, tagLabel, isEditMode } =
+    props
   const [, theme] = useStyletron()
 
   const deleteTag = (index, tagId) => {

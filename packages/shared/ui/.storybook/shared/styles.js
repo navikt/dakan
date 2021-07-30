@@ -57,8 +57,7 @@ export const typography = {
   type: {
     primary:
       '"Open Sans Pro", "Open Sans", "Source Sans", "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    code:
-      '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    code: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
   },
   weight: {
     regular: '400',

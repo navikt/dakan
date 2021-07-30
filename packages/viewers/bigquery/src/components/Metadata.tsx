@@ -53,7 +53,7 @@ const Metadata = ({ item }) => {
                 </Block>
               </Block>
             ) : (
-              item.temporal
+              item.creator
             )}
           </LabeledContent>
         )}

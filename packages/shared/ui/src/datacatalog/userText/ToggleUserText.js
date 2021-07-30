@@ -56,9 +56,8 @@ export const SingleUserText = (prop) => {
     nodeLabel,
     isEditMode,
   } = prop
-  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
-    false,
-  )
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] =
+    React.useState(false)
   const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
   const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
 
@@ -208,9 +207,8 @@ export const ToggleUserText = (prop) => {
   } = prop
   const [userTextIndex, setUserTextIndex] = React.useState(0)
   const [userTextContent, setUserTextContent] = React.useState({})
-  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] = React.useState(
-    false,
-  )
+  const [isDeleteTextModalOpen, setIsDeleteTextModalOpen] =
+    React.useState(false)
   const [isAddTextModalOpen, setIsAddTextModalOpen] = React.useState(false)
   const [isEditTextModalOpen, setIsEditTextModalOpen] = React.useState(false)
   const [isExpanded, setIsExpanded] = React.useState('')

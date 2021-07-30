@@ -177,7 +177,7 @@ export const tagOverrides = {
       borderBottomLeftRadius: '20px',
       borderBottomRightRadius: '20px',
       borderTopLeftRadius: '20px',
-      borderTopRightRadius: '20px'
+      borderTopRightRadius: '20px',
     },
   },
 }
