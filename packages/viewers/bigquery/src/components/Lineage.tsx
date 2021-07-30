@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Label } from '@dakan/ui'
-import {useLineage} from '../hooks/useLineage'
+import { useLineage } from '../hooks/useLineage'
 import { string } from 'prop-types'
 
 const Lineage = ({ url, dataset_id }) => {
@@ -16,8 +16,7 @@ const Lineage = ({ url, dataset_id }) => {
           {JSON.stringify(data['parent_map'])}
           {JSON.stringify(data['child_map'])}
         </Block>
-      )
-    }
+      )}
     </React.Fragment>
   )
 }

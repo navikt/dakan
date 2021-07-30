@@ -162,11 +162,11 @@ const Content = ({
               </Block>
             </Tab>
             {data && data.content && data.content.manifest_path && (
-            <Tab title="Lineage">
-              <Block marginTop="scale1200">
-                <Lineage url={data.content.manifest_path} dataset_id={id} />
-              </Block>
-            </Tab>
+              <Tab title="Lineage">
+                <Block marginTop="scale1200">
+                  <Lineage url={data.content.manifest_path} dataset_id={id} />
+                </Block>
+              </Tab>
             )}
             {data && data.content && data.content.catalog_path && (
               <Tab title="Catalog">
