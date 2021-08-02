@@ -3,10 +3,10 @@ import { Block } from 'baseui/block'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
-import { useCatalog } from '../hooks/useCatalog'
+import { useDbtCatalog } from '../hooks/useDbtCatalog'
 
-const Catalog = ({ url, dataset_id }) => {
-  const [data, loading, error] = useCatalog(url, dataset_id)
+const DbtCatalog = ({ url, dataset_id }) => {
+  const [data, loading, error] = useDbtCatalog(url, dataset_id)
 
   if (!data || !data['nodes']) {
     return null
@@ -65,4 +65,4 @@ const Catalog = ({ url, dataset_id }) => {
     </React.Fragment>
   )
 }
-export default Catalog
+export default DbtCatalog

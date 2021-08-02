@@ -26,11 +26,13 @@ import Access from './Access'
 import Schema from './Schema'
 import Examples from './Examples'
 import Lineage from './Lineage'
-import Catalog from './Catalog'
+import DbtCatalog from './DbtCatalog'
+import CosmosCatalog from './CosmosCatalog'
 
 const Content = ({
   id,
   data,
+  node,
   columns,
   tagOptions,
   comments,
@@ -151,14 +153,19 @@ const Content = ({
             }}
             activeKey={activeKey}
           >
-            <Tab title="Om">
-              <Block marginTop="scale1200">
-                <Metadata item={data} />
+            <Tab title="Om datasettet">
+              <Block display="flex" marginTop="scale1200">
+                <Block display="flex" flex="1" justifyContent="flex-start">
+                  <Metadata item={data} />
+                </Block>
+                <Block display="flex" flex="1" justifyContent="flex-start">
+                  <DbtCatalog url={data.content.catalog_path} dataset_id={id} />
+                </Block>
               </Block>
             </Tab>
-            <Tab title="Skjema">
+            <Tab title="Om dataproduktet">
               <Block marginTop="scale1200">
-                <Schema dataset_id={id} />
+                Kommer... Skal hentes fra dataprodukt readme
               </Block>
             </Tab>
             {data && data.content && data.content.manifest_path && (
@@ -168,13 +175,18 @@ const Content = ({
                 </Block>
               </Tab>
             )}
-            {data && data.content && data.content.catalog_path && (
-              <Tab title="Catalog">
+{/*             {data && data.content && data.content.catalog_path && (
+              <Tab title="Metadata (dbt)">
                 <Block marginTop="scale1200">
-                  <Catalog url={data.content.catalog_path} dataset_id={id} />
+                  <DbtCatalog url={data.content.catalog_path} dataset_id={id} />
                 </Block>
               </Tab>
-            )}
+            )} */}
+            <Tab title="Skjema">
+              <Block marginTop="scale1200">
+                <CosmosCatalog dataset_id={id} />
+              </Block>
+            </Tab>
             <Tab title="Eksempler">
               <Block marginTop="scale1200">
                 <Examples dataset_id={id} />
@@ -183,6 +195,11 @@ const Content = ({
             <Tab title="Brukere">
               <Block marginTop="scale1200">
                 <AuditLogs dataset_id={id} />
+              </Block>
+            </Tab>
+            <Tab title="Google Data Catalog">
+              <Block marginTop="scale1200">
+                <Schema dataset_id={id} />
               </Block>
             </Tab>
             <Tab title="Få tilgang">

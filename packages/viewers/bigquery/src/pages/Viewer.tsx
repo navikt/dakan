@@ -18,7 +18,9 @@ import exampleComments from '../resources/exampleComments.json'
 import exampleDescription from '../resources/exampleDescription.json'
 
 const Viewer = (props: any) => {
-  const [node, loadingNode, errorLoadingNode] = useElasticSearch(
+  const [nodeElastic, loadingNodeElastic, errorLoadingNodeElastic] =
+    useElasticSearch(props.match.params.id)
+  const [nodeGraph, loadingNodeGraph, errorLoadingNodeGraph] = useNode(
     props.match.params.id,
   )
   //const [node, loadingNode, errorLoadingNode, errorMessage] = useNode(props.match.params.id);
@@ -26,10 +28,12 @@ const Viewer = (props: any) => {
     props.match.params.id,
     'hasMember',
   )
-  const [tagOptions, loadingtagOptions, errorLoadingtagOptions] =
-    useContent('opplysningstype')
+  //const [tagOptions, loadingtagOptions, errorLoadingtagOptions] =
+  //  useContent('opplysningstype')
+
   const [ratings, loadingRatings, errorLoadingRatings, setRatings] =
     useNodeEdges(props.match.params.id, 'hasTableRating')
+
   const [comments, loadingCommnets, errorLoadingComments, setComments] =
     useNodeEdges(props.match.params.id, 'hasTableComment')
 
@@ -97,25 +101,26 @@ const Viewer = (props: any) => {
     })
   }
 
-  if (errorLoadingNode && !node) {
+  if (errorLoadingNodeElastic && !nodeElastic) {
     return <ErrorPage layout errorMessage={'Status 204 - No content found'} />
   }
 
   return (
     <React.Fragment>
-      {loadingNode && <LoadingSpinner />}
-      {errorLoadingNode && (
+      {loadingNodeElastic && <LoadingSpinner />}
+      {errorLoadingNodeElastic && (
         <div>{'Feil ved lasting av node fra graph database'}</div>
       )}
-      {node && (
+      {nodeElastic && (
         <React.Fragment>
-          <Metrics page={node.id} section={''} />
+          <Metrics page={nodeGraph.id} section={''} />
           <Content
             {...props}
             id={props.match.params.id}
-            data={node}
+            data={nodeElastic}
+            node={nodeGraph}
             columns={columns}
-            tagOptions={tagOptions}
+            //tagOptions={tagOptions}
             comments={
               comments &&
               comments.length > 0 &&

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export function useCatalog(url, dataset_id) {
+export function useDbtCatalog(url, dataset_id) {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -23,4 +23,4 @@ export function useCatalog(url, dataset_id) {
   return [data, loading, error]
 }
 
-export default useCatalog
+export default useDbtCatalog
