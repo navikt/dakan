@@ -2,13 +2,25 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { LabeledContent } from '@dakan/ui'
 import ReactMarkdown from 'react-markdown'
-import { StyledLink } from 'baseui/link'
 
-const Metadata = ({ item }) => {
+import {BigQueryLink} from './BigQueryLink'
+import {GoogleDataCatalogLink} from './GoogleDataCatalogLink'
+
+const Metadata = ({ item, id }) => {
   if (!item) return null
   const Head = () => {
     return (
       <div role="main">
+        {item.id && (
+          <Block>
+          <Block marginBottom='scale800'>
+            <BigQueryLink dataset_id={item.id} />
+          </Block>
+          <Block marginBottom='scale800'>
+            <GoogleDataCatalogLink dataset_id={item.id} />
+          </Block>
+          </Block>
+        )}
         {item.description && (
           <LabeledContent description="Beskrivelse" list>
             <ReactMarkdown children={item.description} />
@@ -69,13 +81,6 @@ const Metadata = ({ item }) => {
               {item.keyword.join(', ')}
             </LabeledContent>
           )}
-        {item && item.uri && (
-          <LabeledContent description="Datasett" list>
-            <StyledLink aria-label="Link til datasett" href={item.uri}>
-              Google Data Catalog
-            </StyledLink>
-          </LabeledContent>
-        )}
       </div>
     )
   }

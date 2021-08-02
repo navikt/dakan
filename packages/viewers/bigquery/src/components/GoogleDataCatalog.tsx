@@ -6,7 +6,7 @@ import { Spinner } from 'baseui/spinner'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
 
-const Content = ({ dataset_id: id }) => {
+const GoogleDataCatalog = ({ dataset_id: id }) => {
   const [data, loading, error] = useGoogleCatalogMetadata(id)
 
   const Schema = () => {
@@ -16,7 +16,7 @@ const Content = ({ dataset_id: id }) => {
         return null
       }
       let content: any[] = []
-      columns.forEach((col, index) => {
+      columns.forEach((col) => {
         content.push([col.column, col.description, col.type])
       })
       return <Table columns={['Navn', 'Beskrivelse', 'Type']} data={content} />
@@ -27,18 +27,19 @@ const Content = ({ dataset_id: id }) => {
   const GoogleCatalogLink = () => {
     if (data && data[0] && data[0]['name']) {
       const url = data[0]['name']
-      return ( <Block><StyledLink
-         //@ts-ignore
-        isAnimateUnderline={false}
-        isFocusVisible={false}
-        target='_blank'
-        href={'https://console.cloud.google.com/datacatalog/' + url}
-    >
-        {'Google Data Catalog'}
-    </StyledLink>
-    </Block>
-        
-        )
+      return (
+        <Block>
+          <StyledLink
+            //@ts-ignore
+            isAnimateUnderline={false}
+            isFocusVisible={false}
+            target="_blank"
+            href={'https://console.cloud.google.com/datacatalog/' + url}
+          >
+            {'Google Data Catalog'}
+          </StyledLink>
+        </Block>
+      )
     }
     return null
   }
@@ -47,20 +48,22 @@ const Content = ({ dataset_id: id }) => {
     <React.Fragment>
       <Block>
         {error ? error : null}
-        {loading ? <Spinner size="40px" /> : 
-        <Block>
-          <Block marginBottom='scale800'>
-          <Label>Link</Label>
-          <GoogleCatalogLink />
-          </Block>
+        {loading ? (
+          <Spinner size="40px" />
+        ) : (
           <Block>
-          <Label>Skjema</Label>
-          <Schema />
+            <Block marginBottom="scale800">
+              <Label>Link</Label>
+              <GoogleCatalogLink />
+            </Block>
+            <Block>
+              <Label>Skjema</Label>
+              <Schema />
+            </Block>
           </Block>
-        </Block>
-        }
+        )}
       </Block>
     </React.Fragment>
   )
 }
-export default Content
+export default GoogleDataCatalog

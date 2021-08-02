@@ -2,24 +2,17 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { Table } from 'baseui/table-semantic'
 import { Label } from '@dakan/ui'
-import { LoadingSpinner, ErrorPage } from '@dakan/ui'
 
-import { useNode, useNodeEdges, useContent } from '@dakan/hooks'
-
-const CosmosCatalog = ({ dataset_id }) => {
-  const [nodeGraph, loadingNodeGraph, errorLoadingNodeGraph] =
-    useNode(dataset_id)
-
+const CosmosCatalog = ({ node }) => {
   const [stats, setStats] = React.useState<JSX.Element | null>()
   const [schema, setSchema] = React.useState<JSX.Element | null>()
 
-
   React.useEffect(() => {
     const metadata =
-      nodeGraph.properties &&
-      nodeGraph.properties.dbt &&
-      nodeGraph.properties.dbt.metadata
-        ? nodeGraph.properties.dbt.metadata
+      node.properties &&
+      node.properties.dbt &&
+      node.properties.dbt.metadata
+        ? node.properties.dbt.metadata
         : {}
 
     if (metadata['columns']) {
@@ -30,11 +23,12 @@ const CosmosCatalog = ({ dataset_id }) => {
           const col = columns[key]
           content.push([col.type, col.name, col.comment])
         })
-        setSchema(<Table columns={['Type', 'Navn', 'Kommentar']} data={content} />)
+        setSchema(
+          <Table columns={['Type', 'Navn', 'Kommentar']} data={content} />,
+        )
       }
     }
 
-      
     if (metadata['stats']) {
       let num_bytes = ''
       if (metadata['stats']['has_stats']['value']) {
@@ -51,21 +45,15 @@ const CosmosCatalog = ({ dataset_id }) => {
           <Block>
             <Block>{num_rows}</Block>
             <Block>{num_bytes}</Block>
-          </Block>
+          </Block>,
         )
       }
     }
-
-  }, [nodeGraph])
-
-  if (errorLoadingNodeGraph) {
-    return <Block>Feil ved lasting av node fra metadata graph</Block>
-  }
+  }, [node])
 
   return (
     <React.Fragment>
-      {loadingNodeGraph && <LoadingSpinner />}
-      {nodeGraph && (
+      {node && (
         <Block>
           <Label>Stats</Label>
           {stats}

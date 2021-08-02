@@ -23,10 +23,10 @@ import { useStyletron } from 'baseui'
 import Metadata from './Metadata'
 import AuditLogs from './AuditLogs'
 import Access from './Access'
-import Schema from './Schema'
+//import GoogleDataCatalog from './GoogleDataCatalog'
 import Examples from './Examples'
 import Lineage from './Lineage'
-import DbtCatalog from './DbtCatalog'
+//import DbtCatalog from './DbtCatalog'
 import CosmosCatalog from './CosmosCatalog'
 
 const Content = ({
@@ -156,10 +156,10 @@ const Content = ({
             <Tab title="Om datasettet">
               <Block display="flex" marginTop="scale1200">
                 <Block display="flex" flex="1" justifyContent="flex-start">
-                  <Metadata item={data} />
+                  <Metadata item={data} id={id} />
                 </Block>
                 <Block display="flex" flex="1" justifyContent="flex-start">
-                  <DbtCatalog url={data.content.catalog_path} dataset_id={id} />
+                  <CosmosCatalog node={node} />
                 </Block>
               </Block>
             </Tab>
@@ -168,11 +168,11 @@ const Content = ({
                 Kommer... Skal hentes fra dataprodukt readme
               </Block>
             </Tab>
-            <Tab title="Skjema">
+{/*             <Tab title="Skjema">
               <Block marginTop="scale1200">
-                <CosmosCatalog dataset_id={id} />
+                <CosmosCatalog node={node} />
               </Block>
-            </Tab>
+            </Tab> */}
             {data && data.content && data.content.manifest_path && (
               <Tab title="Lineage">
                 <Block marginTop="scale1200">
@@ -180,7 +180,7 @@ const Content = ({
                 </Block>
               </Tab>
             )}
-{/*             {data && data.content && data.content.catalog_path && (
+            {/*             {data && data.content && data.content.catalog_path && (
               <Tab title="Metadata (dbt)">
                 <Block marginTop="scale1200">
                   <DbtCatalog url={data.content.catalog_path} dataset_id={id} />
@@ -197,11 +197,11 @@ const Content = ({
                 <AuditLogs dataset_id={id} />
               </Block>
             </Tab>
-            <Tab title="Google Data Catalog">
+{/*             <Tab title="Google Data Catalog">
               <Block marginTop="scale1200">
-                <Schema dataset_id={id} />
+                <CosmosCatalog node={node} />
               </Block>
-            </Tab>
+            </Tab> */}
             <Tab title="Få tilgang">
               <Block marginTop="scale1200">
                 <Access dataset_id={id} />
