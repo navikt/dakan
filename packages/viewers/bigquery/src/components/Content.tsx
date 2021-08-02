@@ -168,6 +168,11 @@ const Content = ({
                 Kommer... Skal hentes fra dataprodukt readme
               </Block>
             </Tab>
+            <Tab title="Skjema">
+              <Block marginTop="scale1200">
+                <CosmosCatalog dataset_id={id} />
+              </Block>
+            </Tab>
             {data && data.content && data.content.manifest_path && (
               <Tab title="Lineage">
                 <Block marginTop="scale1200">
@@ -182,11 +187,6 @@ const Content = ({
                 </Block>
               </Tab>
             )} */}
-            <Tab title="Skjema">
-              <Block marginTop="scale1200">
-                <CosmosCatalog dataset_id={id} />
-              </Block>
-            </Tab>
             <Tab title="Eksempler">
               <Block marginTop="scale1200">
                 <Examples dataset_id={id} />
