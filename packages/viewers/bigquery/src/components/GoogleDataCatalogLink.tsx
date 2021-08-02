@@ -6,11 +6,12 @@ import { Spinner } from 'baseui/spinner'
 
 export const GoogleDataCatalogLink = ({ dataset_id: id }) => {
   const [data, loading, error] = useGoogleCatalogMetadata(id)
+  const [link, setLink] = React.useState<JSX.Element | null>(null)
 
-  const GoogleCatalogLink = () => {
+  React.useEffect(() => {
     if (data && data[0] && data[0]['name']) {
       const url = data[0]['name']
-      return (
+      setLink(
         <Block>
           <StyledLink
             //@ts-ignore
@@ -24,14 +25,13 @@ export const GoogleDataCatalogLink = ({ dataset_id: id }) => {
         </Block>
       )
     }
-    return null
-  }
+  }, [data])
 
   return (
     <React.Fragment>
       <Block>
         {error ? error : null}
-        {loading ? <Spinner size="40px" /> : <GoogleCatalogLink />}
+        {loading ? <Spinner size="40px" /> : link}
       </Block>
     </React.Fragment>
   )

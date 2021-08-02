@@ -26,6 +26,7 @@ import Access from './Access'
 //import GoogleDataCatalog from './GoogleDataCatalog'
 import Examples from './Examples'
 import Lineage from './Lineage'
+import Readme from './Readme'
 //import DbtCatalog from './DbtCatalog'
 import CosmosCatalog from './CosmosCatalog'
 
@@ -86,6 +87,7 @@ const Content = ({
                   </Block>
                 </Block>
               )}
+              {(description || isEditMode) && (
               <Block marginTop="scale800">
                 <SingleUserText
                   dataId={data.id}
@@ -97,6 +99,7 @@ const Content = ({
                   isEditMode={isEditMode}
                 />
               </Block>
+              )}
             </Block>
           </Block>
         )}
@@ -163,11 +166,13 @@ const Content = ({
                 </Block>
               </Block>
             </Tab>
+            {data && data.content && data.content.readme && (
             <Tab title="Om dataproduktet">
               <Block marginTop="scale1200">
-                Kommer... Skal hentes fra dataprodukt readme
+                <Readme url={data.content.readme} />
               </Block>
             </Tab>
+            )}
 {/*             <Tab title="Skjema">
               <Block marginTop="scale1200">
                 <CosmosCatalog node={node} />
