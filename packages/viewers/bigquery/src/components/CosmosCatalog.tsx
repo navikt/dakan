@@ -9,9 +9,7 @@ const CosmosCatalog = ({ node }) => {
 
   React.useEffect(() => {
     const metadata =
-      node.properties &&
-      node.properties.dbt &&
-      node.properties.dbt.metadata
+      node.properties && node.properties.dbt && node.properties.dbt.metadata
         ? node.properties.dbt.metadata
         : {}
 

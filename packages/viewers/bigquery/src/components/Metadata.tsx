@@ -5,23 +5,22 @@ import { LabeledContent } from '@dakan/ui'
 import ReactMarkdown from 'react-markdown'
 import { format } from 'date-fns'
 
-import {BigQueryLink} from './BigQueryLink'
-import {GoogleDataCatalogLink} from './GoogleDataCatalogLink'
-
+import { BigQueryLink } from './BigQueryLink'
+import { GoogleDataCatalogLink } from './GoogleDataCatalogLink'
 
 let ITEMS = [
-  { item: 'pii', label: 'persondata', format: 'bool'},
+  { item: 'pii', label: 'persondata', format: 'bool' },
   { item: 'publisher', label: 'utgiver' },
   { item: 'license', label: 'lisens' },
-  { item: 'language', label: 'språk'},
-  { item: 'periodicity', label: 'oppdateres'},
-  { item: 'temporal', label: 'periode'},
-  { item: 'author', label: 'forfatter'},
-  { item: 'contactPoint', label: 'kontakt'},
-  { item: 'spatial', label: 'område'},
-  { item: 'keyword', label: 'nøkkelord'},
+  { item: 'language', label: 'språk' },
+  { item: 'periodicity', label: 'oppdateres' },
+  { item: 'temporal', label: 'periode' },
+  { item: 'author', label: 'forfatter' },
+  { item: 'contactPoint', label: 'kontakt' },
+  { item: 'spatial', label: 'område' },
+  { item: 'keyword', label: 'nøkkelord' },
   { item: 'repo', format: 'link' },
-  { item: 'notebook',format: 'link' },
+  { item: 'notebook', format: 'link' },
   { item: 'issued', label: 'utgitt', format: 'date' },
   { item: 'modified', label: 'oppdatert', format: 'date' },
 ]
@@ -40,12 +39,9 @@ const Metadata = ({ item, id }) => {
 
   React.useEffect(() => {
     if (item.id) {
-      setLink(
-        <GoogleDataCatalogLink dataset_id={item.id} />
-      )
+      setLink(<GoogleDataCatalogLink dataset_id={item.id} />)
     }
   }, [item.id])
-
 
   const getMetadata = (): JSX.Element[] => {
     return ITEMS.map((entry: any, i: number) => {
@@ -69,7 +65,7 @@ const Metadata = ({ item, id }) => {
               }
             }
           } else {
-            value = Object.keys(value).map(key => {
+            value = Object.keys(value).map((key) => {
               return <div key={`metadata_object_${i}_${key}`}>{value[key]}</div>
             })
           }
@@ -84,7 +80,7 @@ const Metadata = ({ item, id }) => {
           value = <Link href={value}>{value}</Link>
         }
         if (value && entry.format && entry.format === 'bool') {
-          value = value ? 'Ja': 'Nei'
+          value = value ? 'Ja' : 'Nei'
         }
       } catch (err) {
         console.log('Metadata error: ', value)
@@ -95,7 +91,7 @@ const Metadata = ({ item, id }) => {
             <LabeledContent
               key={`metadata_block_content_${i}`}
               aria-label="label"
-              description={entry.label ? entry.label: entry.item}
+              description={entry.label ? entry.label : entry.item}
             >
               {value}
             </LabeledContent>
@@ -105,22 +101,19 @@ const Metadata = ({ item, id }) => {
     })
   }
 
-
   if (!item) return null
 
   return (
     <div role="main">
-        {item.id && (
-          <Block marginBottom='scale800'>
-          <Block marginBottom='scale800'>
+      {item.id && (
+        <Block marginBottom="scale800">
+          <Block marginBottom="scale800">
             <BigQueryLink dataset_id={item.id} />
           </Block>
-          <Block marginBottom='scale800'>
-            {link}
-          </Block>
-          </Block>
-        )}
-        {getMetadata()}
+          <Block marginBottom="scale800">{link}</Block>
+        </Block>
+      )}
+      {getMetadata()}
     </div>
   )
 }

@@ -88,17 +88,17 @@ const Content = ({
                 </Block>
               )}
               {(description || isEditMode) && (
-              <Block marginTop="scale800">
-                <SingleUserText
-                  dataId={data.id}
-                  userText={description}
-                  setUserText={setDescription}
-                  title="Utvidet beskrivelse"
-                  edgeLabel="hasTableDescription"
-                  nodeLabel="table_description"
-                  isEditMode={isEditMode}
-                />
-              </Block>
+                <Block marginTop="scale800">
+                  <SingleUserText
+                    dataId={data.id}
+                    userText={description}
+                    setUserText={setDescription}
+                    title="Utvidet beskrivelse"
+                    edgeLabel="hasTableDescription"
+                    nodeLabel="table_description"
+                    isEditMode={isEditMode}
+                  />
+                </Block>
               )}
             </Block>
           </Block>
@@ -167,13 +167,13 @@ const Content = ({
               </Block>
             </Tab>
             {data && data.content && data.content.readme && (
-            <Tab title="Om dataproduktet">
-              <Block marginTop="scale1200">
-                <Readme url={data.content.readme} />
-              </Block>
-            </Tab>
+              <Tab title="Om dataproduktet">
+                <Block marginTop="scale1200">
+                  <Readme url={data.content.readme} />
+                </Block>
+              </Tab>
             )}
-{/*             <Tab title="Skjema">
+            {/*             <Tab title="Skjema">
               <Block marginTop="scale1200">
                 <CosmosCatalog node={node} />
               </Block>
@@ -202,7 +202,7 @@ const Content = ({
                 <AuditLogs dataset_id={id} />
               </Block>
             </Tab>
-{/*             <Tab title="Google Data Catalog">
+            {/*             <Tab title="Google Data Catalog">
               <Block marginTop="scale1200">
                 <CosmosCatalog node={node} />
               </Block>

@@ -22,7 +22,7 @@ export const GoogleDataCatalogLink = ({ dataset_id: id }) => {
           >
             {'Google Data Catalog'}
           </StyledLink>
-        </Block>
+        </Block>,
       )
     }
   }, [data])

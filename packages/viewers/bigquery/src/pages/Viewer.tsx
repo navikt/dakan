@@ -18,8 +18,11 @@ import exampleComments from '../resources/exampleComments.json'
 import exampleDescription from '../resources/exampleDescription.json'
 
 const Viewer = (props: any) => {
-  const [nodeElastic, loadingNodeElastic, errorLoadingNodeElastic] =
-    useElasticSearch(props.match.params.id)
+  const [
+    nodeElastic,
+    loadingNodeElastic,
+    errorLoadingNodeElastic,
+  ] = useElasticSearch(props.match.params.id)
   const [nodeGraph, loadingNodeGraph, errorLoadingNodeGraph] = useNode(
     props.match.params.id,
   )
@@ -31,11 +34,19 @@ const Viewer = (props: any) => {
   //const [tagOptions, loadingtagOptions, errorLoadingtagOptions] =
   //  useContent('opplysningstype')
 
-  const [ratings, loadingRatings, errorLoadingRatings, setRatings] =
-    useNodeEdges(props.match.params.id, 'hasTableRating')
+  const [
+    ratings,
+    loadingRatings,
+    errorLoadingRatings,
+    setRatings,
+  ] = useNodeEdges(props.match.params.id, 'hasTableRating')
 
-  const [comments, loadingCommnets, errorLoadingComments, setComments] =
-    useNodeEdges(props.match.params.id, 'hasTableComment')
+  const [
+    comments,
+    loadingCommnets,
+    errorLoadingComments,
+    setComments,
+  ] = useNodeEdges(props.match.params.id, 'hasTableComment')
 
   const [
     description,
@@ -44,11 +55,19 @@ const Viewer = (props: any) => {
     setDescription,
   ] = useNodeEdges(props.match.params.id, 'hasTableDescription')
 
-  const [personTags, loadingPersonTags, errorLoadingPersonTags, setPersonTags] =
-    useNodeEdges(props.match.params.id, 'hasTablePersonTag')
+  const [
+    personTags,
+    loadingPersonTags,
+    errorLoadingPersonTags,
+    setPersonTags,
+  ] = useNodeEdges(props.match.params.id, 'hasTablePersonTag')
 
-  const [teamTags, loadingTeamTags, errorLoadingTeamTags, setTeamTags] =
-    useNodeEdges(props.match.params.id, 'hasTableTeamTag')
+  const [
+    teamTags,
+    loadingTeamTags,
+    errorLoadingTeamTags,
+    setTeamTags,
+  ] = useNodeEdges(props.match.params.id, 'hasTableTeamTag')
 
   const getHeader = () => (
     <Header
