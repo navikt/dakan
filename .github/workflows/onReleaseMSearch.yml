@@ -17,7 +17,7 @@ jobs:
         ref: refs/heads/master
     - run: yarn run setup
     - run: yarn run shared:build
-    - run: yarn msearch:build
+    - run: yarn search:build
       env:
         CI: false
     - name: Generate Docker image:tag
