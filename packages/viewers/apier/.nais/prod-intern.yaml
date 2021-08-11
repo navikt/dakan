@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.adeo.no/apier
-  - https://data.prod-fss.nais.io/apier
+  - https://data-intern.prod-gcp.nais.io/apier
   - https://data.intern.nav.no/apier
