@@ -38,6 +38,12 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-fss
           RESOURCE: apps/msearch/.nais/nais.yaml
+          VARS: apps/msearch/.nais/config-dev-fss-intern.yaml
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: apps/msearch/.nais/nais.yaml
           VARS: apps/msearch/.nais/config-dev-intern.yaml
       - uses: nais/deploy/actions/deploy@v1
         env:
