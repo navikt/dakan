@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/naisteam
-  - https://data.dev-fss.nais.io/naisteam
+  - https://data.dev-gcp.nais.io/naisteam
   - https://data.dev.intern.nav.no/naisteam

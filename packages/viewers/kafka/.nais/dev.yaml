@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/kafka
-  - https://data.dev-fss.nais.io/kafka
+  - https://data.dev-gcp.nais.io/kafka
   - https://data.dev.intern.nav.no/kafka
