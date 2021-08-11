@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.adeo.no/person
-  - https://data.prod-fss.nais.io/person
+  - https://data-intern.prod-gcp.nais.io/person
   - https://data.intern.nav.no/person
