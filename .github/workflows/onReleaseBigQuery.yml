@@ -37,7 +37,7 @@ jobs:
     - uses: nais/deploy/actions/deploy@v1
       env:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: prod-fss
+        CLUSTER: prod-gcp
         RESOURCE: packages/nais/nais.yaml
         VARS: packages/viewers/${{ env.VIEWER }}/.nais/prod.yaml
-        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
+        VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }},TERN=-intern
