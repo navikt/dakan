@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/begrep
-  - https://data.dev-fss.nais.io/begrep
+  - https://data-intern.dev-gcp.nais.io/begrep
   - https://data.dev.intern.nav.no/begrep
