@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/apier
-  - https://data.dev-fss.nais.io/apier
+  - https://data.dev-gcp.nais.io/apier
   - https://data.dev.intern.nav.no/apier

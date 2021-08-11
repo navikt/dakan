@@ -49,8 +49,16 @@ jobs:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: dev-fss
         RESOURCE: packages/nais/nais.yaml
-        VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev-intern.yaml
+        VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev-intern-fss.yaml
         VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
+    - if: github.ref == 'refs/heads/master'
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: packages/nais/nais.yaml
+          VARS: packages/viewers/${{ env.VIEWER }}/.nais/dev-intern.yaml
+          VAR: VIEWER=${{ env.VIEWER }},IMAGE=${{ env.IMAGE }}
     - if: github.ref == 'refs/heads/master'
       uses: nais/deploy/actions/deploy@v1
       env:
