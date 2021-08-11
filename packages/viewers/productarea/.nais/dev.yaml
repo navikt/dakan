@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/productarea
-  - https://data.dev-fss.nais.io/productarea
+  - https://data.dev-gcp.nais.io/productarea
   - https://data.dev.intern.nav.no/productarea

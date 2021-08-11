@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.dev-fss.nais.io/parquet
-  - https://data.nais.preprod.local/parquet
+  - https://data.dev-gcp.nais.io/parquet
   - https://data.dev.intern.nav.no/parquet

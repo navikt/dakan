@@ -1,4 +1,3 @@
 ingresses:
-  - https://data.nais.preprod.local/office
-  - https://data.dev-fss.nais.io/office
+  - https://data.dev-gcp.nais.io/office
   - https://data.dev.intern.nav.no/office
