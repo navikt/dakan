@@ -18,13 +18,29 @@ Test: https://data.dev-fss.nais.io/ or https://data.dev.intern.nav.no
 
 The frontend app consists of a search page backed by elastic search and a number of independent 'viewer' apps
 Each type of content in the catalog is associated with a dedicated viewer app.
+
 The motivation for the microfrontend architecture is to lower the barrier for independent teams to develop and maintain custom viewers for their content types.
 
 ## Backend 
 
-Metadata relevant for search is stored in dcat format in [Elastic search](https://github.com/navikt/dataverk-api).
-More comprehensive metadata is stored in a [graph database](https://github.com/navikt/data-catalog-api) (CosmosDB Gremlin).
-Data is stored in buckets, either S3 on prem (internal data) or Google Cloud Storage (public data).
+* Metadata relevant for search is stored in dcat format in [Elastic search](https://github.com/navikt/dataverk-api).
+* More comprehensive metadata is stored in a [graph database](https://github.com/navikt/data-catalog-api) (CosmosDB Gremlin).
+* Data is stored in buckets, either S3 on prem (internal data) or Google Cloud Storage (public data).
+
+## APIs
+
+* dakan-api-skriv - Api for registering data products, datapakker etc.
+    * updates a search index (ElasticSearch) to make resources searchable in the data catalog
+    * for data types that include files (eg. for datapakker) the api uploads the files to GSP bucket storage.
+    * uses dakan-api-graph for updating graph database (CosmosDB)
+
+* dakan-api-les - Read-only api to retrieve content to be displayed in Data catalog frontend [Dakan](https://github.com/navikt/dakan)
+    * used only by [Dakan](https://github.com/navikt/dakan)
+    * read from elasticsearch and GCP bucket storage and content is to be displayed in the various viewers in Dakan
+    * a separate read-only api because this is exposed to the internet for external data catalog at https://data.nav.no/api.
+
+* dakan-api-graph - Api for writing to / reading from CosmosDB
+    * Used by [Dakan](https://github.com/navikt/dakan), but also by other jobs / apps that write either periodic or continuous nodes to the graph database. Ex: the notebooks, kafka consumers and dakan-api-skriv
 
 ### Integrations
 
