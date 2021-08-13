@@ -24,7 +24,7 @@ The motivation for the microfrontend architecture is to lower the barrier for in
 ## Backend 
 
 * Metadata relevant for search is stored in dcat format in [Elastic search](https://github.com/navikt/dataverk-api).
-* More comprehensive metadata is stored in a [graph database](https://github.com/navikt/data-catalog-api) (CosmosDB Gremlin).
+* More comprehensive metadata is stored in a [graph database](https://github.com/navikt/dakan-api-graph) (CosmosDB Gremlin).
 * Data is stored in buckets, either S3 on prem (internal data) or Google Cloud Storage (public data).
 
 ## APIs
@@ -44,7 +44,7 @@ The motivation for the microfrontend architecture is to lower the barrier for in
 
 ### Integrations
 
-[Felles datakatalog](https://data.norge.no/) harvests data from Dakan trough an [API](https://github.com/navikt/digdir-api.
+[Felles datakatalog](https://data.norge.no/) harvests data from Dakan trough an [API](https://github.com/navikt/dakan-api-digdir).
 The API converts dcat-ap metadata in JSON format from Elastic Search to RDF format.
 The API is based on two utility libraries developed by [Digitaliseringsdirektoratet](https://github.com/Informasjonsforvaltning):
 * [concepttordf](https://github.com/Informasjonsforvaltning/concepttordf) to map concept collections to the skos-ap-no specification.
@@ -54,7 +54,7 @@ The API is based on two utility libraries developed by [Digitaliseringsdirektora
 
 [Open API/Swagger](https://data.nav.no/digdir-api/docs)
 
-[Source (github)](https://github.com/navikt/digdir-api)
+[Source (github)](https://github.com/navikt/dakan-api-digdir)
 
 ## Development
 
