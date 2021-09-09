@@ -10,23 +10,19 @@ const GoogleDataCatalog = ({ dataset_id: id }) => {
   const [data, loading, error] = useGoogleCatalogMetadata(id)
 
   const Schema = () => {
-    if (data && data[0] && data[0]['schema'] && data[0]['schema']['columns']) {
-      const columns = data[0]['schema']['columns']
+    if (data && data['schema'] && data['schema']['columns']) {
+      const columns = data['schema']['columns']
       if (!Array.isArray(columns)) {
         return null
       }
-      let content: any[] = []
-      columns.forEach((col) => {
-        content.push([col.column, col.description, col.type])
-      })
-      return <Table columns={['Navn', 'Beskrivelse', 'Type']} data={content} />
+      return <Table columns={['Navn', 'Mode', 'Type']} data={content} />
     }
     return null
   }
 
   const GoogleCatalogLink = () => {
-    if (data && data[0] && data[0]['name']) {
-      const url = data[0]['name']
+    if (data && data['name']) {
+      const url = data['name']
       return (
         <Block>
           <StyledLink
