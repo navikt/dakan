@@ -10,10 +10,10 @@ export interface DatasetListProps {
 }
 
 const getLink = (dataset) => {
-    return '../bigquery/' + dataset.id
+    return '../bigquery/' + dataset.title
 }
 
-const getDataset = ({dataset}) => {
+const getDataset = (dataset: Dataset) => {
     if (dataset ) {
         return (
             <Block
@@ -32,13 +32,13 @@ const getDataset = ({dataset}) => {
 export const DatasetTable: React.FC<DatasetListProps> = ({ datasets }) => {
     const columns = [
         <TableBuilderColumn id="tittle" header="Tittel">
-            {(dataset) => <Link href={getLink(dataset)}>{getDataset(dataset)}</Link>}
+            {(dataset: Dataset) => <Link href={getLink(dataset)}>{getDataset(dataset)}</Link>}
         </TableBuilderColumn>,
         <TableBuilderColumn id="description" header="Beskrivelse">
-            {(dataset) => dataset.description}
+            {(dataset: Dataset) => dataset.description}
         </TableBuilderColumn>,
         <TableBuilderColumn id="format" header="Format">
-            {(dataset) => dataset.format}
+            {(dataset: Dataset) => dataset.format}
         </TableBuilderColumn>,
     ]
 
