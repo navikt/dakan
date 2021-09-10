@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI",
+    "title": "STYRK ",
+    "description": "STYRK dimensjonstabell fra SSB",
+    "uri": "https://console.cloud.google.com/datacatalog/projects/dataplattform-dev-9da3/locations/europe-north1/entryGroups/@bigquery/entries/cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI?authuser=1&folder=&organizationId=&project=dataplattform-dev-9da3",
+    "format": "table",
+    "modified": "2012-03-26",
+    "issued": "2021-03-26",
+    "periodicity": "infrequent",
+    "provenance": "SSB",
+    "contactPoint": {
+      "name": "ChristineTeig",
+      "email": "christine.teig@nav.no"
+    },
+    "author": "Christine Teig",
+    "repo": "https://github.com/navikt/arbeidsplassen-analyse",
+    "readme": "",
+    "spatial": "Norge",
+    "accessRights": "internal",
+    "pii": "false",
+    "keyword": [
+      "STYRK",
+      "Yrkeskoder"
+    ],
+    "theme": "Arbeid",
+    "temporal": {
+      "from": "2008",
+      "to": "2021"
+    }
+  },
+  {
+    "id": "cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlaskjdhaskdyaurh",
+    "title": "STYRK 2",
+    "description": "STYRK dimensjonstabell ",
+    "uri": "https://console.cloud.google.com/datacatalog/projects/dataplattform-dev-9da3/locations/europe-north1/entryGroups/@bigquery/entries/cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI?authuser=1&folder=&organizationId=&project=dataplattform-dev-9da3",
+    "format": "view",
+    "modified": "2012-03-26",
+    "issued": "2021-03-26",
+    "periodicity": "infrequent",
+    "provenance": "SSB",
+    "contactPoint": {
+      "name": "ChristineTeig",
+      "email": "christine.teig@nav.no"
+    },
+    "author": "Christine Teig",
+    "repo": "https://github.com/navikt/arbeidsplassen-analyse",
+    "readme": "",
+    "spatial": "Norge",
+    "accessRights": "internal",
+    "pii": "false",
+    "keyword": [
+      "STYRK",
+      "Yrkeskoder"
+    ],
+    "theme": "Arbeid",
+    "temporal": {
+      "from": "2008",
+      "to": "2021"
+    }
+  }
+]
