@@ -9,8 +9,8 @@ export const GoogleDataCatalogLink = ({ dataset_id: id }) => {
   const [link, setLink] = React.useState<JSX.Element | null>(null)
 
   React.useEffect(() => {
-    if (data && data[0] && data[0]['name']) {
-      const url = data[0]['name']
+    if (data && data['name']) {
+      const url = data['name']
       setLink(
         <Block>
           <StyledLink
