@@ -11,8 +11,8 @@ const GoogleDataCatalog = ({ dataset_id: id }) => {
 
   const Schema = () => {
     if (data && data['schema'] && data['schema']['columns']) {
-      const columns = data['schema']['columns']
-      if (!Array.isArray(columns)) {
+      const content = data['schema']['columns']
+      if (!Array.isArray(content)) {
         return null
       }
       return <Table columns={['Navn', 'Mode', 'Type']} data={content} />
