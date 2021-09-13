@@ -4,6 +4,7 @@ import { ParagraphMedium, LabelMedium } from 'baseui/typography'
 import { TableBuilder, TableBuilderColumn } from 'baseui/table-semantic'
 import { StyledLink as Link } from 'baseui/link'
 import { LayoutSplit as Layout, ContentItems, LabeledContent } from '@dakan/ui'
+import removeMd from 'remove-markdown'
 
 import Heatmap from '../components/Heatmap'
 import RepoContributers from './RepoContributers'
@@ -56,6 +57,18 @@ const getTable = (list) => {
 }
 
 const Content = ({ item, memberOf }) => {
+
+  const getReadMe = () : String => {
+    const content: String = removeMd(item.properties.read_me_content || '')
+
+    if (content.length > 200) {
+      return content.substr(0, 200) + '...'
+    } else {
+      return content
+    }
+
+  }
+
   const Head = () => (
     <div role="main">
       <ParagraphMedium>
@@ -71,10 +84,8 @@ const Content = ({ item, memberOf }) => {
 
       {item && item.properties && item.properties.read_me_content && (
         <LabeledContent description="Repo readme" list>
-          {item.properties.read_me_content.length > 200
-            ? item.properties.read_me_content.substring(0, 200)
-            : item.properties.read_me_content}
-          ... <Link href={item.properties.read_me_url}>les mer</Link>
+          {getReadMe()}
+          <Link href={item.properties.read_me_url}>les mer</Link>
         </LabeledContent>
       )}
 
