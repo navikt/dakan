@@ -3,28 +3,37 @@ import * as React from 'react'
 import { Block } from 'baseui/block'
 import { ParagraphMedium, LabelMedium } from 'baseui/typography'
 
-import {LayoutSplit as Layout} from '@dakan/ui'
+import {LayoutSplit as Layout, ContentItems} from '@dakan/ui'
 import DatasetTable from "./DatasetTable";
 import {Dataproduct} from "../models/dataproducts";
 
+const contentItemList = [
+    { item: 'author', label: 'Dataprodukteier', format: 'text' },
+    { item: 'periodicity', label: 'Periodisitet ', format: 'text' },
+    { item: 'theme', label: 'Tema', format: 'text' },
+    { item: 'pii', label: 'pii', format: 'text' },
+    { item: 'repo', label: 'Git repo', format: 'link' },
+    { item: 'modified_at', label: 'Oppdatert', format: 'date' },
+]
 
 export const Dataproducts: React.FC<{ dataproduct: Dataproduct }> =({dataproduct}) =>
 {
   const Head = () => (
     <div role="main">
       <ParagraphMedium>
-        { dataproduct?.title}
+        { dataproduct?.properties?.description}
       </ParagraphMedium>
+        <ContentItems ITEMS={contentItemList} item={dataproduct} />
     </div>
   )
 
   const Datasets = () => {
-    if (dataproduct.datasets) {
+    if (dataproduct?.datasets) {
       return (
         <Block width="100%" height="800px">
           <div role="complementary">
             <LabelMedium>Data produktets datasets</LabelMedium>
-            <DatasetTable datasets={dataproduct.datasets} />
+            <DatasetTable datasets={dataproduct?.datasets} />
           </div>
         </Block>
       )
@@ -36,7 +45,7 @@ export const Dataproducts: React.FC<{ dataproduct: Dataproduct }> =({dataproduct
       <Block>
         <Layout
           headingLabel="Dataprodukt"
-          headingText={dataproduct?.description }
+          headingText={dataproduct?.properties?.title }
           left={<Head />}
           right={<Datasets />}
         />

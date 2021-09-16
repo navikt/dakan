@@ -8,7 +8,8 @@ import {
 import { Header, LoadingSpinner, ErrorPage } from '@dakan/ui'
 import Dataproducts from "../components/Dataproducts";
 
-import exampleJson from '../resources/example.json'
+import exampleJson from '../resources/dataproductExample.json'
+import {Block} from "baseui/block";
 
 
 const Viewer = (props: any) => {
@@ -40,20 +41,24 @@ const Viewer = (props: any) => {
     setDescription,
   ] = useNodeEdges(props.match.params.id, 'hasTableDescription')
 
-  // const getHeader = () => (
-  //   <Header
-  //     config={{
-  //       nav: true,
-  //       about: true,
-  //       showLoginButton: true,
-  //     }}
-  //   />
-  // )
+  const getHeader = () => (
+    <Header
+      config={{
+        nav: true,
+        about: true,
+        showLoginButton: true,
+      }}
+    />
+  )
 
   if (props.match.params.id === 'test') {
-    return <Dataproducts {...props} dataproduct={exampleJson}  />
+    return (
+        <Block>
+          {/*{getHeader()}*/}
+          <Dataproducts {...props} dataproduct={exampleJson} />
+        </Block>
+    )
   }
-
 
   const sortNodesByPropertyTime = (data: any) => {
     return data.sort((a: any, b: any) => {

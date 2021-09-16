@@ -1,0 +1,84 @@
+{
+  "unique_id": "uniqueid",
+  "properties": {
+    "title": "Dataplattforms dataprodukt",
+    "description": "Beskrivelse kommer her. Her kan det være en lengre tekst som er nyttig for den som skal finne og bruke data.",
+    "periodicity": "Daglig",
+    "provenance": "NAV",
+    "contactPoint": [
+      {
+        "name": "Kjerne Kar",
+        "email": "kjerne.kar@nav.no"
+      }
+    ],
+    "author": "Kjerne Kar",
+    "repo": "https://github.com/navikt/mitt-nye-dataprodukt.git",
+    "checksum": {
+      "name": "sha256",
+      "checksum": "23d8fe0520f71da4838c9dc0814e008d7bef5c322d878de272b61ded14f2c160"
+    },
+    "readme": "link til readme",
+    "spatial": "Norge",
+    "accessRights": "internal",
+    "pii": "false",
+    "theme": "Arbeid",
+    "language": "NO",
+    "rights": "Copyright 2021, NAV",
+    "keyword": [
+      "enhetsregister",
+      "ereg"
+    ]
+  },
+  "created_at": 1589627327955,
+  "modified_at": 1589627327955,
+  "datasets": [
+    {
+      "unique_id": "gcp-project.dataset.table",
+      "title": "a tittle",
+      "description": "a description",
+      "pii": "false",
+      "uri": "https://console.cloud.google.com/datacatalog/projects/dataplattform-dev-9da3/locations/europe-north1/entryGroups/@bigquery/entries/cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI?authuser=1&folder=&organizationId=&project=dataplattform-dev-9da3",
+      "schema": {
+        "columns": {
+          "id": "MyId",
+          "name": "My Name",
+          "adress": "My adress"
+        }
+      },
+      "sources": [
+        {
+          "source.team-postgres-db.important_table": {
+            "database": "team-postgres-db",
+            "unique_id": "source.team-postgres-db.important_table"
+          }
+        },
+        {
+          "source.team-postgres-db.another-important_table": {
+            "database": "team-postgres-db",
+            "unique_id": "source.team-postgres-db.another-important_table"
+          }
+        }
+      ],
+      "access_rights": [
+        {
+          "ad_gruppe_name": "ad_gruppe_a"
+        }
+      ],
+      "tags": [
+        "ab",
+        "bc"
+      ],
+      "created_at": 1627327955,
+      "modified_at": 1627327955
+    },
+    {
+      "unique_id": "gcp-project.dataset.new-table",
+      "title": "another tittle",
+      "description": "another description",
+      "uri": "https://console.cloud.google.com/datacatalog/projects/dataplattform-dev-9da3/locations/europe-north1/entryGroups/@bigquery/entries/cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI?authuser=1&folder=&organizationId=&project=dataplattform-dev-9da3",
+      "pii": "false",
+      "created_at": 1627327955,
+      "modified_at": 1627327955
+    }
+  ]
+}

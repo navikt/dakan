@@ -37,9 +37,6 @@ export const DatasetTable: React.FC<DatasetListProps> = ({ datasets }) => {
         <TableBuilderColumn id="description" header="Beskrivelse">
             {(dataset: Dataset) => dataset.description}
         </TableBuilderColumn>,
-        <TableBuilderColumn id="format" header="Format">
-            {(dataset: Dataset) => dataset.format}
-        </TableBuilderColumn>,
     ]
 
     return <TableBuilder data={datasets}>{columns}</TableBuilder>
