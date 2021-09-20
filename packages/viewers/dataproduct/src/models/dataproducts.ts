@@ -1,5 +1,5 @@
 
-interface Contact {
+interface ContactPoint {
     name: string
     email: string
 }
@@ -11,25 +11,38 @@ export interface Dataproduct {
     properties: {
         title: string
         description: string
-        type: string
-        format: string
-        modified: string
-        issued: string
-        periodicity: string
-        provenance: string
-        contact: Contact
         repo: string
+        pii: boolean
+        periodicity: string
+        contactPoint: ContactPoint
+        author: string
+        long_description: string
+        accessRights: string
+        keyword: string[]
+        theme: string
+        temporal: string
+        language: string
     }
     datasets: Dataset[]
-
-
 }
 
 
+interface AccessGroups {
+    canRead: string []
+    canRequest: string[]
+}
 
 export interface Dataset {
     id: string
+    gcpProject: string
+    dataset: string
+    table: string
     title: string
     description: string
-    format: string
+    sources: string[]
+    long_description: string
+    spatial: string
+    accessRights: string
+    accessGroups: AccessGroups
+    keyword: string[]
 }

@@ -11,6 +11,7 @@ export interface DatasetListProps {
 
 const getLink = (dataset) => {
     return '../bigquery/' + dataset.title
+    //return 'https://data.intern.nav.no/bigquery/arbeidsforhold-prod-39ca.enhetsregisteret.ereg'
 }
 
 const getDataset = (dataset: Dataset) => {
