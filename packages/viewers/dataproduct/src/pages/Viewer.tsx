@@ -1,5 +1,5 @@
 import React from 'react'
-import {useElasticSearch, useNode, useNodeEdges,} from '@dakan/hooks'
+import {useElasticSearch} from '@dakan/hooks'
 import {ErrorPage, LoadingSpinner} from '@dakan/ui'
 import Dataproducts from "../components/Dataproducts";
 
