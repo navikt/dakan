@@ -1,28 +1,26 @@
 {
-  "properties": {
-    "id": "cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI",
-    "title": "Tittel til dataprodukt",
-    "description": "En kort beskrivelse av dataproduktet",
-    "repo": "https://github.com/navikt/mitt-nye-dataprodukt.git",
-    "pii": "false",
-    "periodicity": "Daily",
-    "contactPoint": [
-      {
-        "name": "Kjerne Kar",
-        "email": "kjerne.kar@nav.no"
-      }
-    ],
-    "author": "Team dataplattform",
-    "long_description": "Lengre beskrivelse av dataproduktet. Nok informajson til at de som skal bruke dataene forstår hvilke data det er og hvordan de skal brukes.",
-    "accessRights": "internal",
-    "keyword": [
-      "enhetsregister"
-    ],
-    "theme": "Arbeid",
-    "temporal": {
-    },
-    "language": "NO"
+  "id": "cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI",
+  "title": "Tittel til dataprodukt",
+  "description": "En kort beskrivelse av dataproduktet",
+  "repo": "https://github.com/navikt/mitt-nye-dataprodukt.git",
+  "pii": "false",
+  "periodicity": "Daily",
+  "contactPoint": [
+    {
+      "name": "Kjerne Kar",
+      "email": "kjerne.kar@nav.no"
+    }
+  ],
+  "author": "Team dataplattform",
+  "long_description": "Lengre beskrivelse av dataproduktet. Nok informajson til at de som skal bruke dataene forstår hvilke data det er og hvordan de skal brukes.",
+  "accessRights": "internal",
+  "keyword": [
+    "enhetsregister"
+  ],
+  "theme": "Arbeid",
+  "temporal": {
   },
+  "language": "NO",
   "datasets": [
     {
       "gcpProject": "gcp-project",
