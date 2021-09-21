@@ -1,5 +1,6 @@
 {
   "properties": {
+    "id": "cHJvamVjdHMvZGF0YXBsYXR0Zm9ybS1kZXYtOWRhMy9kYXRhc2V0cy9zdHlyay90YWJsZXMva29kZXI",
     "title": "Tittel til dataprodukt",
     "description": "En kort beskrivelse av dataproduktet",
     "repo": "https://github.com/navikt/mitt-nye-dataprodukt.git",

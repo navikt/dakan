@@ -16,12 +16,12 @@ const contentItemList = [
     { item: 'modified_at', label: 'Oppdatert', format: 'date' },
 ]
 
-export const Dataproducts: React.FC<{ dataproduct: Dataproduct }> =({dataproduct}) =>
+export const Dataproducts: React.FC<{ dataproduct}> =({dataproduct}) =>
 {
   const Head = () => (
     <div role="main">
       <ParagraphMedium>
-        { dataproduct?.properties?.description}
+        { dataproduct?.description}
       </ParagraphMedium>
         <ContentItems ITEMS={contentItemList} item={dataproduct} />
     </div>
@@ -45,7 +45,7 @@ export const Dataproducts: React.FC<{ dataproduct: Dataproduct }> =({dataproduct
       <Block>
         <Layout
           headingLabel="Dataprodukt"
-          headingText={dataproduct?.properties?.title }
+          headingText={dataproduct?.title }
           left={<Head />}
           right={<Datasets />}
         />
