@@ -10,5 +10,7 @@ COPY build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d
 
+RUN ln -s /tmp/__ENV.js /usr/share/nginx/html/__ENV.js
+
 ENTRYPOINT ["/var/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

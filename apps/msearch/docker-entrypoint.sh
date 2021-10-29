@@ -3,6 +3,6 @@
 set -e
 
 echo "Serializing environment:"
-react-env --dest ./usr/share/nginx/html
+react-env --dest /tmp
 
 exec "$@"
