@@ -1,5 +1,4 @@
-FROM nginx:1.19-alpine
-LABEL org.opencontainers.image.source https://github.com/navikt/dakan
+FROM nginxinc/nginx-unprivileged:stable-alpine
 
 RUN apk add --no-cache nodejs yarn && \
         yarn global add @beam-australia/react-env@3.0.8
