@@ -2,4 +2,5 @@ postfix: -intern
 ingresses:
   - https://data.intern.nav.no
   - https://data-intern.prod-gcp.nais.io
+  - https://datapakker.intern.nav.no
 REACT_APP_CONFIG: '{"facets":[{"field":"format","label":"Type"},{"field":"theme","label":"Tema"}],"panels":[{"field":"keyword","label":"Stikkord"},{"field":"creator.name","label":"Forfatter"},{"field":"provenance","label":"Opprinnelse"},{"field":"content.status","label":"Begrep Status"}]}'
