@@ -124,6 +124,7 @@ function SearchPage(props) {
 
     const onChange = (values) => {
         if (values.size) {
+            values.set('Type', 'datapackage')
             values.set('sortKey', sortKey)
             values.set('sortOrder', sortOrder)
         }
@@ -166,7 +167,7 @@ function SearchPage(props) {
             ]
             return (
                 <Block marginBottom="scale1200" key="type_facet">
-                    <Block  key={`facet_data_label_${index}`}>
+                    <Block key={`facet_data_label_${index}`}>
                         <Block
                             display={['none', 'flex']}
                             marginBottom="scale750"
@@ -305,20 +306,7 @@ function SearchPage(props) {
                         />
                     </Block>
                 </Block>
-                <Block display={['block', 'block', 'none']}>
-                    <Accordion
-                        onChange={(e) => setPanelExpanded(e.expanded[0])}
-                    >
-                        <Panel
-                            title="Filter"
-                            isExpanded={panelExpanded === '0'}
-                        >
-                            <Block marginBottom="scale800">
-                                {LeftSidebar()}
-                            </Block>
-                        </Panel>
-                    </Accordion>
-                </Block>
+
                 <Block marginTop="scale600">
                     <Label>Sortering</Label>
                     <FlexGrid
@@ -381,9 +369,7 @@ function SearchPage(props) {
     return (
         <Elasticsearch url={url} onChange={(values) => onChange(values)}>
             <LayoutSearch
-                left={LeftSidebar()}
                 right={Content(props)}
-                options={RightSidebar()}
             />
         </Elasticsearch>
     )

@@ -342,6 +342,7 @@ const ThreeColsSearch = (props) => {
 }
 
 export const LayoutSearch = (props) => {
+  const [, theme] = useStyletron()
   return (
     <React.Fragment>
       <Block
@@ -349,23 +350,19 @@ export const LayoutSearch = (props) => {
         width="100%"
         minHeight="100vh"
         alignItems="flex-start"
+        margin="0 auto"
         flexDirection="column"
         marginTop="scale800"
+        maxWidth={theme.breakpoints.large + "px"}
       >
         <Block width="100%">
-          <Block display={['block', 'block', 'none', 'none']} width="100%">
+          <Block display={['block', 'block', 'block', 'block']} width="100%" >
             <SingleColumn {...props}></SingleColumn>
-          </Block>
-          <Block display={['none', 'none', 'block', 'none']} width="100%">
-            <TwoCols {...props} />
-          </Block>
-          <Block display={['none', 'none', 'none', 'block']} width="100%">
-            <ThreeColsSearch {...props} />
           </Block>
         </Block>
       </Block>
       <Footer />
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 
