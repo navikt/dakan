@@ -7,7 +7,6 @@ metadata:
     team: dataplattform
 spec:
   image: {{ image }}
-  port: 80
   replicas:
     min: 2
     max: 2
