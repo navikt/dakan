@@ -1,7 +1,10 @@
 FROM nginxinc/nginx-unprivileged:stable-alpine
 
+USER root
 RUN apk add --no-cache nodejs yarn && \
-        yarn global add @beam-australia/react-env@3.0.8
+    yarn global add @beam-australia/react-env@3.0.8
+USER nginx
+
 ADD docker-entrypoint.sh /var/entrypoint.sh
 RUN chmod +x /var/entrypoint.sh
 
