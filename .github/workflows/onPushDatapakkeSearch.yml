@@ -24,7 +24,7 @@ jobs:
           SKIP_PREFLIGHT_CHECK: true
       - name: Generate Docker image:tag
         run: |
-          echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/msearch:$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/datapakke-search:$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       - run: |
           cd apps/datapakke-search
           docker build --tag $IMAGE .
