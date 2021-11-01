@@ -1,6 +1,7 @@
 application_name: datapakke-search
 team: dataplattform
 ingress:
+  - https://data.dev.intern.nav.no
   - https://datapakker.dev.intern.nav.no
   - https://datapakker.dev-gcp.nais.io
 app_title: Datapakker dev
