@@ -20,7 +20,7 @@ jobs:
       - run: yarn run shared:build
       - run: yarn datasearch:build
         env:
-          CI: false
+          SKIP_PREFLIGHT_CHECK: true
       - name: Generate Docker image:tag
         run: |
           echo "IMAGE=ghcr.io/$GITHUB_REPOSITORY/msearch:$(date +%Y%m%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
