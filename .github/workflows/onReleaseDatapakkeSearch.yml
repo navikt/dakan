@@ -34,6 +34,6 @@ jobs:
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
+          CLUSTER: prod-gcp
           RESOURCE: apps/datapakke-search/.nais/nais.yaml
           VARS: apps/datapakke-search/.nais/config-prod-intern.yaml
