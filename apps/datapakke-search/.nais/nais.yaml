@@ -7,7 +7,6 @@ metadata:
     team: {{team}}
 spec:
   image: {{image}}
-  port: 80
   replicas:
     min: 2
     max: 2
@@ -25,10 +24,10 @@ spec:
     periodSeconds: 5
     failureThreshold: 30
   ingresses:
-    - {{ingress_nais_io}}
+  {{#each ingress as |url|}}
+     - {{ url }}
+  {{/each}}
   leaderElection: false
-  vault:
-    enabled: true
   prometheus:
     enabled: true
     path: /
@@ -47,4 +46,4 @@ spec:
     - name: REACT_APP_CONFIG
       value: '{"facets": [{ "field": "format", "label": "Type" },{ "field": "theme", "label": "Tema" },{ "field": "provenance", "label": "Opprinnelse" }]}'
   envFrom:
-    - configmap: {{configmap_name}}
+    - configmap: dakan-msearch-config{{postfix}}

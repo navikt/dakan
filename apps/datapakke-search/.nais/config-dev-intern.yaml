@@ -1,0 +1,7 @@
+application_name: datapakke-search
+team: dataplattform
+ingresses:
+  - https://datapakker.dev.intern.nav.no
+  - https://datapakker.dev-gcp.nais.io
+app_title: Datapakker dev
+postfix: -intern
