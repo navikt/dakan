@@ -20,6 +20,7 @@ jobs:
       - run: yarn run shared:build
       - run: yarn datasearch:build
         env:
+          CI: false
           SKIP_PREFLIGHT_CHECK: true
       - name: Generate Docker image:tag
         run: |
