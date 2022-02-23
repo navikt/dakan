@@ -39,8 +39,6 @@ class Main extends React.Component {
                 config={{
                   brand: title,
                   nav: true,
-                  about: true,
-                  aboutLink: 'https://data.nav.no/about',
                   link: link,
                   amplitude_project_id: amplitude_project_id,
                   amplitude_endpoint: amplitude_endpoint,
@@ -54,7 +52,6 @@ class Main extends React.Component {
                 <Route exact path="/" component={SearchPage} />
                 <Route exact path="/list" component={ListPage} />
                 <Route exact path="/search/:mode" component={SearchPage} />
-                <Route path="/about" component={AboutPage} />
                 <Route path="/viewer/:id" component={DummyViewer} />
                 <Route component={PageNotFound} />
               </Switch>
